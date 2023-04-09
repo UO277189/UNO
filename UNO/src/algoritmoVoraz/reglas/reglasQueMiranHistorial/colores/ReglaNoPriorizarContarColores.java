@@ -2,7 +2,7 @@ package algoritmoVoraz.reglas.reglasQueMiranHistorial.colores;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 import juego.enumerados.Colores;
 /**
@@ -11,7 +11,7 @@ import juego.enumerados.Colores;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaNoPriorizarContarColores implements ReglaStrategy{
+public class ReglaNoPriorizarContarColores implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {

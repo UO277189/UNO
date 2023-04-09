@@ -2,7 +2,7 @@ package algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 import juego.carta.CartaAccion;
 import juego.carta.CartaNumerica;
@@ -12,7 +12,7 @@ import juego.carta.CartaNumerica;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaPriorizarContarNumerosAcciones implements ReglaStrategy{
+public class ReglaPriorizarContarNumerosAcciones implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {

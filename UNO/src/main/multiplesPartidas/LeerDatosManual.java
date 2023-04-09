@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Regla;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaNoPriorizarContarNumerosAcciones;
@@ -162,7 +162,7 @@ public class LeerDatosManual {
 	 */
 	public JugadorAlgoritmo establecerRegla(String nombre) {
 		// Definimos el JugadorAlgoritmo
-		ReglaStrategy regla = null;
+		Regla regla = null;
 
 		mostrarReglasUsuario();
 
@@ -197,7 +197,7 @@ public class LeerDatosManual {
 			regla = new ReglaNoPriorizarContarNumerosAcciones();
 			break;
 		}
-		return new JugadorAlgoritmo(nombre, regla);
+		return null;
 	}
 
 	/**

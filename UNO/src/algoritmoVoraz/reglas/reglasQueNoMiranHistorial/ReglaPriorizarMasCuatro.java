@@ -2,7 +2,7 @@ package algoritmoVoraz.reglas.reglasQueNoMiranHistorial;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 
 /**
@@ -10,15 +10,13 @@ import juego.carta.Carta;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaPriorizarMasCuatro implements ReglaStrategy{
+public class ReglaPriorizarMasCuatro implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
 		for (int i = 0; i < cartas.size(); i++) {
 			if (cartas.get(i).toString().contains("+4")) {
 				cartas.get(i).setPeso(1000);
-			} else {
-			    cartas.get(i).setPeso(1);
 			}
 		}
 	}

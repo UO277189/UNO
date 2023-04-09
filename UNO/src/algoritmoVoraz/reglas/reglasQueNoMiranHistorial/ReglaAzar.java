@@ -2,7 +2,7 @@ package algoritmoVoraz.reglas.reglasQueNoMiranHistorial;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 
 /**
@@ -10,7 +10,7 @@ import juego.carta.Carta;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaAzar implements ReglaStrategy {
+public class ReglaAzar implements Regla {
 	
 
 

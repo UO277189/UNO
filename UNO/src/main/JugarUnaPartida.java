@@ -2,10 +2,8 @@ package main;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
-import algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaNoPriorizarContarNumerosAcciones;
+import algoritmoVoraz.reglas.Ranking;
 import algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaAzar;
-import algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaPriorizarMasCuatro;
 import juego.Juego;
 import juego.barajar.BarajarStrategy;
 import juego.barajar.CartaACarta;
@@ -26,10 +24,10 @@ public class JugarUnaPartida {
     	
     	// PASO 1: pones a los jugadores
     	ArrayList<JugadorAbstract> jugadores = new ArrayList<JugadorAbstract>();
-    	jugadores.add(new JugadorAlgoritmo("PriorizarContarColores", new ReglaPriorizarContarColores()));
-    	jugadores.add(new JugadorAlgoritmo("Azar", new ReglaAzar()));
-    	jugadores.add(new JugadorAlgoritmo("NoPriorizarContarNumerosAcciones", new ReglaNoPriorizarContarNumerosAcciones()));
-    	jugadores.add(new JugadorAlgoritmo("PriorizarContarMasCuatro", new ReglaPriorizarMasCuatro()));
+    	jugadores.add(new JugadorAlgoritmo("PriorizarContarColores", new Ranking(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("Azar",  new Ranking(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("NoPriorizarContarNumerosAcciones",  new Ranking(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("PriorizarContarMasCuatro",  new Ranking(new ReglaAzar())));
     	//jugadores.add(new JugadorManual("Manual));
 
     	// PASO 2: indicas la estrategia de bararjar

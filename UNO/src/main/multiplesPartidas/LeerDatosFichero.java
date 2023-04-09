@@ -2,7 +2,8 @@ package main.multiplesPartidas;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Ranking;
+import algoritmoVoraz.reglas.Regla;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaNoPriorizarContarNumerosAcciones;
@@ -190,10 +191,10 @@ public class LeerDatosFichero {
 		// Opción 1: jugador automático
 		if (valores[0].equals("AUTOMATICO")) {
 			// Añadimos los jugadores
-			jugadores.add(new JugadorAlgoritmo(valores[1], pasarValorARegla(valores[2])));
-			jugadores.add(new JugadorAlgoritmo(valores[3], pasarValorARegla(valores[4])));
-			jugadores.add(new JugadorAlgoritmo(valores[5], pasarValorARegla(valores[6])));
-			jugadores.add(new JugadorAlgoritmo(valores[7], pasarValorARegla(valores[8])));
+			jugadores.add(new JugadorAlgoritmo(valores[1], evaluarStringRegla(valores[2])));
+			jugadores.add(new JugadorAlgoritmo(valores[3], evaluarStringRegla(valores[4])));
+			jugadores.add(new JugadorAlgoritmo(valores[5], evaluarStringRegla(valores[6])));
+			jugadores.add(new JugadorAlgoritmo(valores[7], evaluarStringRegla(valores[8])));
 		} else { // Opción 2: jugador manual
 			jugadores.add(new JugadorManual(valores[1]));
 			jugadores.add(new JugadorManual(valores[2]));
@@ -205,13 +206,40 @@ public class LeerDatosFichero {
 	}
 
 	/**
-	 * Método para leer un string y pasarlo a una regla
+	 * Método para leer un string y pasarlo a un ranking
 	 * 
 	 * @param string El valor String
-	 * @return La regla a aplicar
+	 * @return Ranking El ranking a aplicar
 	 */
-	private ReglaStrategy pasarValorARegla(String reglaString) {
-		ReglaStrategy regla = null;
+	private Ranking evaluarStringRegla(String value) {
+		
+		Ranking ranking = null;
+		
+		// Primero hay que estudiar si hay varias reglas
+		if (value.contains(",")) {
+			// En este caso hacemos un split y evaluamos cada regla por separado
+			String [] reglas = value.split(",");
+			ArrayList<Regla> reglasArray = new ArrayList<Regla>();
+			for (String regla : reglas) {
+				reglasArray.add(sacarRegla(regla));
+			}
+			ranking = new Ranking(reglasArray);
+		} else {
+			// Si es una sola regla
+			ranking = new Ranking(sacarRegla(value));
+		}
+		
+		return ranking;
+		
+	}
+
+	/**
+	 * Método que saca la regla del string que le pases
+	 * @param reglaString El string a evaluar
+	 * @return Regla
+	 */
+	private Regla sacarRegla(String reglaString) {
+		Regla regla = null;
 
 		if (reglaString.contains("ReglaAzar"))
 			regla = new ReglaAzar();

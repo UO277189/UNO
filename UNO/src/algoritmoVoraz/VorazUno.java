@@ -1,7 +1,7 @@
 package algoritmoVoraz;
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.ReglaStrategy;
+import algoritmoVoraz.reglas.Ranking;
 import juego.carta.Carta;
 
 /**
@@ -13,15 +13,15 @@ public class VorazUno {
 
 	// ATRIBUTOS
 	
-	private ReglaStrategy regla; // La regla a implementar
+	private Ranking ranking; // El ranking de reglas a implementar
 
 
 	/**
 	 * Constructor que recibe como parámetros las cartas del jugador, la del medio y la regla a implementar
-	 * @param regla la regla a implementar
+	 * @param Ranking el ranking a ejecutar
 	 */
-	public VorazUno(ReglaStrategy regla) {
-		this.regla = regla;
+	public VorazUno(Ranking ranking) {
+		this.ranking = ranking;
 	}
 
 
@@ -43,7 +43,8 @@ public class VorazUno {
 		}		
 		
 		// Primero se ponderan las cartas incluyendo el peso adecuado
- 		regla.execute(cartasVoraz, cartasJugadas);
+		// Dentro del ranking se ejecutan todas las reglas
+		ranking.rankReglas(cartasJugadas, cartasVoraz);
 		
  		// Para evitar errores al decrementar las cartas
  		int size = cartasVoraz.size();

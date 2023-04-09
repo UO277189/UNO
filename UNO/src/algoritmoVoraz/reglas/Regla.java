@@ -8,7 +8,7 @@ import juego.carta.Carta;
  * @author Efrén García Valencia UO277189
  *
  */
-public interface ReglaStrategy {
+public interface Regla {
 
 	/**
 	 * Método para ejecutar una regla para las cartas

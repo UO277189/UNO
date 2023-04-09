@@ -107,7 +107,7 @@ public class ColeccionJuegos {
 		for (JugadorAbstract jugador : this.jugadores) {
 			if (jugador instanceof JugadorAlgoritmo) {
 				jugadorAIncluir = new JugadorAlgoritmo(jugador.getNombreJugador(),
-						((JugadorAlgoritmo) jugador).getRegla());
+						((JugadorAlgoritmo) jugador).getRanking());
 			}
 			if (jugador instanceof JugadorManual) {
 				jugadorAIncluir = new JugadorManual(jugador.getNombreJugador());
