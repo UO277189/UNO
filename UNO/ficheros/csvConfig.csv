@@ -1,0 +1,7 @@
+AUTOMATICO;Azar;ReglaAzar;PriorizarContarMasCuatro;ReglaPriorizarMasCuatro;NoPriorizarContarMasCuatro;ReglaNoPriorizarMasCuatro;PriorizarContarColores;ReglaPriorizarContarColores;CartaACarta;60;100000;
+AUTOMATICO;AzarA;ReglaAzar;AzarB;ReglaAzar;AzarC;ReglaAzar;AzarD;ReglaAzar;CartaACarta;60;500;
+AUTOMATICO;AzarA;ReglaAzar;AzarB;ReglaAzar;AzarC;ReglaAzar;AzarD;ReglaAzar;CartaACarta;60;24;
+AUTOMATICO;AzarA;ReglaAzar;AzarB;ReglaAzar;AzarC;ReglaAzar;AzarD;ReglaAzar;CartaACarta;60;1000;
+AUTOMATICO;AzarA;ReglaAzar;AzarB;ReglaAzar;AzarC;ReglaAzar;AzarD;ReglaAzar;CartaACarta;60;10000;
+AUTOMATICO;AzarA;ReglaAzar;AzarB;ReglaAzar;AzarC;ReglaAzar;AzarD;ReglaAzar;MontonAMonton;10;5;100000
+MANUAL;JugadorA;JugadorB;JugadorC;JugadorD;CartaACarta;40;1;;;;;
