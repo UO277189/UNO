@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import algoritmoVoraz.reglas.Ranking;
 import algoritmoVoraz.reglas.Regla;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
@@ -30,11 +31,10 @@ import juego.jugador.JugadorManual;
  *
  */
 public class LeerDatosManual {
-	
-	
+
 	private LeerConsola leerConsola;
 	private Scanner sc;
-	
+
 	/**
 	 * Constructor por defecto
 	 */
@@ -42,7 +42,7 @@ public class LeerDatosManual {
 		this.leerConsola = new LeerConsola();
 		this.sc = new Scanner(System.in);
 	}
-	
+
 	/**
 	 * Método para elegir los jugadores de la partida y la estrategia que van a
 	 * emplear
@@ -76,7 +76,7 @@ public class LeerDatosManual {
 		return jugadores;
 
 	}
-	
+
 	/**
 	 * Método que devuelve true si hay un jugador manual
 	 * 
@@ -91,7 +91,6 @@ public class LeerDatosManual {
 		return false;
 	}
 
-	
 	/**
 	 * Método para crear la estrategia de barajar a aplicar
 	 * 
@@ -126,7 +125,7 @@ public class LeerDatosManual {
 		}
 		return estrategia;
 	}
-	
+
 	/**
 	 * Método para determinar el número de partidas a jugar
 	 * 
@@ -136,7 +135,6 @@ public class LeerDatosManual {
 		System.out.println("Por favor, elija el número de partidas (Mínimo: 1, Máximo: 100000)");
 		return leerConsola.leerValorRango(1, 100000);
 	}
-
 
 	/**
 	 * Método para elegir si ver toda la traza o solamente los resultados al
@@ -161,41 +159,58 @@ public class LeerDatosManual {
 	 * @return JugadorAlgoritmo
 	 */
 	public JugadorAlgoritmo establecerRegla(String nombre) {
-		// Definimos el JugadorAlgoritmo
-		Regla regla = null;
 
-		mostrarReglasUsuario();
+		// Refactorización para que ahora se puedan escoger múltiples reglas
+		int eleccion = 0;
+		Ranking ranking = null;
+		ArrayList<Regla> reglas = new ArrayList<Regla>();
 
-		int eleccion = leerConsola.leerValorRango(0, 8);
+		while (eleccion != 9) {
+			mostrarReglasUsuario(); // Mostramos las opciones al usuario
+			eleccion = leerConsola.leerValorRango(0, 9); // Elegimos la opción
 
+			if (eleccion != 9) {
+				reglas.add(elegirRegla(eleccion));
+				System.out.println("Se ha elegido la regla marcada por " + eleccion);
+				System.out.println();
+			} else {
+				if (reglas.isEmpty()) {
+					System.out.println("ERROR: se tiene que elegir al menos una regla");
+					System.out.println();
+					eleccion = 0; // Para que no salga del while
+				}
+			}
+		}
+		ranking = new Ranking(reglas); // Se forma el ranking
+		return new JugadorAlgoritmo(nombre, ranking); // Devolvemos al jugador
+	}
+
+	/**
+	 * Para elegir la regla a aplicar
+	 * 
+	 * @param eleccion La eleccion que se toma
+	 * @return Regla
+	 */
+	private Regla elegirRegla(int eleccion) {
 		switch (eleccion) {
 		case 0:
-			regla = new ReglaAzar();
-			break;
+			return new ReglaAzar();
 		case 1:
-			regla = new ReglaPriorizarMasCuatro();
-			break;
+			return new ReglaPriorizarMasCuatro();
 		case 2:
-			regla = new ReglaNoPriorizarMasCuatro();
-			break;
+			return new ReglaNoPriorizarMasCuatro();
 		case 3:
-			regla = new ReglaPriorizarMasDos();
-			break;
+			return new ReglaPriorizarMasDos();
 		case 4:
-			regla = new ReglaNoPriorizarMasDos();
-			break;
+			return new ReglaNoPriorizarMasDos();
 		case 5:
-			regla = new ReglaPriorizarContarColores();
-			break;
+			return new ReglaPriorizarContarColores();
 		case 6:
-			regla = new ReglaNoPriorizarContarColores();
-			break;
+			return new ReglaNoPriorizarContarColores();
 		case 7:
-			regla = new ReglaPriorizarContarNumerosAcciones();
-			break;
+			return new ReglaPriorizarContarNumerosAcciones();
 		case 8:
-			regla = new ReglaNoPriorizarContarNumerosAcciones();
-			break;
+			return new ReglaNoPriorizarContarNumerosAcciones();
 		}
 		return null;
 	}
@@ -218,6 +233,8 @@ public class LeerDatosManual {
 				+ "respondamos con una carta numérica o de acción respectivamente");
 		System.out.println(" - 8: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
 				+ " respondamos con una carta numérica o de acción respectivamente");
+		System.out.println("");
+		System.out.println(" Pulse 9 para guardar todas las reglas seleccionadas");
 	}
 
 	/**
