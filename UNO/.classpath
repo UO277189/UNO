@@ -6,5 +6,18 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/commons-compress-1.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/commons-io-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/log4j-api-2.18.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/log4j-core-2.20.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/poi-5.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/poi-ooxml-5.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/poi-ooxml-full-5.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/excel/xmlbeans-5.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/servlet.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

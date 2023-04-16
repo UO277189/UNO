@@ -116,6 +116,10 @@ public class JugarMultiplesPartidas {
 		manejoFicheros.escribirCSV(partidas);
 		// Se guarda el log en el txt
 		manejoFicheros.escribirTxT(partidas);
+		// Se vuelcan los datos en un excel
+		manejoFicheros.escribirExcel();
+		// Se guardan los graficos en el excel
+		manejoFicheros.escribirGraficos();
 	}
 
 }

@@ -3,13 +3,23 @@ package auxiliar;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import juego.ColeccionJuegos;
 import juego.Juego;
+
+import org.jfree.chart.*;
+import org.jfree.data.category.*;
+import org.jfree.chart.plot.*;
 
 /**
  * Clase para manejarse con los ficheros de entrada y salida de la aplicación
@@ -56,7 +66,7 @@ public class ManejoFicheros {
 			writeDataToCSV(partidasJugadas, writer);
 
 		} catch (IOException e) {
-			System.out.println("Ha ocurrido un error al pasar los datos a un csv");
+			System.out.println("Ha ocurrido un error al pasar los datos a csv. Compruebe que no tenga el archivo abierto");
 		} finally {
 			try {
 				// Se cierran los ficheros en orden
@@ -341,6 +351,70 @@ public class ManejoFicheros {
 			directorio.deleteOnExit();
 		}
 	}
+	
+	
+	// Para pasar datos a un fichero excel
+	public void escribirExcel() {
+		String[] labels = new String[2];
+		labels[0] = "holdfdfa";
+		double[] values = new double[5];
+		Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Data");
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("Label");
+        headerRow.createCell(1).setCellValue("Value");
+
+        for (int i = 0; i < labels.length; i++) {
+            Row row = sheet.createRow(i+1);
+            row.createCell(0).setCellValue(labels[i]);
+            row.createCell(1).setCellValue(values[i]);
+        }
+
+        try {
+            FileOutputStream outputStream = new FileOutputStream("data.xlsx");
+            workbook.write(outputStream);
+            workbook.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	// Para generar gráficos
+	
+	public void escribirGraficos() {
+        File file = new File("data.xlsx");
+        Workbook workbook = null;
+        try {
+            workbook = new XSSFWorkbook(file);
+            Sheet sheet = workbook.getSheetAt(0);
+            int numRows = sheet.getLastRowNum();
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+            for (int i = 1; i <= numRows; i++) {
+                Row row = sheet.getRow(i);
+                String label = row.getCell(0).getStringCellValue();
+                double value = row.getCell(1).getNumericCellValue();
+                dataset.addValue(value, "Series 1", label);
+            }
+
+            JFreeChart chart = ChartFactory.createBarChart(
+                "Chart Title", "X Axis Label", "Y Axis Label",
+                dataset, PlotOrientation.VERTICAL, false, true, false
+            );
+            ChartUtilities.saveChartAsPNG(new File("chart.png"), chart, 500, 300);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (workbook != null) {
+                try {
+                    workbook.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+	
 
 	/**
 	 * Devuelve el separador usado en los archivos CSV
@@ -350,5 +424,6 @@ public class ManejoFicheros {
 	public String getSeparador() {
 		return this.separador;
 	}
-
+	
+	
 }
