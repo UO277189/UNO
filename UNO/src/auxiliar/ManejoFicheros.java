@@ -32,9 +32,11 @@ public class ManejoFicheros {
 	// Atributos
 
 	// RUTAS
-	String rutaMetricas = ".\\ficheros\\csvMetricas.csv"; // Uso una ruta relativa
+	String rutaMetricas = ".\\ficheros\\\\salidas\\csvMetricas.csv"; // Uso una ruta relativa
 	String rutaConfig = ".\\ficheros\\csvConfig.csv";
-	String rutaPartidas = ".\\ficheros\\log";
+	String rutaPartidas = ".\\ficheros\\salidas\\log";
+	String rutaExcel = ".\\ficheros\\salidas\\resultadoExcel.xlsx";
+	String rutaGrafico = ".\\ficheros\\salidas\\grafico.png";
 
 	// SEPARADOR
 	String separador = ";"; // El separador a aplicar para diferenciar las columnas
@@ -354,6 +356,8 @@ public class ManejoFicheros {
 	
 	
 	// Para pasar datos a un fichero excel
+	// Cambia esto
+	
 	public void escribirExcel() {
 		String[] labels = new String[2];
 		labels[0] = "holdfdfa";
@@ -371,7 +375,7 @@ public class ManejoFicheros {
         }
 
         try {
-            FileOutputStream outputStream = new FileOutputStream("data.xlsx");
+            FileOutputStream outputStream = new FileOutputStream(rutaExcel);
             workbook.write(outputStream);
             workbook.close();
         } catch (IOException e) {
@@ -382,7 +386,7 @@ public class ManejoFicheros {
 	// Para generar gráficos
 	
 	public void escribirGraficos() {
-        File file = new File("data.xlsx");
+        File file = new File(rutaExcel);
         Workbook workbook = null;
         try {
             workbook = new XSSFWorkbook(file);
@@ -401,7 +405,7 @@ public class ManejoFicheros {
                 "Chart Title", "X Axis Label", "Y Axis Label",
                 dataset, PlotOrientation.VERTICAL, false, true, false
             );
-            ChartUtilities.saveChartAsPNG(new File("chart.png"), chart, 500, 300);
+            ChartUtilities.saveChartAsPNG(new File(rutaGrafico), chart, 500, 300);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
