@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import algoritmoVoraz.VorazUno;
 import algoritmoVoraz.reglas.Ranking;
-import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 
 /**
