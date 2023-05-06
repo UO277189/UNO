@@ -2,8 +2,8 @@ package juego.jugador;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.VorazUno;
-import algoritmoVoraz.reglas.Ranking;
+import algoritmoVoraz.EnsembleReglas;
+import algoritmoVoraz.reglas.ReglasCompuestas;
 import juego.carta.Carta;
 
 /**
@@ -13,18 +13,18 @@ import juego.carta.Carta;
  */
 public class JugadorAlgoritmo extends JugadorAbstract{
 
-	private VorazUno voraz; 
-	private Ranking ranking;
+	private EnsembleReglas ensembleReglas; 
+	private ReglasCompuestas reglasCompuestas;
 	
 	/**
 	 * Constructor para el algoritmo que implementa reglas
 	 * @param nombreJugador El nombre del jugador
 	 * @param regla La regla que implementa
 	 */
-	public JugadorAlgoritmo(String nombreJugador, Ranking ranking) {
+	public JugadorAlgoritmo(String nombreJugador, ReglasCompuestas reglasCompuestas) {
 		super(nombreJugador);
-		this.ranking = ranking;
-		voraz = new VorazUno(ranking);
+		this.reglasCompuestas = reglasCompuestas;
+		ensembleReglas = new EnsembleReglas(reglasCompuestas);
 	}
 	
 	
@@ -38,16 +38,16 @@ public class JugadorAlgoritmo extends JugadorAbstract{
 	@Override
 	public int jugarTurno(Carta enMedio, ArrayList<Carta> historial) {
 		// Aplica el algoritmo correspondiente con las cartas de la mano y la carta en medio
-		return voraz.vorazUNO(getCartasMano(), enMedio, historial);
+		return ensembleReglas.cartaPorVotacion(getCartasMano(), enMedio, historial);
 	}
 
 
 	/**
-	 * Devuelve el ranking que implementa el algoritmo
-	 * @return Ranking El ranking que implementa
+	 * Devuelve las reglas que implementa el algoritmo
+	 * @return ReglasCompuestas Las reglas que implementa
 	 */
-	public Ranking getRanking() {
-		return ranking;
+	public ReglasCompuestas getReglasCompuestas() {
+		return reglasCompuestas;
 	}
 	
 	

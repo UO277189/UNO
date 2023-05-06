@@ -2,7 +2,7 @@ package algoritmoVoraz;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.Ranking;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 
 /**
@@ -13,19 +13,6 @@ import juego.carta.Carta;
  */
 public class VorazUno {
 
-	// ATRIBUTOS
-
-	private Ranking ranking; // El ranking de reglas a implementar
-
-	/**
-	 * Constructor que recibe como parámetros las cartas del jugador, la del medio y
-	 * la regla a implementar
-	 * 
-	 * @param Ranking el ranking a ejecutar
-	 */
-	public VorazUno(Ranking ranking) {
-		this.ranking = ranking;
-	}
 
 	/**
 	 * Encuentra la carta más adecuada para echar en un momento dado. Devuelve la
@@ -34,9 +21,10 @@ public class VorazUno {
 	 * @param cartas        las cartas del jugador
 	 * @param cartaMedio    la carta del medio
 	 * @param cartasJugadas las cartas jugadas hasta el momento
-	 * @return int
+	 * @param regla La regla a aplicar
+	 * @return int La posición de la carta
 	 */
-	public int vorazUNO(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas) {
+	public int aplicarAlgoritmoVoraz(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas, Regla regla) {
 
 		// Hay que crear un array auxiliar para evitar perder las cartas del jugador
 		ArrayList<Carta> cartasVoraz = new ArrayList<Carta>();
@@ -45,8 +33,9 @@ public class VorazUno {
 		}
 
 		// Primero se ponderan las cartas incluyendo el peso adecuado
-		// Dentro del ranking se ejecutan todas las reglas
-		ranking.rankReglas(cartasJugadas, cartasVoraz);
+		// Dentro del conjunto se ejecutan todas las reglas
+		ponderarCartasBase(cartasVoraz);
+		regla.execute(cartasVoraz, cartasJugadas);
 
 		// Para evitar errores al decrementar las cartas
 		int size = cartasVoraz.size();
@@ -66,6 +55,17 @@ public class VorazUno {
 			return mayorPeso(S, cartas, cartaMedio);
 		} else {
 			return -1; // Robamos una carta
+		}
+	}
+	
+	
+	/**
+	 * Método que pondera las cartas del juego del UNO con un valor base
+	 * @param cartas Las cartas del jugador en un momento determinado
+	 */
+	private void ponderarCartasBase(ArrayList<Carta> cartas) {
+		for (Carta carta : cartas) {
+			carta.setPeso(0); // La base es 0
 		}
 	}
 
@@ -110,7 +110,7 @@ public class VorazUno {
 					pos = j;
 				}
 			} catch (NullPointerException e) {
-				System.out.println("a");
+				System.out.println("Ha ocurrido un error");
 			}
 		}
 		return pos;

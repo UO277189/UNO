@@ -2,7 +2,7 @@ package main.multiplesPartidas;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.Ranking;
+import algoritmoVoraz.reglas.ReglasCompuestas;
 import algoritmoVoraz.reglas.Regla;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
@@ -206,14 +206,14 @@ public class LeerDatosFichero {
 	}
 
 	/**
-	 * Método para leer un string y pasarlo a un ranking
+	 * Método para leer un string y pasarlo a un objeto ReglasCompuestas
 	 * 
 	 * @param string El valor String
-	 * @return Ranking El ranking a aplicar
+	 * @return ReglasCompuestas Las reglas a aplicar
 	 */
-	private Ranking evaluarStringRegla(String value) {
+	private ReglasCompuestas evaluarStringRegla(String value) {
 		
-		Ranking ranking = null;
+		ReglasCompuestas reglasCompuestas = null;
 		
 		// Primero hay que estudiar si hay varias reglas
 		if (value.contains(",")) {
@@ -223,13 +223,13 @@ public class LeerDatosFichero {
 			for (String regla : reglas) {
 				reglasArray.add(sacarRegla(regla));
 			}
-			ranking = new Ranking(reglasArray);
+			reglasCompuestas = new ReglasCompuestas(reglasArray);
 		} else {
 			// Si es una sola regla
-			ranking = new Ranking(sacarRegla(value));
+			reglasCompuestas = new ReglasCompuestas(sacarRegla(value));
 		}
 		
-		return ranking;
+		return reglasCompuestas;
 		
 	}
 

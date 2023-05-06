@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.reglas.Ranking;
+import algoritmoVoraz.reglas.ReglasCompuestas;
 import algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaAzar;
 import juego.Juego;
 import juego.barajar.BarajarStrategy;
@@ -24,10 +24,10 @@ public class JugarUnaPartida {
     	
     	// PASO 1: pones a los jugadores
     	ArrayList<JugadorAbstract> jugadores = new ArrayList<JugadorAbstract>();
-    	jugadores.add(new JugadorAlgoritmo("PriorizarContarColores", new Ranking(new ReglaAzar())));
-    	jugadores.add(new JugadorAlgoritmo("Azar",  new Ranking(new ReglaAzar())));
-    	jugadores.add(new JugadorAlgoritmo("NoPriorizarContarNumerosAcciones",  new Ranking(new ReglaAzar())));
-    	jugadores.add(new JugadorAlgoritmo("PriorizarContarMasCuatro",  new Ranking(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("PriorizarContarColores", new ReglasCompuestas(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("Azar",  new ReglasCompuestas(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("NoPriorizarContarNumerosAcciones",  new ReglasCompuestas(new ReglaAzar())));
+    	jugadores.add(new JugadorAlgoritmo("PriorizarContarMasCuatro",  new ReglasCompuestas(new ReglaAzar())));
     	//jugadores.add(new JugadorManual("Manual));
 
     	// PASO 2: indicas la estrategia de bararjar

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import algoritmoVoraz.reglas.Ranking;
+import algoritmoVoraz.reglas.ReglasCompuestas;
 import algoritmoVoraz.reglas.Regla;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
 import algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
@@ -162,7 +162,7 @@ public class LeerDatosManual {
 
 		// Refactorización para que ahora se puedan escoger múltiples reglas
 		int eleccion = 0;
-		Ranking ranking = null;
+		ReglasCompuestas reglasCompuestas = null;
 		ArrayList<Regla> reglas = new ArrayList<Regla>();
 
 		while (eleccion != 9) {
@@ -181,8 +181,8 @@ public class LeerDatosManual {
 				}
 			}
 		}
-		ranking = new Ranking(reglas); // Se forma el ranking
-		return new JugadorAlgoritmo(nombre, ranking); // Devolvemos al jugador
+		reglasCompuestas = new ReglasCompuestas(reglas); // Se forma las reglas
+		return new JugadorAlgoritmo(nombre, reglasCompuestas); // Devolvemos al jugador
 	}
 
 	/**
