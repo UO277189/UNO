@@ -1,6 +1,7 @@
 package algoritmoVoraz;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
@@ -60,6 +61,86 @@ public class VorazUno {
 	
 	
 	/**
+	 * Versión del algoritmo voraz en el que se aplica un ranking 
+	 * 
+	 * @param cartas        las cartas del jugador
+	 * @param cartaMedio    la carta del medio
+	 * @param cartasJugadas las cartas jugadas hasta el momento
+	 * @param regla La regla a aplicar
+	 * @return ArrayList<Integer> Un array con el ranking de cartas hecho
+	 */
+	public ArrayList<Integer> aplicarAlgoritmoVorazRanking(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas, Regla regla) {
+
+		// Hay que crear un array auxiliar para evitar perder las cartas del jugador
+		ArrayList<Carta> cartasVoraz = new ArrayList<Carta>();
+		for (int i = 0; i < cartas.size(); i++) {
+			cartasVoraz.add(cartas.get(i));
+		}
+
+		// Primero se ponderan las cartas incluyendo el peso adecuado
+		// Dentro del conjunto se ejecutan todas las reglas
+		ponderarCartasBase(cartasVoraz);
+		regla.execute(cartasVoraz, cartasJugadas);
+
+		// Para evitar errores al decrementar las cartas
+		int size = cartasVoraz.size();
+
+		// Algoritmo
+		ArrayList<Carta> S = new ArrayList<Carta>();
+		while (S.size() == 0 && cartasVoraz.size() > 0) {
+			for (int i = 0; i < size; i++) {
+				Carta carta = cartasVoraz.remove(0);
+				// Si se puede echar esa carta lo añade
+				if (cartaMedio.sePuedeEchar(carta)) {
+					S.add(carta);
+				}
+			}
+		}
+		// En este punto S contiene todas las cartas que nos interesan, pero tenemos que ordenarlas 
+		// y sacar las posiciones de las cartas originales
+		
+		ArrayList<Integer> ranking = new ArrayList<Integer>();
+		if (S.size() > 0) {
+			ranking =  rankingPorPeso(S, cartas, cartaMedio);
+		} 
+		return ranking;
+	}
+	
+	/**
+	 * Método que te devuelve un array con las cartas elegidas ordenadas por peso
+	 * @param s          ArrayList<Carta> las cartas a ponderar
+	 * @param cartasMano las cartas de la mano para buscar la pos
+	 * @param cartaMedio la carta del medio para evitar excepciones
+	 * @return ArrayList<Integer>
+	 */
+	private ArrayList<Integer> rankingPorPeso(ArrayList<Carta> s, ArrayList<Carta> cartasMano, Carta cartaMedio) {
+		
+		// COMPROBACIÓN QUE FALTA: evitar bucles infinitos
+		
+		// Ordenamos las cartas
+		Collections.sort(s, Carta.PesoComparator);
+		
+		// Buscamos la posición original de las cartas
+		return searchOriginalPos(s, cartasMano);
+	}
+
+
+	/**
+	 * Método que te sirve para establecer un array con las posiciones originales de las cartas
+	 * @param s Las cartas ponderadas
+	 * @param cartasMano Las cartas en la mano
+	 * @return ArrayList<Integer>
+	 */
+	private ArrayList<Integer> searchOriginalPos(ArrayList<Carta> s, ArrayList<Carta> cartasMano) {
+		ArrayList<Integer> ranking = new ArrayList<Integer>();
+		for (Carta c : s) {
+			ranking.add(this.posCartaConcreta(cartasMano, c));
+		}
+		return ranking;
+	}
+
+
+	/**
 	 * Método que pondera las cartas del juego del UNO con un valor base
 	 * @param cartas Las cartas del jugador en un momento determinado
 	 */
@@ -79,7 +160,6 @@ public class VorazUno {
 	 */
 	private int mayorPeso(ArrayList<Carta> s, ArrayList<Carta> cartasMano, Carta cartaMedio) {
 		float maxPeso = -1000; // Valor a superar
-		int pos = -1;
 		Carta cartaElegida = null;
 
 		// CASO ESPECIAL
@@ -103,7 +183,18 @@ public class VorazUno {
 		}
 
 		// Ahora que tenemos la carta elegida buscamos su posición original
+		return posCartaConcreta(cartasMano, cartaElegida);
+	}
 
+
+	/**
+	 * Método para hallar la posición original de una carta en la mano
+	 * @param cartasMano Las cartas de la mano
+	 * @param cartaElegida La carta elegida
+	 * @return int
+	 */
+	private int posCartaConcreta(ArrayList<Carta> cartasMano, Carta cartaElegida) {
+		int pos = -1;
 		for (int j = 0; j < cartasMano.size(); j++) {
 			try {
 				if (cartaElegida.equals(cartasMano.get(j))) {

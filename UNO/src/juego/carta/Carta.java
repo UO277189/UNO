@@ -1,4 +1,6 @@
 package juego.carta;
+import java.util.Comparator;
+
 import juego.enumerados.Colores;
 
 /**
@@ -97,7 +99,21 @@ public abstract class Carta {
 		this.peso = peso;
 	}
     
-    
+	/**
+	 * Método para ordenar las cartas a comprarar
+	 */
+	 public static Comparator<Carta> PesoComparator = new Comparator<Carta>() {
+	        @Override
+	        public int compare(Carta c1, Carta c2) {
+	            if (c1.getPeso() < c2.getPeso()) {
+	                return 1;
+	            } else if (c1.getPeso() > c2.getPeso()) {
+	                return -1;
+	            } else {
+	                return 0;
+	            }
+	        }
+	    };
 
     
 }
