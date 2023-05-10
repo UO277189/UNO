@@ -38,7 +38,7 @@ public class JugadorAlgoritmo extends JugadorAbstract{
 	@Override
 	public int jugarTurno(Carta enMedio, ArrayList<Carta> historial) {
 		// Aplica el algoritmo correspondiente con las cartas de la mano y la carta en medio
-		return ensembleReglas.cartaPorVotacion(getCartasMano(), enMedio, historial);
+		return ensembleReglas.cartaPorRanking(getCartasMano(), enMedio, historial);
 	}
 
 

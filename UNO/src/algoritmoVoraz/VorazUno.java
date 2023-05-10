@@ -115,13 +115,53 @@ public class VorazUno {
 	 */
 	private ArrayList<Integer> rankingPorPeso(ArrayList<Carta> s, ArrayList<Carta> cartasMano, Carta cartaMedio) {
 		
+		ArrayList<Carta> sortCartasRanking = new ArrayList<Carta>();
+		
 		// COMPROBACIÓN QUE FALTA: evitar bucles infinitos
+		// Si podemos responder a un +2/+4 quitamos de la lista las cartas que NO cumplan la condición
+		// De esta forma evitamos bucles infinitos
+		if ((cartaMedio.toString().contains("+2") || cartaMedio.toString().contains("+4"))
+				&& tieneQueRobar(s, cartaMedio)) {
+			sortCartasRanking = quitarCartasQueNoAplican(s, cartaMedio);
+		} else {
+			sortCartasRanking = s;
+		}
 		
 		// Ordenamos las cartas
-		Collections.sort(s, Carta.PesoComparator);
+		Collections.sort(sortCartasRanking, Carta.PesoComparator);
 		
 		// Buscamos la posición original de las cartas
-		return searchOriginalPos(s, cartasMano);
+		return searchOriginalPos(sortCartasRanking, cartasMano);
+	}
+
+
+	/**
+	 * Método para quitar las cartas que no se aplican en caso de que haya que responder a un +2/+4
+	 * @param s El array de cartas
+	 * @param cartaMedio La carta del medio
+	 * @return El array de cartas con aquellas que nos sirven
+	 */
+	private ArrayList<Carta> quitarCartasQueNoAplican(ArrayList<Carta> s, Carta cartaMedio) {
+		
+		
+		ArrayList<Carta> sortCartasNoAplican= new ArrayList<Carta>();
+		for (int i = 0; i < s.size(); i++) {
+			sortCartasNoAplican.add(s.get(i));
+		}
+		
+		for (Carta carta : s) {
+			if (cartaMedio.toString().contains("+4")) {
+				if (!carta.toString().contains("+4")) {
+					sortCartasNoAplican.remove(carta);
+				}
+			}
+			if (cartaMedio.toString().contains("+2")) {
+				if (!carta.toString().contains("+4") && !carta.toString().contains("+2")) {
+					sortCartasNoAplican.remove(carta);
+				}
+			}
+		}
+		return sortCartasNoAplican;
 	}
 
 

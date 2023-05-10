@@ -97,8 +97,7 @@ public class EnsembleReglas {
 		if (mapRanking.isEmpty()) { // Si hay que robar
 			return -1;
 		}
-		return posMin;
-
+		return posMin; // El que menor valor tenga es aquel que tiene mejor posición en el ranking
 	}
 	
 	
