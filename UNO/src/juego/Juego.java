@@ -395,6 +395,21 @@ public class Juego {
 		}
 		return jugadorGanador;
 	}
+	
+	
+	/**
+	 * Método que devuelve el jugador ganador de la partida
+	 * @return JugadorUNO
+	 */
+	private JugadorAbstract jugadorGanador() {
+		JugadorAbstract jugadorGanador = null;
+		for (JugadorAbstract jugador : this.getJugadores()) {
+			if (jugador.quedanCartas() == false) {
+				jugadorGanador = jugador;
+			}
+		}
+		return jugadorGanador;
+	}
 
 	/**
 	 * Método que mira si alguien ya no tiene cartas para jugar
@@ -607,7 +622,7 @@ public class Juego {
 		if (!this.hasReachedMaxRondas) { // Si no se ha llegado al máximo de rondas es que hay ganador
 			this.guardarDatos("\n");
 			this.guardarDatos("************ FIN DE LA PARTIDA ************");
-			this.guardarDatos("GANADOR: " + this.quienGanaPartida().getNombreJugador());
+			this.guardarDatos("GANADOR: " + this.jugadorGanador());
 			for (int i = 0; i < this.getJugadores().size(); i++)
 				this.guardarDatos(this.getJugadores().get(i).informacionJugadorPartidaString());
 

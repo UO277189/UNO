@@ -7,3 +7,4 @@ AUTOMATICO;AzarA;ReglaAzar;AzarB;ReglaAzar;AzarC;ReglaAzar;AzarD;ReglaAzar;Monto
 AUTOMATICO;AzarA;ReglaAzar,ReglaPriorizarMasCuatro;AzarB;ReglaAzar,ReglaPriorizarMasCuatro;AzarC;ReglaAzar,ReglaPriorizarMasCuatro;AzarD;ReglaAzar,ReglaPriorizarMasCuatro;MontonAMonton;10;5;1000
 AUTOMATICO;Jugador1;ReglaAzar,ReglaAzar,ReglaAzar,ReglaAzar;Jugador2;ReglaAzar,ReglaAzar,ReglaAzar,ReglaAzar;Jugador3;ReglaAzar,ReglaAzar,ReglaAzar,ReglaAzar;Jugador4;ReglaAzar,ReglaAzar,ReglaAzar,ReglaAzar;CartaACarta;60;100;
 MANUAL;JugadorA;JugadorB;JugadorC;JugadorD;CartaACarta;40;1;;;;;
+AUTOMATICO;Jugador1;ReglaAzar,ReglaAzar,ReglaAzar;Jugador2;ReglaAzar,ReglaAzar,ReglaAzar;Jugador3;ReglaAzar,ReglaAzar,ReglaAzar;Jugador4;ReglaAzar,ReglaAzar,ReglaAzar;CartaACarta;60;100;

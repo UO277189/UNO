@@ -2,7 +2,10 @@ package juego.jugador;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.EnsembleReglas;
+import algoritmoVoraz.ensembles.Ensemble;
+import algoritmoVoraz.ensembles.EnsembleRanking;
+import algoritmoVoraz.ensembles.EnsembleSuma;
+import algoritmoVoraz.ensembles.EnsembleVotacion;
 import algoritmoVoraz.reglas.ReglasCompuestas;
 import juego.carta.Carta;
 
@@ -13,7 +16,7 @@ import juego.carta.Carta;
  */
 public class JugadorAlgoritmo extends JugadorAbstract{
 
-	private EnsembleReglas ensembleReglas; 
+	private Ensemble ensemble; 
 	private ReglasCompuestas reglasCompuestas;
 	
 	/**
@@ -24,7 +27,7 @@ public class JugadorAlgoritmo extends JugadorAbstract{
 	public JugadorAlgoritmo(String nombreJugador, ReglasCompuestas reglasCompuestas) {
 		super(nombreJugador);
 		this.reglasCompuestas = reglasCompuestas;
-		ensembleReglas = new EnsembleReglas(reglasCompuestas);
+		ensemble = new EnsembleRanking(reglasCompuestas);
 	}
 	
 	
@@ -38,7 +41,7 @@ public class JugadorAlgoritmo extends JugadorAbstract{
 	@Override
 	public int jugarTurno(Carta enMedio, ArrayList<Carta> historial) {
 		// Aplica el algoritmo correspondiente con las cartas de la mano y la carta en medio
-		return ensembleReglas.cartaPorRanking(getCartasMano(), enMedio, historial);
+		return ensemble.ejecutarEnsemble(getCartasMano(), enMedio, historial);
 	}
 
 

@@ -1,11 +1,11 @@
-JUGADORES;Jugador1;Jugador2;Jugador3;Jugador4;
-Cartas jugadas;312022;341401;333243;320923;
-Cartas robadas;113025;92186;102678;109469;
-Cartas +4 jugadas;19641;9130;8616;8516;
-Cartas +2 jugadas;37338;25269;22830;31053;
-Cartas Cambio de Sentido jugadas;32799;28693;22660;26075;
-Cartas Quitar Turno jugadas;27576;30585;25728;26884;
-Veces que ha cantado UNO;30410;20012;25064;26576;
-Veces que ha ganado;18022;11274;14586;16114;
+JUGADORES;AzarA;AzarB;AzarC;AzarD;
+Cartas jugadas;1087298;1140711;1121861;1106336;
+Cartas robadas;379271;341166;361917;368648;
+Cartas +4 jugadas;54449;36142;35609;35384;
+Cartas +2 jugadas;108447;90174;86748;98149;
+Cartas Cambio de Sentido jugadas;98665;94182;84005;88429;
+Cartas Quitar Turno jugadas;91364;96520;88019;91159;
+Veces que ha cantado UNO;94266;77988;85395;87928;
+Veces que ha ganado;27307;22364;24982;25339;
 
-Ganador de todas las partidas;Jugador1;
+Ganador de todas las partidas;AzarA;
