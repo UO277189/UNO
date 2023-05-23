@@ -1,7 +1,6 @@
 package algoritmoVoraz;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;

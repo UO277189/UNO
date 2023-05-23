@@ -12,7 +12,7 @@ import juego.carta.Carta;
 /**
  * Clase que implementa el ensemble de ranking para las reglas heurísticas
  * 
- * @author Efén García Valencia UO277189
+ * @author Efrén García Valencia UO277189
  *
  */
 

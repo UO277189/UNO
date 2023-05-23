@@ -1,11 +1,10 @@
-package juego;
+package juego.baraja;
 import java.util.ArrayList;
 
 import juego.acciones.CambiarSentido;
 import juego.acciones.MasCuatro;
 import juego.acciones.MasDos;
 import juego.acciones.QuitarTurno;
-import juego.barajar.BarajarStrategy;
 import juego.carta.Carta;
 import juego.carta.CartaAccion;
 import juego.carta.CartaNumerica;

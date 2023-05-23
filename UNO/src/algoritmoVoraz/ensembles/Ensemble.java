@@ -9,7 +9,7 @@ import juego.carta.Carta;
 
 /**
  * Clase base que representa los diferentes tipos de ensembles que hay en la aplicación
- * @author Usuario
+ * @author Efrén García Valencia UO277189
  *
  */
 public abstract class Ensemble {
@@ -42,6 +42,30 @@ public abstract class Ensemble {
 	
 	// MÉTODOS AUXILIARES
 	
+	
+	/**
+	 * Devuelve la posición de la carta que tenga mayor peso
+	 * 
+	 * @param S          ArrayList<Carta> las cartas a ponderar
+	 * @param cartasMano las cartas de la mano para buscar la pos
+	 * @param cartaMedio la carta del medio para evitar excepciones
+	 * @return int
+	 */
+	protected int mayorPeso(ArrayList<Carta> S, ArrayList<Carta> cartasMano, Carta cartaMedio) {
+		float maxPeso = -1000; // Valor a superar
+		Carta cartaElegida = null;
+
+		for (int i = 0; i < S.size(); i++) {
+			// En caso de empate nos quedamos con la que tenga menor índice en el array
+			if (S.get(i).getPeso() > maxPeso) {
+				maxPeso = S.get(i).getPeso();
+				cartaElegida = S.get(i);
+			}
+		}
+
+		// Ahora que tenemos la carta elegida buscamos su posición original
+		return posCartaConcreta(cartasMano, cartaElegida);
+	}
 	
 	/**
 	 * Devuelve la posición de la carta original jugada

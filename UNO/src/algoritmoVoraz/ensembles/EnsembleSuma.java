@@ -9,7 +9,7 @@ import juego.carta.Carta;
 
 /**
  * Clase que implementa el ensemble de suma para las reglas heurísticas
- * @author Efén García Valencia UO277189
+ * @author Efrén García Valencia UO277189
  *
  */
 

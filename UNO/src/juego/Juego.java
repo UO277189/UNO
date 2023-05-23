@@ -2,7 +2,8 @@ package juego;
 
 import java.util.ArrayList;
 import juego.acciones.AccionStrategy;
-import juego.barajar.BarajarStrategy;
+import juego.baraja.Baraja;
+import juego.baraja.BarajarStrategy;
 import juego.carta.Carta;
 import juego.carta.CartaAccion;
 import juego.enumerados.Colores;

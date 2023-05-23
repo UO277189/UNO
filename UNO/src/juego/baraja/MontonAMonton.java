@@ -1,8 +1,7 @@
-package juego.barajar;
+package juego.baraja;
 
 import java.util.ArrayList;
 
-import juego.Baraja;
 import juego.carta.Carta;
 
 /**

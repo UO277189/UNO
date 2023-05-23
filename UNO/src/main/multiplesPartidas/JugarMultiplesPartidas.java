@@ -3,8 +3,8 @@ package main.multiplesPartidas;
 import java.util.ArrayList;
 import auxiliar.LeerConsola;
 import auxiliar.ManejoFicheros;
-import juego.ColeccionJuegos;
-import juego.barajar.BarajarStrategy;
+import juego.baraja.BarajarStrategy;
+import juego.configurarJuego.ColeccionJuegos;
 import juego.jugador.JugadorAbstract;
 
 /**

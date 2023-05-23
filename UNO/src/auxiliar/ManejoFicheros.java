@@ -14,8 +14,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import juego.ColeccionJuegos;
 import juego.Juego;
+import juego.configurarJuego.ColeccionJuegos;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.*;

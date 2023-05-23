@@ -19,5 +19,8 @@
 	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Usuario/git/UNO/UNO/lib/graph/servlet.jar"/>
+	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-annotations_2.12.6.jar"/>
+	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-core_2.12.6.jar"/>
+	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-databind_2.12.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

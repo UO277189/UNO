@@ -1,5 +1,4 @@
-package juego.barajar;
-import juego.Baraja;
+package juego.baraja;
 
 /**
  * Clase que referencia diferentes estrategias de la baraja

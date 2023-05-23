@@ -1,8 +1,9 @@
-package juego;
+package juego.configurarJuego;
 
 import java.util.ArrayList;
 
-import juego.barajar.BarajarStrategy;
+import juego.Juego;
+import juego.baraja.BarajarStrategy;
 import juego.jugador.JugadorAbstract;
 import juego.jugador.JugadorAlgoritmo;
 import juego.jugador.JugadorManual;

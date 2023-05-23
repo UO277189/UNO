@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import algoritmoVoraz.reglas.ReglasCompuestas;
 import algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaAzar;
 import juego.Juego;
-import juego.barajar.BarajarStrategy;
-import juego.barajar.CartaACarta;
+import juego.baraja.BarajarStrategy;
+import juego.baraja.CartaACarta;
 import juego.jugador.JugadorAbstract;
 import juego.jugador.JugadorAlgoritmo;
 /**

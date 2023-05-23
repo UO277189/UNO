@@ -1,0 +1,56 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "EjemploAutomatico",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        },
+        {
+          "nombre": "Jugador3",
+          "regla": "ReglaAzar"
+        },
+        {
+          "nombre": "Jugador4",
+          "regla": "ReglaAzar"
+        }
+    
+      ],
+      "estrategia": {
+      	"tipo": "CartaACarta",
+      	"parametroIncial": 60,
+      	"parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 100,
+      "generaLog": false
+    },
+    {
+      "nombre_configuracion": "EjemploManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "no_aplica"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "no_aplica"
+        }
+      ],
+      "estrategia": {
+      	"tipo": "MontonAMonton",
+      	"parametroIncial": 10,
+      	"parametroAdicional": 5
+      },
+      "ensemble": "no_aplica",
+      "numero_partidas": 100,
+      "generaLog": false
+    
+    }
+  ]
+}
