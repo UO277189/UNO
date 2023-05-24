@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import algoritmoVoraz.reglas.Regla;
-import algoritmoVoraz.reglas.ReglasCompuestas;
 import juego.carta.Carta;
 
 /**
@@ -18,31 +17,17 @@ import juego.carta.Carta;
 
 public class EnsembleRanking extends Ensemble {
 
-	/**
-	 * Constructor para el ensemble de ranking
-	 * 
-	 * @param reglasCompuestas Las reglas compuestas
-	 */
-	public EnsembleRanking(ReglasCompuestas reglasCompuestas) {
-		super(reglasCompuestas);
-	}
+	
 
-	/**
-	 * Método que te devuelve la posición de la carta a jugar que haya sido más
-	 * votada entre todas las reglas
-	 * 
-	 * @param cartas        Cartas en la mano del jugador
-	 * @param cartaMedio    La carta del medio
-	 * @param cartasJugadas Las cartas jugadas hasta el momento
-	 * @return int La posición de la carta a jugar
-	 */
-	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas) {
+	@Override
+	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio,
+			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 
 		// La idea es desde un Map sumar puntuaciones según la posición en la que esté
 		// en el array
 		HashMap<Integer, Integer> mapRanking = new HashMap<Integer, Integer>();
 
-		for (Regla regla : reglasCompuestas.getReglas()) { // Para cada regla buscamos añadir una posición
+		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición
 			ArrayList<Carta> cartasJugables = voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
 			ArrayList<Integer> rankingRegla = rankingPorPeso(cartasJugables, cartas, cartaMedio);
 

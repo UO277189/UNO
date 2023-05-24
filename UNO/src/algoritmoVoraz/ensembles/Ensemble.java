@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import algoritmoVoraz.VorazUno;
-import algoritmoVoraz.reglas.ReglasCompuestas;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 
 /**
@@ -15,16 +15,13 @@ import juego.carta.Carta;
 public abstract class Ensemble {
 	
 	// ATRIBUTOS
-	protected ReglasCompuestas reglasCompuestas;
 	protected VorazUno voraz;
+	
 	
 	/**
 	 * Constructor con un parámetro para almacenar las reglas compuestas
-	 * 
-	 * @param reglasCompuestas Las reglas compuestas a almacenar
 	 */
-	public Ensemble(ReglasCompuestas reglasCompuestas) {
-		this.reglasCompuestas = reglasCompuestas;
+	public Ensemble() {
 		this.voraz = new VorazUno();
 	}
 	
@@ -35,9 +32,11 @@ public abstract class Ensemble {
 	 * @param cartas        Cartas en la mano del jugador
 	 * @param cartaMedio    La carta del medio
 	 * @param cartasJugadas Las cartas jugadas hasta el momento
+	 * @param reglas Las reglas que se van a ejecutar
 	 * @return int La posición de la carta a jugar
 	 */
-	public abstract int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas);
+	public abstract int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, 
+			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas);
 
 	
 	// MÉTODOS AUXILIARES

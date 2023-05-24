@@ -3,23 +3,14 @@ package auxiliar;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import juego.Juego;
-import juego.configurarJuego.ColeccionJuegos;
+import main.ColeccionJuegos;
 
-import org.jfree.chart.*;
-import org.jfree.data.category.*;
-import org.jfree.chart.plot.*;
 
 /**
  * Clase para manejarse con los ficheros de entrada y salida de la aplicación
@@ -32,28 +23,26 @@ public class ManejoFicheros {
 	// Atributos
 
 	// RUTAS
-	String rutaMetricas = ".\\ficheros\\\\salidas\\csvMetricas.csv"; // Uso una ruta relativa
+	String rutaMetricas = ".\\ficheros\\\\salidas\\"; // Uso una ruta relativa
 	String rutaConfig = ".\\ficheros\\csvConfig.csv";
 	String rutaPartidas = ".\\ficheros\\salidas\\log";
-	String rutaExcel = ".\\ficheros\\salidas\\resultadoExcel.xlsx";
-	String rutaGrafico = ".\\ficheros\\salidas\\grafico.png";
 
 	// SEPARADOR
 	String separador = ";"; // El separador a aplicar para diferenciar las columnas
 
 	/**
 	 * Método para extraer los datos de las partidas a un CVS
-	 * 
+	 * @param nombreFichero El nombre del fichero donde se va a guardar
 	 * @param partidasJugadas Las partidas jugadas totales
 	 */
-	public void escribirCSV(ColeccionJuegos partidasJugadas) {
+	public void escribirCSV(String nombreFichero, ColeccionJuegos partidasJugadas) {
 
 		FileWriter fileWriter = null;
 		BufferedWriter writer = null;
 
 		try {
 			// Indicamos la ruta en la que cargar el fichero
-			File csvMetricas = new File(rutaMetricas); // Se indica una ruta relativa
+			File csvMetricas = new File(rutaMetricas + nombreFichero + ".csv"); // Se indica una ruta relativa
 
 			// Para evitar errores
 			if (!csvMetricas.exists()) {
@@ -355,70 +344,7 @@ public class ManejoFicheros {
 	}
 	
 	
-	// Para pasar datos a un fichero excel
-	// Cambia esto
-	
-	public void escribirExcel() {
-		String[] labels = new String[2];
-		labels[0] = "holdfdfa";
-		double[] values = new double[5];
-		Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("Data");
-        Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("Label");
-        headerRow.createCell(1).setCellValue("Value");
 
-        for (int i = 0; i < labels.length; i++) {
-            Row row = sheet.createRow(i+1);
-            row.createCell(0).setCellValue(labels[i]);
-            row.createCell(1).setCellValue(values[i]);
-        }
-
-        try {
-            FileOutputStream outputStream = new FileOutputStream(rutaExcel);
-            workbook.write(outputStream);
-            workbook.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-	
-	// Para generar gráficos
-	
-	public void escribirGraficos() {
-        File file = new File(rutaExcel);
-        Workbook workbook = null;
-        try {
-            workbook = new XSSFWorkbook(file);
-            Sheet sheet = workbook.getSheetAt(0);
-            int numRows = sheet.getLastRowNum();
-            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-            for (int i = 1; i <= numRows; i++) {
-                Row row = sheet.getRow(i);
-                String label = row.getCell(0).getStringCellValue();
-                double value = row.getCell(1).getNumericCellValue();
-                dataset.addValue(value, "Series 1", label);
-            }
-
-            JFreeChart chart = ChartFactory.createBarChart(
-                "Chart Title", "X Axis Label", "Y Axis Label",
-                dataset, PlotOrientation.VERTICAL, false, true, false
-            );
-            ChartUtilities.saveChartAsPNG(new File(rutaGrafico), chart, 500, 300);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (workbook != null) {
-                try {
-                    workbook.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-	
 
 	/**
 	 * Devuelve el separador usado en los archivos CSV

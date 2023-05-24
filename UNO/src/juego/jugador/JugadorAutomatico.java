@@ -3,10 +3,7 @@ package juego.jugador;
 import java.util.ArrayList;
 
 import algoritmoVoraz.ensembles.Ensemble;
-import algoritmoVoraz.ensembles.EnsembleRanking;
-import algoritmoVoraz.ensembles.EnsembleSuma;
-import algoritmoVoraz.ensembles.EnsembleVotacion;
-import algoritmoVoraz.reglas.ReglasCompuestas;
+import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
 
 /**
@@ -14,20 +11,19 @@ import juego.carta.Carta;
  * @author Efrén García Valencia UO277189
  *
  */
-public class JugadorAlgoritmo extends JugadorAbstract{
+public class JugadorAutomatico extends JugadorAbstract{
 
 	private Ensemble ensemble; 
-	private ReglasCompuestas reglasCompuestas;
+	private ArrayList<Regla> reglas;
 	
 	/**
 	 * Constructor para el algoritmo que implementa reglas
 	 * @param nombreJugador El nombre del jugador
-	 * @param regla La regla que implementa
+	 * @param ArrayList<Regla> reglas
 	 */
-	public JugadorAlgoritmo(String nombreJugador, ReglasCompuestas reglasCompuestas) {
+	public JugadorAutomatico(String nombreJugador, ArrayList<Regla> reglas) {
 		super(nombreJugador);
-		this.reglasCompuestas = reglasCompuestas;
-		ensemble = new EnsembleRanking(reglasCompuestas);
+		this.reglas = reglas;
 	}
 	
 	
@@ -41,16 +37,25 @@ public class JugadorAlgoritmo extends JugadorAbstract{
 	@Override
 	public int jugarTurno(Carta enMedio, ArrayList<Carta> historial) {
 		// Aplica el algoritmo correspondiente con las cartas de la mano y la carta en medio
-		return ensemble.ejecutarEnsemble(getCartasMano(), enMedio, historial);
+		return ensemble.ejecutarEnsemble(getCartasMano(), enMedio, historial, reglas);
 	}
 
 
 	/**
 	 * Devuelve las reglas que implementa el algoritmo
-	 * @return ReglasCompuestas Las reglas que implementa
+	 * @return ArrayList<Regla> Las reglas que implementa
 	 */
-	public ReglasCompuestas getReglasCompuestas() {
-		return reglasCompuestas;
+	public ArrayList<Regla> getReglas() {
+		return reglas;
+	}
+
+
+	/**
+	 * Método para asignar el ensemble a los jugadores automáticos
+	 * @param ensemble El ensemble
+	 */
+	public void asignarEnsemble(Ensemble ensemble) {
+		this.ensemble = ensemble;
 	}
 	
 	

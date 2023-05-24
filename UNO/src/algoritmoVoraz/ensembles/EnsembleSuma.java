@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import algoritmoVoraz.reglas.Regla;
-import algoritmoVoraz.reglas.ReglasCompuestas;
 import juego.carta.Carta;
 
 /**
@@ -14,21 +13,16 @@ import juego.carta.Carta;
  */
 
 public class EnsembleSuma extends Ensemble {
+	
 
-	/**
-	 * Constructor para el ensemble de suma
-	 * @param reglasCompuestas Las reglas compuestas
-	 */
-	public EnsembleSuma(ReglasCompuestas reglasCompuestas) {
-		super(reglasCompuestas);
-	}
 
 	@Override
-	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas) {
+	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, 
+			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 		// La idea es desde un Map sumar puntuaciones según la posición en la que esté en el array
 		HashMap<Carta, Float> mapSuma = new HashMap<Carta, Float>();
 		
-		for (Regla regla : reglasCompuestas.getReglas()) { // Para cada regla buscamos añadir una posición
+		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición
 			ArrayList<Carta> sumaCartas = voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
 			// Para cada uno de los valores
 			float pesoExtra = 0;

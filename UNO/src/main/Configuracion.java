@@ -1,4 +1,4 @@
-package juego.configurarJuego;
+package main;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class Configuracion {
 	private BarajarStrategy estrategiaBaraja;
 	private Ensemble ensemble;
 	private int numeroPartidas;
-	private boolean mostrarTraza;
+	private boolean traza;
 	
 	
 	/**
@@ -30,17 +30,17 @@ public class Configuracion {
 	 * @param estrategiaBaraja La estrategia de la baraja
 	 * @param ensemble El ensemble a aplicar
 	 * @param numeroPartidas El número de partidas
-	 * @param mostrarTraza Para mostrar la traza
+	 * @param traza Para mostrar la traza
 	 */
 	public Configuracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadoresPartida,
-			BarajarStrategy estrategiaBaraja, Ensemble ensemble, int numeroPartidas, boolean mostrarTraza) {
+			BarajarStrategy estrategiaBaraja, Ensemble ensemble, int numeroPartidas, boolean traza) {
 		super();
 		this.nombreConfiguracion = nombreConfiguracion;
 		this.jugadoresPartida = jugadoresPartida;
 		this.estrategiaBaraja = estrategiaBaraja;
 		this.ensemble = ensemble;
 		this.numeroPartidas = numeroPartidas;
-		this.mostrarTraza = mostrarTraza;
+		this.traza = traza;
 	}
 
 
@@ -88,8 +88,8 @@ public class Configuracion {
 	 * Nos dice si se muestra la traza o no
 	 * @return boolean
 	 */
-	public boolean isMostrarTraza() {
-		return mostrarTraza;
+	public boolean getTraza() {
+		return traza;
 	}
 	
 	

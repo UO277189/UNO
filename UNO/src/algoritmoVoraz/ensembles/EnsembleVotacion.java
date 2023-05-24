@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import algoritmoVoraz.VorazUno;
 import algoritmoVoraz.reglas.Regla;
-import algoritmoVoraz.reglas.ReglasCompuestas;
 import juego.carta.Carta;
 
 /**
@@ -15,24 +14,16 @@ import juego.carta.Carta;
  */
 
 public class EnsembleVotacion extends Ensemble {
-
-	/**
-	 * Constructor para el ensemble por votación
-	 * 
-	 * @param reglasCompuestas Las reglas heurísticas a aplicar
-	 */
-	public EnsembleVotacion(ReglasCompuestas reglasCompuestas) {
-		super(reglasCompuestas);
-	}
-
-
+	
+	
 	@Override
-	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas) {
+	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio,
+			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 		// Variables locales
 		VorazUno voraz = new VorazUno();
 		ArrayList<Integer> posiciones = new ArrayList<Integer>();
 
-		for (Regla regla : reglasCompuestas.getReglas()) { // Para cada regla buscamos añadir una posición
+		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición
 			ArrayList<Carta> cartasJugables =  voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
 			if (!cartasJugables.isEmpty()) {
 				int newPos = mayorPeso(cartasJugables, cartas, cartaMedio);

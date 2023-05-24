@@ -1,11 +1,12 @@
-package juego.configurarJuego;
+package main;
 
 import java.util.ArrayList;
 
+import algoritmoVoraz.ensembles.Ensemble;
 import juego.Juego;
 import juego.baraja.BarajarStrategy;
 import juego.jugador.JugadorAbstract;
-import juego.jugador.JugadorAlgoritmo;
+import juego.jugador.JugadorAutomatico;
 import juego.jugador.JugadorManual;
 
 /**
@@ -27,6 +28,9 @@ public class ColeccionJuegos {
 	// Estrategia para barajar
 	private BarajarStrategy estrategia;
 
+	// El ensemble que se va a aplicar
+	private Ensemble ensemble;
+	
 	// Número de partidas
 	private int numeroPartidas;
 
@@ -41,20 +45,36 @@ public class ColeccionJuegos {
 	 * 
 	 * @param jugadores      La lista de jugadores
 	 * @param estrategia     La estrategia a desarrollar
+	 * @param ensemble       El ensemble que se va a aplicar
 	 * @param numeroPartidas El número de partidas a jugar
 	 * @param traza          Para saber si mostrar la traza o no
 	 */
-	public ColeccionJuegos(ArrayList<JugadorAbstract> jugadores, BarajarStrategy estrategia, int numeroPartidas,
+	public ColeccionJuegos(ArrayList<JugadorAbstract> jugadores, BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas,
 			boolean traza) {
 		this.jugadores = jugadores;
 		this.estrategia = estrategia;
 		this.numeroPartidas = numeroPartidas;
 		this.traza = traza;
+		this.ensemble = ensemble;
 
 		this.partidasDescartadas = 0;
 
+		// Asignamos el ensemble a los jugadores
+		asignarEnsembleJugadores();
+		
 		// Hay que inicializar los arrays
 		this.juegos = new ArrayList<Juego>();
+	}
+
+	/**
+	 * Método para asignar el ensemble a los jugadores
+	 */
+	private void asignarEnsembleJugadores() {
+		for (JugadorAbstract jugador : jugadores) {
+			if (jugador instanceof JugadorAutomatico) {
+				((JugadorAutomatico)jugador).asignarEnsemble(this.ensemble);
+			}
+		}
 	}
 
 	/**
@@ -106,9 +126,9 @@ public class ColeccionJuegos {
 		ArrayList<JugadorAbstract> jugadoresClon = new ArrayList<JugadorAbstract>();
 		JugadorAbstract jugadorAIncluir = null;
 		for (JugadorAbstract jugador : this.jugadores) {
-			if (jugador instanceof JugadorAlgoritmo) {
-				jugadorAIncluir = new JugadorAlgoritmo(jugador.getNombreJugador(),
-						((JugadorAlgoritmo) jugador).getReglasCompuestas());
+			if (jugador instanceof JugadorAutomatico) {
+				jugadorAIncluir = new JugadorAutomatico(jugador.getNombreJugador(),
+						((JugadorAutomatico) jugador).getReglas());
 			}
 			if (jugador instanceof JugadorManual) {
 				jugadorAIncluir = new JugadorManual(jugador.getNombreJugador());

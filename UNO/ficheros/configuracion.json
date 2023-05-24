@@ -28,7 +28,7 @@
       },
       "ensemble": "EnsembleSuma",
       "numero_partidas": 100,
-      "generaLog": false
+      "traza": false
     },
     {
       "nombre_configuracion": "EjemploManual",
@@ -49,7 +49,7 @@
       },
       "ensemble": "no_aplica",
       "numero_partidas": 100,
-      "generaLog": false
+      "traza": false
     
     }
   ]
