@@ -3,12 +3,10 @@ package main;
 import java.util.ArrayList;
 
 import algoritmoVoraz.ensembles.Ensemble;
-import algoritmoVoraz.reglas.Regla;
 import juego.GestionarJuegos;
 import juego.baraja.estrategiasBaraja.BarajarStrategy;
 import juego.jugador.JugadorAbstract;
-import juego.jugador.JugadorAutomatico;
-import juego.jugador.JugadorManual;
+import manejoDatos.manejoConsola.ConfigurarPartidaConsola;
 import manejoDatos.manejoConsola.LeerConsola;
 import manejoDatos.manejoFicheros.Configuracion;
 import manejoDatos.manejoFicheros.ManejoFicherosCSV;
@@ -16,15 +14,15 @@ import manejoDatos.manejoFicheros.ManejoFicherosJSON;
 import manejoDatos.manejoFicheros.ManejoFicherosTXT;
 
 /**
- * Clase que ejecuta el juego del UNO para múltiples partidas
+ * Clase que ejecuta el juego del UNO para mÃºltiples partidas
  * 
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class JugarPartida {
 
 	/**
-	 * Método para ejecutar el programa
+	 * MÃ©todo para ejecutar el programa
 	 * 
 	 * @param args String[]
 	 */
@@ -34,23 +32,37 @@ public class JugarPartida {
 		int opcion = mensajeBienvenida();
 
 		// Dos posibilidades
-		if (opcion == 0) { // Opción automática
+		if (opcion == 0) { // OpciÃ³n automÃ¡tica
 			cargarDatosDeFichero();
-		} else { // Opción manual
-			System.out.println("EN PROCESO DE ARREGLE");
-			// introducirDatosManuales();
+		} else { // OpciÃ³n manual
+			introducirDatosManuales();
 
 		}
 	}
 
 	/**
-	 * Método para dar un mensaje de bienvenida
+	 * MÃ©todo para dar un mensaje de bienvenida
 	 * 
-	 * @return value La opción para jugar la partida
+	 * @return value La opciÃ³n para jugar la partida
 	 */
 	private static int mensajeBienvenida() {
-		System.out.println("¡Bienvenido al juego del UNO!");
-		System.out.println("¿Desea cargar datos del fichero de configuración para experimentar? (0 - Sí, 1 - No)");
+		
+
+		System.out.println(" -------                                    -------	");
+		System.out.println("|   *   |    U	   U   N     N  O  O  O    |   +   |");
+		System.out.println("|   *   |    U	   U   N  N  N  O     O    |   +   |");
+		System.out.println("|   *   |    U	   U   N     N  O     O    |   +   |");
+		System.out.println("|   *   |    U	   U   N        O     O    |   +   |");
+		System.out.println("|   *   |       U      N        O  O  O    |   +   |");
+		System.out.println(" -------                                    -------	");
+
+		System.out.println("");
+		System.out.println("Â¡Bienvenido al juego del UNO!");
+
+
+		
+		
+		System.out.println("Â¿Desea cargar datos del fichero de configuraciÃ³n para experimentar? (0 - SÃ­, 1 - No)");
 
 		LeerConsola leerConsola = new LeerConsola();
 		int valor = leerConsola.leerValorRango(0, 1);
@@ -59,9 +71,12 @@ public class JugarPartida {
 	}
 
 	/**
-	 * Método para cargar los datos de un fichero
+	 * MÃ©todo para cargar los datos de un fichero
 	 */
 	private static void cargarDatosDeFichero() {
+		
+		System.out.println("A continuaciÃ³n se mostrarÃ¡n todas las configuraciones cargadas: ");
+		System.out.println();
 
 		// Se carga el manejador de objetos JSON
 		ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
@@ -76,7 +91,7 @@ public class JugarPartida {
 			// Se muestran los datos de las configuraciones
 			manejoJSON.mostrarDatosFichero(configuraciones);
 
-			// Se selecciona la opción que se considere
+			// Se selecciona la opciÃ³n que se considere
 			int valor = elegirOpcion(configuraciones);
 
 			// Ejecutas las partidas
@@ -88,40 +103,42 @@ public class JugarPartida {
 	}
 
 	/**
-	 * Método para meter los datos de forma manual
+	 * MÃ©todo para meter los datos de forma manual
 	 */
 	private static void introducirDatosManuales() {
 
-//		// Parámetros necesarios
-//		LeerDatosManual leerDatosManual = new LeerDatosManual();
-//		
-//		ArrayList<JugadorAbstract> jugadores = leerDatosManual.elegirJugadores();
-//		BarajarStrategy estrategia = leerDatosManual.elegirEstrategiaBaraja();
-//		int numeroPartidas = leerDatosManual.elegirNumeroPartidas();
-//		boolean verTraza = leerDatosManual.elegirVerTraza(jugadores);
-//
-//		ejecutarPartidas(jugadores, estrategia, numeroPartidas, verTraza);
+		// ParÃ¡metros necesarios
+		ConfigurarPartidaConsola leerDatosManual = new ConfigurarPartidaConsola();
+		
+		String nombreFichero = leerDatosManual.elegirNombreConfiguracion();
+		ArrayList<JugadorAbstract> jugadores = leerDatosManual.elegirJugadores();
+		BarajarStrategy estrategia = leerDatosManual.elegirEstrategiaBaraja();
+		Ensemble ensemble = leerDatosManual.elegirEnsemble();
+		int numeroPartidas = leerDatosManual.elegirNumeroPartidas();
+		boolean verTraza = leerDatosManual.elegirVerTraza(jugadores);
+
+		ejecutarPartidas(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas, verTraza);
 	}
 
 	/**
-	 * Método que ejecuta las partidas una vez que se han cargado los parámetros
+	 * MÃ©todo que ejecuta las partidas una vez que se han cargado los parÃ¡metros
 	 * 
 	 * @param nombreFichero  El nombre de fichero de salida
 	 * @param jugadores      Los jugadores de la partida
 	 * @param estrategia     Estrategia a emplear
 	 * @param ensemble       El ensemble a aplicar
-	 * @param numeroPartidas Número de partidas
+	 * @param numeroPartidas NÃºmero de partidas
 	 * @param verTraza       Traza a observar
 	 */
 	private static void ejecutarPartidas(String nombreFichero, ArrayList<JugadorAbstract> jugadores,
 			BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas, boolean verTraza) {
 
-		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará
+		// Aplicamos todos estos parÃ¡metros de entrada en nuestro framework que manejarÃ¡
 		// las partidas
 		GestionarJuegos juegos = new GestionarJuegos(jugadores, estrategia, ensemble, numeroPartidas, verTraza);
 		// Jugamos las partidas
 		juegos.jugarPartidas();
-		// Sacamos los estadísticos al final
+		// Sacamos los estadÃ­sticos al final
 		juegos.mostrarResultados();
 
 		ManejoFicherosCSV manejoFicherosCSV = new ManejoFicherosCSV();
@@ -138,13 +155,13 @@ public class JugarPartida {
 
 
 	/**
-	 * Para elegir la opción a cargar del fichero de configuración
+	 * Para elegir la opciÃ³n a cargar del fichero de configuraciÃ³n
 	 * 
 	 * @param configuraciones El array con las configuraciones a cargar
-	 * @return int La configuración a cargar
+	 * @return int La configuraciÃ³n a cargar
 	 */
 	public static int elegirOpcion(ArrayList<Configuracion> configuraciones) {
-		System.out.println("Por favor, seleccione una opción: ");	
+		System.out.println("Por favor, seleccione una opciÃ³n: ");	
 		LeerConsola leerConsola = new LeerConsola();
 		return leerConsola.leerValorRango(0, configuraciones.size() - 1);
 
