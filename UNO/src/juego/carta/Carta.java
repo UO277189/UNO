@@ -1,7 +1,7 @@
 package juego.carta;
 import java.util.Comparator;
 
-import juego.enumerados.Colores;
+import juego.carta.colores.Colores;
 
 /**
  * Clase Carta abstracta que sirve como base para desarrollar la carta del UNO

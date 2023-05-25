@@ -25,4 +25,11 @@ public class ReglaAzar implements Regla {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "ReglaAzar";
+	}
+	
+	
+
 }

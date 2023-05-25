@@ -35,5 +35,12 @@ public class EnsembleVotacion extends Ensemble {
 		
 		return valorMaximoArray(posiciones);
 	}
+
+	@Override
+	public String toString() {
+		return "EnsembleVotacion";
+	}
+	
+	
 	
 }

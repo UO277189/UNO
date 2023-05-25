@@ -1,14 +1,15 @@
 package juego.baraja;
 import java.util.ArrayList;
 
-import juego.acciones.CambiarSentido;
-import juego.acciones.MasCuatro;
-import juego.acciones.MasDos;
-import juego.acciones.QuitarTurno;
+import juego.baraja.estrategiasBaraja.BarajarStrategy;
 import juego.carta.Carta;
 import juego.carta.CartaAccion;
 import juego.carta.CartaNumerica;
-import juego.enumerados.Colores;
+import juego.carta.acciones.CambiarSentido;
+import juego.carta.acciones.MasCuatro;
+import juego.carta.acciones.MasDos;
+import juego.carta.acciones.QuitarTurno;
+import juego.carta.colores.Colores;
 
 
 /**

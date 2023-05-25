@@ -33,4 +33,11 @@ public class NoEnsemble extends Ensemble{
 		return valorMaximoArray(posiciones);
 	}
 
+	
+	@Override
+	public String toString() {
+		return "NoEnsemble";
+	}
+
+	
 }

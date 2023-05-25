@@ -72,4 +72,13 @@ public class EnsembleRanking extends Ensemble {
 		// Buscamos la posición original de las cartas
 		return searchOriginalPos(s, cartasMano);
 	}
+
+	@Override
+	public String toString() {
+		return "EnsembleRanking";
+	}
+	
+	
+	
+	
 }

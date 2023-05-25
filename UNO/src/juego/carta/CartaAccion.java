@@ -1,9 +1,9 @@
 package juego.carta;
 
-import juego.acciones.AccionStrategy;
-import juego.acciones.MasCuatro;
-import juego.acciones.MasDos;
-import juego.enumerados.Colores;
+import juego.carta.acciones.AccionStrategy;
+import juego.carta.acciones.MasCuatro;
+import juego.carta.acciones.MasDos;
+import juego.carta.colores.Colores;
 
 /**
  * Clase que representa una carta de acción

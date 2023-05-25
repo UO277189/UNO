@@ -441,5 +441,7 @@ public abstract class JugadorAbstract {
 		return value;
 	}
 
+	
+	
 
 }

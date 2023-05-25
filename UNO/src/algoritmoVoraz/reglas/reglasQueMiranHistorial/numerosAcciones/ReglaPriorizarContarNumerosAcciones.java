@@ -67,4 +67,12 @@ public class ReglaPriorizarContarNumerosAcciones implements Regla{
 	}
 
 
+	@Override
+	public String toString() {
+		return "ReglaPriorizarContarNumerosAcciones";
+	}
+	
+	
+
+
 }

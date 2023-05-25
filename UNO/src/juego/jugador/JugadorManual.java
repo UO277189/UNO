@@ -2,8 +2,8 @@ package juego.jugador;
 
 import java.util.ArrayList;
 
-import auxiliar.LeerConsola;
 import juego.carta.Carta;
+import manejoDatos.manejoConsola.LeerConsola;
 
 /**
  * Clase que representa un jugador manual

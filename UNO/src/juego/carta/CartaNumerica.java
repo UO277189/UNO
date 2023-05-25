@@ -1,6 +1,6 @@
 package juego.carta;
 
-import juego.enumerados.Colores;
+import juego.carta.colores.Colores;
 
 /**
  * Clase que representa una carta numérica del UNO

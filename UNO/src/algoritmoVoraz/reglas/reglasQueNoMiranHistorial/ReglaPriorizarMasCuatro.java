@@ -20,5 +20,12 @@ public class ReglaPriorizarMasCuatro implements Regla{
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "ReglaPriorizarMasCuatro";
+	}
+	
+	
 	
 }

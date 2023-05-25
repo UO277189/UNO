@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
-import juego.enumerados.Colores;
+import juego.carta.colores.Colores;
 /**
  * Regla que pondera las cartas de colores en funcion de las cartas que ya hayan salido
  * Cuantas mas veces salga MENOS ES LA PROBABILIDAD
@@ -101,5 +101,13 @@ public class ReglaNoPriorizarContarColores implements Regla{
 				carta.setPeso(probNoColor);
 		}
 	}
+
+
+	@Override
+	public String toString() {
+		return "ReglaNoPriorizarContarColores";
+	}
+	
+	
 
 }

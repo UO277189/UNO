@@ -50,5 +50,11 @@ public class EnsembleSuma extends Ensemble {
 		return posCartaOriginal(cartaMax, cartas); // Devolvemos aquel que tenga mayor peso
 	}
 
+	@Override
+	public String toString() {
+		return "EnsembleSuma";
+	}
+
+	
 
 }

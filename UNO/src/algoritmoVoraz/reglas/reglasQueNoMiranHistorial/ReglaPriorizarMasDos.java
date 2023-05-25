@@ -20,5 +20,12 @@ public class ReglaPriorizarMasDos implements Regla{
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "ReglaPriorizarMasDos";
+	}
+	
+	
 	
 }
