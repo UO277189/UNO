@@ -26,9 +26,61 @@
       	"parametroInicial": 60,
       	"parametroAdicional": "no_aplica"
       },
-      "ensemble": "EnsembleSuma",
+      "ensemble": "NoEnsemble",
       "numero_partidas": 100,
       "traza": false
+    },
+     {
+      "nombre_configuracion": "TrioAleatorio",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
+        },
+        {
+          "nombre": "Jugador3",
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
+        },
+        {
+          "nombre": "Jugador4",
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
+        }
+    
+      ],
+      "estrategia": {
+      	"tipo": "CartaACarta",
+      	"parametroInicial": 60,
+      	"parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "MostrarTrazaConDos",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        }
+    
+      ],
+      "estrategia": {
+      	"tipo": "CartaACarta",
+      	"parametroInicial": 60,
+      	"parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 1000,
+      "traza": true
     },
     {
       "nombre_configuracion": "PruebaConNueve",

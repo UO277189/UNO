@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import algoritmoVoraz.reglas.Regla;
 import juego.GestionarJuegos;
+import juego.jugador.JugadorAutomatico;
+import juego.jugador.JugadorManual;
 
 
 /**
@@ -89,7 +92,23 @@ public class ManejoFicherosCSV {
 			writer.write(partidasJugadas.getJugadores().get(i).getNombreJugador() + this.separador);
 		}
 		writer.newLine();
-
+		
+		// Luego se indican las reglas de cada jugador
+		writer.write("REGLAS" + this.separador);
+		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
+			if (partidasJugadas.getJugadores().get(i) instanceof JugadorManual) {
+				writer.write("No aplica reglas" + this.separador);
+			} else {
+				String reglasStr = "";
+				for (Regla regla : ((JugadorAutomatico)partidasJugadas.getJugadores().get(i)).getReglas()) {
+					reglasStr += regla.toString();
+				}
+				writer.write(reglasStr + this.separador);
+			}
+		}
+		writer.newLine();
+		
+		
 		// Resto de valores a incluir
 
 		writer.write("Cartas jugadas" + this.separador);
