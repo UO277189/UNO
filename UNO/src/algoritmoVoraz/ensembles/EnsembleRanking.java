@@ -77,6 +77,11 @@ public class EnsembleRanking extends Ensemble {
 	public String toString() {
 		return "EnsembleRanking";
 	}
+
+	@Override
+	public String getJSON() {
+		return "EnsembleRanking";
+	}
 	
 	
 	

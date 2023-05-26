@@ -162,5 +162,8 @@ public abstract class Ensemble {
 		}
 		return pos;
 	}
+
+
+	public abstract String getJSON();
 	
 }

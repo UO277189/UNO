@@ -41,6 +41,9 @@ public class EnsembleVotacion extends Ensemble {
 		return "EnsembleVotacion";
 	}
 	
-	
+	@Override
+	public String getJSON() {
+		return "EnsembleVotacion";
+	}
 	
 }

@@ -55,6 +55,10 @@ public class EnsembleSuma extends Ensemble {
 		return "EnsembleSuma";
 	}
 
+	@Override
+	public String getJSON() {
+		return "EnsembleSuma";
+	}
 	
 
 }

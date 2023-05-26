@@ -93,5 +93,12 @@ public class MontonAMonton implements BarajarStrategy {
 		return "MontonAMonton con " + cardInLot + " cartas en los montones y " + lotToExchange + " montones para intercambiar";
 	}
 	
+	@Override
+	public String getJSON() {
+		return  "\"tipo\": \"" + "MontonAMonton" + "\"," +
+		        "\"parametroInicial\": " + cardInLot + "," +
+		        "\"parametroAdicional\": " + lotToExchange + "\"";
+	}
+	
 
 }

@@ -57,6 +57,22 @@ public class JugadorAutomatico extends JugadorAbstract{
 	public void asignarEnsemble(Ensemble ensemble) {
 		this.ensemble = ensemble;
 	}
+
+
+	@Override
+	public String getJSON() {
+		
+		// Ponemos todas las reglas en un string juntas
+		String reglas = "";
+		for (Regla regla : this.getReglas()) {
+			reglas += regla.toString();
+		}
+		
+		return  "{" +
+	            "\"nombre\": \"" + this.getNombreJugador() + "\"," +
+	            "\"regla\": \"" + reglas + "\"" +
+	        "}";
+	}
 	
 	
 

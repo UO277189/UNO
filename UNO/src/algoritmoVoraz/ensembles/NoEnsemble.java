@@ -39,5 +39,9 @@ public class NoEnsemble extends Ensemble{
 		return "NoEnsemble";
 	}
 
+	@Override
+	public String getJSON() {
+		return "NoEnsemble";
+	}
 	
 }

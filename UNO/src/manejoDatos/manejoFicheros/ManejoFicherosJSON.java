@@ -1,5 +1,10 @@
 package manejoDatos.manejoFicheros;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,10 +30,6 @@ import juego.jugador.JugadorAbstract;
 import juego.jugador.JugadorAutomatico;
 import juego.jugador.JugadorManual;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /**
  * Clase para estudiar el manejo  de ficheros JSON de la aplicación
  * @author Efrén García Valencia UO277189
@@ -37,18 +38,21 @@ import java.util.ArrayList;
 public class ManejoFicherosJSON {
 	
 	// ATRIBUTOS
+	private String nombreFicheroEntrada = "configuracion";
 
 	// RUTAS
-	static String rutaConfiguracion = ".\\ficheros\\entradas\\configuracion.json"; // Uso una ruta relativa
+	static String rutaConfiguracion = ".\\ficheros\\entradas\\"; // Uso una ruta relativa
+
 
 	/**
-	 * Método para leer las configuraciones de un fichero JSON
-	 * 
+	 * Método para leer las configuraciones del fichero JSON
+	 * @param nombreJSON
+	 * @return ArrayList<Configuracion>
 	 */
-	public ArrayList<Configuracion> leerJSON() {
+	public ArrayList<Configuracion> leerJSON(String nombreJSON) {
 		
 		ObjectMapper mapper = new ObjectMapper();
-        File readFile = new File(rutaConfiguracion); // Se carga la ruta
+        File readFile = new File(rutaConfiguracion + nombreJSON + ".json"); // Se carga la ruta
         
         ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>();
 
@@ -68,6 +72,101 @@ public class ManejoFicherosJSON {
         
         
         return configuraciones;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * Método
+	 */
+	
+	/**
+	 * Método que permite reescribir al final una nueva configuración a indicar en un JSON
+	 * @param nombreFicheroJSON El nombre del fichero JSON
+	 * @param nuevaConfiguracion La nueva configuración a indicar
+	 */
+	public void reescribirFicheroJSON(String nombreFicheroJSON, Configuracion nuevaConfiguracion) {
+		
+		// Primero recopilamos las configurciones existentes si las hay
+        ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>();
+        try {
+        	configuraciones = this.leerJSON(nombreFicheroJSON);
+        } catch (Exception e) {
+        	// Si surge algún problema, quiere decir que ese fichero o está vacío o está mal configurado
+        	// No es un problema porque lo vamos a reescribir otra vez
+        }
+        
+        // Añadimos la nueva configuración
+        configuraciones.add(nuevaConfiguracion);
+        
+        try {
+        	// A continuación se borran los datos del fichero
+        	FileWriter fileEmpty = new FileWriter(rutaConfiguracion + nombreFicheroJSON + ".json");  
+        	fileEmpty.close();
+        	
+        	String jsonFinalString = generarStringJSON(configuraciones);
+        	
+        	// Volvemos a volcar los datos otra vez
+        	 FileWriter fileFull = new FileWriter(rutaConfiguracion + nombreFicheroJSON + ".json");
+        	 fileFull.write(jsonFinalString);
+             fileFull.close();
+             
+        } catch(Exception e) {
+        	System.out.println("Ha ocurrido un error al guardar la nueva configuración");
+        }
+	}
+	
+	/**
+	 * Método que te devuelve un string con toda la información que se vuelca desde el JSON
+	 * @param configuraciones ArrayList<Configuracion>
+	 * @return String
+	 */
+	private String generarStringJSON(ArrayList<Configuracion> configuraciones) {
+		// En este punto se genera la cadena string con los datos a meter
+		String configuracionesStr = "";
+		for (int i = 0; i < configuraciones.size(); i++) {
+			if (i == configuraciones.size() -1) {
+				configuracionesStr += escribirConfiguracionEnJSON(configuraciones.get(i));
+			} else {
+				configuracionesStr += escribirConfiguracionEnJSON(configuraciones.get(i)) + ",";
+			}
+		}
+		
+		String jsonFinalString = "{\n" +
+			    "  \"configuraciones\": [\n" + configuracionesStr +
+			    "  ]\n" +
+			    "}";
+		
+		return jsonFinalString;
+	}
+	
+	/**
+	 * Método para escribir código java en formato JSON
+	 * @param configuracion La configuración a aplicar
+	 * @return El string con la configuración
+	 */
+	public String escribirConfiguracionEnJSON(Configuracion configuracion) {
+		
+		// Sacamos el JSON de cada jugador
+		String stringJugadores = "";
+		
+		for (JugadorAbstract jugador : configuracion.getJugadoresPartida()) {
+			stringJugadores += jugador.getJSON();
+		}
+		
+		// Definimos el formato JSON a indicar
+		String configuracionString = "{" +
+				"\"nombre_configuracion\": \"" + configuracion.getNombreConfiguracion() + "\"," +
+			    "\"jugadores\": [" + stringJugadores + "]," +
+			    "\"estrategia\": {" + configuracion.getEstrategiaBaraja().getJSON() +  "}," +
+			    "\"ensemble\": \"" + configuracion.getEnsemble().getJSON() + "\"," +
+			    "\"numero_partidas\": " + configuracion.getNumeroPartidas() + 
+			    "\"traza\": " + configuracion.getTraza()+
+			"}";
+				
+		return configuracionString;
 	}
 
 
@@ -302,6 +401,14 @@ public class ManejoFicherosJSON {
 			System.out.println();
 		}
 		
+	}
+	
+	/**
+	 * Método que te devuelve el nombre del fichero que se aplica en la entrada
+	 * @return String
+	 */
+	public String getFicheroEntrada() {
+		return this.nombreFicheroEntrada;
 	}
 
 

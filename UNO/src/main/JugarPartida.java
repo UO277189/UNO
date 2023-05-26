@@ -20,6 +20,7 @@ import manejoDatos.manejoFicheros.ManejoFicherosTXT;
  *
  */
 public class JugarPartida {
+	
 
 	/**
 	 * Método para ejecutar el programa
@@ -27,6 +28,7 @@ public class JugarPartida {
 	 * @param args String[]
 	 */
 	public static void main(String[] args) {
+		
 
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
@@ -48,13 +50,13 @@ public class JugarPartida {
 	private static int mensajeBienvenida() {
 		
 
-		System.out.println(" -------                                    -------	");
-		System.out.println("|   *   |    U	   U   N     N  O  O  O    |   +   |");
-		System.out.println("|   *   |    U	   U   N  N  N  O     O    |   +   |");
-		System.out.println("|   *   |    U	   U   N     N  O     O    |   +   |");
-		System.out.println("|   *   |    U	   U   N        O     O    |   +   |");
-		System.out.println("|   *   |       U      N        O  O  O    |   +   |");
-		System.out.println(" -------                                    -------	");
+		System.out.println(" -------                                     ------- ");
+		System.out.println("|   *   |    U	   U   N     N   O  O  O    |   +   |");
+		System.out.println("|   *   |    U	   U   N  N  N   O     O    |   +   |");
+		System.out.println("|   *   |    U	   U   N     N   O     O    |   +   |");
+		System.out.println("|   *   |    U	   U   N         O     O    |   +   |");
+		System.out.println("|   *   |       U      N         O  O  O    |   +   |");
+		System.out.println(" -------                                     ------- ");
 
 		System.out.println("");
 		System.out.println("¡Bienvenido al juego del UNO!");
@@ -82,7 +84,7 @@ public class JugarPartida {
 		ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
 
 		// Se cargan las configuraciones del JSON
-		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON();
+		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON(manejoJSON.getFicheroEntrada());
 
 		if (configuraciones.isEmpty()) {
 			System.out.println("NO SE HA PODIDO CARGAR LOS DATOS DEL FICHERO");

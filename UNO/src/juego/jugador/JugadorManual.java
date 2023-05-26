@@ -29,5 +29,14 @@ public class JugadorManual extends JugadorAbstract {
 	public int jugarTurno(Carta enMedio, ArrayList<Carta> historial) {
 		return leerConsola.intRango( "ELIGE UNA CARTA, -1 PARA ROBAR", -1, this.getCartasMano().size());
 	}
+	
+	@Override
+	public String getJSON() {
+		return  "{" +
+	            "\"nombre\": \"" + this.getNombreJugador() + "\"," +
+	            "\"regla\": \"" + "no_aplica" + "\"" +
+	        "}";
+	}
+	
 
 }

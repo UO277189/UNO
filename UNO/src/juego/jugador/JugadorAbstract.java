@@ -441,6 +441,13 @@ public abstract class JugadorAbstract {
 		return value;
 	}
 
+
+	/**
+	 * Devuelve el formato JSON que se aplica a los jugadores
+	 * @return String El JSON a indicar
+	 */
+	public abstract String getJSON();
+
 	
 	
 

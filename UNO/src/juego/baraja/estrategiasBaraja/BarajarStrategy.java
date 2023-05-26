@@ -14,4 +14,10 @@ public interface BarajarStrategy {
 	 * @param baraja Baraja de cartas
 	 */
 	public void execute(Baraja baraja);
+
+	/**
+	 * Devuelv el JSON que configura la baraja
+	 * @return String
+	 */
+	public String getJSON();
 }
