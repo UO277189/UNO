@@ -2,16 +2,16 @@ package main;
 
 import java.util.ArrayList;
 
-import algoritmoVoraz.ensembles.Ensemble;
-import juego.GestionarJuegos;
-import juego.baraja.estrategiasBaraja.BarajarStrategy;
-import juego.jugador.JugadorAbstract;
-import manejoDatos.Configuracion;
-import manejoDatos.manejoConsola.ConfigurarPartidaConsola;
-import manejoDatos.manejoConsola.LeerConsola;
-import manejoDatos.manejoFicheros.ManejoFicherosCSV;
-import manejoDatos.manejoFicheros.ManejoFicherosJSON;
-import manejoDatos.manejoFicheros.ManejoFicherosTXT;
+import main.algoritmoVoraz.ensembles.Ensemble;
+import main.juego.GestionarJuegos;
+import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
+import main.juego.jugador.JugadorAbstract;
+import main.manejoDatos.Configuracion;
+import main.manejoDatos.manejoConsola.ConfigurarPartidaConsola;
+import main.manejoDatos.manejoConsola.LeerConsola;
+import main.manejoDatos.manejoFicheros.ManejoFicherosCSV;
+import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
+import main.manejoDatos.manejoFicheros.ManejoFicherosTXT;
 
 /**
  * Clase que ejecuta el juego del UNO para múltiples partidas
