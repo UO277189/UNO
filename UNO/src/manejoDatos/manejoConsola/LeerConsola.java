@@ -94,9 +94,11 @@ public class LeerConsola {
 	 * @return String el nombre del jugador
 	 */
 	public String leerLinea() {
-		String nombre;
+		@SuppressWarnings("resource")
+		Scanner scLinea = new Scanner(System.in);
+		String nombre = "";
 		try {
-			nombre = sc.nextLine();
+			nombre = scLinea.nextLine();
 		} catch (InputMismatchException e) {
 			System.out.println("ERROR: este valor no es válido");
 			System.out.println("ERROR: se aplica el valor por defecto para las partidas");

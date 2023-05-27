@@ -47,7 +47,8 @@ public class ConfigurarPartidaConsola {
 	 */
 	public String elegirNombreConfiguracion() {
 
-		System.out.println("Por favor, seleccione el nombre de la configuración");
+		System.out.println();
+		System.out.print("Por favor, seleccione el nombre de la configuración: ");
 		return leerConsola.leerLinea();
 	}
 
@@ -60,15 +61,15 @@ public class ConfigurarPartidaConsola {
 	 */
 	public ArrayList<JugadorAbstract> elegirJugadores() {
 		ArrayList<JugadorAbstract> jugadores = new ArrayList<JugadorAbstract>();
-		System.out.println("Por favor, seleccione el número de jugadores (Mínimo: 2)");
+		System.out.print("Por favor, seleccione el número de jugadores (Mínimo: 2): ");
 		int rangoJugadores = leerConsola.leerValorRango(2, Integer.MAX_VALUE);
 
 		// Para cada jugador
 		for (int i = 0; i < rangoJugadores; i++) {
-			System.out.println("Por favor, elija el nombre del jugador " + (i + 1));
+			System.out.print("Por favor, elija el nombre del jugador " + (i + 1) + ": ");
 			String nombre = leerConsola.leerLinea();
 
-			System.out.println("¿Va a ser un jugador manual o automático? (0 - Manual, 1 -Automático)");
+			System.out.print("¿Va a ser un jugador manual o automático? Pulse la tecla correspondiente (0 - Manual, 1 -Automático): ");
 			int tipoJugador = leerConsola.leerValorRango(0, 1);
 
 			// Jugador manual
@@ -96,16 +97,18 @@ public class ConfigurarPartidaConsola {
 		// Estrategia a aplicar
 		BarajarStrategy estrategia = null;
 
-		System.out.println("Por favor, seleccione el método de barajar");
+		System.out.println("A continuación se muestan las estrategias implementadas para barajar");
+		System.out.println();
 		System.out.println(" - 0: Barajar carta a carta");
 		System.out.println(" - 1: Barajar montones de cartas");
-
+		System.out.println();
+		System.out.print("Seleccione el valor a implementar: ");
 		int value = leerConsola.leerValorRango(0, 1);
 
 		// Caso barajar carta a carta
 		if (value == 0) {
-			System.out.println(
-					"Por favor, seleccione cuántas cartas desea intercambiar de posición (Mínimo: 10, Máximo: 1000)");
+			System.out.print(
+					"Por favor, seleccione cuántas cartas desea intercambiar de posición (Mínimo: 10, Máximo: 1000): ");
 			int cartas = leerConsola.leerValorRango(10, 1000);
 			estrategia = new CartaACarta(cartas);
 
@@ -113,10 +116,12 @@ public class ConfigurarPartidaConsola {
 
 		// Caso barajar montón a montón
 		if (value == 1) {
-			System.out.println("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 20)");
+			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 20): ");
 			int cartasMonton = leerConsola.leerValorRango(2, 20);
-			System.out.println("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 5)");
+			System.out.println();
+			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 5): ");
 			int montonesCambiar = leerConsola.leerValorRango(2, 5);
+			System.out.println();
 			estrategia = new MontonAMonton(cartasMonton, montonesCambiar);
 		}
 		return estrategia;
@@ -128,8 +133,10 @@ public class ConfigurarPartidaConsola {
 	 * @return int El número de partidas a jugar
 	 */
 	public int elegirNumeroPartidas() {
-		System.out.println("Por favor, elija el número de partidas (Mínimo: 1, Máximo: 100000)");
-		return leerConsola.leerValorRango(1, 100000);
+		System.out.print("Por favor, elija el número de partidas (Mínimo: 1, Máximo: 100000): ");
+		int value = leerConsola.leerValorRango(1, 100000);
+		System.out.println();
+		return value;
 	}
 
 	/**
@@ -142,8 +149,9 @@ public class ConfigurarPartidaConsola {
 	 */
 	public boolean elegirVerTraza(ArrayList<JugadorAbstract> jugadores) {
 
-		System.out.println("Por favor, elija si desea ver la traza de la partida al final (0 - Si, 1 - No)");
+		System.out.print("Por favor, elija si desea ver la traza de la partida al final (0 - Si, 1 - No): ");
 		int value = this.leerConsola.leerValorRango(0, 1);
+		System.out.println();
 		if (value == 0) {
 			return true;
 		} else {
@@ -167,8 +175,8 @@ public class ConfigurarPartidaConsola {
 			mostrarReglasUsuario(); // Mostramos las opciones al usuario
 			eleccion = leerConsola.leerValorRango(0, 9); // Elegimos la opción
 
-			if (eleccion != 9) {
-				reglas.add(elegirRegla(eleccion));
+			if (eleccion != 10) {
+				reglas.add(elegirRegla(eleccion + 1));
 				System.out.println("Se ha elegido la regla marcada por " + eleccion);
 				System.out.println();
 			} else {
@@ -238,11 +246,14 @@ public class ConfigurarPartidaConsola {
 
 	public Ensemble elegirEnsemble() {
 
-		System.out.println("Por favor, seleccione el ensemble que desea implementar");
+		System.out.println("A continuación se muestran los ensembles que hay en la aplicación");
+		System.out.println();
 		System.out.println(" - 0: EnsembleRanking");
 		System.out.println(" - 1: EnsembleSuma");
 		System.out.println(" - 2: EnsembleVotacion");
 		System.out.println(" - 3: NoEnsemble");
+		System.out.println();
+		System.out.print("Seleccione el valor a implementar: ");
 		
 		int valor = leerConsola.leerValorRango(0, 3);
 		
