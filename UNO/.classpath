@@ -18,5 +18,6 @@
 	<classpathentry kind="lib" path="lib/csv/poi-ooxml-5.2.3.jar"/>
 	<classpathentry kind="lib" path="lib/csv/poi-ooxml-full-5.2.3.jar"/>
 	<classpathentry kind="lib" path="lib/csv/xmlbeans-5.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

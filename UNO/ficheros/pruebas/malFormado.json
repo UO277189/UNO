@@ -1,0 +1,24 @@
+{
+  "nombre_configuracion": [
+    {
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaInventada"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaInventada"
+        },        {
+          "nombre": "Jugador3",
+          "regla": "ReglaInventada"
+        },        {
+          "nombre": "Jugador4",
+          "regla": "ReglaInventada"
+        }
+
+      ],
+      "numero_partidas": 100,
+      "traza": false
+    }
+  ]
+}

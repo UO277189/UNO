@@ -50,7 +50,17 @@ public class CartaACarta implements BarajarStrategy{
 		}
 	
 	}
+	
+	
 
+	/**
+	 * Devuelve las cartas a intercambiar
+	 * @return int
+	 */
+	public int getCardsToExchange() {
+		return cardsToExchange;
+	}
+	
 
 	@Override
 	public String toString() {

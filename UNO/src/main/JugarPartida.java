@@ -113,7 +113,7 @@ public class JugarPartida {
 		System.out.println();
 		System.out.print("Seleccione la opción deseada: ");
 
-		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON(manejoJSON.getFicheroEjemplos());
+		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON("/entradas/" + manejoJSON.getFicheroEjemplos());
 		int valor = leerConsola.leerValorRango(1, 7);
 
 		if (valor == 6) {
@@ -203,7 +203,7 @@ public class JugarPartida {
 		ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
 
 		// Se cargan las configuraciones del JSON
-		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON(manejoJSON.getFicheroEntrada());
+		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON("/entradas/" + manejoJSON.getFicheroEntrada());
 
 		if (configuraciones.isEmpty()) {
 			System.out.println("NO SE HA PODIDO CARGAR LOS DATOS DEL FICHERO");

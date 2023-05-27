@@ -1,0 +1,21 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        }
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "NoEnsemble",
+      "numero_partidas": 0,
+      "traza": false
+    }
+  ]
+}

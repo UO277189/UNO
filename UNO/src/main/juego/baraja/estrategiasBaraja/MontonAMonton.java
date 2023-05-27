@@ -88,6 +88,23 @@ public class MontonAMonton implements BarajarStrategy {
 		}
 	}
 	
+	
+	/**
+	 * Devuelve las cartas que formarán los montones
+	 * @return int
+	 */
+	public int getCardInLot() {
+		return cardInLot;
+	}
+
+	/**
+	 * Devuelve los montones a intercambiar
+	 * @return int
+	 */
+	public int getLotToExchange() {
+		return lotToExchange;
+	}
+
 	@Override
 	public String toString() {
 		return "MontonAMonton con " + cardInLot + " cartas en los montones y " + lotToExchange + " montones para intercambiar";

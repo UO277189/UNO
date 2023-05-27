@@ -43,8 +43,7 @@ public class ManejoFicherosJSON {
 	private String nombreFicheroEjemplos = "ejemplosBasicos";
 
 	// RUTAS
-	static String rutaConfiguracion = ".\\ficheros\\entradas\\"; // Uso una ruta relativa
-
+	static String rutaConfiguracion = ".\\ficheros\\"; // Uso una ruta relativa
 
 	/**
 	 * Método para leer las configuraciones del fichero JSON
@@ -53,29 +52,34 @@ public class ManejoFicherosJSON {
 	 */
 	public ArrayList<Configuracion> leerJSON(String nombreJSON) {
 		
-		ObjectMapper mapper = new ObjectMapper();
-        File readFile = new File(rutaConfiguracion + nombreJSON + ".json"); // Se carga la ruta
-        
-        ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>();
+	ObjectMapper mapper = new ObjectMapper();
+       File readFile = new File(rutaConfiguracion + nombreJSON + ".json"); // Se carga la ruta
+       
+       ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>(); 
 
-        try {
-            JsonNode jsonTree = mapper.readTree(readFile);
-            JsonNode configuracionesNode = jsonTree.get("configuraciones");        
-            for (JsonNode configuracionNode : configuracionesNode)
-            	// Almacenamos las configuraciones en el array que luego devolvemos
-            	configuraciones.add(generarConfiguracion(configuracionNode));
-        } catch (IOException e) {
-        	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE");
-        } catch (IllegalArgumentException e) {
-        	System.out.println("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDERÁ A CERRARSE");
-        }  catch (NullPointerException e) {
-        	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE");
-        }
-        
-        
-        return configuraciones;
+       try {
+           JsonNode jsonTree = mapper.readTree(readFile);
+           JsonNode configuracionesNode = jsonTree.get("configuraciones");        
+           for (JsonNode configuracionNode : configuracionesNode)
+           	// Almacenamos las configuraciones en el array que luego devolvemos
+           	configuraciones.add(generarConfiguracion(configuracionNode));
+       } catch (IOException e) {
+       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE");
+       	configuraciones.clear();
+       } catch (IllegalArgumentException e) {
+       	System.out.println("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDERÁ A CERRARSE");
+       	configuraciones.clear();
+       }  catch (NullPointerException e) {
+       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE");
+       	configuraciones.clear();
+       }
+       
+       if (!configuraciones.isEmpty()) {
+          	System.out.println("CARGA DEL FICHERO CORRECTA");
+       }
+       
+       return configuraciones;
 	}
-	
 	
 	/**
 	 * Método que permite reescribir al final una nueva configuración a indicar en un JSON
@@ -184,11 +188,7 @@ public class ManejoFicherosJSON {
 		boolean traza = configuracionNode.get("traza").asBoolean();
 		
 		// Revisamos la configuración y lanzamos una excepción de ser necesario
-		revisarConfiguracion(nombreConfiguracion, jugadores, estrategia, ensemble, numeroPartidas, traza);
-		
-		if (nombreConfiguracion.isBlank() || nombreConfiguracion.isEmpty()) {
-			System.out.println("ERROR AL CARGAR EL NOMBRE DE LA CONFIGURACIÓN");
-		}
+		revisarConfiguracion(nombreConfiguracion, jugadores, estrategia, ensemble, numeroPartidas, traza);		
 		
 		return new Configuracion(nombreConfiguracion, jugadores, estrategia, ensemble, numeroPartidas, traza);
 		
@@ -217,10 +217,25 @@ public class ManejoFicherosJSON {
 			configuracionOK = false;
 		}
 		
+		
 		// Jugadores
 		
 		if (jugadores == null) {
 			System.out.println("Ha surgido un problema al cargar los jugadores");
+			configuracionOK = false;
+		}
+		
+		// Estrategia de barajar
+		
+		if (estrategia == null) {
+			System.out.println("Se ha introducido una estrategia de barajar que no existe");
+			configuracionOK = false;
+		}
+		
+		// Ensemble
+		
+		if (estrategia == null) {
+			System.out.println("Se ha introducido un ensemble que no existe");
 			configuracionOK = false;
 		}
 		
@@ -250,9 +265,10 @@ public class ManejoFicherosJSON {
 			return new EnsembleRanking();
 		} else if (ensemble.equals("EnsembleVotacion")) {
 			return new EnsembleVotacion();
-		} else {
+		} else if (ensemble.equals("NoEnsemble")) {
 			return new NoEnsemble(); // No se corresponde con ningún ensemble
 		}
+		return null;
 	}
 
 
@@ -324,6 +340,7 @@ public class ManejoFicherosJSON {
 		}
 		
 		if (reglasJugador.contains(null)) {
+			System.out.println("Se ha introducido una regla que no existe");
 			return null; // Si hay un nulo significa que algo cargó mal
 		}
 		
