@@ -27,24 +27,126 @@ public class JugarPartida {
 	 * @param args String[]
 	 */
 	public static void main(String[] args) {
-		
+		jugarPartida();
+	}
+
+	
+	/**
+	 * Método para jugar una partida
+	 */
+	private static void jugarPartida() {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
-		// Dos posibilidades
-		
 		if (opcion == 1) {
-			//elegirOpcionRapida();
+			elegirOpcionRapida();
 		} else if (opcion == 2) {
 			introducirDatosManuales();
 		} else if (opcion == 3) {
 			cargarDatosDeFichero();
 		} else if (opcion == 4) {
-			//mostrarAyuda();
+			mostrarAyuda();
 		} else if (opcion == 5) {
 			System.out.println();
 			System.out.println("¡Hasta la próxima!");
 		}
+	}
+
+	
+	/**
+	 * Método para seleccionar configuraciones básicas del juego
+	 */
+	private static void elegirOpcionRapida() {
+		
+		System.out.println();
+		System.out.println("A continuación se muestran algunas configuraciones básicas del juego.");
+		System.out.println();
+		System.out.println("1.	Partida manual a dos jugadores");
+		System.out.println("2.	Partida manual a cuatro jugadores");
+		System.out.println("3.	Partida automática, cada jugador implementa una única regla");
+		System.out.println("4.	Partida automática, cada jugador implementa múltiples reglas");
+		System.out.println("5.	Partida mixta con un jugador manual y tres jugadores automáticos");
+		System.out.println("6.	Mostrar detalles de las partidas");
+		System.out.println("7.	Volver atrás");
+		System.out.println();
+		System.out.print("Seleccione la opción deseada: ");
+
+		
+		ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
+		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON(manejoJSON.getFicheroEjemplos());
+		LeerConsola leerConsola = new LeerConsola();
+		int valor = leerConsola.leerValorRango(1, 7);
+		
+		if (valor == 6) {
+			mostrarDetallesPartidasBasicas(configuraciones);
+		} else if (valor == 7){
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			jugarPartida();
+		} else {
+			valor = valor - 1; // Para colocar bien el cursor
+			ejecutarPartidas(configuraciones.get(valor).getNombreConfiguracion(),
+					configuraciones.get(valor).getJugadoresPartida(), configuraciones.get(valor).getEstrategiaBaraja(),
+					configuraciones.get(valor).getEnsemble(), configuraciones.get(valor).getNumeroPartidas(),
+					configuraciones.get(valor).getTraza());
+		}
+		
+		
+	}
+
+
+	/**
+	 * Muestra los detalles de las partidas básicas de juego
+	 * @param configuraciones ArrayList<Configuraciones>
+	 */
+	private static void mostrarDetallesPartidasBasicas(ArrayList<Configuracion> configuraciones) {
+		
+		ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
+		LeerConsola leerConsola = new LeerConsola();
+		manejoJSON.mostrarDatosFichero(configuraciones);
+		System.out.println();
+		System.out.print("Pulse cualquier tecla para volver atrás: ");
+		leerConsola.leerCualquierValor();
+		System.out.println();
+		System.out.println();
+		elegirOpcionRapida();
+		
+	}
+
+
+	/**
+	 * Método que muestra una ayuda de forma textual
+	 */
+	private static void mostrarAyuda() {
+		
+		LeerConsola leerConsola = new LeerConsola();
+		
+		System.out.println();
+		System.out.println("A continuación se muestra una explicación de las diferentes opciones del juego: ");
+		System.out.println();
+		System.out.println("****** " + "Partida rápida" + " ******");
+		System.out.println("Muestra algunas configuraciones sencillas que el jugador puede seleccionar. \nSirve como una introducción "
+				+ "para los jugadores que no estén familiarizados con la aplicación.");
+		System.out.println();
+		System.out.println("****** " + "Partida personalizada" + " ******");
+		System.out.println("Permite al jugador crear su propia configuración de partida desde 0, \nalmacenarla si desea usarla"
+				+ " en un futuro y ejecutar dicha configuración. \nEstá pensado para aquellos jugadores que no estén familiarizados con el formato del "
+				+ "archivo de entrada.");
+		System.out.println();
+		System.out.println("****** " + "Cargar los datos del fichero de entrada" + " ******");
+		System.out.println("Muestra las configuraciones almacenadas "
+				+ "en el fichero de entrada configuracion.json para que el jugador seleccione la que desea utilizar. \nAdicionalmente, el jugador puede modificar el fichero "
+				+ "para incluir nuevas configuraciones. \nNo obstante, si el fichero queda mal escrito no se podrá leer, \npor lo que se recomienda almacenar "
+				+ "los datos en un fichero aparte antes de modificarlo.");
+		System.out.println();
+		System.out.print("Pulse cualquier tecla para volver atrás: ");
+		
+		leerConsola.leerCualquierValor();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		jugarPartida();
 	}
 
 	/**
@@ -55,13 +157,7 @@ public class JugarPartida {
 	private static int mensajeBienvenida() {
 		
 
-		System.out.println(" -------                                     ------- ");
-		System.out.println("|   *   |    U	   U   N     N   O  O  O    |   +   |");
-		System.out.println("|   *   |    U	   U   N  N  N   O     O    |   +   |");
-		System.out.println("|   *   |    U	   U   N     N   O     O    |   +   |");
-		System.out.println("|   *   |    U	   U   N         O     O    |   +   |");
-		System.out.println("|   *   |       U      N         O  O  O    |   +   |");
-		System.out.println(" -------                                     ------- ");
+		logoAplicacion();
 
 		System.out.println("");
 		System.out.println("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:");
@@ -78,6 +174,20 @@ public class JugarPartida {
 		int valor = leerConsola.leerValorRango(1, 5);
 
 		return valor;
+	}
+
+
+	/**
+	 * Muestra  el logo de la aplicacion
+	 */
+	private static void logoAplicacion() {
+		System.out.println(" -------                                     ------- ");
+		System.out.println("|   *   |    U	   U   N     N   O  O  O    |   +   |");
+		System.out.println("|   *   |    U	   U   N  N  N   O     O    |   +   |");
+		System.out.println("|   *   |    U	   U   N     N   O     O    |   +   |");
+		System.out.println("|   *   |    U	   U   N         O     O    |   +   |");
+		System.out.println("|   *   |       U      N         O  O  O    |   +   |");
+		System.out.println(" -------                                     ------- ");
 	}
 
 	/**

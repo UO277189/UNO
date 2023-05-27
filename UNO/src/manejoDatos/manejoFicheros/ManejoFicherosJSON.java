@@ -40,6 +40,7 @@ public class ManejoFicherosJSON {
 	
 	// ATRIBUTOS
 	private String nombreFicheroEntrada = "configuracion";
+	private String nombreFicheroEjemplos = "ejemplosBasicos";
 
 	// RUTAS
 	static String rutaConfiguracion = ".\\ficheros\\entradas\\"; // Uso una ruta relativa
@@ -150,7 +151,7 @@ public class ManejoFicherosJSON {
 			if (i == configuracion.getJugadoresPartida().size() - 1) {
 				stringJugadores += configuracion.getJugadoresPartida().get(i).getJSON() + "\n";
 			} else {
-				stringJugadores += configuracion.getJugadoresPartida().get(i).getJSON() + ",";
+				stringJugadores += configuracion.getJugadoresPartida().get(i).getJSON() + ",\n";
 			}
 		}
 		
@@ -373,9 +374,9 @@ public class ManejoFicherosJSON {
 	 * @param configuraciones El array con las configuraciones
 	 */
 	public void mostrarDatosFichero(ArrayList<Configuracion> configuraciones) {
-
+		System.out.println();
 		for (int i = 0; i < configuraciones.size(); i++) {
-			System.out.print(i + "- ");
+			System.out.print(i+1 + "- ");
 			System.out.println("\tNombre de la configuración: " + configuraciones.get(i).getNombreConfiguracion());
 			System.out.println("\tJugadores:");
 			for (JugadorAbstract jugador: configuraciones.get(i).getJugadoresPartida()) {
@@ -407,6 +408,15 @@ public class ManejoFicherosJSON {
 	 */
 	public String getFicheroEntrada() {
 		return this.nombreFicheroEntrada;
+	}
+
+
+	/**
+	 * Método que devuelve el nombre del fichero con los ejemplos básicos
+	 * @return String
+	 */
+	public String getFicheroEjemplos() {
+		return this.nombreFicheroEjemplos;
 	}
 
 

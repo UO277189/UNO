@@ -45,6 +45,23 @@ public class LeerConsola {
         return eleccion;
     }
     
+    /**
+     * Método para leer un único valor de entrada 
+     * @param i El valor a leer
+     * @return int
+     */
+	public int leerCualquierValor() {
+		int value = 0;
+		try {
+			value = sc.nextInt();
+		} catch (InputMismatchException e) {
+			sc.next();
+		}
+		// Se avanza de línea
+		return value;
+	}
+
+    
 	/**
 	 * Método para pedir un valor int válido en un rango
 	 * 
@@ -57,7 +74,7 @@ public class LeerConsola {
 		try {
 			value = sc.nextInt();
 			while (value < min || value > max) {
-				System.out.println("Por favor, elija un valor válido");
+				System.out.print("Por favor, seleccione un valor válido: ");
 				value = sc.nextInt();
 			}
 		} catch (InputMismatchException e) {
@@ -87,5 +104,4 @@ public class LeerConsola {
 		}
 		return nombre;
 	}
-
 }
