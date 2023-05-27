@@ -46,18 +46,14 @@ public class GestionarJuegos {
 	 * @param estrategia     La estrategia a desarrollar
 	 * @param ensemble       El ensemble que se va a aplicar
 	 * @param numeroPartidas El número de partidas a jugar
-	 * @param traza          Para saber si mostrar la traza o no
 	 */
-	public GestionarJuegos(ArrayList<JugadorAbstract> jugadores, BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas,
-			boolean traza) {
+	public GestionarJuegos(ArrayList<JugadorAbstract> jugadores, BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas) {
 		this.jugadores = jugadores;
 		this.estrategia = estrategia;
 		this.numeroPartidas = numeroPartidas;
-		if (traza || hayJugadorManual(jugadores)) {
+		if (hayJugadorManual(jugadores)) {
 			// Si hay un jugador manual se muestran los datos por consola
 			this.traza = true;
-		} else {
-			this.traza = false;
 		}
 		this.ensemble = ensemble;
 

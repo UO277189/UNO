@@ -1,8 +1,6 @@
 package manejoDatos.manejoConsola;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import algoritmoVoraz.ensembles.Ensemble;
 import algoritmoVoraz.ensembles.EnsembleRanking;
@@ -34,14 +32,12 @@ import juego.jugador.JugadorManual;
 public class ConfigurarPartidaConsola {
 
 	private LeerConsola leerConsola;
-	private Scanner sc;
 
 	/**
 	 * Constructor por defecto
 	 */
 	public ConfigurarPartidaConsola() {
 		this.leerConsola = new LeerConsola();
-		this.sc = new Scanner(System.in);
 	}
 	
 
@@ -52,7 +48,7 @@ public class ConfigurarPartidaConsola {
 	public String elegirNombreConfiguracion() {
 
 		System.out.println("Por favor, seleccione el nombre de la configuración");
-		return leerLinea();
+		return leerConsola.leerLinea();
 	}
 
 
@@ -70,7 +66,7 @@ public class ConfigurarPartidaConsola {
 		// Para cada jugador
 		for (int i = 0; i < rangoJugadores; i++) {
 			System.out.println("Por favor, elija el nombre del jugador " + (i + 1));
-			String nombre = leerLinea();
+			String nombre = leerConsola.leerLinea();
 
 			System.out.println("¿Va a ser un jugador manual o automático? (0 - Manual, 1 -Automático)");
 			int tipoJugador = leerConsola.leerValorRango(0, 1);
@@ -238,23 +234,7 @@ public class ConfigurarPartidaConsola {
 		System.out.println(" Pulse 9 para guardar todas las reglas seleccionadas");
 	}
 
-	/**
-	 * Método para leer el nombre por consola
-	 * 
-	 * @return String el nombre del jugador
-	 */
-	public String leerLinea() {
-		String nombre;
-		try {
-			nombre = sc.nextLine();
-		} catch (InputMismatchException e) {
-			System.out.println("ERROR: este valor no es válido");
-			System.out.println("ERROR: se aplica el valor por defecto para las partidas");
-			nombre = "jugador";
-		}
-		return nombre;
-	}
-
+	
 
 	public Ensemble elegirEnsemble() {
 

@@ -58,8 +58,8 @@ public class VorazUno {
 		
 		return S;
 	}
-
 	
+	//********MÉTODOS AUXILIARES********
 
 	/**
 	 * Método que pondera las cartas del juego del UNO con un valor base

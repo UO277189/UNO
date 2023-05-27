@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import algoritmoVoraz.ensembles.Ensemble;
 import algoritmoVoraz.reglas.Regla;
 import juego.carta.Carta;
+import juego.carta.colores.Colores;
 
 /**
  * Clase que representa un jugador que juega aplicando una estrategia
@@ -29,8 +30,48 @@ public class JugadorAutomatico extends JugadorAbstract{
 	
 	@Override
 	public int elegirNuevoColor(int length) {	
-		// Se podría aplicar una estrategia estudiando los casos en los que el jugador tenga más cartas de un palo
-		// Para simplificar, de momento se escoge al azar
+		// Si el jugador tiene más cartas en la mano de un color, elegimos ese color
+		// Si no, elegimos al azar
+		int redValue = 0;
+		int blueValue = 0;
+		int yellowValue = 0;
+		int greenValue = 0;
+		
+		for (Carta carta : this.getCartasMano()) {
+			if (carta.getColor().equals(Colores.ROJO)) {
+				redValue++;
+			} else if (carta.getColor().equals(Colores.AZUL)) {
+				blueValue++;
+			} else if (carta.getColor().equals(Colores.AMARILLO)) {
+				yellowValue++;
+			} else if (carta.getColor().equals(Colores.VERDE)) {
+				greenValue++;
+			} 
+		}
+		
+		// Colores[] coloresCopia = { Colores.VERDE, Colores.ROJO, Colores.AMARILLO, Colores.AZUL };
+		
+		if (greenValue > blueValue && greenValue > yellowValue 
+				&&	greenValue > redValue) {
+			return 0;
+		}
+		
+		if (redValue > blueValue && redValue > yellowValue 
+				 && redValue > greenValue) {
+			return 1;
+		}
+		
+		if (yellowValue > blueValue && yellowValue > redValue 
+				&& yellowValue > greenValue) {
+			return 2;
+		}
+		
+		if (blueValue > redValue && blueValue > yellowValue 
+				 && blueValue > greenValue) {
+			return 3;
+		}
+		
+		// Si no hay ninguna carta mejor devolvemos un valor al azar
 		return (int) (Math.random()*3);
 	}
 
@@ -68,10 +109,10 @@ public class JugadorAutomatico extends JugadorAbstract{
 			reglas += regla.toString();
 		}
 		
-		return  "{" +
-	            "\"nombre\": \"" + this.getNombreJugador() + "\"," +
-	            "\"regla\": \"" + reglas + "\"" +
-	        "}";
+		return  "        {\n" +
+	            "          \"nombre\": \"" + this.getNombreJugador() + "\",\n" +
+	            "          \"regla\": \"" + reglas + "\""+ "\n" +
+	            "        }";
 	}
 	
 	

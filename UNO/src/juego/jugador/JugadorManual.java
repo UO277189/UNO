@@ -31,11 +31,11 @@ public class JugadorManual extends JugadorAbstract {
 	}
 	
 	@Override
-	public String getJSON() {
-		return  "{" +
-	            "\"nombre\": \"" + this.getNombreJugador() + "\"," +
-	            "\"regla\": \"" + "no_aplica" + "\"" +
-	        "}";
+	public String getJSON() {		
+		return  "        {\n" +
+        		"          \"nombre\": \"" + this.getNombreJugador() + "\",\n" +
+        		"          \"regla\": \"" + "no_aplica" + "\"" + "\n" + 
+        		"        }"; 
 	}
 	
 

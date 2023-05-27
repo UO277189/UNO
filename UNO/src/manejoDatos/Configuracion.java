@@ -1,4 +1,4 @@
-package manejoDatos.manejoFicheros;
+package manejoDatos;
 
 import java.util.ArrayList;
 

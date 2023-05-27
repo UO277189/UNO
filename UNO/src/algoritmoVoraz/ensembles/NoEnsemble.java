@@ -15,22 +15,18 @@ public class NoEnsemble extends Ensemble{
 	@Override
 	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, 
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
-		// Este caso suele aplicarse si sólo tenemos una sola regla
-		// Es muy parecido al ensemble de votación, la diferencia es que como es una regla devuelves
-		// únicamente la posición de la carta con mayor peso
 		
-		ArrayList<Integer> posiciones = new ArrayList<Integer>();
-		for (Regla regla : reglas) {
-			ArrayList<Carta> cartasJugables =  voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
-			if (!cartasJugables.isEmpty()) {
-				int newPos = mayorPeso(cartasJugables, cartas, cartaMedio);
-				if (newPos != -1) { 
-					posiciones.add(newPos);
-				}
-			}
+		// La idea es aplicar 1 sola regla y sacar la carta más ponderada de ese jugador
+		// Está pensado para los jugadores que sólo implementan una regla
+		
+		Regla regla = reglas.get(0);
+		ArrayList<Carta> cartasJugables =  voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
+		
+		if (!cartasJugables.isEmpty()) {
+			return mayorPeso(cartasJugables, cartas, cartaMedio);
+		} else {
+			return -1;
 		}
-		
-		return valorMaximoArray(posiciones);
 	}
 
 	

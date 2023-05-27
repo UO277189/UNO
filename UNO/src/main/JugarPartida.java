@@ -6,9 +6,9 @@ import algoritmoVoraz.ensembles.Ensemble;
 import juego.GestionarJuegos;
 import juego.baraja.estrategiasBaraja.BarajarStrategy;
 import juego.jugador.JugadorAbstract;
+import manejoDatos.Configuracion;
 import manejoDatos.manejoConsola.ConfigurarPartidaConsola;
 import manejoDatos.manejoConsola.LeerConsola;
-import manejoDatos.manejoFicheros.Configuracion;
 import manejoDatos.manejoFicheros.ManejoFicherosCSV;
 import manejoDatos.manejoFicheros.ManejoFicherosJSON;
 import manejoDatos.manejoFicheros.ManejoFicherosTXT;
@@ -21,7 +21,6 @@ import manejoDatos.manejoFicheros.ManejoFicherosTXT;
  */
 public class JugarPartida {
 	
-
 	/**
 	 * Método para ejecutar el programa
 	 * 
@@ -29,16 +28,22 @@ public class JugarPartida {
 	 */
 	public static void main(String[] args) {
 		
-
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
 		// Dos posibilidades
-		if (opcion == 0) { // Opción automática
-			cargarDatosDeFichero();
-		} else { // Opción manual
+		
+		if (opcion == 1) {
+			//elegirOpcionRapida();
+		} else if (opcion == 2) {
 			introducirDatosManuales();
-
+		} else if (opcion == 3) {
+			cargarDatosDeFichero();
+		} else if (opcion == 4) {
+			//mostrarAyuda();
+		} else if (opcion == 5) {
+			System.out.println();
+			System.out.println("¡Hasta la próxima!");
 		}
 	}
 
@@ -59,15 +64,18 @@ public class JugarPartida {
 		System.out.println(" -------                                     ------- ");
 
 		System.out.println("");
-		System.out.println("¡Bienvenido al juego del UNO!");
-
-
-		
-		
-		System.out.println("¿Desea cargar datos del fichero de configuración para experimentar? (0 - Sí, 1 - No)");
+		System.out.println("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:");
+		System.out.println("");
+		System.out.println("1.	Partida rápida");
+		System.out.println("2.	Partida personalizada");
+		System.out.println("3.	Cargar los datos del fichero de entrada");
+		System.out.println("4.	Mostrar ayuda");
+		System.out.println("5.	Salir");
+		System.out.println("");
+		System.out.print("Seleccione la opción deseada: ");
 
 		LeerConsola leerConsola = new LeerConsola();
-		int valor = leerConsola.leerValorRango(0, 1);
+		int valor = leerConsola.leerValorRango(1, 5);
 
 		return valor;
 	}
@@ -111,6 +119,9 @@ public class JugarPartida {
 
 		// Parámetros necesarios
 		ConfigurarPartidaConsola leerDatosManual = new ConfigurarPartidaConsola();
+		LeerConsola leerConsola = new LeerConsola();
+		
+		// Objeto configuración para guardar los datos
 		
 		String nombreFichero = leerDatosManual.elegirNombreConfiguracion();
 		ArrayList<JugadorAbstract> jugadores = leerDatosManual.elegirJugadores();
@@ -118,6 +129,20 @@ public class JugarPartida {
 		Ensemble ensemble = leerDatosManual.elegirEnsemble();
 		int numeroPartidas = leerDatosManual.elegirNumeroPartidas();
 		boolean verTraza = leerDatosManual.elegirVerTraza(jugadores);
+		
+		
+		Configuracion configuracion = 
+				new Configuracion(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas, verTraza);
+		
+		System.out.println("¿Desea guardar esta configuración? 0 - Si, 1 - No");
+		int valor = leerConsola.leerValorRango(0, 1);
+		
+		if (valor == 0) {
+			ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
+			manejoJSON.reescribirFicheroJSON(manejoJSON.getFicheroEntrada(), configuracion);
+			System.out.println("La configuración se ha guardado correctamente.");
+		}
+		
 
 		ejecutarPartidas(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas, verTraza);
 	}
@@ -137,7 +162,7 @@ public class JugarPartida {
 
 		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará
 		// las partidas
-		GestionarJuegos juegos = new GestionarJuegos(jugadores, estrategia, ensemble, numeroPartidas, verTraza);
+		GestionarJuegos juegos = new GestionarJuegos(jugadores, estrategia, ensemble, numeroPartidas);
 		// Jugamos las partidas
 		juegos.jugarPartidas();
 		// Sacamos los estadísticos al final

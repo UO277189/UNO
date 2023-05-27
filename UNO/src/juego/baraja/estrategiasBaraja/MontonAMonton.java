@@ -95,9 +95,9 @@ public class MontonAMonton implements BarajarStrategy {
 	
 	@Override
 	public String getJSON() {
-		return  "\"tipo\": \"" + "MontonAMonton" + "\"," +
-		        "\"parametroInicial\": " + cardInLot + "," +
-		        "\"parametroAdicional\": " + lotToExchange + "\"";
+		return  "        \"tipo\": \"" + "MontonAMonton" + "\",\n" +
+		        "        \"parametroInicial\": " + cardInLot + ",\n" +
+		        "        \"parametroAdicional\": " + lotToExchange;
 	}
 	
 

@@ -69,4 +69,23 @@ public class LeerConsola {
 		// Se avanza de línea
 		return value;
 	}
+	
+	
+	/**
+	 * Método para leer el nombre por consola
+	 * 
+	 * @return String el nombre del jugador
+	 */
+	public String leerLinea() {
+		String nombre;
+		try {
+			nombre = sc.nextLine();
+		} catch (InputMismatchException e) {
+			System.out.println("ERROR: este valor no es válido");
+			System.out.println("ERROR: se aplica el valor por defecto para las partidas");
+			nombre = "jugador";
+		}
+		return nombre;
+	}
+
 }

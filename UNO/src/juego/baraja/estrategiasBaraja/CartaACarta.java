@@ -60,9 +60,9 @@ public class CartaACarta implements BarajarStrategy{
 
 	@Override
 	public String getJSON() {
-		return  "\"tipo\": \"" + "CartaACarta" + "\"," +
-		        "\"parametroInicial\": " + cardsToExchange + "," +
-		        "\"parametroAdicional\": \"" + "no_aplica" + "\"";
+		return  "        \"tipo\": \"" + "CartaACarta" + "\",\n" +
+		        "        \"parametroInicial\": " + cardsToExchange + ",\n" +
+		        "        \"parametroAdicional\": \"" + "no_aplica" + "\"";
 	}
 	
 	

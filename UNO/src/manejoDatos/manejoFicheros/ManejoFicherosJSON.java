@@ -29,6 +29,7 @@ import juego.baraja.estrategiasBaraja.MontonAMonton;
 import juego.jugador.JugadorAbstract;
 import juego.jugador.JugadorAutomatico;
 import juego.jugador.JugadorManual;
+import manejoDatos.Configuracion;
 
 /**
  * Clase para estudiar el manejo  de ficheros JSON de la aplicación
@@ -75,13 +76,6 @@ public class ManejoFicherosJSON {
 	}
 	
 	
-	
-	
-	
-	/**
-	 * Método
-	 */
-	
 	/**
 	 * Método que permite reescribir al final una nueva configuración a indicar en un JSON
 	 * @param nombreFicheroJSON El nombre del fichero JSON
@@ -89,7 +83,7 @@ public class ManejoFicherosJSON {
 	 */
 	public void reescribirFicheroJSON(String nombreFicheroJSON, Configuracion nuevaConfiguracion) {
 		
-		// Primero recopilamos las configurciones existentes si las hay
+		// Primero recopilamos las configuraciones existentes si las hay
         ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>();
         try {
         	configuraciones = this.leerJSON(nombreFicheroJSON);
@@ -130,13 +124,13 @@ public class ManejoFicherosJSON {
 			if (i == configuraciones.size() -1) {
 				configuracionesStr += escribirConfiguracionEnJSON(configuraciones.get(i));
 			} else {
-				configuracionesStr += escribirConfiguracionEnJSON(configuraciones.get(i)) + ",";
+				configuracionesStr += escribirConfiguracionEnJSON(configuraciones.get(i)) + ",\n";
 			}
 		}
 		
 		String jsonFinalString = "{\n" +
 			    "  \"configuraciones\": [\n" + configuracionesStr +
-			    "  ]\n" +
+			    "\n  ]\n" +
 			    "}";
 		
 		return jsonFinalString;
@@ -147,24 +141,28 @@ public class ManejoFicherosJSON {
 	 * @param configuracion La configuración a aplicar
 	 * @return El string con la configuración
 	 */
-	public String escribirConfiguracionEnJSON(Configuracion configuracion) {
+	private String escribirConfiguracionEnJSON(Configuracion configuracion) {
 		
 		// Sacamos el JSON de cada jugador
 		String stringJugadores = "";
 		
-		for (JugadorAbstract jugador : configuracion.getJugadoresPartida()) {
-			stringJugadores += jugador.getJSON();
+		for (int i = 0; i < configuracion.getJugadoresPartida().size(); i++) {
+			if (i == configuracion.getJugadoresPartida().size() - 1) {
+				stringJugadores += configuracion.getJugadoresPartida().get(i).getJSON() + "\n";
+			} else {
+				stringJugadores += configuracion.getJugadoresPartida().get(i).getJSON() + ",";
+			}
 		}
 		
 		// Definimos el formato JSON a indicar
-		String configuracionString = "{" +
-				"\"nombre_configuracion\": \"" + configuracion.getNombreConfiguracion() + "\"," +
-			    "\"jugadores\": [" + stringJugadores + "]," +
-			    "\"estrategia\": {" + configuracion.getEstrategiaBaraja().getJSON() +  "}," +
-			    "\"ensemble\": \"" + configuracion.getEnsemble().getJSON() + "\"," +
-			    "\"numero_partidas\": " + configuracion.getNumeroPartidas() + 
-			    "\"traza\": " + configuracion.getTraza()+
-			"}";
+		String configuracionString = "    {" +
+				"\n      \"nombre_configuracion\": \"" + configuracion.getNombreConfiguracion() + "\"," +
+			    "\n      \"jugadores\": [\n" + stringJugadores + "\n      ]," +
+			    "\n      \"estrategia\": {\n" + configuracion.getEstrategiaBaraja().getJSON() +  "\n      }," +
+			    "\n      \"ensemble\": \"" + configuracion.getEnsemble().getJSON() + "\"," +
+			    "\n      \"numero_partidas\": " + configuracion.getNumeroPartidas() + "," + 
+			    "\n      \"traza\": " + configuracion.getTraza()+
+			"\n    }";
 				
 		return configuracionString;
 	}
@@ -382,9 +380,9 @@ public class ManejoFicherosJSON {
 			System.out.println("\tJugadores:");
 			for (JugadorAbstract jugador: configuraciones.get(i).getJugadoresPartida()) {
 				if (jugador instanceof JugadorManual) {
-					System.out.println("\t   - MANUAL Nombre: " + jugador.getNombreJugador());
+					System.out.println("\t   MANUAL \n\t       Nombre: " + jugador.getNombreJugador());
 				} else {
-					System.out.print("\t   - AUTOMATICO Nombre: " + jugador.getNombreJugador() + " Reglas que aplica: ");
+					System.out.print("\t   AUTOMATICO \n\t       Nombre: " + jugador.getNombreJugador() + "\n\t       Reglas que aplica: ");
 					
 					for (Regla regla : ((JugadorAutomatico)jugador).getReglas()){
 						System.out.print(regla.toString() + " ");

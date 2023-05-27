@@ -39,7 +39,7 @@ public abstract class Ensemble {
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas);
 
 	
-	// MÉTODOS AUXILIARES
+	//********MÉTODOS AUXILIARES********
 	
 	
 	/**
@@ -164,6 +164,10 @@ public abstract class Ensemble {
 	}
 
 
+	/**
+	 * Para devolver el JSON a aplicar 
+	 * @return String
+	 */
 	public abstract String getJSON();
 	
 }
