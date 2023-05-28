@@ -9,11 +9,11 @@ import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
 
 /**
- * Clase que recolecta múltiples partidas y permite realizar experimentos más
- * avanzados con los eurísticos Actúa como "framework" sobre el que poder
- * mostrar resultados estadísticos
+ * Clase que recolecta mÃºltiples partidas y permite realizar experimentos mÃ¡s
+ * avanzados con los eurÃ­sticos ActÃºa como "framework" sobre el que poder
+ * mostrar resultados estadÃ­sticos
  * 
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class GestionarJuegos {
@@ -30,22 +30,22 @@ public class GestionarJuegos {
 	// El ensemble que se va a aplicar
 	private Ensemble ensemble;
 	
-	// Número de partidas
+	// NÃºmero de partidas
 	private int numeroPartidas;
 
 	// Para saber si mostrar la traza
 	private boolean traza;
 
-	// Estadísticos adicionales para mostrar si se descarta alguna partida
+	// EstadÃ­sticos adicionales para mostrar si se descarta alguna partida
 	private int partidasDescartadas;
 
 	/**
-	 * Constructor con los datos necesarios para jugar múltiples partidas
+	 * Constructor con los datos necesarios para jugar mÃºltiples partidas
 	 * 
 	 * @param jugadores      La lista de jugadores
 	 * @param estrategia     La estrategia a desarrollar
 	 * @param ensemble       El ensemble que se va a aplicar
-	 * @param numeroPartidas El número de partidas a jugar
+	 * @param numeroPartidas El nÃºmero de partidas a jugar
 	 */
 	public GestionarJuegos(ArrayList<JugadorAbstract> jugadores, BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas) {
 		this.jugadores = jugadores;
@@ -67,7 +67,7 @@ public class GestionarJuegos {
 	}
 	
 	/**
-	 * Método que devuelve true si en el array de jugadores hay jugadores manuales
+	 * MÃ©todo que devuelve true si en el array de jugadores hay jugadores manuales
 	 * @param jugadores La lista de jugadores 
 	 * @return boolean true si hay jugador manual, false si no lo hay
 	 */
@@ -82,7 +82,7 @@ public class GestionarJuegos {
 
 
 	/**
-	 * Método para asignar el ensemble a los jugadores
+	 * MÃ©todo para asignar el ensemble a los jugadores
 	 * @param jugadores La lista de jugadores
 	 */
 	private void asignarEnsembleJugadores(ArrayList<JugadorAbstract> jugadores) {
@@ -94,7 +94,7 @@ public class GestionarJuegos {
 	}
 
 	/**
-	 * Método para iterar y jugar múltiples partidas
+	 * MÃ©todo para iterar y jugar mÃºltiples partidas
 	 */
 	public void jugarPartidas() {
 		for (int i = 0; i < this.numeroPartidas; i++) {
@@ -109,7 +109,7 @@ public class GestionarJuegos {
 	}
 
 	/**
-	 * Método para jugar una partida
+	 * MÃ©todo para jugar una partida
 	 */
 	private void jugarUnaPartida() {
 		ArrayList<JugadorAbstract> jugadoresPartida = this.clonarJugadores();
@@ -119,9 +119,9 @@ public class GestionarJuegos {
 			if (!uno.isReachedMaxRondas()) {
 				uno.jugarRonda();
 			} else {
-				// Si llega al límite salimos
+				// Si llega al lÃ­mite salimos
 				uno.limpiarJugadores(); // Borramos los datos de estos jugadores para evitar contaminar el estudio
-				this.partidasDescartadas++; // Se incrementa el número de partidas descartadas
+				this.partidasDescartadas++; // Se incrementa el nÃºmero de partidas descartadas
 				break;
 			}
 		}
@@ -133,7 +133,7 @@ public class GestionarJuegos {
 	}
 
 	/**
-	 * Método para clonar los jugadores en las partidas y evitar así que se pien las
+	 * MÃ©todo para clonar los jugadores en las partidas y evitar asÃ­ que se pien las
 	 * referencias
 	 * 
 	 * @return ArrayList<JugadorAbstract> Los jugadores clonados
@@ -159,7 +159,7 @@ public class GestionarJuegos {
 	}
 
 	/**
-	 * Método para mostrar los resultados de las partidas
+	 * MÃ©todo para mostrar los resultados de las partidas
 	 */
 	public void mostrarResultados() {
 
@@ -174,7 +174,7 @@ public class GestionarJuegos {
 		System.out.println("- PARTIDAS DESCARTADAS: " + this.partidasDescartadas);
 		System.out.println("");
 
-		// Primero se almacena la información
+		// Primero se almacena la informaciÃ³n
 		for (Juego juego : juegos) {
 			this.guardarInformacion(juego);
 		}
@@ -185,21 +185,21 @@ public class GestionarJuegos {
 			jugador.informacionJugadorPartida();
 		}
 
-		// También nos interesa saber quién ganó más partidas
+		// TambiÃ©n nos interesa saber quiÃ©n ganÃ³ mÃ¡s partidas
 		this.ganadorPartidas();
 	}
 
 	/**
-	 * Método que nos dice quién ha sido el jugador que ha ganado más partidas
+	 * MÃ©todo que nos dice quiÃ©n ha sido el jugador que ha ganado mÃ¡s partidas
 	 */
 	private void ganadorPartidas() {
-		// PROBLEMA: ¿Y si dos o más personas ganaron más partidas?
+		// PROBLEMA: Â¿Y si dos o mÃ¡s personas ganaron mÃ¡s partidas?
 		ArrayList<JugadorAbstract> jugadoresGanadores = new ArrayList<JugadorAbstract>();
 
-		// Iteramos una vez para hallar el máximo
+		// Iteramos una vez para hallar el mÃ¡ximo
 		int partidasGanadas = this.getPartidasGanadas();
 
-		// Iteramos otra vez para buscar si hay algún empate
+		// Iteramos otra vez para buscar si hay algÃºn empate
 		for (JugadorAbstract jugador : this.jugadores) {
 			if (jugador.getVecesQueHaGanado() == partidasGanadas) {
 				jugadoresGanadores.add(jugador);
@@ -220,14 +220,14 @@ public class GestionarJuegos {
 		}
 
 		System.out.println("");
-		System.out.println("NÚMERO DE PARTIDAS GANADAS: " + partidasGanadas);
+		System.out.println("NÃšMERO DE PARTIDAS GANADAS: " + partidasGanadas);
 		System.out.println("");
 	}
 
 	/**
-	 * Devuelve el número de partidas ganadas más alto
+	 * Devuelve el nÃºmero de partidas ganadas mÃ¡s alto
 	 * 
-	 * @return int El número de partidas ganadas más alto
+	 * @return int El nÃºmero de partidas ganadas mÃ¡s alto
 	 */
 	private int getPartidasGanadas() {
 		int partidasGanadas = 0;
@@ -240,32 +240,32 @@ public class GestionarJuegos {
 	}
 
 	/**
-	 * Método que almacena en el array de jugadores creado previamente todos los
+	 * MÃ©todo que almacena en el array de jugadores creado previamente todos los
 	 * datos de las partidas
 	 * 
 	 * @param juego El juego a considerar
 	 */
 	private void guardarInformacion(Juego juego) {
-		// La idea es ir acumulando en el array vacío todos los datos de los jugadores
+		// La idea es ir acumulando en el array vacÃ­o todos los datos de los jugadores
 		for (int i = 0; i < juego.getJugadores().size(); i++) {
-			// Vamos incrementando parámetro a parámetro
+			// Vamos incrementando parÃ¡metro a parÃ¡metro
 			this.jugadores.get(i).aumentarDatosJugador(juego.getJugadores().get(i));
 		}
 	}
 
 	/**
-	 * Método que devuelve al ganador de todas las partidas
+	 * MÃ©todo que devuelve al ganador de todas las partidas
 	 * 
 	 * @return ArrayList<JugadorAbstract> El array con el ganador/ganadores de todas las partidas
 	 */
 	public ArrayList<JugadorAbstract> ganadoresDeTodasLasPartidas() {	
-		// PROBLEMA: ¿Y si dos o más personas ganaron más partidas?
+		// PROBLEMA: Â¿Y si dos o mÃ¡s personas ganaron mÃ¡s partidas?
 		ArrayList<JugadorAbstract> jugadoresGanadores = new ArrayList<JugadorAbstract>();
 
-		// Iteramos una vez para hallar el máximo
+		// Iteramos una vez para hallar el mÃ¡ximo
 		int partidasGanadas = this.getPartidasGanadas();
 
-		// Iteramos otra vez para buscar si hay algún empate
+		// Iteramos otra vez para buscar si hay algÃºn empate
 		for (JugadorAbstract jugador : this.jugadores) {
 			if (jugador.getVecesQueHaGanado() == partidasGanadas) {
 				jugadoresGanadores.add(jugador);
