@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Clase para leer por consola
- * @author EfrÈn GarcÌa Valencia UO277189
+ * @author Efr√©n Garc√≠a Valencia UO277189
  *
  */
 public class LeerConsola {
@@ -15,7 +15,7 @@ public class LeerConsola {
 	
     
 	/**
-	 * MÈtodo para pedir un valor entero por consola entre un rango de valores
+	 * M√©todo para pedir un valor entero por consola entre un rango de valores
 	 * @param msg String
 	 * @param min int
 	 * @param max int
@@ -33,7 +33,7 @@ public class LeerConsola {
             try {
             	eleccion = sc.nextInt();
                 if (eleccion >= max || eleccion < min) {
-                    System.out.println("ERROR: sÛlo se aceptan valores entre " + min + " y " + (max-1));
+                    System.out.println("ERROR: s√≥lo se aceptan valores entre " + min + " y " + (max-1));
                 }           	
             } catch (InputMismatchException e) {
                 sc.next(); // Para que no genere bucle infinito
@@ -46,7 +46,7 @@ public class LeerConsola {
     }
     
     /**
-     * MÈtodo para leer un ˙nico valor de entrada 
+     * M√©todo para leer un √∫nico valor de entrada 
      * @param i El valor a leer
      * @return int
      */
@@ -57,15 +57,15 @@ public class LeerConsola {
 		} catch (InputMismatchException e) {
 			sc.next();
 		}
-		// Se avanza de lÌnea
+		// Se avanza de l√≠nea
 		return value;
 	}
 
     
 	/**
-	 * MÈtodo para pedir un valor int v·lido en un rango
+	 * M√©todo para pedir un valor int v√°lido en un rango
 	 * 
-	 * @param min El valor m·s pequeÒo
+	 * @param min El valor m√°s peque√±o
 	 * @param max El valor mayor
 	 * @return int
 	 */
@@ -74,22 +74,22 @@ public class LeerConsola {
 		try {
 			value = sc.nextInt();
 			while (value < min || value > max) {
-				System.out.print("Por favor, seleccione un valor v·lido: ");
+				System.out.print("Por favor, seleccione un valor v√°lido: ");
 				value = sc.nextInt();
 			}
 		} catch (InputMismatchException e) {
 			sc.next();
-			System.out.println("ERROR: este valor no es v·lido");
+			System.out.println("ERROR: este valor no es v√°lido");
 			System.out.println("ERROR: se aplica el valor por defecto para las partidas");
 			value = min;
 		}
-		// Se avanza de lÌnea
+		// Se avanza de l√≠nea
 		return value;
 	}
 	
 	
 	/**
-	 * MÈtodo para leer el nombre por consola
+	 * M√©todo para leer el nombre por consola
 	 * 
 	 * @return String el nombre del jugador
 	 */
@@ -100,7 +100,7 @@ public class LeerConsola {
 		try {
 			nombre = scLinea.nextLine();
 		} catch (InputMismatchException e) {
-			System.out.println("ERROR: este valor no es v·lido");
+			System.out.println("ERROR: este valor no es v√°lido");
 			System.out.println("ERROR: se aplica el valor por defecto para las partidas");
 			nombre = "jugador";
 		}

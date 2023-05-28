@@ -14,7 +14,7 @@ import main.juego.carta.colores.Colores;
 
 /**
  * Clase que representa la baraja del UNO
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  * 
  */
 public class Baraja {
@@ -27,7 +27,7 @@ public class Baraja {
     private ArrayList<Carta> barajaDescarte;
     
     
-    // Atributos adiciones para conocer la dimensión de la baraja
+    // Atributos adiciones para conocer la dimensiÃ³n de la baraja
     private int cartasNumericas = 9;
     private int cartasAccionColor = 2;
     private int cartasAccionSinColor= 4;
@@ -46,7 +46,7 @@ public class Baraja {
 
 
 	/**
-	 * Constructor con un parámetro para determinar la estrategia empleada para barajar
+	 * Constructor con un parÃ¡metro para determinar la estrategia empleada para barajar
 	 * @param barajar BarajarStrategy
 	 */
     public Baraja(BarajarStrategy barajar) {
@@ -60,7 +60,7 @@ public class Baraja {
     }
     
     
-    // MÉTODOS
+    // MÃ‰TODOS
     
     
     /**
@@ -77,7 +77,7 @@ public class Baraja {
     
     
     /**
-	 * Método para generar la baraja del UNO
+	 * MÃ©todo para generar la baraja del UNO
 	 */
     private void generarBaraja() {
 		
@@ -89,7 +89,7 @@ public class Baraja {
 		
 		for (Colores color : colores) {
 			
-			// Dos bucles for para colocar las cartas numéricas
+			// Dos bucles for para colocar las cartas numÃ©ricas
 			for (int i = 1; i <= this.cartasNumericas; i++) {
 				this.barajaCartas.add(new CartaNumerica (i, color));
 			}
@@ -97,7 +97,7 @@ public class Baraja {
 				this.barajaCartas.add(new CartaNumerica (i, color));
 			}
 			
-			// Un bucle for para las cartas de acción que tengan color
+			// Un bucle for para las cartas de acciÃ³n que tengan color
 			for (int i = 0; i < this.cartasAccionColor; i++) {
 				this.barajaCartas.add(new CartaAccion(new CambiarSentido(), color));
 				this.barajaCartas.add(new CartaAccion(new MasDos(), color));
@@ -116,13 +116,13 @@ public class Baraja {
 	
  
     /**
-     * Método para barajar las cartas de la baraja. El parámetro indica si se mantiene la carta del centro o no
+     * MÃ©todo para barajar las cartas de la baraja. El parÃ¡metro indica si se mantiene la carta del centro o no
      * @param keepTheMiddle boolean
      */
     private void barajarCartas(boolean keepTheMiddle) {
     	
 
-        // Primero se devuelven todas las cartas de descarte al montón a barajar
+        // Primero se devuelven todas las cartas de descarte al montÃ³n a barajar
     	
         while (this.barajaDescarte.isEmpty() == false) {
         	Carta cartaABarajar = this.barajaDescarte.remove(this.barajaDescarte.size()-1);
@@ -155,7 +155,7 @@ public class Baraja {
        
     
 	/**
-	 * Método para poner una carta en el centro
+	 * MÃ©todo para poner una carta en el centro
 	 * @return Carta
 	 */
     private Carta establecerCartaCentro() {
@@ -167,7 +167,7 @@ public class Baraja {
 		while (carta instanceof CartaAccion) {		
 			// Si no es una carta numerica la ponemos debajo y vamos iterando hasta encontrar una nueva		
 			this.barajaCartas.add(0, carta);
-			// Se quita del montón de descarte
+			// Se quita del montÃ³n de descarte
 			this.barajaDescarte.remove(carta);
 			// Sacamos una carta nueva
 			carta = this.barajaCartas.remove(this.barajaCartas.size()-1);
@@ -178,7 +178,7 @@ public class Baraja {
    
 
    /**
-     * Da un número de cartas a indicar de la baraja que NO van al montón de descarte
+     * Da un nÃºmero de cartas a indicar de la baraja que NO van al montÃ³n de descarte
      * @param cartas int
      * @return ArrayList <Carta>
      */
@@ -207,7 +207,7 @@ public class Baraja {
     
 
     /**
-     * Método para repartir una carta 
+     * MÃ©todo para repartir una carta 
      * @param carta Carta
      */
     public Carta robarCarta() {
@@ -255,7 +255,7 @@ public class Baraja {
 	 */
 	public void setCartaCentro(Carta cartaCentro) {
 		this.cartaCentro = cartaCentro;
-		// Si metes una nueva carta en el centro tambien forma parte del montón de descarte
+		// Si metes una nueva carta en el centro tambien forma parte del montÃ³n de descarte
 		this.barajaDescarte.add(cartaCentro);
 	}
 

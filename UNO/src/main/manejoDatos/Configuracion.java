@@ -7,8 +7,8 @@ import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
 import main.juego.jugador.JugadorAbstract;
 
 /**
- * Clase que almacena los par醡etros de configuraci髇 que se van a cargar en la partida
- * @author Efr閚 Garc韆 Valencia UO277189
+ * Clase que almacena los par谩metros de configuraci贸n que se van a cargar en la partida
+ * @author Efr茅n Garc铆a Valencia UO277189
  *
  */
 public class Configuracion {
@@ -24,12 +24,12 @@ public class Configuracion {
 	
 	
 	/**
-	 * Constructor con los par醡etros necesarios para crear un objeto de configuraci髇
-	 * @param nombreConfiguracion El nombre de la configuraci髇 
+	 * Constructor con los par谩metros necesarios para crear un objeto de configuraci贸n
+	 * @param nombreConfiguracion El nombre de la configuraci贸n 
 	 * @param jugadoresPartida Los jugadores de las partidas
 	 * @param estrategiaBaraja La estrategia de la baraja
 	 * @param ensemble El ensemble a aplicar
-	 * @param numeroPartidas El n鷐ero de partidas
+	 * @param numeroPartidas El n煤mero de partidas
 	 * @param traza Para mostrar la traza
 	 */
 	public Configuracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadoresPartida,
@@ -45,7 +45,7 @@ public class Configuracion {
 
 
 	/**
-	 * Devuelve el nombre de la configuraci髇
+	 * Devuelve el nombre de la configuraci贸n
 	 * @return String
 	 */
 	public String getNombreConfiguracion() {
@@ -77,7 +77,7 @@ public class Configuracion {
 	}
 
 	/**
-	 * Devuelve el n鷈mero de partidas
+	 * Devuelve el n煤emero de partidas
 	 * @return int
 	 */
 	public int getNumeroPartidas() {

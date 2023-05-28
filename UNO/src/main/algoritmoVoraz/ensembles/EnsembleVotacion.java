@@ -7,9 +7,9 @@ import main.algoritmoVoraz.reglas.Regla;
 import main.juego.carta.Carta;
 
 /**
- * Clase que implementa el ensemble de votación para las reglas heurísticas
+ * Clase que implementa el ensemble de votaciÃ³n para las reglas heurÃ­sticas
  * 
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 
@@ -23,7 +23,7 @@ public class EnsembleVotacion extends Ensemble {
 		VorazUno voraz = new VorazUno();
 		ArrayList<Integer> posiciones = new ArrayList<Integer>();
 
-		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición
+		for (Regla regla : reglas) { // Para cada regla buscamos aÃ±adir una posiciÃ³n
 			ArrayList<Carta> cartasJugables =  voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
 			if (!cartasJugables.isEmpty()) {
 				int newPos = mayorPeso(cartasJugables, cartas, cartaMedio);

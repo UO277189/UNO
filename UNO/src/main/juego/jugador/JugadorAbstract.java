@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import main.juego.carta.Carta;
 
 /**
- * Clase abstracta que representa los métodos comunes a ambos tipos de jugadores
- * @author Efrén García Valencia UO277189
+ * Clase abstracta que representa los mÃ©todos comunes a ambos tipos de jugadores
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public abstract class JugadorAbstract {
@@ -16,7 +16,7 @@ public abstract class JugadorAbstract {
 	private ArrayList<Carta> cartasMano;
 	
 	
-	// Parámetros adicionales a indicar por los jugadores al terminar una partida
+	// ParÃ¡metros adicionales a indicar por los jugadores al terminar una partida
 	private int cartasJugadas;
 	private int cartasRobadas;
 	private int cartasMasCuatroJugadas;
@@ -42,7 +42,7 @@ public abstract class JugadorAbstract {
 	
 	
 	/**
-	 * Constructor para el jugador con sólo su nombre
+	 * Constructor para el jugador con sÃ³lo su nombre
 	 * @param nombreJugador String
 	 */
 	public JugadorAbstract(String nombreJugador) {
@@ -180,15 +180,15 @@ public abstract class JugadorAbstract {
 	 * Determina si el jugador juegue de forma manual o si el algoritmo toma el control
 	 * @param enMedio carta ubicada en medio
 	 * @param historial las cartas jugadas hasta el momento
-	 * @return int el número de carta a devolver
+	 * @return int el nÃºmero de carta a devolver
 	 */
 	public abstract int jugarTurno(Carta enMedio, ArrayList<Carta> historial);
 	
 	
 	/**
-	 * Método para elegir un nuevo color en el caso en el que salga una carta +4
-	 * @param length el tamaño del array
-	 * @return int la posición del array
+	 * MÃ©todo para elegir un nuevo color en el caso en el que salga una carta +4
+	 * @param length el tamaÃ±o del array
+	 * @return int la posiciÃ³n del array
 	 */
 	public abstract int elegirNuevoColor(int length);
 
@@ -360,7 +360,7 @@ public abstract class JugadorAbstract {
 
 	/**
 	 * Incrementa el valor del parametro vecesQueHaGanado
-	 * Este SÓLO SIRVE PARA MOSTRAR LOS RESULTADOS DE MÚLTIPLES PARTIDAS
+	 * Este SÃ“LO SIRVE PARA MOSTRAR LOS RESULTADOS DE MÃšLTIPLES PARTIDAS
 	 * @param cartasJugadas el valor del parametro vecesQueHaGanado
 	 */
 	public void incrementVecesQueHaGanado() {
@@ -370,8 +370,8 @@ public abstract class JugadorAbstract {
 
 
 	/**
-	 * Método para sumar los datos de un jugador a otro
-	 * Hay varios enfoques, éste pretende reducir la explosión de métodos
+	 * MÃ©todo para sumar los datos de un jugador a otro
+	 * Hay varios enfoques, Ã©ste pretende reducir la explosiÃ³n de mÃ©todos
 	 * @param jugadorAbstract El jugador que pasa los datos
 	 */
 	public void aumentarDatosJugador(JugadorAbstract jugadorAbstract) {
@@ -389,7 +389,7 @@ public abstract class JugadorAbstract {
 	
 	
 	/**
-	 * Método que borra los datos del jugador
+	 * MÃ©todo que borra los datos del jugador
 	 */
 	public void vaciarDatos() {
 		this.cartasJugadas = 0;
@@ -405,7 +405,7 @@ public abstract class JugadorAbstract {
 	}
 
 	/**
-	 * Saca los estadísticos concretos del jugador al acabar una partida
+	 * Saca los estadÃ­sticos concretos del jugador al acabar una partida
 	 */
 	public void informacionJugadorPartida() {
 		System.out.println("Jugador: " + this.nombreJugador);
@@ -423,7 +423,7 @@ public abstract class JugadorAbstract {
 
 
 	/**
-	 * Saca los estadísticos concretos del jugador al acabar una partida en un string
+	 * Saca los estadÃ­sticos concretos del jugador al acabar una partida en un string
 	 * @return
 	 */
 	public String informacionJugadorPartidaString() {

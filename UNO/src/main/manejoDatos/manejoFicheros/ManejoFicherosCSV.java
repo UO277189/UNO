@@ -12,8 +12,8 @@ import main.juego.jugador.JugadorManual;
 
 
 /**
- * Clase para manejarse con los ficheros CSV de la aplicación
- * @author Efrén García Valencia UO277189
+ * Clase para manejarse con los ficheros CSV de la aplicaciÃ³n
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 
@@ -30,7 +30,7 @@ public class ManejoFicherosCSV {
 	String separador = ";"; // El separador a aplicar para diferenciar las columnas
 
 	/**
-	 * Método para extraer los datos de las partidas a un CVS
+	 * MÃ©todo para extraer los datos de las partidas a un CVS
 	 * @param nombreFichero El nombre del fichero donde se va a guardar
 	 * @param partidasJugadas Las partidas jugadas totales
 	 */
@@ -77,12 +77,12 @@ public class ManejoFicherosCSV {
 	}
 
 	/**
-	 * Método con los datos a indicar en el CSV
+	 * MÃ©todo con los datos a indicar en el CSV
 	 * 
 	 * @param partidasJugadas Las partidas jugadas
 	 * @param writer          El BufferedWriter
-	 * @throws IOException La excepción que podemos ir propagando porque se recoge
-	 *                     más arriba
+	 * @throws IOException La excepciÃ³n que podemos ir propagando porque se recoge
+	 *                     mÃ¡s arriba
 	 */
 	private void writeDataToCSV(GestionarJuegos partidasJugadas, BufferedWriter writer) throws IOException {
 
@@ -159,7 +159,7 @@ public class ManejoFicherosCSV {
 		}
 		writer.newLine();
 
-		writer.newLine(); // Otro más para diferenciar de lo anterior
+		writer.newLine(); // Otro mÃ¡s para diferenciar de lo anterior
 
 		// Indicamos el ganador (o ganadores) de la partida
 		if (partidasJugadas.ganadoresDeTodasLasPartidas().size() > 1) {

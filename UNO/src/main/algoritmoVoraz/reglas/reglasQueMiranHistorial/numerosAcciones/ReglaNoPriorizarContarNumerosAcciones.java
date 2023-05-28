@@ -9,7 +9,7 @@ import main.juego.carta.CartaNumerica;
 /**
  * Regla que pondera las cartas por tipos en funcion de las veces que hayan salido
  * Cuantas mas veces salga MENOR ES LA PROBABILIDAD
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class ReglaNoPriorizarContarNumerosAcciones implements Regla{

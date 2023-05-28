@@ -19,9 +19,9 @@ import main.manejoDatos.Configuracion;
 import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
 
 /**
- * Esta clase se encargar· de estudiar todos los casos posibles que afectan a la carga de datos
+ * Esta clase se encargar√° de estudiar todos los casos posibles que afectan a la carga de datos
  * de ficheros JSON
- * @author EfrÈn GarcÌa Valencia UO277189
+ * @author Efr√©n Garc√≠a Valencia UO277189
  *
  */
 public class CargarJSONTest {
@@ -36,7 +36,7 @@ public class CargarJSONTest {
 	   manejoJSON = new ManejoFicherosJSON();
 	   
 	   // Para las pruebas nos interesa redirigir la salida de la consola
-	   // para asÌ verificar que salgan los mensajes adecuados
+	   // para as√≠ verificar que salgan los mensajes adecuados
 	   salidaConsola = new ByteArrayOutputStream();
 	   System.setOut(new PrintStream(salidaConsola));
 
@@ -49,18 +49,18 @@ public class CargarJSONTest {
 	public void cargarVacioTest() {
 		manejoJSON.leerJSON("/pruebas/vacio");
 		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER¡ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER√Å A CERRARSE"));
 	}
 	
 	
 	/**
-	 * Test que verifica que al cargar un JSON que estÈ malformado el programa lanza el aviso correspondiente
+	 * Test que verifica que al cargar un JSON que est√© malformado el programa lanza el aviso correspondiente
 	 */
 	@Test
 	public void cargarMalFormadoTest() {
 		manejoJSON.leerJSON("/pruebas/malFormado");
 		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER¡ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER√Å A CERRARSE"));
 	}
 
 	
@@ -71,10 +71,10 @@ public class CargarJSONTest {
 	public void cargarParametrosNoValidosTest() {
 		manejoJSON.leerJSON("/pruebas/parametrosNoValidos");
 		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("Nombre no v·lido"));
+		assertTrue(salida.contains("Nombre no v√°lido"));
 		assertTrue(salida.contains("Ha surgido un problema al cargar los jugadores"));
-		assertTrue(salida.contains("El n˙mero mÌnimo de partidas ha de ser uno"));
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDER¡ A CERRARSE"));
+		assertTrue(salida.contains("El n√∫mero m√≠nimo de partidas ha de ser uno"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDER√Å A CERRARSE"));
 	}
 	
 	/**
@@ -87,7 +87,7 @@ public class CargarJSONTest {
 		assertTrue(salida.contains("Se ha introducido una regla que no existe"));
 		assertTrue(salida.contains("Se ha introducido una estrategia de barajar que no existe"));
 		assertTrue(salida.contains("Se ha introducido un ensemble que no existe"));
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDER¡ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDER√Å A CERRARSE"));
 	}
 
 	/**

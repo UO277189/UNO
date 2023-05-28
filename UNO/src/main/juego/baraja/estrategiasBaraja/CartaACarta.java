@@ -7,14 +7,14 @@ import main.juego.carta.Carta;
 
 /**
  * Clase que implementa la estrategia de barajar carta a carta
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class CartaACarta implements BarajarStrategy{
 	
 	// ATRIBUTOS
 	
-	// Este parámetro indica el número de veces que se intercambian las cartas de posición
+	// Este parÃ¡metro indica el nÃºmero de veces que se intercambian las cartas de posiciÃ³n
 	private int cardsToExchange;
 	
 	
@@ -25,7 +25,7 @@ public class CartaACarta implements BarajarStrategy{
 	}
 
 
-	// MÉTODOS
+	// MÃ‰TODOS
 
 	@Override
 	public void execute(Baraja baraja) {

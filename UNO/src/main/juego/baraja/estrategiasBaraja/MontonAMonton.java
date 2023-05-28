@@ -6,19 +6,19 @@ import main.juego.baraja.Baraja;
 import main.juego.carta.Carta;
 
 /**
- * Clase que implementa la estrategia de barajar montón a montón
+ * Clase que implementa la estrategia de barajar montÃ³n a montÃ³n
  * 
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class MontonAMonton implements BarajarStrategy {
 
 	// ATRIBUTOS
 
-	// Este parámetro indica las cartas que formarán los montones a intercambiar
+	// Este parÃ¡metro indica las cartas que formarÃ¡n los montones a intercambiar
 	private int cardInLot;
 
-	// Este parámetro indica la cantidad de montones que se van a formar
+	// Este parÃ¡metro indica la cantidad de montones que se van a formar
 	private int lotToExchange;
 
 	// CONSTRUCTOR
@@ -28,7 +28,7 @@ public class MontonAMonton implements BarajarStrategy {
 		this.lotToExchange = lotToExchange;
 	}
 
-	// MÉTODOS
+	// MÃ‰TODOS
 
 	@Override
 	public void execute(Baraja baraja) {
@@ -38,9 +38,9 @@ public class MontonAMonton implements BarajarStrategy {
 
 		int i = 0;
 
-		// PROBLEMA: si no hay suficientes cartas para cambiar entre montones entonces no se baraja montón a montón
+		// PROBLEMA: si no hay suficientes cartas para cambiar entre montones entonces no se baraja montÃ³n a montÃ³n
 		// Si no, genera un bucle infinito
-		if (size % cardInLot == 0 && size > cardInLot) { // Si hay bastantes cartas para cambiar entre sí
+		if (size % cardInLot == 0 && size > cardInLot) { // Si hay bastantes cartas para cambiar entre sÃ­
 			
 			while (i < this.lotToExchange) {
 
@@ -90,7 +90,7 @@ public class MontonAMonton implements BarajarStrategy {
 	
 	
 	/**
-	 * Devuelve las cartas que formarán los montones
+	 * Devuelve las cartas que formarÃ¡n los montones
 	 * @return int
 	 */
 	public int getCardInLot() {

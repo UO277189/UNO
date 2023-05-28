@@ -3,8 +3,8 @@ package main.juego.carta;
 import main.juego.carta.colores.Colores;
 
 /**
- * Clase que representa una carta numérica del UNO
- * @author Efrén Garcíaa Valencia UO277189
+ * Clase que representa una carta numÃ©rica del UNO
+ * @author EfrÃ©n GarcÃ­aa Valencia UO277189
  *
  */
 public class CartaNumerica extends Carta {
@@ -26,7 +26,7 @@ public class CartaNumerica extends Carta {
 	}
 	
 
-	// MÉTODOS
+	// MÃ‰TODOS
 	
 	
 
@@ -34,11 +34,11 @@ public class CartaNumerica extends Carta {
 	protected boolean coincideCarta(Carta c) {
 		if (c instanceof CartaNumerica) {
 			if (this.getNumero() == ((CartaNumerica) c).getNumero() || this.getColor().equals(c.getColor())){
-				return true; // SI coincide el número o el color
+				return true; // SI coincide el nÃºmero o el color
 			}
 		} else {
 			if (this.getColor().equals(c.getColor())){
-				return true; // SI coincide el color en el caso de una carta de acción
+				return true; // SI coincide el color en el caso de una carta de acciÃ³n
 			}
 		}
 		return false; 
@@ -48,12 +48,12 @@ public class CartaNumerica extends Carta {
 
 	@Override
 	public boolean puedeNoRobar(Carta c) {
-		return false; // No puedes contrarrestar con una carta numérica
+		return false; // No puedes contrarrestar con una carta numÃ©rica
 	}
 	
 
 	/**
-	 * Devuelve el número de la carta
+	 * Devuelve el nÃºmero de la carta
 	 * @return int
 	 */
 	public int getNumero() {
@@ -62,7 +62,7 @@ public class CartaNumerica extends Carta {
 
 
 	/**
-	 * Información textual de la carta
+	 * InformaciÃ³n textual de la carta
 	 */
 	public String toString() {
 		

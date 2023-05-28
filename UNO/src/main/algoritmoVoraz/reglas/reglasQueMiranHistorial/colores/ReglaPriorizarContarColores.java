@@ -8,7 +8,7 @@ import main.juego.carta.colores.Colores;
 /**
  * Regla que pondera las cartas de colores en funcion de las cartas que ya hayan salido
  * Cuantas mas veces salga MAYOR ES LA PROBABILIDAD
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class ReglaPriorizarContarColores implements Regla{

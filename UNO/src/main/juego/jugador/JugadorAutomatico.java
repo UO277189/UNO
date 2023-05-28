@@ -9,7 +9,7 @@ import main.juego.carta.colores.Colores;
 
 /**
  * Clase que representa un jugador que juega aplicando una estrategia
- * @author EfrÈn GarcÌa Valencia UO277189
+ * @author Efr√©n Garc√≠a Valencia UO277189
  *
  */
 public class JugadorAutomatico extends JugadorAbstract{
@@ -30,7 +30,7 @@ public class JugadorAutomatico extends JugadorAbstract{
 	
 	@Override
 	public int elegirNuevoColor(int length) {	
-		// Si el jugador tiene m·s cartas en la mano de un color, elegimos ese color
+		// Si el jugador tiene m√°s cartas en la mano de un color, elegimos ese color
 		// Si no, elegimos al azar
 		int redValue = 0;
 		int blueValue = 0;
@@ -92,7 +92,7 @@ public class JugadorAutomatico extends JugadorAbstract{
 
 
 	/**
-	 * MÈtodo para asignar el ensemble a los jugadores autom·ticos
+	 * M√©todo para asignar el ensemble a los jugadores autom√°ticos
 	 * @param ensemble El ensemble
 	 */
 	public void asignarEnsemble(Ensemble ensemble) {

@@ -5,7 +5,7 @@ import main.juego.Juego;
 
 /**
  * Clase que representa la estrategia +2
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class MasDos implements AccionStrategy {

@@ -6,22 +6,22 @@ import main.juego.carta.acciones.MasDos;
 import main.juego.carta.colores.Colores;
 
 /**
- * Clase que representa una carta de acci髇
- * @author Efr閚 Garc韆 Valencia UO277189
+ * Clase que representa una carta de acci贸n
+ * @author Efr茅n Garc铆a Valencia UO277189
  *
  */
 public class CartaAccion extends Carta{
 	
 	// ATRIBUTOS
 	
-	// Acci髇 asociada a una carta del juego
+	// Acci贸n asociada a una carta del juego
 	private AccionStrategy accion; 
 
 		
 	// CONSTRUCTORES
 		
 	/**
-	 * Constructor para las cartas de acci髇
+	 * Constructor para las cartas de acci贸n
 	 * @param accion Accion
 	 * @param color Colores
 	 */
@@ -32,7 +32,7 @@ public class CartaAccion extends Carta{
 		
 
 
-	// M蒚ODOS
+	// M脡TODOS
 	
 	
 	@Override
@@ -40,16 +40,16 @@ public class CartaAccion extends Carta{
 		if (c instanceof CartaAccion) {
 			AccionStrategy accionAEchar = ((CartaAccion) c).getAccion();
 			
-			// Si fuera un +4 ya se habr韆 echado antes
+			// Si fuera un +4 ya se habr铆a echado antes
 			
-			// Aqui sirve si coincide el color o la acci髇
+			// Aqui sirve si coincide el color o la acci贸n
 			if (this.color.equals(c.getColor()) || this.accion.toString().equals(accionAEchar.toString())) {
 				return true;	
 			}
 			
 		} else {
 			if (this.color.equals(c.getColor())) {
-				return true; // Puedes lanzar una carta num閞ica si coincide el color
+				return true; // Puedes lanzar una carta num茅rica si coincide el color
 			}	
 		}
 		return false; 
@@ -60,7 +60,7 @@ public class CartaAccion extends Carta{
 	@Override
 	public boolean puedeNoRobar(Carta c) {
 		
-		// El par醡etro es la carta a echar
+		// El par谩metro es la carta a echar
 		if (this instanceof CartaAccion && c instanceof CartaAccion) {
 			AccionStrategy accionEnMedio = ((CartaAccion)this).getAccion();
 			AccionStrategy accionAEchar = ((CartaAccion)c).getAccion();		
@@ -76,7 +76,7 @@ public class CartaAccion extends Carta{
 
 
 	/**
-	 * Para devolver la acci髇 de la carta
+	 * Para devolver la acci贸n de la carta
 	 * @return Acciones
 	 */
 	public AccionStrategy getAccion() {

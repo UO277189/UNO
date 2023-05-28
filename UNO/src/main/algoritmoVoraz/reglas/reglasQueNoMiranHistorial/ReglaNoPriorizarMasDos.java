@@ -7,7 +7,7 @@ import main.juego.carta.Carta;
 
 /**
  * Clase que implementa la regla que no prioriza las cartas +4
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class ReglaNoPriorizarMasDos implements Regla{

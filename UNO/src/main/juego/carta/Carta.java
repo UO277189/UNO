@@ -5,7 +5,7 @@ import main.juego.carta.colores.Colores;
 
 /**
  * Clase Carta abstracta que sirve como base para desarrollar la carta del UNO
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public abstract class Carta {
@@ -27,11 +27,11 @@ public abstract class Carta {
 
     
     
-    // MÉTODOS
+    // MÃ‰TODOS
 
 
 	/**
-	 * Método para saber si se puede echar una carta
+	 * MÃ©todo para saber si se puede echar una carta
 	 * @param c Carta
 	 * @return boolean
 	 */
@@ -48,7 +48,7 @@ public abstract class Carta {
 	}
 
 	/*
-	 * Método para evaluar una carta de acción
+	 * MÃ©todo para evaluar una carta de acciÃ³n
 	 * @param c Carta
 	 * @return boolean
 	 */
@@ -56,7 +56,7 @@ public abstract class Carta {
 	
 	
 	/**
-	 * Método para estudiar si el jugador puede contrarrestar un +2/+4
+	 * MÃ©todo para estudiar si el jugador puede contrarrestar un +2/+4
 	 * @param c Carta
 	 * @return boolean
 	 */
@@ -100,7 +100,7 @@ public abstract class Carta {
 	}
     
 	/**
-	 * Método para ordenar las cartas a comprarar
+	 * MÃ©todo para ordenar las cartas a comprarar
 	 */
 	 public static Comparator<Carta> PesoComparator = new Comparator<Carta>() {
 	        @Override

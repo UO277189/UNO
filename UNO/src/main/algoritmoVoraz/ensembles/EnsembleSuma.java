@@ -8,8 +8,8 @@ import main.algoritmoVoraz.reglas.Regla;
 import main.juego.carta.Carta;
 
 /**
- * Clase que implementa el ensemble de suma para las reglas heurísticas
- * @author Efrén García Valencia UO277189
+ * Clase que implementa el ensemble de suma para las reglas heurÃ­sticas
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 
@@ -20,10 +20,10 @@ public class EnsembleSuma extends Ensemble {
 	@Override
 	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, 
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
-		// La idea es desde un Map sumar puntuaciones según la posición en la que esté en el array
+		// La idea es desde un Map sumar puntuaciones segÃºn la posiciÃ³n en la que estÃ© en el array
 		HashMap<Carta, Float> mapSuma = new HashMap<Carta, Float>();
 		
-		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición
+		for (Regla regla : reglas) { // Para cada regla buscamos aÃ±adir una posiciÃ³n
 			ArrayList<Carta> sumaCartas = voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
 			// Para cada uno de los valores
 			float pesoExtra = 0;

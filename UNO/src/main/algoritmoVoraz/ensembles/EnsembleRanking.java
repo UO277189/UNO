@@ -9,9 +9,9 @@ import main.algoritmoVoraz.reglas.Regla;
 import main.juego.carta.Carta;
 
 /**
- * Clase que implementa el ensemble de ranking para las reglas heurísticas
+ * Clase que implementa el ensemble de ranking para las reglas heurÃ­sticas
  * 
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 
@@ -23,11 +23,11 @@ public class EnsembleRanking extends Ensemble {
 	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio,
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 
-		// La idea es desde un Map sumar puntuaciones según la posición en la que esté
+		// La idea es desde un Map sumar puntuaciones segÃºn la posiciÃ³n en la que estÃ©
 		// en el array
 		HashMap<Integer, Integer> mapRanking = new HashMap<Integer, Integer>();
 
-		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición
+		for (Regla regla : reglas) { // Para cada regla buscamos aÃ±adir una posiciÃ³n
 			ArrayList<Carta> cartasJugables = voraz.algoritmoVoraz(cartas, cartaMedio, cartasJugadas, regla);
 			ArrayList<Integer> rankingRegla = rankingPorPeso(cartasJugables, cartas, cartaMedio);
 
@@ -41,7 +41,7 @@ public class EnsembleRanking extends Ensemble {
 			}
 		}
 
-		// Ahora buscamos el que MENOR posición tenga
+		// Ahora buscamos el que MENOR posiciÃ³n tenga
 		int valueMin = Integer.MAX_VALUE;
 		int posMin = 0;
 		for (Map.Entry<Integer, Integer> entry : mapRanking.entrySet()) {
@@ -54,11 +54,11 @@ public class EnsembleRanking extends Ensemble {
 		if (mapRanking.isEmpty()) { // Si hay que robar
 			return -1;
 		}
-		return posMin; // El que menor valor tenga es aquel que tiene mejor posición en el ranking
+		return posMin; // El que menor valor tenga es aquel que tiene mejor posiciÃ³n en el ranking
 	}
 
 	/**
-	 * Método que te devuelve un array con las cartas elegidas ordenadas por peso
+	 * MÃ©todo que te devuelve un array con las cartas elegidas ordenadas por peso
 	 * 
 	 * @param s          ArrayList<Carta> las cartas a ponderar
 	 * @param cartasMano las cartas de la mano para buscar la pos
@@ -69,7 +69,7 @@ public class EnsembleRanking extends Ensemble {
 		// Ordenamos las cartas
 		Collections.sort(s, Carta.PesoComparator);
 
-		// Buscamos la posición original de las cartas
+		// Buscamos la posiciÃ³n original de las cartas
 		return searchOriginalPos(s, cartasMano);
 	}
 

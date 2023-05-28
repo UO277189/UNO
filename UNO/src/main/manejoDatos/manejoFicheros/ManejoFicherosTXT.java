@@ -9,8 +9,8 @@ import main.juego.GestionarJuegos;
 import main.juego.Juego;
 
 /**
- * Clase para manejarse con los ficheros TXT de la aplicación
- * @author Efrén García Valencia UO277189
+ * Clase para manejarse con los ficheros TXT de la aplicaciÃ³n
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  *
  */
 public class ManejoFicherosTXT {
@@ -20,7 +20,7 @@ public class ManejoFicherosTXT {
 
 
 		/**
-		 * Método para guardar en un TXT los resultados de las partidas
+		 * MÃ©todo para guardar en un TXT los resultados de las partidas
 		 * 
 		 * @param partidasJugadas Las partidas jugadas totales
 		 */
@@ -71,12 +71,12 @@ public class ManejoFicherosTXT {
 					// Guardamos en un txt los resultados de las partidas
 					writeDataToTxT(partidasJugadas.getJuegos().get(i), writer, i);
 				}
-				writer.flush(); // Se guarda la información del último txt
+				writer.flush(); // Se guarda la informaciÃ³n del Ãºltimo txt
 				
-				// Por alguna razón si intento hacer un close java pierde el último txt que hay
-				// He probado muchos enfoques distintos pero no consigo saber qué le pasa
-				// Como captura la excepción en caso que haya algo mal lo dejo así pero esto creo que se podría mejorar
-				// Además esto es lo último que hace el programa entones no afecta a otras partes
+				// Por alguna razÃ³n si intento hacer un close java pierde el Ãºltimo txt que hay
+				// He probado muchos enfoques distintos pero no consigo saber quÃ© le pasa
+				// Como captura la excepciÃ³n en caso que haya algo mal lo dejo asÃ­ pero esto creo que se podrÃ­a mejorar
+				// AdemÃ¡s esto es lo Ãºltimo que hace el programa entones no afecta a otras partes
 				
 				//writer.close();
 				//fileWriter.close();
@@ -87,12 +87,12 @@ public class ManejoFicherosTXT {
 		}
 
 		/**
-		 * Método que escribe en un txt los resultados de las partidas
+		 * MÃ©todo que escribe en un txt los resultados de las partidas
 		 * 
 		 * @param partidasJugadas Las partidas jugadas
 		 * @param writer          BufferedWriter
-		 * @param numeroPartida   El número de la partida
-		 * @throws IOException Excepción que se recoge más arriba
+		 * @param numeroPartida   El nÃºmero de la partida
+		 * @throws IOException ExcepciÃ³n que se recoge mÃ¡s arriba
 		 */
 		private void writeDataToTxT(Juego juego, BufferedWriter writer, int numeroPartida) throws IOException {
 			writer.write("---- Partida numero: " + (numeroPartida + 1) + "\n\n");

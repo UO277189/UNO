@@ -25,8 +25,8 @@ import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
 
 /**
- * Clase que maneja la lÛgica de los comandos que el usuario introduce por consola
- * @author EfrÈn GarcÌa Valencia UO277189
+ * Clase que maneja la l√≥gica de los comandos que el usuario introduce por consola
+ * @author Efr√©n Garc√≠a Valencia UO277189
  *
  */
 public class ConfigurarPartidaConsola {
@@ -42,26 +42,26 @@ public class ConfigurarPartidaConsola {
 	
 
 	/**
-	 * MÈtodo para elegir el nombre del fichero
+	 * M√©todo para elegir el nombre del fichero
 	 * @return String El nombre de la configuracion
 	 */
 	public String elegirNombreConfiguracion() {
 
 		System.out.println();
-		System.out.print("Por favor, seleccione el nombre de la configuraciÛn: ");
+		System.out.print("Por favor, seleccione el nombre de la configuraci√≥n: ");
 		return leerConsola.leerLinea();
 	}
 
 
 	/**
-	 * MÈtodo para elegir los jugadores de la partida y la estrategia que van a
+	 * M√©todo para elegir los jugadores de la partida y la estrategia que van a
 	 * emplear
 	 * 
 	 * @return ArrayList<JugadorAbstract> La lista de jugadores a incluir
 	 */
 	public ArrayList<JugadorAbstract> elegirJugadores() {
 		ArrayList<JugadorAbstract> jugadores = new ArrayList<JugadorAbstract>();
-		System.out.print("Por favor, seleccione el n˙mero de jugadores (MÌnimo: 2): ");
+		System.out.print("Por favor, seleccione el n√∫mero de jugadores (M√≠nimo: 2): ");
 		int rangoJugadores = leerConsola.leerValorRango(2, Integer.MAX_VALUE);
 
 		// Para cada jugador
@@ -69,7 +69,7 @@ public class ConfigurarPartidaConsola {
 			System.out.print("Por favor, elija el nombre del jugador " + (i + 1) + ": ");
 			String nombre = leerConsola.leerLinea();
 
-			System.out.print("øVa a ser un jugador manual o autom·tico? Pulse la tecla correspondiente (0 - Manual, 1 -Autom·tico): ");
+			System.out.print("¬øVa a ser un jugador manual o autom√°tico? Pulse la tecla correspondiente (0 - Manual, 1 -Autom√°tico): ");
 			int tipoJugador = leerConsola.leerValorRango(0, 1);
 
 			// Jugador manual
@@ -77,7 +77,7 @@ public class ConfigurarPartidaConsola {
 				jugadores.add(new JugadorManual(nombre));
 			}
 
-			// Si es un jugador autom·tico
+			// Si es un jugador autom√°tico
 			if (tipoJugador == 1) {
 				jugadores.add(establecerReglas(nombre));
 
@@ -89,7 +89,7 @@ public class ConfigurarPartidaConsola {
 
 
 	/**
-	 * MÈtodo para crear la estrategia de barajar a aplicar
+	 * M√©todo para crear la estrategia de barajar a aplicar
 	 * 
 	 * @return BarajarStrategy La estrategia para barajar
 	 */
@@ -97,7 +97,7 @@ public class ConfigurarPartidaConsola {
 		// Estrategia a aplicar
 		BarajarStrategy estrategia = null;
 
-		System.out.println("A continuaciÛn se muestan las estrategias implementadas para barajar");
+		System.out.println("A continuaci√≥n se muestan las estrategias implementadas para barajar");
 		System.out.println();
 		System.out.println(" - 0: Barajar carta a carta");
 		System.out.println(" - 1: Barajar montones de cartas");
@@ -108,18 +108,18 @@ public class ConfigurarPartidaConsola {
 		// Caso barajar carta a carta
 		if (value == 0) {
 			System.out.print(
-					"Por favor, seleccione cu·ntas cartas desea intercambiar de posiciÛn (MÌnimo: 10, M·ximo: 1000): ");
+					"Por favor, seleccione cu√°ntas cartas desea intercambiar de posici√≥n (M√≠nimo: 10, M√°ximo: 1000): ");
 			int cartas = leerConsola.leerValorRango(10, 1000);
 			estrategia = new CartaACarta(cartas);
 
 		}
 
-		// Caso barajar montÛn a montÛn
+		// Caso barajar mont√≥n a mont√≥n
 		if (value == 1) {
-			System.out.print("Por favor, seleccione cu·ntas cartas tendr· el montÛn (MÌnimo: 2, M·ximo: 20): ");
+			System.out.print("Por favor, seleccione cu√°ntas cartas tendr√° el mont√≥n (M√≠nimo: 2, M√°ximo: 20): ");
 			int cartasMonton = leerConsola.leerValorRango(2, 20);
 			System.out.println();
-			System.out.print("Por favor, seleccione cu·ntos montones desea intercambiar (MÌnimo: 2, M·ximo: 5): ");
+			System.out.print("Por favor, seleccione cu√°ntos montones desea intercambiar (M√≠nimo: 2, M√°ximo: 5): ");
 			int montonesCambiar = leerConsola.leerValorRango(2, 5);
 			System.out.println();
 			estrategia = new MontonAMonton(cartasMonton, montonesCambiar);
@@ -128,19 +128,19 @@ public class ConfigurarPartidaConsola {
 	}
 
 	/**
-	 * MÈtodo para determinar el n˙mero de partidas a jugar
+	 * M√©todo para determinar el n√∫mero de partidas a jugar
 	 * 
-	 * @return int El n˙mero de partidas a jugar
+	 * @return int El n√∫mero de partidas a jugar
 	 */
 	public int elegirNumeroPartidas() {
-		System.out.print("Por favor, elija el n˙mero de partidas (MÌnimo: 1, M·ximo: 100000): ");
+		System.out.print("Por favor, elija el n√∫mero de partidas (M√≠nimo: 1, M√°ximo: 100000): ");
 		int value = leerConsola.leerValorRango(1, 100000);
 		System.out.println();
 		return value;
 	}
 
 	/**
-	 * MÈtodo para elegir si ver toda la traza o solamente los resultados al
+	 * M√©todo para elegir si ver toda la traza o solamente los resultados al
 	 * ejecutar la partida
 	 * 
 	 * @param jugadores La lista de jugadores para ver si se muestra la traza o no
@@ -160,20 +160,20 @@ public class ConfigurarPartidaConsola {
 	}
 
 	/**
-	 * MÈtodo que devuelve un jugador manejado por el algoritmo correspondiente
+	 * M√©todo que devuelve un jugador manejado por el algoritmo correspondiente
 	 * 
 	 * @param nombre Nombre del jugador
 	 * @return JugadorAlgoritmo
 	 */
 	public JugadorAutomatico establecerReglas(String nombre) {
 
-		// RefactorizaciÛn para que ahora se puedan escoger m˙ltiples reglas
+		// Refactorizaci√≥n para que ahora se puedan escoger m√∫ltiples reglas
 		int eleccion = 0;
 		ArrayList<Regla> reglas = new ArrayList<Regla>();
 
 		while (eleccion != 9) {
 			mostrarReglasUsuario(); // Mostramos las opciones al usuario
-			eleccion = leerConsola.leerValorRango(0, 9); // Elegimos la opciÛn
+			eleccion = leerConsola.leerValorRango(0, 9); // Elegimos la opci√≥n
 
 			if (eleccion != 10) {
 				reglas.add(elegirRegla(eleccion + 1));
@@ -221,23 +221,23 @@ public class ConfigurarPartidaConsola {
 	}
 
 	/**
-	 * MÈtodo para mostar las reglas al usuario
+	 * M√©todo para mostar las reglas al usuario
 	 */
 	public void mostrarReglasUsuario() {
 		System.out.println("Por favor, seleccione la regla que desea implementar");
 		System.out.println(" - 0: Al azar");
 		System.out.println(" - 1: Sacar el +4 lo antes posible");
-		System.out.println(" - 2: Sacar el +4 lo m·s tarde posible");
+		System.out.println(" - 2: Sacar el +4 lo m√°s tarde posible");
 		System.out.println(" - 3: Sacar el +2 lo antes posible");
-		System.out.println(" - 4: Sacar el +2 lo m·s tarde posible");
-		System.out.println(" - 5: Cuantas m·s veces sale un color, m·s probable es que "
+		System.out.println(" - 4: Sacar el +2 lo m√°s tarde posible");
+		System.out.println(" - 5: Cuantas m√°s veces sale un color, m√°s probable es que "
 				+ "respondamos con una carta de ese color");
-		System.out.println(" - 6: Cuantas m·s veces sale un color, menos probable es que "
+		System.out.println(" - 6: Cuantas m√°s veces sale un color, menos probable es que "
 				+ "respondamos con una carta de ese color");
-		System.out.println(" - 7: Cuantas m·s veces sale una carta numÈrica o de acciÛn, m·s probable es que "
-				+ "respondamos con una carta numÈrica o de acciÛn respectivamente");
-		System.out.println(" - 8: Cuantas m·s veces sale una carta numÈrica o de acciÛn, menos probable es que"
-				+ " respondamos con una carta numÈrica o de acciÛn respectivamente");
+		System.out.println(" - 7: Cuantas m√°s veces sale una carta num√©rica o de acci√≥n, m√°s probable es que "
+				+ "respondamos con una carta num√©rica o de acci√≥n respectivamente");
+		System.out.println(" - 8: Cuantas m√°s veces sale una carta num√©rica o de acci√≥n, menos probable es que"
+				+ " respondamos con una carta num√©rica o de acci√≥n respectivamente");
 		System.out.println("");
 		System.out.println(" Pulse 9 para guardar todas las reglas seleccionadas");
 	}
@@ -246,7 +246,7 @@ public class ConfigurarPartidaConsola {
 
 	public Ensemble elegirEnsemble() {
 
-		System.out.println("A continuaciÛn se muestran los ensembles que hay en la aplicaciÛn");
+		System.out.println("A continuaci√≥n se muestran los ensembles que hay en la aplicaci√≥n");
 		System.out.println();
 		System.out.println(" - 0: EnsembleRanking");
 		System.out.println(" - 1: EnsembleSuma");

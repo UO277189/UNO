@@ -32,8 +32,8 @@ import main.juego.jugador.JugadorManual;
 import main.manejoDatos.Configuracion;
 
 /**
- * Clase para estudiar el manejo  de ficheros JSON de la aplicaciÛn
- * @author EfrÈn GarcÌa Valencia UO277189
+ * Clase para estudiar el manejo  de ficheros JSON de la aplicaci√≥n
+ * @author Efr√©n Garc√≠a Valencia UO277189
  *
  */
 public class ManejoFicherosJSON {
@@ -46,7 +46,7 @@ public class ManejoFicherosJSON {
 	static String rutaConfiguracion = ".\\ficheros\\"; // Uso una ruta relativa
 
 	/**
-	 * MÈtodo para leer las configuraciones del fichero JSON
+	 * M√©todo para leer las configuraciones del fichero JSON
 	 * @param nombreJSON
 	 * @return ArrayList<Configuracion>
 	 */
@@ -64,13 +64,13 @@ public class ManejoFicherosJSON {
            	// Almacenamos las configuraciones en el array que luego devolvemos
            	configuraciones.add(generarConfiguracion(configuracionNode));
        } catch (IOException e) {
-       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER¡ A CERRARSE");
+       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER√Å A CERRARSE");
        	configuraciones.clear();
        } catch (IllegalArgumentException e) {
-       	System.out.println("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDER¡ A CERRARSE");
+       	System.out.println("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDER√Å A CERRARSE");
        	configuraciones.clear();
        }  catch (NullPointerException e) {
-       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER¡ A CERRARSE");
+       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDER√Å A CERRARSE");
        	configuraciones.clear();
        }
        
@@ -82,9 +82,9 @@ public class ManejoFicherosJSON {
 	}
 	
 	/**
-	 * MÈtodo que permite reescribir al final una nueva configuraciÛn a indicar en un JSON
+	 * M√©todo que permite reescribir al final una nueva configuraci√≥n a indicar en un JSON
 	 * @param nombreFicheroJSON El nombre del fichero JSON
-	 * @param nuevaConfiguracion La nueva configuraciÛn a indicar
+	 * @param nuevaConfiguracion La nueva configuraci√≥n a indicar
 	 */
 	public void reescribirFicheroJSON(String nombreFicheroJSON, Configuracion nuevaConfiguracion) {
 		
@@ -93,15 +93,15 @@ public class ManejoFicherosJSON {
         try {
         	configuraciones = this.leerJSON(nombreFicheroJSON);
         } catch (Exception e) {
-        	// Si surge alg˙n problema, quiere decir que ese fichero o est· vacÌo o est· mal configurado
+        	// Si surge alg√∫n problema, quiere decir que ese fichero o est√° vac√≠o o est√° mal configurado
         	// No es un problema porque lo vamos a reescribir otra vez
         }
         
-        // AÒadimos la nueva configuraciÛn
+        // A√±adimos la nueva configuraci√≥n
         configuraciones.add(nuevaConfiguracion);
         
         try {
-        	// A continuaciÛn se borran los datos del fichero
+        	// A continuaci√≥n se borran los datos del fichero
         	FileWriter fileEmpty = new FileWriter(rutaConfiguracion + nombreFicheroJSON + ".json");  
         	fileEmpty.close();
         	
@@ -113,12 +113,12 @@ public class ManejoFicherosJSON {
              fileFull.close();
              
         } catch(Exception e) {
-        	System.out.println("Ha ocurrido un error al guardar la nueva configuraciÛn");
+        	System.out.println("Ha ocurrido un error al guardar la nueva configuraci√≥n");
         }
 	}
 	
 	/**
-	 * MÈtodo que te devuelve un string con toda la informaciÛn que se vuelca desde el JSON
+	 * M√©todo que te devuelve un string con toda la informaci√≥n que se vuelca desde el JSON
 	 * @param configuraciones ArrayList<Configuracion>
 	 * @return String
 	 */
@@ -142,9 +142,9 @@ public class ManejoFicherosJSON {
 	}
 	
 	/**
-	 * MÈtodo para escribir cÛdigo java en formato JSON
-	 * @param configuracion La configuraciÛn a aplicar
-	 * @return El string con la configuraciÛn
+	 * M√©todo para escribir c√≥digo java en formato JSON
+	 * @param configuracion La configuraci√≥n a aplicar
+	 * @return El string con la configuraci√≥n
 	 */
 	private String escribirConfiguracionEnJSON(Configuracion configuracion) {
 		
@@ -175,9 +175,9 @@ public class ManejoFicherosJSON {
 
 
 	/**
-	 * MÈtodo para generar una configuraciÛn en base al contenido de la parte de un JSON
-	 * @param configuracionNode El nodo con los datos de la configuraciÛn
-	 * @return La configuraciÛn a cargar
+	 * M√©todo para generar una configuraci√≥n en base al contenido de la parte de un JSON
+	 * @param configuracionNode El nodo con los datos de la configuraci√≥n
+	 * @return La configuraci√≥n a cargar
 	 */
 	private Configuracion generarConfiguracion(JsonNode configuracionNode) {
 		String nombreConfiguracion = configuracionNode.get("nombre_configuracion").asText();
@@ -187,7 +187,7 @@ public class ManejoFicherosJSON {
 		int numeroPartidas = configuracionNode.get("numero_partidas").asInt();
 		boolean traza = configuracionNode.get("traza").asBoolean();
 		
-		// Revisamos la configuraciÛn y lanzamos una excepciÛn de ser necesario
+		// Revisamos la configuraci√≥n y lanzamos una excepci√≥n de ser necesario
 		revisarConfiguracion(nombreConfiguracion, jugadores, estrategia, ensemble, numeroPartidas, traza);		
 		
 		return new Configuracion(nombreConfiguracion, jugadores, estrategia, ensemble, numeroPartidas, traza);
@@ -197,12 +197,12 @@ public class ManejoFicherosJSON {
 
 
 	/**
-	 * MÈtodo que lanza una excepciÛn si hay alg˙n fallo al cargar una configuraciÛn
-	 * @param nombreConfiguracion 	El nombre de la configuraciÛn 
+	 * M√©todo que lanza una excepci√≥n si hay alg√∫n fallo al cargar una configuraci√≥n
+	 * @param nombreConfiguracion 	El nombre de la configuraci√≥n 
 	 * @param jugadoresPartida 		Los jugadores de las partidas
 	 * @param estrategiaBaraja 		La estrategia de la baraja
 	 * @param ensemble 				El ensemble a aplicar
-	 * @param numeroPartidas 		El n˙mero de partidas
+	 * @param numeroPartidas 		El n√∫mero de partidas
 	 * @param traza 				Para mostrar la traza
 	 */
 	private void revisarConfiguracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadores,
@@ -210,10 +210,10 @@ public class ManejoFicherosJSON {
 
 		boolean configuracionOK = true;
 		
-		// Nombre de la configuraciÛn
+		// Nombre de la configuraci√≥n
 		
 		if (nombreConfiguracion.isBlank() || nombreConfiguracion.isEmpty()) {
-			System.out.println("Nombre no v·lido");
+			System.out.println("Nombre no v√°lido");
 			configuracionOK = false;
 		}
 		
@@ -242,7 +242,7 @@ public class ManejoFicherosJSON {
 		// Numero de partidas
 		
 		if (numeroPartidas < 1) {
-			System.out.println("El n˙mero mÌnimo de partidas ha de ser uno");
+			System.out.println("El n√∫mero m√≠nimo de partidas ha de ser uno");
 			configuracionOK = false;
 		}
 	
@@ -254,7 +254,7 @@ public class ManejoFicherosJSON {
 
 
 	/**
-	 * MÈtodo que devuelve el ensemble a aplicar pasando un string
+	 * M√©todo que devuelve el ensemble a aplicar pasando un string
 	 * @param ensemble El texto a traducir
 	 * @return Ensemble
 	 */
@@ -266,14 +266,14 @@ public class ManejoFicherosJSON {
 		} else if (ensemble.equals("EnsembleVotacion")) {
 			return new EnsembleVotacion();
 		} else if (ensemble.equals("NoEnsemble")) {
-			return new NoEnsemble(); // No se corresponde con ning˙n ensemble
+			return new NoEnsemble(); // No se corresponde con ning√∫n ensemble
 		}
 		return null;
 	}
 
 
 	/**
-	 * MÈtodo que devuelve la forma de barajar a travÈs de un elemento JsonNode
+	 * M√©todo que devuelve la forma de barajar a trav√©s de un elemento JsonNode
 	 * @param barajarNode JsonNode
 	 * @return BarajarStrategy 
 	 */
@@ -291,7 +291,7 @@ public class ManejoFicherosJSON {
 
 
 	/**
-	 * MÈtodo que devuelve el array de jugadores a generar
+	 * M√©todo que devuelve el array de jugadores a generar
 	 * @param jsonNode El node con el que se trabaja
 	 * @return ArrayList<JugadorAbstract>
 	 */
@@ -304,7 +304,7 @@ public class ManejoFicherosJSON {
 			} else { // JugadorAutomatico
 				ArrayList<Regla> reglasJugador = evaluarStringRegla(reglas);
 				if (reglasJugador == null) {
-					return null; // Devuelve nulo porque algo saliÛ mal
+					return null; // Devuelve nulo porque algo sali√≥ mal
 				} else {
 					jugadores.add(new JugadorAutomatico(jugador.get("nombre").asText(), reglasJugador));
 				}
@@ -312,7 +312,7 @@ public class ManejoFicherosJSON {
 			}
 		}
 		if (jugadores.isEmpty() || jugadores.size() < 2) {
-			return null; // No puede haber ning˙n jugador o menos de dos jugadores
+			return null; // No puede haber ning√∫n jugador o menos de dos jugadores
 		} else {
 			return jugadores;
 		}
@@ -320,7 +320,7 @@ public class ManejoFicherosJSON {
 	
 	
 	/**
-	 * MÈtodo para leer un string y devolver un array con las reglas a aplicar
+	 * M√©todo para leer un string y devolver un array con las reglas a aplicar
 	 * 
 	 * @param string El valor String
 	 * @return ArrayList<Regla> Las reglas a aplicar
@@ -341,14 +341,14 @@ public class ManejoFicherosJSON {
 		
 		if (reglasJugador.contains(null)) {
 			System.out.println("Se ha introducido una regla que no existe");
-			return null; // Si hay un nulo significa que algo cargÛ mal
+			return null; // Si hay un nulo significa que algo carg√≥ mal
 		}
 		
 		return reglasJugador;
 	}
 	
 	/**
-	 * MÈtodo que saca la regla del string que le pases
+	 * M√©todo que saca la regla del string que le pases
 	 * @param reglaString El string a evaluar
 	 * @return Regla
 	 */
@@ -387,14 +387,14 @@ public class ManejoFicherosJSON {
 	
 	
 	/**
-	 * MÈtodo que muestra en consola las diferentes configuraciones que hay
+	 * M√©todo que muestra en consola las diferentes configuraciones que hay
 	 * @param configuraciones El array con las configuraciones
 	 */
 	public void mostrarDatosFichero(ArrayList<Configuracion> configuraciones) {
 		System.out.println();
 		for (int i = 0; i < configuraciones.size(); i++) {
 			System.out.print(i+1 + "- ");
-			System.out.println("\tNombre de la configuraciÛn: " + configuraciones.get(i).getNombreConfiguracion());
+			System.out.println("\tNombre de la configuraci√≥n: " + configuraciones.get(i).getNombreConfiguracion());
 			System.out.println("\tJugadores:");
 			for (JugadorAbstract jugador: configuraciones.get(i).getJugadoresPartida()) {
 				if (jugador instanceof JugadorManual) {
@@ -410,17 +410,17 @@ public class ManejoFicherosJSON {
 			}
 			System.out.println("\tEstrategia de la baraja: " + configuraciones.get(i).getEstrategiaBaraja().toString());
 			System.out.println("\tEnsemble a aplicar: " + configuraciones.get(i).getEnsemble().toString());
-			System.out.println("\tN˙mero de partidas: " + configuraciones.get(i).getNumeroPartidas());
+			System.out.println("\tN√∫mero de partidas: " + configuraciones.get(i).getNumeroPartidas());
 			System.out.println("\tSe muestra la traza de las partidas: " + configuraciones.get(i).getTraza());
 			
-			// Salto de lÌnea
+			// Salto de l√≠nea
 			System.out.println();
 		}
 		
 	}
 	
 	/**
-	 * MÈtodo que te devuelve el nombre del fichero que se aplica en la entrada
+	 * M√©todo que te devuelve el nombre del fichero que se aplica en la entrada
 	 * @return String
 	 */
 	public String getFicheroEntrada() {
@@ -429,7 +429,7 @@ public class ManejoFicherosJSON {
 
 
 	/**
-	 * MÈtodo que devuelve el nombre del fichero con los ejemplos b·sicos
+	 * M√©todo que devuelve el nombre del fichero con los ejemplos b√°sicos
 	 * @return String
 	 */
 	public String getFicheroEjemplos() {

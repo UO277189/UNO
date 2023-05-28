@@ -8,8 +8,8 @@ import main.algoritmoVoraz.reglas.Regla;
 import main.juego.carta.Carta;
 
 /**
- * Clase base que representa los diferentes tipos de ensembles que hay en la aplicaci髇
- * @author Efr閚 Garc韆 Valencia UO277189
+ * Clase base que representa los diferentes tipos de ensembles que hay en la aplicaci贸n
+ * @author Efr茅n Garc铆a Valencia UO277189
  *
  */
 public abstract class Ensemble {
@@ -19,7 +19,7 @@ public abstract class Ensemble {
 	
 	
 	/**
-	 * Constructor con un par醡etro para almacenar las reglas compuestas
+	 * Constructor con un par谩metro para almacenar las reglas compuestas
 	 */
 	public Ensemble() {
 		this.voraz = new VorazUno();
@@ -27,23 +27,23 @@ public abstract class Ensemble {
 	
 	
 	/**
-	 * M閠odo que ejecuta el ensemble y devuelve el resultado
+	 * M茅todo que ejecuta el ensemble y devuelve el resultado
 	 * 
 	 * @param cartas        Cartas en la mano del jugador
 	 * @param cartaMedio    La carta del medio
 	 * @param cartasJugadas Las cartas jugadas hasta el momento
 	 * @param reglas Las reglas que se van a ejecutar
-	 * @return int La posici髇 de la carta a jugar
+	 * @return int La posici贸n de la carta a jugar
 	 */
 	public abstract int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, 
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas);
 
 	
-	//********M蒚ODOS AUXILIARES********
+	//********M脡TODOS AUXILIARES********
 	
 	
 	/**
-	 * Devuelve la posici髇 de la carta que tenga mayor peso
+	 * Devuelve la posici贸n de la carta que tenga mayor peso
 	 * 
 	 * @param S          ArrayList<Carta> las cartas a ponderar
 	 * @param cartasMano las cartas de la mano para buscar la pos
@@ -55,19 +55,19 @@ public abstract class Ensemble {
 		Carta cartaElegida = null;
 
 		for (int i = 0; i < S.size(); i++) {
-			// En caso de empate nos quedamos con la que tenga menor 韓dice en el array
+			// En caso de empate nos quedamos con la que tenga menor 铆ndice en el array
 			if (S.get(i).getPeso() > maxPeso) {
 				maxPeso = S.get(i).getPeso();
 				cartaElegida = S.get(i);
 			}
 		}
 
-		// Ahora que tenemos la carta elegida buscamos su posici髇 original
+		// Ahora que tenemos la carta elegida buscamos su posici贸n original
 		return posCartaConcreta(cartasMano, cartaElegida);
 	}
 	
 	/**
-	 * Devuelve la posici髇 de la carta original jugada
+	 * Devuelve la posici贸n de la carta original jugada
 	 * @param cartaMax La carta a jugar
 	 * @param cartas El array de cartas
 	 * @return int
@@ -77,13 +77,13 @@ public abstract class Ensemble {
 		for (Carta carta : cartas) {
 			if (carta.equals(cartaMax))
 				return pos;
-			pos++; // Incrementamos la posici髇
+			pos++; // Incrementamos la posici贸n
 		}
 		return -1; // No coincide ninguna
 	}
 	
 	/**
-	 * M閠odo que te devuelve el n鷐ero que m醩 se repita dentro de un array
+	 * M茅todo que te devuelve el n煤mero que m谩s se repita dentro de un array
 	 * @param posiciones ArrayList<Integer>
 	 * @return int
 	 */
@@ -92,7 +92,7 @@ public abstract class Ensemble {
 			// Esto significa que no se puede echar nada y por tanto hay que robar una carta
 			return -1;
 		} else {
-			this.eliminarNegativos(posiciones); // Puede que surja un -1 por una excepci髇 anterior que haya que eliminar
+			this.eliminarNegativos(posiciones); // Puede que surja un -1 por una excepci贸n anterior que haya que eliminar
 			HashMap<Integer, Integer> mapPositions = new HashMap<Integer, Integer>(); // Con un HashMap podemos ir guardando las posiciones
 			int contadorMax = 0;
 			int valorMax = 0;
@@ -113,7 +113,7 @@ public abstract class Ensemble {
 	
 	
 	/**
-	 * M閠odo para elimitar valores negativos del array
+	 * M茅todo para elimitar valores negativos del array
 	 * @param posiciones ArrayList<Integer>
 	 */
 	protected void eliminarNegativos(ArrayList<Integer> posiciones) {
@@ -127,7 +127,7 @@ public abstract class Ensemble {
 	
 	
 	/**
-	 * M閠odo que te sirve para establecer un array con las posiciones originales de
+	 * M茅todo que te sirve para establecer un array con las posiciones originales de
 	 * las cartas
 	 * 
 	 * @param s          Las cartas ponderadas
@@ -143,7 +143,7 @@ public abstract class Ensemble {
 	}
 	
 	/**
-	 * M閠odo para hallar la posici髇 original de una carta en la mano
+	 * M茅todo para hallar la posici贸n original de una carta en la mano
 	 * 
 	 * @param cartasMano   Las cartas de la mano
 	 * @param cartaElegida La carta elegida

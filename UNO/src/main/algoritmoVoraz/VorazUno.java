@@ -9,12 +9,12 @@ import main.juego.carta.Carta;
  * Clase AlgoritmoVorazUno que ejecuta el algoritmo voraz aplicando las reglas
  * en base al ensemble que se tenga en un momento dado
  * 
- * @author Efrén García Valencia UO277189
+ * @author EfrÃ©n GarcÃ­a Valencia UO277189
  */
 public class VorazUno {
 
 	/**
-	 * Método que implementa el algoritmo voraz del cual parten todos los ensembles
+	 * MÃ©todo que implementa el algoritmo voraz del cual parten todos los ensembles
 	 * 
 	 * @param cartas        las cartas del jugador
 	 * @param cartaMedio    la carta del medio
@@ -44,7 +44,7 @@ public class VorazUno {
 		while (S.size() == 0 && cartasVoraz.size() > 0) {
 			for (int i = 0; i < size; i++) {
 				Carta carta = cartasVoraz.remove(0);
-				// Si se puede echar esa carta lo añade
+				// Si se puede echar esa carta lo aÃ±ade
 				if (cartaMedio.sePuedeEchar(carta)) {
 					S.add(carta);
 				}
@@ -59,10 +59,10 @@ public class VorazUno {
 		return S;
 	}
 	
-	//********MÉTODOS AUXILIARES********
+	//********MÃ‰TODOS AUXILIARES********
 
 	/**
-	 * Método que pondera las cartas del juego del UNO con un valor base
+	 * MÃ©todo que pondera las cartas del juego del UNO con un valor base
 	 * 
 	 * @param cartas Las cartas del jugador en un momento determinado
 	 */
@@ -73,8 +73,8 @@ public class VorazUno {
 	}
 
 	/**
-	 * Método que extrae las cartas no jugables en caso de que tengamos que evitar
-	 * un bucle infinito en la aplicación
+	 * MÃ©todo que extrae las cartas no jugables en caso de que tengamos que evitar
+	 * un bucle infinito en la aplicaciÃ³n
 	 * 
 	 * @param s          Las cartas ponderadas
 	 * @param cartaMedio La carta del medio
@@ -93,7 +93,7 @@ public class VorazUno {
 	}
 
 	/**
-	 * Método para quitar las cartas que no se aplican en caso de que haya que
+	 * MÃ©todo para quitar las cartas que no se aplican en caso de que haya que
 	 * responder a un +2/+4
 	 * 
 	 * @param s          El array de cartas

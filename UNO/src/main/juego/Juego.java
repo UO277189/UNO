@@ -11,9 +11,9 @@ import main.juego.carta.colores.Colores;
 import main.juego.jugador.JugadorAbstract;
 
 /**
- * Clase que maneja la lÛgica de una partida del juego UNO
+ * Clase que maneja la l√≥gica de una partida del juego UNO
  * 
- * @author EfrÈn GarcÌa Valencia UO277189
+ * @author Efr√©n Garc√≠a Valencia UO277189
  *
  */
 public class Juego {
@@ -32,36 +32,36 @@ public class Juego {
 	// Para saber cual es el turno actual
 	private int turnoActual;
 
-	// Par·metro adicional para saber las cartas que tiene que robar el siguiente
+	// Par√°metro adicional para saber las cartas que tiene que robar el siguiente
 	// jugador
 	private int cardsToPick;
 
-	// Este p·rametro sirve si hace falta mostrar toda la informacion del tablero
+	// Este p√°rametro sirve si hace falta mostrar toda la informacion del tablero
 	boolean allInfo = true;
 
-	// Este p·rametro recoge las cartas jugadas hasta el momento para mas adelante
+	// Este p√°rametro recoge las cartas jugadas hasta el momento para mas adelante
 	// ponderar las cartas
 	private ArrayList<Carta> historial;
 
-	// Este par·metro nos dice si mostramos la traza del juego o no
+	// Este par√°metro nos dice si mostramos la traza del juego o no
 	private boolean traza;
 
-	// Este par·metro determina cu·ntas rondas se han jugado actualmente
+	// Este par√°metro determina cu√°ntas rondas se han jugado actualmente
 	private int rondas;
 
-	// Este par·metro limita el n˙mero de turnos en una ronda para evitar
+	// Este par√°metro limita el n√∫mero de turnos en una ronda para evitar
 	// situaciones de bucle infinito
 	private int maxRondas = 10000;
 
-	// Este par·metro indica si se ha llegado al m·ximo de rondas para incluir o no
+	// Este par√°metro indica si se ha llegado al m√°ximo de rondas para incluir o no
 	// los datos
 	private boolean hasReachedMaxRondas = false;
 
-	// Este par·metro sirve para guardar toda la informaciÛn que se muestra por
+	// Este par√°metro sirve para guardar toda la informaci√≥n que se muestra por
 	// consola de una ronda
 	private String logRonda = "";
 
-	// Este par·metro sirve para guardar toda la informaciÛn que se muestra por
+	// Este par√°metro sirve para guardar toda la informaci√≥n que se muestra por
 	// consola de toda la partida
 	private ArrayList<String> logPartidas = new ArrayList<String>();
 
@@ -95,7 +95,7 @@ public class Juego {
 	}
 
 	/**
-	 * Construxtor que se usa para iniciar una partida indicando adem·s si se ve la
+	 * Construxtor que se usa para iniciar una partida indicando adem√°s si se ve la
 	 * traza o no
 	 * 
 	 * @param jugadores ArrayList<Jugador>
@@ -125,7 +125,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para empezar cada ronda del juego
+	 * M√©todo para empezar cada ronda del juego
 	 */
 	private void comenzarRonda() {
 
@@ -135,13 +135,13 @@ public class Juego {
 		// Al principio no hay que robar cartas adicionales
 		this.cardsToPick = 0;
 
-		// Para indicar el turno actual se elegir· un jugador al azar
+		// Para indicar el turno actual se elegir√° un jugador al azar
 		this.turnoActual = (int) (Math.random() * this.getJugadores().size());
 
 		// Se juega la primera ronda
 		this.rondas++;
 
-		// Mensaje textual para saber quiÈn empieza la partida
+		// Mensaje textual para saber qui√©n empieza la partida
 		this.guardarDatos("El jugador " + this.getJugadores().get(turnoActual).getNombreJugador() 
 				+ " empieza la partida");
 		}
@@ -158,7 +158,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para establecer un nuevo turno
+	 * M√©todo para establecer un nuevo turno
 	 */
 	public void nuevoTurno() {
 		boolean haLLegadoAlFinal = turnoActual == this.getJugadores().size() - 1;
@@ -179,7 +179,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para cambiar el orden del juego
+	 * M√©todo para cambiar el orden del juego
 	 */
 	public void cambiarOrden() {
 		if (this.orden == true) {
@@ -190,7 +190,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtod para echar una carta en el medio
+	 * M√©tod para echar una carta en el medio
 	 * 
 	 * @param cartaPos int
 	 */
@@ -202,25 +202,25 @@ public class Juego {
 		this.getJugadorActual().quitarCarta(cartaPos);
 		this.barajaUNO.setCartaCentro(aEchar);
 
-		// InformaciÛn textual de la carta jugada
+		// Informaci√≥n textual de la carta jugada
 		this.guardarDatos(
 				"El jugador " + this.getJugadorActual().getNombreJugador() + " juega la carta " + aEchar.toString());
 
 		// Si tiene una sola carta el jugador tiene que decir UNO
 		if (this.getJugadorActual().getCartasMano().size() == 1) {
-			this.guardarDatos("El jugador " + this.getJugadorActual().getNombreJugador() + " ha cantado °UNO!");
+			this.guardarDatos("El jugador " + this.getJugadorActual().getNombreJugador() + " ha cantado ¬°UNO!");
 			this.getJugadorActual().incrementVecesQueHaCantadoUno();
 		}
 
 		// Aplicamos el efecto de la carta
 		this.aplicarEfecto();
 
-		// AÒadimos tambien la carta al array
+		// A√±adimos tambien la carta al array
 		historial.add(aEchar);
 	}
 
 	/**
-	 * MÈtodo para robar una carta para el jugador actual
+	 * M√©todo para robar una carta para el jugador actual
 	 */
 	private void robarCartaBaraja() {
 
@@ -236,7 +236,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que establece un nuevo color en el centro
+	 * M√©todo que establece un nuevo color en el centro
 	 */
 	public void nuevoColorCentro() {
 
@@ -253,7 +253,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que aplica el efecto de una carta
+	 * M√©todo que aplica el efecto de una carta
 	 */
 	private void aplicarEfecto() {
 
@@ -261,12 +261,12 @@ public class Juego {
 
 		if (enMedio instanceof CartaAccion) {
 			AccionStrategy accion = ((CartaAccion) enMedio).getAccion();
-			accion.execute(this); // Se ejecuta la acciÛn asociada
+			accion.execute(this); // Se ejecuta la acci√≥n asociada
 		}
 	}
 
 	/**
-	 * MÈtodo para incrementar las cartas a robar
+	 * M√©todo para incrementar las cartas a robar
 	 * 
 	 * @param increment int
 	 */
@@ -275,7 +275,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para robar las cartas por efecto de otros jugadores
+	 * M√©todo para robar las cartas por efecto de otros jugadores
 	 */
 	private void robarCartasPorEfecto() {
 
@@ -295,7 +295,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para saber si el jugador actual tiene alguna carta que pueda echar
+	 * M√©todo para saber si el jugador actual tiene alguna carta que pueda echar
 	 * 
 	 * @param nuevaCarta int
 	 * @return boolean
@@ -314,7 +314,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para saber si el jugador actual tiene cartas que pueda echar
+	 * M√©todo para saber si el jugador actual tiene cartas que pueda echar
 	 * 
 	 * @param nuevaCarta int
 	 * @return boolean
@@ -329,7 +329,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para saber si el jugador no cumple con las normas y no responde frente
+	 * M√©todo para saber si el jugador no cumple con las normas y no responde frente
 	 * a un +2/+4
 	 * 
 	 * @param nuevaCarta int
@@ -351,7 +351,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para robar cartas al principio de la ronda si no tiene nada en la mano
+	 * M√©todo para robar cartas al principio de la ronda si no tiene nada en la mano
 	 * que pueda echar
 	 */
 	private void revisarSiCogeCartas() {
@@ -366,7 +366,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para saber si tiene una carta +2/+4 que se pueda aprovechar
+	 * M√©todo para saber si tiene una carta +2/+4 que se pueda aprovechar
 	 * 
 	 * @return boolean
 	 */
@@ -382,7 +382,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para saber el jugador que ha ganado la ronda de la partida
+	 * M√©todo para saber el jugador que ha ganado la ronda de la partida
 	 * 
 	 * @return JugadorUNO
 	 */
@@ -400,7 +400,7 @@ public class Juego {
 	
 	
 	/**
-	 * MÈtodo que devuelve el jugador ganador de la partida
+	 * M√©todo que devuelve el jugador ganador de la partida
 	 * @return JugadorUNO
 	 */
 	private JugadorAbstract jugadorGanador() {
@@ -414,7 +414,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que mira si alguien ya no tiene cartas para jugar
+	 * M√©todo que mira si alguien ya no tiene cartas para jugar
 	 * 
 	 * @return boolean
 	 */
@@ -427,7 +427,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que devuelve el numero de cartas del jugador activo
+	 * M√©todo que devuelve el numero de cartas del jugador activo
 	 * 
 	 * @return int
 	 */
@@ -436,7 +436,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que devuelve los jugadores de la partida
+	 * M√©todo que devuelve los jugadores de la partida
 	 * 
 	 * @param jugadores ArrayList<Jugadores>
 	 */
@@ -449,7 +449,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que devuelve el jugador actual
+	 * M√©todo que devuelve el jugador actual
 	 * 
 	 * @return Jugador
 	 */
@@ -458,7 +458,7 @@ public class Juego {
 	}
 
 	/**
-	 * Devuelve si se muestra la traza de la aplicaciÛn o no
+	 * Devuelve si se muestra la traza de la aplicaci√≥n o no
 	 * 
 	 * @return boolean
 	 */
@@ -467,7 +467,7 @@ public class Juego {
 	}
 
 	/**
-	 * Devuelve el array que tiene toda la informaciÛn de la partida
+	 * Devuelve el array que tiene toda la informaci√≥n de la partida
 	 * 
 	 * @return ArrayList<String>
 	 */
@@ -476,7 +476,7 @@ public class Juego {
 	}
 
 	/**
-	 * Devuelve si se ha llegado al m·ximo de rondas posibles
+	 * Devuelve si se ha llegado al m√°ximo de rondas posibles
 	 * 
 	 * @return boolean
 	 */
@@ -485,7 +485,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para jugar una ronda del UNO
+	 * M√©todo para jugar una ronda del UNO
 	 */
 	public void jugarRonda() {
 
@@ -495,12 +495,12 @@ public class Juego {
 		// Se suman las rondas
 		this.rondas++;
 
-		// Si llegamos al lÌmite aceptado de rondas
+		// Si llegamos al l√≠mite aceptado de rondas
 		if (rondas >= maxRondas) {
 			// Caso especial, este se muestra por consola siempre
-			System.out.println(" - SE HA LLEGADO AL M¡XIMO DE RONDAS EN LA PARTIDA, SE DESCARTA");
+			System.out.println(" - SE HA LLEGADO AL M√ÅXIMO DE RONDAS EN LA PARTIDA, SE DESCARTA");
 			this.hasReachedMaxRondas = true;
-			this.guardarDatos(" - SE HA LLEGADO AL M¡XIMO DE RONDAS EN LA PARTIDA, SE DESCARTA");
+			this.guardarDatos(" - SE HA LLEGADO AL M√ÅXIMO DE RONDAS EN LA PARTIDA, SE DESCARTA");
 
 			// Como la partida se descarta, se almacena el mensaje
 			this.almacenarRondasString();
@@ -525,9 +525,9 @@ public class Juego {
 		int nuevaCarta = this.getJugadorActual().jugarTurno(this.barajaUNO.getCartaCentro(), this.historial);
 		if (nuevaCarta == -100) {
 			// Para evitar excepciones si pulsas una letra al jugar
-			this.guardarDatos("ERROR: introduzca un car·cter v·lido");
+			this.guardarDatos("ERROR: introduzca un car√°cter v√°lido");
 		} else {
-			// Si pides robar una carta (NO DEBERÕA DEJAR SI TIENES ALGO QUE SE PUEDA ECHAR)
+			// Si pides robar una carta (NO DEBER√çA DEJAR SI TIENES ALGO QUE SE PUEDA ECHAR)
 			if (nuevaCarta == -1) {
 				// Roba una carta
 				this.robaCartaRonda();
@@ -540,7 +540,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para almacenar en el arrayList el string con la ronda
+	 * M√©todo para almacenar en el arrayList el string con la ronda
 	 */
 	private void almacenarRondasString() {
 		String copy = "";
@@ -550,11 +550,11 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para ver si el jugador puede robar una carta en el ronda actual
+	 * M√©todo para ver si el jugador puede robar una carta en el ronda actual
 	 */
 	private void robaCartaRonda() {
 		if (this.tieneCartasParaEchar()) {
-			this.guardarDatos("°TRAMPOSO! NO PUEDES ROBAR CARTAS SI TIENES ALGUNA PARA ECHAR");
+			this.guardarDatos("¬°TRAMPOSO! NO PUEDES ROBAR CARTAS SI TIENES ALGUNA PARA ECHAR");
 			this.getJugadorActual().incrementVecesQueHaIntentadoHacerTrampas();
 			allInfo = false;
 		} else {
@@ -567,17 +567,17 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo para ver si el jugador puede jugar una carta en la ronda actual
+	 * M√©todo para ver si el jugador puede jugar una carta en la ronda actual
 	 * 
 	 * @param nuevaCarta La nueva carta a jugar
 	 */
 	private void jugarCartaRonda(int nuevaCarta) {
 		if (this.tieneCartaParaEchar(nuevaCarta)) {
-			// Si tiene una carta nueva para echar hay que mirar si se da la situaciÛn de
+			// Si tiene una carta nueva para echar hay que mirar si se da la situaci√≥n de
 			// que tenga que responder a un +2/+4
 			if (this.cardsToPick > 0 && comprobarEfectoMasDosYCuatro(nuevaCarta)) {
 				// Si acumulas cartas y puedes responder frente a ello debes hacerlo
-				this.guardarDatos("°TRAMPOSO! SI TIENES UNA CARTA PARA EVITAR ROBAR LA TIENES QUE LANZAR");
+				this.guardarDatos("¬°TRAMPOSO! SI TIENES UNA CARTA PARA EVITAR ROBAR LA TIENES QUE LANZAR");
 				this.getJugadorActual().incrementVecesQueHaIntentadoResponderMal();
 				allInfo = false;
 			} else {
@@ -589,14 +589,14 @@ public class Juego {
 			}
 		} else {
 			// Si intenta jugar una carta que no puede echar
-			this.guardarDatos("°TRAMPOSO! NO SE PUEDE ECHAR ESA CARTA");
+			this.guardarDatos("¬°TRAMPOSO! NO SE PUEDE ECHAR ESA CARTA");
 			this.getJugadorActual().incrementVecesQueHaIntentadoHacerTrampas();
 			allInfo = false;
 		}
 	}
 
 	/**
-	 * MÈtodo que muestra la informacion textual de la partida
+	 * M√©todo que muestra la informacion textual de la partida
 	 */
 	public void informacionTablero() {
 		
@@ -617,11 +617,11 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que muestra el resultado de la partida
+	 * M√©todo que muestra el resultado de la partida
 	 */
 	public void resultadoPartida() {
 
-		if (!this.hasReachedMaxRondas) { // Si no se ha llegado al m·ximo de rondas es que hay ganador
+		if (!this.hasReachedMaxRondas) { // Si no se ha llegado al m√°ximo de rondas es que hay ganador
 			this.guardarDatos("\n");
 			this.guardarDatos("************ FIN DE LA PARTIDA ************");
 			this.guardarDatos("GANADOR: " + this.jugadorGanador());
@@ -634,7 +634,7 @@ public class Juego {
 	}
 
 	/**
-	 * MÈtodo que muestra la baraja
+	 * M√©todo que muestra la baraja
 	 */
 	public void mostrarBaraja() {
 		this.barajaUNO.informacionBaraja();
@@ -651,7 +651,7 @@ public class Juego {
 
 
 	/**
-	 * MÈtodo para saber si hay que mostrar los datos por consola y guarda el string en el log
+	 * M√©todo para saber si hay que mostrar los datos por consola y guarda el string en el log
 	 * @param value El string a imprimir/guardar en el log
 	 */
 	public void guardarDatos(String value) {
