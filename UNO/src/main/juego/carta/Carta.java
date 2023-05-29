@@ -102,12 +102,6 @@ public abstract class Carta {
 	}
 
 	/**
-	 * @param pesoComparator el pesoComparator a establecer
-	public static void setPesoComparator(Comparator<Carta> pesoComparator) {
-		PesoComparator = pesoComparator;
-	}
-
-	/**
 	 * @return el color
 	 */
 	public Colores getColor() {
