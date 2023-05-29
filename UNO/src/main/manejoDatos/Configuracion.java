@@ -2,8 +2,9 @@ package main.manejoDatos;
 
 import java.util.ArrayList;
 
+import lombok.Getter;
 import main.algoritmoVoraz.ensembles.Ensemble;
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.jugador.JugadorAbstract;
 
 /**
@@ -11,13 +12,15 @@ import main.juego.jugador.JugadorAbstract;
  * @author Efrén García Valencia UO277189
  *
  */
+
+@Getter
 public class Configuracion {
 	
 	// ATRIBUTOS
 	
 	private String nombreConfiguracion;
 	private ArrayList<JugadorAbstract> jugadoresPartida;
-	private BarajarStrategy estrategiaBaraja;
+	private FormaBarajar estrategiaBaraja;
 	private Ensemble ensemble;
 	private int numeroPartidas;
 	private boolean traza;
@@ -33,7 +36,7 @@ public class Configuracion {
 	 * @param traza Para mostrar la traza
 	 */
 	public Configuracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadoresPartida,
-			BarajarStrategy estrategiaBaraja, Ensemble ensemble, int numeroPartidas, boolean traza) {
+			FormaBarajar estrategiaBaraja, Ensemble ensemble, int numeroPartidas, boolean traza) {
 		super();
 		this.nombreConfiguracion = nombreConfiguracion;
 		this.jugadoresPartida = jugadoresPartida;
@@ -43,57 +46,5 @@ public class Configuracion {
 		this.traza = traza;
 	}
 
-
-	/**
-	 * Devuelve el nombre de la configuración
-	 * @return String
-	 */
-	public String getNombreConfiguracion() {
-		return nombreConfiguracion;
-	}
-
-	/**
-	 * Devuelve los jugadores de la partida
-	 * @return ArrayList<JugadorAbstract>
-	 */
-	public ArrayList<JugadorAbstract> getJugadoresPartida() {
-		return jugadoresPartida;
-	}
-
-	/**
-	 * Devuelve la estrategia para barajar
-	 * @return BarajarStrategy
-	 */
-	public BarajarStrategy getEstrategiaBaraja() {
-		return estrategiaBaraja;
-	}
-
-	/**
-	 * Devuelve el ensemble a aplicar
-	 * @return Ensemble
-	 */
-	public Ensemble getEnsemble() {
-		return ensemble;
-	}
-
-	/**
-	 * Devuelve el núemero de partidas
-	 * @return int
-	 */
-	public int getNumeroPartidas() {
-		return numeroPartidas;
-	}
-
-	/**
-	 * Nos dice si se muestra la traza o no
-	 * @return boolean
-	 */
-	public boolean getTraza() {
-		return traza;
-	}
-	
-	
-	
-	
 
 }

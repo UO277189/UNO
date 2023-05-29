@@ -9,23 +9,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.algoritmoVoraz.ensembles.Ensemble;
-import main.algoritmoVoraz.ensembles.EnsembleRanking;
-import main.algoritmoVoraz.ensembles.EnsembleSuma;
-import main.algoritmoVoraz.ensembles.EnsembleVotacion;
-import main.algoritmoVoraz.ensembles.NoEnsemble;
+import main.algoritmoVoraz.ensembles.EnsembleFactory;
 import main.algoritmoVoraz.reglas.Regla;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaNoPriorizarContarNumerosAcciones;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaPriorizarContarNumerosAcciones;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaAzar;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaNoPriorizarMasCuatro;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaNoPriorizarMasDos;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaPriorizarMasCuatro;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaPriorizarMasDos;
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
-import main.juego.baraja.estrategiasBaraja.CartaACarta;
-import main.juego.baraja.estrategiasBaraja.MontonAMonton;
+import main.algoritmoVoraz.reglas.ReglaFactory;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.juego.baraja.estrategiasBaraja.FormaBarajarFactory;
 import main.juego.jugador.JugadorAbstract;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
@@ -166,7 +154,7 @@ public class ManejoFicherosJSON {
 			    "\n      \"estrategia\": {\n" + configuracion.getEstrategiaBaraja().getJSON() +  "\n      }," +
 			    "\n      \"ensemble\": \"" + configuracion.getEnsemble().getJSON() + "\"," +
 			    "\n      \"numero_partidas\": " + configuracion.getNumeroPartidas() + "," + 
-			    "\n      \"traza\": " + configuracion.getTraza()+
+			    "\n      \"traza\": " + configuracion.isTraza()+
 			"\n    }";
 				
 		return configuracionString;
@@ -182,7 +170,7 @@ public class ManejoFicherosJSON {
 	private Configuracion generarConfiguracion(JsonNode configuracionNode) {
 		String nombreConfiguracion = configuracionNode.get("nombre_configuracion").asText();
 		ArrayList<JugadorAbstract> jugadores = generarJugadores(configuracionNode.get("jugadores"));
-		BarajarStrategy estrategia = generarEstrategia(configuracionNode.get("estrategia"));
+		FormaBarajar estrategia = generarEstrategia(configuracionNode.get("estrategia"));
 		Ensemble ensemble = generarEnsemble(configuracionNode.get("ensemble").asText());
 		int numeroPartidas = configuracionNode.get("numero_partidas").asInt();
 		boolean traza = configuracionNode.get("traza").asBoolean();
@@ -206,7 +194,7 @@ public class ManejoFicherosJSON {
 	 * @param traza 				Para mostrar la traza
 	 */
 	private void revisarConfiguracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadores,
-			BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas, boolean traza) {
+			FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas, boolean traza) {
 
 		boolean configuracionOK = true;
 		
@@ -250,44 +238,6 @@ public class ManejoFicherosJSON {
 			throw new IllegalArgumentException();
 		}
 	}
-
-
-
-	/**
-	 * Método que devuelve el ensemble a aplicar pasando un string
-	 * @param ensemble El texto a traducir
-	 * @return Ensemble
-	 */
-	private Ensemble generarEnsemble(String ensemble) {
-		if (ensemble.equals("EnsembleSuma")) {
-			return new EnsembleSuma();
-		} else if (ensemble.equals("EnsembleRanking")) {
-			return new EnsembleRanking();
-		} else if (ensemble.equals("EnsembleVotacion")) {
-			return new EnsembleVotacion();
-		} else if (ensemble.equals("NoEnsemble")) {
-			return new NoEnsemble(); // No se corresponde con ningún ensemble
-		}
-		return null;
-	}
-
-
-	/**
-	 * Método que devuelve la forma de barajar a través de un elemento JsonNode
-	 * @param barajarNode JsonNode
-	 * @return BarajarStrategy 
-	 */
-	private BarajarStrategy generarEstrategia(JsonNode barajarNode) {
-		String tipo = barajarNode.get("tipo").asText();
-		if (tipo.equals("CartaACarta")) {
-			return new CartaACarta(barajarNode.get("parametroInicial").asInt());
-		} else if (tipo.equals("MontonAMonton")) {
-			return new MontonAMonton(barajarNode.get("parametroInicial").asInt(), barajarNode.get("parametroAdicional").asInt());
-		} else {
-			return null; // Ha ocurrido un error
-		}
-	}
-
 
 
 	/**
@@ -346,45 +296,7 @@ public class ManejoFicherosJSON {
 		
 		return reglasJugador;
 	}
-	
-	/**
-	 * Método que saca la regla del string que le pases
-	 * @param reglaString El string a evaluar
-	 * @return Regla
-	 */
-	private Regla sacarRegla(String reglaString) {
-		Regla regla = null;
 
-		if (reglaString.contains("ReglaAzar"))
-			regla = new ReglaAzar();
-
-		if (reglaString.contains("ReglaPriorizarMasCuatro"))
-			regla = new ReglaPriorizarMasCuatro();
-
-		if (reglaString.contains("ReglaNoPriorizarMasCuatro"))
-			regla = new ReglaNoPriorizarMasCuatro();
-
-		if (reglaString.contains("ReglaPriorizarMasDos"))
-			regla = new ReglaPriorizarMasDos();
-
-		if (reglaString.contains("ReglaNoPriorizarMasDos"))
-			regla = new ReglaNoPriorizarMasDos();
-
-		if (reglaString.contains("ReglaPriorizarContarColores"))
-			regla = new ReglaPriorizarContarColores();
-
-		if (reglaString.contains("ReglaNoPriorizarContarColores"))
-			regla = new ReglaNoPriorizarContarColores();
-
-		if (reglaString.contains("ReglaPriorizarContarNumerosAcciones"))
-			regla = new ReglaPriorizarContarNumerosAcciones();
-
-		if (reglaString.contains("ReglaNoPriorizarContarNumerosAcciones"))
-			regla = new ReglaNoPriorizarContarNumerosAcciones();
-
-		return regla;
-	}
-	
 	
 	/**
 	 * Método que muestra en consola las diferentes configuraciones que hay
@@ -411,7 +323,7 @@ public class ManejoFicherosJSON {
 			System.out.println("\tEstrategia de la baraja: " + configuraciones.get(i).getEstrategiaBaraja().toString());
 			System.out.println("\tEnsemble a aplicar: " + configuraciones.get(i).getEnsemble().toString());
 			System.out.println("\tNúmero de partidas: " + configuraciones.get(i).getNumeroPartidas());
-			System.out.println("\tSe muestra la traza de las partidas: " + configuraciones.get(i).getTraza());
+			System.out.println("\tSe muestra la traza de las partidas: " + configuraciones.get(i).isTraza());
 			
 			// Salto de línea
 			System.out.println();
@@ -435,6 +347,39 @@ public class ManejoFicherosJSON {
 	public String getFicheroEjemplos() {
 		return this.nombreFicheroEjemplos;
 	}
+
+	
+	
+	/**
+	 * Método que saca la regla del string que le pases
+	 * @param reglaString El string a evaluar
+	 * @return Regla
+	 */
+	private Regla sacarRegla(String reglaString) {
+		return ReglaFactory.crearRegla(reglaString);
+	}
+	
+
+	/**
+	 * Método que devuelve el ensemble a aplicar pasando un string
+	 * @param ensemble El texto a traducir
+	 * @return Ensemble
+	 */
+	private Ensemble generarEnsemble(String ensemble) {
+		return EnsembleFactory.crearEnsemble(ensemble);
+	}
+
+
+	/**
+	 * Método que devuelve la forma de barajar a través de un elemento JsonNode
+	 * @param barajarNode JsonNode
+	 * @return FormaBarajar 
+	 */
+	private FormaBarajar generarEstrategia(JsonNode barajarNode) {	
+		return FormaBarajarFactory.crearFormaBarajar(barajarNode.get("tipo").asText(),
+				barajarNode.get("parametroInicial").asInt(), barajarNode.get("parametroAdicional").asInt());
+	}
+
 
 
 }

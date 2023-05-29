@@ -1,6 +1,8 @@
 package main.juego.carta;
 import java.util.Comparator;
 
+import lombok.Getter;
+import lombok.Setter;
 import main.juego.carta.colores.Colores;
 
 /**
@@ -8,9 +10,13 @@ import main.juego.carta.colores.Colores;
  * @author Efrén García Valencia UO277189
  *
  */
+
+@Getter
+@Setter
 public abstract class Carta {
 
     //ATRIBUTOS
+	
     protected Colores color;
     protected float peso; // Todas las cartas tienen un peso a estimar por el algoritmo
 
@@ -25,8 +31,7 @@ public abstract class Carta {
         this.color = color;
     }
 
-    
-    
+     
     // MÉTODOS
 
 
@@ -63,42 +68,6 @@ public abstract class Carta {
 	public abstract boolean puedeNoRobar(Carta c);
 
 
-    /**
-     * Establece un nuevo color a la carta. Es importante para cuando se lanza el +4
-     * @param color Colores
-     */
-	public void setColor(Colores color) {
-		this.color = color;
-	}
-	
-	
-    /**
-     * Devuelve el color de la carta
-     * @return Colores
-     */
-    public Colores getColor() {
-        return color;
-    }
-
-
-
-    /**
-     * Devuelve el peso de la carta
-     * @return float
-     */
-	public float getPeso() {
-		return peso;
-	}
-
-	
-	/**
-	 * Establece el peso de la carta
-	 * @param peso el peso de la carta
-	 */
-	public void setPeso(float peso) {
-		this.peso = peso;
-	}
-    
 	/**
 	 * Método para ordenar las cartas a comprarar
 	 */

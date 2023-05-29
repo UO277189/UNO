@@ -3,23 +3,14 @@ package main.manejoDatos.manejoConsola;
 import java.util.ArrayList;
 
 import main.algoritmoVoraz.ensembles.Ensemble;
-import main.algoritmoVoraz.ensembles.EnsembleRanking;
-import main.algoritmoVoraz.ensembles.EnsembleSuma;
-import main.algoritmoVoraz.ensembles.EnsembleVotacion;
-import main.algoritmoVoraz.ensembles.NoEnsemble;
+import main.algoritmoVoraz.ensembles.tipos.EnsembleRanking;
+import main.algoritmoVoraz.ensembles.tipos.EnsembleSuma;
+import main.algoritmoVoraz.ensembles.tipos.EnsembleVotacion;
 import main.algoritmoVoraz.reglas.Regla;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaNoPriorizarContarColores;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.colores.ReglaPriorizarContarColores;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaNoPriorizarContarNumerosAcciones;
-import main.algoritmoVoraz.reglas.reglasQueMiranHistorial.numerosAcciones.ReglaPriorizarContarNumerosAcciones;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaAzar;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaNoPriorizarMasCuatro;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaNoPriorizarMasDos;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaPriorizarMasCuatro;
-import main.algoritmoVoraz.reglas.reglasQueNoMiranHistorial.ReglaPriorizarMasDos;
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
-import main.juego.baraja.estrategiasBaraja.CartaACarta;
-import main.juego.baraja.estrategiasBaraja.MontonAMonton;
+import main.algoritmoVoraz.reglas.ReglaFactory;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
 import main.juego.jugador.JugadorAbstract;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
@@ -93,9 +84,9 @@ public class ConfigurarPartidaConsola {
 	 * 
 	 * @return BarajarStrategy La estrategia para barajar
 	 */
-	public BarajarStrategy elegirEstrategiaBaraja() {
+	public FormaBarajar elegirEstrategiaBaraja() {
 		// Estrategia a aplicar
-		BarajarStrategy estrategia = null;
+		FormaBarajar estrategia = null;
 
 		System.out.println("A continuación se muestan las estrategias implementadas para barajar");
 		System.out.println();
@@ -199,23 +190,23 @@ public class ConfigurarPartidaConsola {
 	private Regla elegirRegla(int eleccion) {
 		switch (eleccion) {
 		case 0:
-			return new ReglaAzar();
+			return ReglaFactory.crearRegla("ReglaAzar");
 		case 1:
-			return new ReglaPriorizarMasCuatro();
+			return ReglaFactory.crearRegla("ReglaPriorizarMasCuatro");
 		case 2:
-			return new ReglaNoPriorizarMasCuatro();
+			return ReglaFactory.crearRegla("ReglaNoPriorizarMasCuatro");
 		case 3:
-			return new ReglaPriorizarMasDos();
+			return ReglaFactory.crearRegla("ReglaPriorizarMasDos");
 		case 4:
-			return new ReglaNoPriorizarMasDos();
+			return ReglaFactory.crearRegla("ReglaNoPriorizarMasDos");
 		case 5:
-			return new ReglaPriorizarContarColores();
+			return ReglaFactory.crearRegla("ReglaPriorizarContarColores");
 		case 6:
-			return new ReglaNoPriorizarContarColores();
+			return ReglaFactory.crearRegla("ReglaNoPriorizarMasCuatro");
 		case 7:
-			return new ReglaPriorizarContarNumerosAcciones();
+			return ReglaFactory.crearRegla("ReglaPriorizarContarNumerosAcciones");
 		case 8:
-			return new ReglaNoPriorizarContarNumerosAcciones();
+			return ReglaFactory.crearRegla("ReglaNoPriorizarContarNumerosAcciones");
 		}
 		return null;
 	}
@@ -251,7 +242,6 @@ public class ConfigurarPartidaConsola {
 		System.out.println(" - 0: EnsembleRanking");
 		System.out.println(" - 1: EnsembleSuma");
 		System.out.println(" - 2: EnsembleVotacion");
-		System.out.println(" - 3: NoEnsemble");
 		System.out.println();
 		System.out.print("Seleccione el valor a implementar: ");
 		
@@ -263,8 +253,6 @@ public class ConfigurarPartidaConsola {
 			return new EnsembleSuma();
 		} else if (valor == 2) {
 			return new EnsembleVotacion();
-		} else if (valor == 3){
-			return new NoEnsemble();
 		}
 		return null;
 	}

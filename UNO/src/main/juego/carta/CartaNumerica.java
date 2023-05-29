@@ -1,5 +1,7 @@
 package main.juego.carta;
 
+import lombok.Getter;
+import lombok.Setter;
 import main.juego.carta.colores.Colores;
 
 /**
@@ -7,6 +9,9 @@ import main.juego.carta.colores.Colores;
  * @author Efrén Garcíaa Valencia UO277189
  *
  */
+
+@Getter
+@Setter
 public class CartaNumerica extends Carta {
 	
 	
@@ -29,7 +34,6 @@ public class CartaNumerica extends Carta {
 	// MÉTODOS
 	
 	
-
 	@Override
 	protected boolean coincideCarta(Carta c) {
 		if (c instanceof CartaNumerica) {
@@ -51,15 +55,6 @@ public class CartaNumerica extends Carta {
 		return false; // No puedes contrarrestar con una carta numérica
 	}
 	
-
-	/**
-	 * Devuelve el número de la carta
-	 * @return int
-	 */
-	public int getNumero() {
-		return numero;
-	}
-
 
 	/**
 	 * Información textual de la carta

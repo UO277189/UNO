@@ -23,9 +23,12 @@ public class EstadisticosJugador {
 	private int cartasMasDosJugadas;
 	private int cartasCambioSentidoJugadas;
 	private int cartasQuitarTurnoJugadas;
+	private int vecesQueHizoTrampas;
 	private int vecesQueCantaUno;
 	private int vecesQueHaGanado;
 	
+
+
 	/**
 	 * Constructor con los parámetros de salida del jugador
 	 * @param nombre 						El nombre del jugador
@@ -36,12 +39,14 @@ public class EstadisticosJugador {
 	 * @param cartasMasDosJugadas 			Las cartas +2 jugadas
 	 * @param cartasCambioSentidoJugadas 	Las cartas cambio de sentido jugadas
 	 * @param cartasQuitarTurnoJugadas 		Las cartas quitar turno jugadas
+	 * @param vecesQueHizoTrampas			Las veces que el jugador hizo trampas
 	 * @param vecesQueCantaUno 				Las veces que canta uno
 	 * @param vecesQueHaGanado 				Las veces que gana
 	 */
 	public EstadisticosJugador(String nombre, String[] reglas, int cartasJugadas, int cartasRobadas,
 			int cartasMasCuatroJugadas, int cartasMasDosJugadas, int cartasCambioSentidoJugadas,
-			int cartasQuitarTurnoJugadas, int vecesQueCantaUno, int vecesQueHaGanado) {
+			int cartasQuitarTurnoJugadas, int vecesQueHizoTrampas, int vecesQueCantaUno, int vecesQueHaGanado) {
+		super();
 		this.nombre = nombre;
 		this.reglas = reglas;
 		this.cartasJugadas = cartasJugadas;
@@ -50,9 +55,12 @@ public class EstadisticosJugador {
 		this.cartasMasDosJugadas = cartasMasDosJugadas;
 		this.cartasCambioSentidoJugadas = cartasCambioSentidoJugadas;
 		this.cartasQuitarTurnoJugadas = cartasQuitarTurnoJugadas;
+		this.vecesQueHizoTrampas = vecesQueHizoTrampas;
 		this.vecesQueCantaUno = vecesQueCantaUno;
 		this.vecesQueHaGanado = vecesQueHaGanado;
 	}
+	
+	
 
 
 }

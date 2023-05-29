@@ -183,6 +183,15 @@ public class ManejoFicherosCSV {
 		String [] lineaCartasQuitarTurno = guardarEnArray(cartasQuitarTurno);
 		writer.writeNext(lineaCartasQuitarTurno);
 		
+		//  VECES QUE HA INTENTADO HACER TRAMPA
+		List<String> traposo = new ArrayList<>();
+		traposo.add("VECES QUE HA INTENTADO HACER TRAMPA");
+		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
+			traposo.add(Integer.toString(partidasJugadas.getJugadores().get(i).getVecesQueHaIntentadoHacerTrampas()));
+		}
+		String [] lineaTramposo = guardarEnArray(traposo);
+		writer.writeNext(lineaTramposo);
+		
 
 		//  VECES QUE HA GANADO UNO
 		List<String> cartasCantaUno = new ArrayList<>();
@@ -294,7 +303,8 @@ public class ManejoFicherosCSV {
 			EstadisticosJugador jugador = new EstadisticosJugador(
 					lineas.get(0)[i], reglas, Integer.valueOf(lineas.get(2)[i]), Integer.valueOf(lineas.get(3)[i]),
 					Integer.valueOf(lineas.get(4)[i]), Integer.valueOf(lineas.get(5)[i]), Integer.valueOf(lineas.get(6)[i]), 
-					Integer.valueOf(lineas.get(7)[i]), Integer.valueOf(lineas.get(8)[i]), Integer.valueOf(lineas.get(9)[i]));
+					Integer.valueOf(lineas.get(7)[i]), Integer.valueOf(lineas.get(8)[i]), Integer.valueOf(lineas.get(9)[i]), 
+					Integer.valueOf(lineas.get(10)[i]));
 			
 			jugadores.add(jugador);
 		}

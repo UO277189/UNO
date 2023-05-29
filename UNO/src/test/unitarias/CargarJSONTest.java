@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.juego.baraja.estrategiasBaraja.CartaACarta;
-import main.juego.baraja.estrategiasBaraja.MontonAMonton;
+import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
 import main.juego.jugador.JugadorAbstract;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
@@ -119,7 +119,7 @@ public class CargarJSONTest {
 		assertEquals(((CartaACarta)configuracionUNO.getEstrategiaBaraja()).getCardsToExchange(), 60);
 		assertEquals(configuracionUNO.getEnsemble().toString(), "NoEnsemble");
 		assertEquals(configuracionUNO.getNumeroPartidas(), 100);
-		assertEquals(configuracionUNO.getTraza(), false);
+		assertEquals(configuracionUNO.isTraza(), false);
 		
 		// Segunda configuracion con jugadores manuales
 		Configuracion configuracionDOS = configuraciones.get(1);
@@ -133,7 +133,7 @@ public class CargarJSONTest {
 		assertEquals(((MontonAMonton)configuracionDOS.getEstrategiaBaraja()).getLotToExchange(), 5);
 		assertEquals(configuracionDOS.getEnsemble().toString(), "NoEnsemble");
 		assertEquals(configuracionDOS.getNumeroPartidas(), 100);
-		assertEquals(configuracionDOS.getTraza(), true);
+		assertEquals(configuracionDOS.isTraza(), true);
 	}
 
 

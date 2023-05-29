@@ -10,6 +10,7 @@ import java.util.Scanner;
  */
 public class LeerConsola {
 	
+	// ATRIBUTOS
 	
 	private Scanner sc = new Scanner(System.in);
 	

@@ -11,5 +11,4 @@ public enum Colores {
 	AMARILLO,
 	AZUL,
 	NOCOLOR;
-	// No hace falta el negro, podemos tratar el +4 de forma especial
 }

@@ -1,8 +1,10 @@
 package main.juego.carta;
 
-import main.juego.carta.acciones.AccionStrategy;
-import main.juego.carta.acciones.MasCuatro;
-import main.juego.carta.acciones.MasDos;
+import lombok.Getter;
+import lombok.Setter;
+import main.juego.carta.acciones.Accion;
+import main.juego.carta.acciones.tipos.MasCuatro;
+import main.juego.carta.acciones.tipos.MasDos;
 import main.juego.carta.colores.Colores;
 
 /**
@@ -10,12 +12,15 @@ import main.juego.carta.colores.Colores;
  * @author Efrén García Valencia UO277189
  *
  */
+
+@Getter
+@Setter
 public class CartaAccion extends Carta{
 	
 	// ATRIBUTOS
 	
 	// Acción asociada a una carta del juego
-	private AccionStrategy accion; 
+	private Accion accion; 
 
 		
 	// CONSTRUCTORES
@@ -25,7 +30,7 @@ public class CartaAccion extends Carta{
 	 * @param accion Accion
 	 * @param color Colores
 	 */
-	public CartaAccion(AccionStrategy accion, Colores color) {
+	public CartaAccion(Accion accion, Colores color) {
 		super(color);
 		this.accion = accion;	
 	}
@@ -38,7 +43,7 @@ public class CartaAccion extends Carta{
 	@Override
 	protected boolean coincideCarta(Carta c) {
 		if (c instanceof CartaAccion) {
-			AccionStrategy accionAEchar = ((CartaAccion) c).getAccion();
+			Accion accionAEchar = ((CartaAccion) c).getAccion();
 			
 			// Si fuera un +4 ya se habría echado antes
 			
@@ -62,8 +67,8 @@ public class CartaAccion extends Carta{
 		
 		// El parámetro es la carta a echar
 		if (this instanceof CartaAccion && c instanceof CartaAccion) {
-			AccionStrategy accionEnMedio = ((CartaAccion)this).getAccion();
-			AccionStrategy accionAEchar = ((CartaAccion)c).getAccion();		
+			Accion accionEnMedio = ((CartaAccion)this).getAccion();
+			Accion accionAEchar = ((CartaAccion)c).getAccion();		
 				
 			// Si echas un +4 o si  tienes un +2 y la anterior carta es un +2 te salvas
 			if (accionAEchar instanceof MasCuatro|| accionEnMedio instanceof MasDos && accionAEchar instanceof MasDos){
@@ -74,16 +79,6 @@ public class CartaAccion extends Carta{
 	}	
 
 
-
-	/**
-	 * Para devolver la acción de la carta
-	 * @return Acciones
-	 */
-	public AccionStrategy getAccion() {
-		return accion;
-	}
-
-	
 
 	/**
 	 * Informacion textual de la carta

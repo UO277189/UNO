@@ -1,6 +1,8 @@
 package main.juego.jugador;
 import java.util.ArrayList;
 
+import lombok.Getter;
+import lombok.Setter;
 import main.juego.carta.Carta;
 
 /**
@@ -8,6 +10,9 @@ import main.juego.carta.Carta;
  * @author Efrén García Valencia UO277189
  *
  */
+
+@Getter
+@Setter
 public abstract class JugadorAbstract {
 	
 	// ATRIBUTOS
@@ -24,7 +29,6 @@ public abstract class JugadorAbstract {
 	private int cartasCambiarSentidoJugadas;
 	private int cartasQuitarTurnoJugadas;
 	private int vecesQueHaCantadoUno;
-	private int vecesQueHaIntentadoResponderMal;
 	private int vecesQueHaIntentadoHacerTrampas;
 	private int vecesQueHaGanado;
 	
@@ -106,33 +110,6 @@ public abstract class JugadorAbstract {
 
 	
 	/**
-	 * Para poner al jugador cartas en la mano al principio de la ronda
-	 * @param cartasMano ArrayList<Carta>
-	 */
-	public void setCartasMano(ArrayList<Carta> cartasMano) {
-		this.cartasMano = cartasMano;
-	}
-	
-	
-	/**
-	 * Devuelve las cartas de la mano del jugador
-	 * @return cartasMano ArrayList<Carta>
-	 */
-	public ArrayList<Carta> getCartasMano() {
-		return this.cartasMano;
-	}
-
-	/**
-	 * Devuelve el nombre del jugador
-	 * @return String
-	 */
-	public String getNombreJugador() {
-		return nombreJugador;
-	}
-
-
-
-	/**
 	 * Para ver las cartas en la mano del jugador
 	 */
 	public void verCartas() {
@@ -147,10 +124,6 @@ public abstract class JugadorAbstract {
 	
 	
 	/**
-	 * Devuelve en un string las cartas jugadas
-	 */
-	
-	/**
 	 * Devuelve en un string las cartas de la mano
 	 * @return Las cartas de la mano
 	 */
@@ -162,8 +135,6 @@ public abstract class JugadorAbstract {
 		}
 		return value;
 	}
-	
-
 	
 
 	/**
@@ -193,14 +164,6 @@ public abstract class JugadorAbstract {
 	public abstract int elegirNuevoColor(int length);
 
 
-	/**
-	 * Devuelve el valor del parametro cartasJugadas
-	 * @return el valor del parametro cartasJugadas
-	 */
-	public int getCartasJugadas() {
-		return cartasJugadas;
-	}
-
 	
 	/**
 	 * Incrementa el valor del parametro cartasJugadas
@@ -209,16 +172,6 @@ public abstract class JugadorAbstract {
 	public void incrementCartasJugadas() {
 		this.cartasJugadas++;
 	}
-
-	
-	/**
-	 * Devuelve el valor del parametro cartasRobadas
-	 * @return el valor del parametro cartasRobadas
-	 */
-	public int getCartasRobadas() {
-		return cartasRobadas;
-	}
-
 
 	/**
 	 * Incrementa el valor del parametro cartasRobadas
@@ -230,14 +183,6 @@ public abstract class JugadorAbstract {
 
 
 	/**
-	 * Devuelve el valor del parametro cartasMasCuatroJugadas
-	 * @return el valor del parametro cartasMasCuatroJugadas
-	 */
-	public int getCartasMasCuatroJugadas() {
-		return cartasMasCuatroJugadas;
-	}
-
-	/**
 	 * Incrementa el valor del parametro cartasMasCuatroJugadas
 	 * @param cartasJugadas el valor del parametro cartasMasCuatroJugadas
 	 */
@@ -245,14 +190,6 @@ public abstract class JugadorAbstract {
 		this.cartasMasCuatroJugadas++;
 	}
 	
-
-	/**
-	 * Devuelve el valor del parametro cartasMasDosJugadas
-	 * @return el valor del parametro cartasMasDosJugadas
-	 */
-	public int getCartasMasDosJugadas() {
-		return cartasMasDosJugadas;
-	}
 
 
 	/**
@@ -265,15 +202,6 @@ public abstract class JugadorAbstract {
 	
 	
 	/**
-	 * Devuelve el valor del parametro cartasCambiarSentidoJugadas
-	 * @return el valor del parametro cartasCambiarSentidoJugadas
-	 */
-	public int getCartasCambiarSentidoJugadas() {
-		return cartasCambiarSentidoJugadas;
-	}
-
-	
-	/**
 	 * Incrementa el valor del parametro cartasCambiarSentidoJugadas
 	 * @param cartasJugadas el valor del parametro cartasCambiarSentidoJugadas
 	 */
@@ -281,16 +209,7 @@ public abstract class JugadorAbstract {
 		this.cartasCambiarSentidoJugadas++;
 	}
 	
-
-
-	/**
-	 * Devuelve el valor del parametro cartasQuitarTurnoJugadas
-	 * @return el valor del parametro cartasQuitarTurnoJugadas
-	 */
-	public int getCartasQuitarTurnoJugadas() {
-		return cartasQuitarTurnoJugadas;
-	}
-
+	
 	/**
 	 * Incrementa el valor del parametro cartasQuitarTurnoJugadas
 	 * @param cartasJugadas el valor del parametro cartasQuitarTurnoJugadas
@@ -300,14 +219,7 @@ public abstract class JugadorAbstract {
 	}
 
 	
-	/**
-	 * Devuelve el valor del parametro vecesQueHaCantadoUno
-	 * @return el valor del parametro vecesQueHaCantadoUno
-	 */
-	public int getVecesQueHaCantadoUno() {
-		return vecesQueHaCantadoUno;
-	}
-	
+
 	/**
 	 * Incrementa el valor del parametro vecesQueHaCantadoUno
 	 * @param cartasJugadas el valor del parametro vecesQueHaCantadoUno
@@ -318,30 +230,6 @@ public abstract class JugadorAbstract {
 
 
 	/**
-	 * Devuelve el valor del parametro vecesQueHaIntentadoResponderMal
-	 * @return el valor del parametro vecesQueHaIntentadoResponderMal
-	 */
-	public int getVecesQueHaIntentadoResponderMal() {
-		return vecesQueHaIntentadoResponderMal;
-	}
-	
-	/**
-	 * Incrementa el valor del parametro vecesQueHaIntentadoResponderMal
-	 * @param cartasJugadas el valor del parametro vecesQueHaIntentadoResponderMal
-	 */
-	public void incrementVecesQueHaIntentadoResponderMal() {
-		this.vecesQueHaIntentadoResponderMal++;
-	}
-	
-	/**
-	 * Devuelve el valor del parametro vecesQueHaIntentadoHacerTrampas
-	 * @return el valor del parametro vecesQueHaIntentadoHacerTrampas
-	 */
-	public int getVecesQueHaIntentadoHacerTrampas() {
-		return vecesQueHaIntentadoHacerTrampas;
-	}
-	
-	/**
 	 * Incrementa el valor del parametro vecesQueHaIntentadoHacerTrampas
 	 * @param cartasJugadas el valor del parametro vecesQueHaIntentadoHacerTrampas
 	 */
@@ -349,14 +237,6 @@ public abstract class JugadorAbstract {
 		this.vecesQueHaIntentadoHacerTrampas++;
 	}
 	
-	
-	/**
-	 * Devuelve el valor del parametro vecesQueHaGanado
-	 * @return el valor del parametro vecesQueHaGanado
-	 */
-	public int getVecesQueHaGanado() {
-		return vecesQueHaGanado;
-	}
 
 	/**
 	 * Incrementa el valor del parametro vecesQueHaGanado
@@ -382,7 +262,6 @@ public abstract class JugadorAbstract {
 		this.cartasCambiarSentidoJugadas += jugadorAbstract.getCartasCambiarSentidoJugadas();
 		this.cartasQuitarTurnoJugadas += jugadorAbstract.getCartasQuitarTurnoJugadas();
 		this.vecesQueHaCantadoUno += jugadorAbstract.getVecesQueHaCantadoUno();
-		this.vecesQueHaIntentadoResponderMal += jugadorAbstract.getVecesQueHaIntentadoResponderMal();
 		this.vecesQueHaIntentadoHacerTrampas += jugadorAbstract.getVecesQueHaIntentadoHacerTrampas();
 		this.vecesQueHaGanado += jugadorAbstract.getVecesQueHaGanado();
 	}	
@@ -399,7 +278,6 @@ public abstract class JugadorAbstract {
 		this.cartasCambiarSentidoJugadas = 0;
 		this.cartasQuitarTurnoJugadas = 0;
 		this.vecesQueHaCantadoUno = 0;
-		this.vecesQueHaIntentadoResponderMal = 0;
 		this.vecesQueHaIntentadoHacerTrampas = 0;
 		this.vecesQueHaGanado = 0;
 	}
@@ -416,7 +294,6 @@ public abstract class JugadorAbstract {
 		System.out.println("	Cartas Cambio de Sentido jugadas: " + this.getCartasCambiarSentidoJugadas());
 		System.out.println("	Cartas Quitar Turno jugadas: " + this.getCartasQuitarTurnoJugadas());	
 		System.out.println("	Veces que ha cantado UNO: " + this.getVecesQueHaCantadoUno());	
-		System.out.println("	Veces que ha intentado jugar una carta pudiendo responder a un +2/+4: " + this.getVecesQueHaIntentadoResponderMal());
 		System.out.println("	Veces que ha intentado hacer trampas: " + this.getVecesQueHaIntentadoHacerTrampas());	
 		System.out.println("	Veces que ha ganado: " + this.getVecesQueHaGanado());	
 	}
@@ -436,7 +313,6 @@ public abstract class JugadorAbstract {
 		value = value.concat("	Cartas Cambio de Sentido jugadas: " + this.getCartasCambiarSentidoJugadas() + "\n");
 		value = value.concat("	Cartas Quitar Turno jugadas: " + this.getCartasQuitarTurnoJugadas() + "\n");	
 		value = value.concat("	Veces que ha cantado UNO: " + this.getVecesQueHaCantadoUno() + "\n");	
-		value = value.concat("	Veces que ha intentado jugar una carta pudiendo responder a un +2/+4: " + this.getVecesQueHaIntentadoResponderMal() + "\n");
 		value = value.concat("	Veces que ha intentado hacer trampas: " + this.getVecesQueHaIntentadoHacerTrampas() + "\n");	
 		value = value.concat("	Veces que ha ganado: " + this.getVecesQueHaGanado() + "\n");	
 		return value;

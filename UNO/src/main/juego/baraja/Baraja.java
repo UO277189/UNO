@@ -1,14 +1,11 @@
 package main.juego.baraja;
 import java.util.ArrayList;
 
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.carta.Carta;
 import main.juego.carta.CartaAccion;
 import main.juego.carta.CartaNumerica;
-import main.juego.carta.acciones.CambiarSentido;
-import main.juego.carta.acciones.MasCuatro;
-import main.juego.carta.acciones.MasDos;
-import main.juego.carta.acciones.QuitarTurno;
+import main.juego.carta.acciones.AccionFactory;
 import main.juego.carta.colores.Colores;
 
 
@@ -34,7 +31,7 @@ public class Baraja {
     
     
     // La estrategia empleada para barajar
-    private BarajarStrategy barajar;
+    private FormaBarajar barajar;
     
     
     // Finalmente, hay que establecer la carta del medio que determinara que pueden robar los jugadores durante la partida
@@ -49,7 +46,7 @@ public class Baraja {
 	 * Constructor con un parámetro para determinar la estrategia empleada para barajar
 	 * @param barajar BarajarStrategy
 	 */
-    public Baraja(BarajarStrategy barajar) {
+    public Baraja(FormaBarajar barajar) {
         this.barajaCartas = new ArrayList<>();
         this.barajaDescarte = new ArrayList<>();
         
@@ -99,9 +96,9 @@ public class Baraja {
 			
 			// Un bucle for para las cartas de acción que tengan color
 			for (int i = 0; i < this.cartasAccionColor; i++) {
-				this.barajaCartas.add(new CartaAccion(new CambiarSentido(), color));
-				this.barajaCartas.add(new CartaAccion(new MasDos(), color));
-				this.barajaCartas.add(new CartaAccion(new QuitarTurno(), color));
+				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("CambiarSentido"), color));
+				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasDos"), color));
+				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("QuitarTurno"), color));
 			}
 		}
 		
@@ -109,7 +106,7 @@ public class Baraja {
 		
 		for (int i = 0; i < this.cartasAccionSinColor; i++) {
 			// El +4 va con el color NEGRO
-			this.barajaCartas.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
+			this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasCuatro"), Colores.NOCOLOR));
 		}
 		
 	}
@@ -270,10 +267,10 @@ public class Baraja {
 	
 	
     /**
-     * Devuelve la forma de barahar
+     * Devuelve la forma de barajar
      * @return BarajarStrategy
      */
-    public BarajarStrategy getBarajarStrategy() {
+    public FormaBarajar getBarajarStrategy() {
 		return this.barajar;
 	}
     

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import main.algoritmoVoraz.ensembles.Ensemble;
 import main.juego.GestionarJuegos;
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.jugador.JugadorAbstract;
 import main.manejoDatos.Configuracion;
 import main.manejoDatos.manejoConsola.ConfigurarPartidaConsola;
@@ -128,7 +128,7 @@ public class JugarPartida {
 			ejecutarPartidas(configuraciones.get(valor).getNombreConfiguracion(),
 					configuraciones.get(valor).getJugadoresPartida(), configuraciones.get(valor).getEstrategiaBaraja(),
 					configuraciones.get(valor).getEnsemble(), configuraciones.get(valor).getNumeroPartidas(),
-					configuraciones.get(valor).getTraza());
+					configuraciones.get(valor).isTraza());
 		}
 	}
 
@@ -171,7 +171,7 @@ public class JugarPartida {
 
 		String nombreFichero = leerDatosManual.elegirNombreConfiguracion();
 		ArrayList<JugadorAbstract> jugadores = leerDatosManual.elegirJugadores();
-		BarajarStrategy estrategia = leerDatosManual.elegirEstrategiaBaraja();
+		FormaBarajar estrategia = leerDatosManual.elegirEstrategiaBaraja();
 		Ensemble ensemble = leerDatosManual.elegirEnsemble();
 		int numeroPartidas = leerDatosManual.elegirNumeroPartidas();
 		boolean verTraza = leerDatosManual.elegirVerTraza(jugadores);
@@ -220,7 +220,7 @@ public class JugarPartida {
 			ejecutarPartidas(configuraciones.get(valor).getNombreConfiguracion(),
 					configuraciones.get(valor).getJugadoresPartida(), configuraciones.get(valor).getEstrategiaBaraja(),
 					configuraciones.get(valor).getEnsemble(), configuraciones.get(valor).getNumeroPartidas(),
-					configuraciones.get(valor).getTraza());
+					configuraciones.get(valor).isTraza());
 		}
 	}
 
@@ -235,7 +235,7 @@ public class JugarPartida {
 	 * @param verTraza       Traza a observar
 	 */
 	private static void ejecutarPartidas(String nombreFichero, ArrayList<JugadorAbstract> jugadores,
-			BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas, boolean verTraza) {
+			FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas, boolean verTraza) {
 
 		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará
 		// las partidas

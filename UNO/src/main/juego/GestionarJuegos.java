@@ -3,7 +3,7 @@ package main.juego;
 import java.util.ArrayList;
 
 import main.algoritmoVoraz.ensembles.Ensemble;
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.jugador.JugadorAbstract;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
@@ -25,7 +25,7 @@ public class GestionarJuegos {
 	private ArrayList<JugadorAbstract> jugadores;
 
 	// Estrategia para barajar
-	private BarajarStrategy estrategia;
+	private FormaBarajar estrategia;
 
 	// El ensemble que se va a aplicar
 	private Ensemble ensemble;
@@ -47,7 +47,7 @@ public class GestionarJuegos {
 	 * @param ensemble       El ensemble que se va a aplicar
 	 * @param numeroPartidas El número de partidas a jugar
 	 */
-	public GestionarJuegos(ArrayList<JugadorAbstract> jugadores, BarajarStrategy estrategia, Ensemble ensemble, int numeroPartidas) {
+	public GestionarJuegos(ArrayList<JugadorAbstract> jugadores, FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas) {
 		this.jugadores = jugadores;
 		this.estrategia = estrategia;
 		this.numeroPartidas = numeroPartidas;

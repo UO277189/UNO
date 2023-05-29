@@ -3,10 +3,10 @@ package main.juego;
 import java.util.ArrayList;
 
 import main.juego.baraja.Baraja;
-import main.juego.baraja.estrategiasBaraja.BarajarStrategy;
+import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.carta.Carta;
 import main.juego.carta.CartaAccion;
-import main.juego.carta.acciones.AccionStrategy;
+import main.juego.carta.acciones.Accion;
 import main.juego.carta.colores.Colores;
 import main.juego.jugador.JugadorAbstract;
 
@@ -71,7 +71,7 @@ public class Juego {
 	 * @param jugadores ArrayList<Jugador>
 	 * @param barajar   BarajarStrategy
 	 */
-	public Juego(ArrayList<JugadorAbstract> jugadores, BarajarStrategy barajar) {
+	public Juego(ArrayList<JugadorAbstract> jugadores, FormaBarajar barajar) {
 
 		// Establecemos los jugadores
 		this.jugadores = jugadores;
@@ -95,14 +95,14 @@ public class Juego {
 	}
 
 	/**
-	 * Construxtor que se usa para iniciar una partida indicando además si se ve la
+	 * Constructor que se usa para iniciar una partida indicando además si se ve la
 	 * traza o no
 	 * 
 	 * @param jugadores ArrayList<Jugador>
 	 * @param barajar   BarajarStrategy
 	 * @param traza     boolean
 	 */
-	public Juego(ArrayList<JugadorAbstract> jugadores, BarajarStrategy barajar, boolean traza) {
+	public Juego(ArrayList<JugadorAbstract> jugadores, FormaBarajar barajar, boolean traza) {
 		// Establecemos los jugadores
 		this.jugadores = jugadores;
 
@@ -260,7 +260,7 @@ public class Juego {
 		Carta enMedio = this.barajaUNO.getCartaCentro();
 
 		if (enMedio instanceof CartaAccion) {
-			AccionStrategy accion = ((CartaAccion) enMedio).getAccion();
+			Accion accion = ((CartaAccion) enMedio).getAccion();
 			accion.execute(this); // Se ejecuta la acción asociada
 		}
 	}
@@ -578,7 +578,7 @@ public class Juego {
 			if (this.cardsToPick > 0 && comprobarEfectoMasDosYCuatro(nuevaCarta)) {
 				// Si acumulas cartas y puedes responder frente a ello debes hacerlo
 				this.guardarDatos("¡TRAMPOSO! SI TIENES UNA CARTA PARA EVITAR ROBAR LA TIENES QUE LANZAR");
-				this.getJugadorActual().incrementVecesQueHaIntentadoResponderMal();
+				this.getJugadorActual().incrementVecesQueHaIntentadoHacerTrampas();
 				allInfo = false;
 			} else {
 				// Si no acumula cartas juega la ronda de forma normal
