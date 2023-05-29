@@ -1,16 +1,10 @@
 package main.manejoDatos;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Clase que recoge los estadísticos de salida de cada uno de los jugadores
  * @author Efrén García Valencia UO277189
  *
  */
-
-@Getter
-@Setter
 public class EstadisticosJugador {
 	
 	// ATRIBUTOS
@@ -59,6 +53,110 @@ public class EstadisticosJugador {
 		this.vecesQueCantaUno = vecesQueCantaUno;
 		this.vecesQueHaGanado = vecesQueHaGanado;
 	}
+
+
+
+	/**
+	 * @return el nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	/**
+	 * @return las reglas
+	 */
+	public String[] getReglas() {
+		return reglas;
+	}
+
+
+
+	/**
+	 * @return las cartasJugadas
+	 */
+	public int getCartasJugadas() {
+		return cartasJugadas;
+	}
+
+
+
+	/**
+	 * @return las cartasRobadas
+	 */
+	public int getCartasRobadas() {
+		return cartasRobadas;
+	}
+
+
+
+	/**
+	 * @return las cartasMasCuatroJugadas
+	 */
+	public int getCartasMasCuatroJugadas() {
+		return cartasMasCuatroJugadas;
+	}
+
+
+
+	/**
+	 * @return las cartasMasDosJugadas
+	 */
+	public int getCartasMasDosJugadas() {
+		return cartasMasDosJugadas;
+	}
+
+
+
+	/**
+	 * @return las cartasCambioSentidoJugadas
+	 */
+	public int getCartasCambioSentidoJugadas() {
+		return cartasCambioSentidoJugadas;
+	}
+
+
+
+	/**
+	 * @return las cartasQuitarTurnoJugadas
+	 */
+	public int getCartasQuitarTurnoJugadas() {
+		return cartasQuitarTurnoJugadas;
+	}
+
+
+
+	/**
+	 * @return las vecesQueHizoTrampas
+	 */
+	public int getVecesQueHizoTrampas() {
+		return vecesQueHizoTrampas;
+	}
+
+
+
+	/**
+	 * @return las vecesQueCantaUno
+	 */
+	public int getVecesQueCantaUno() {
+		return vecesQueCantaUno;
+	}
+
+
+
+	/**
+	 * @return las vecesQueHaGanado
+	 */
+	public int getVecesQueHaGanado() {
+		return vecesQueHaGanado;
+	}
+	
+	
+	
+	
+
 	
 	
 

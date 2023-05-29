@@ -2,7 +2,6 @@ package main.juego.baraja.estrategiasBaraja.estrategias;
 
 import java.util.ArrayList;
 
-import lombok.Getter;
 import main.juego.baraja.Baraja;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.carta.Carta;
@@ -14,7 +13,6 @@ import main.juego.carta.Carta;
  *
  */
 
-@Getter
 public class MontonAMonton implements FormaBarajar {
 
 	// ATRIBUTOS
@@ -109,6 +107,22 @@ public class MontonAMonton implements FormaBarajar {
 		        "        \"parametroInicial\": " + cardInLot + ",\n" +
 		        "        \"parametroAdicional\": " + lotToExchange;
 	}
+
+	/**
+	 * @return Las cartas por montón
+	 */
+	public int getCardInLot() {
+		return cardInLot;
+	}
+
+	/**
+	 * @return Los montones a intercambiar
+	 */
+	public int getLotToExchange() {
+		return lotToExchange;
+	}
+	
+	
 	
 
 }

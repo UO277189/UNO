@@ -1,7 +1,6 @@
 package main.juego.carta;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import main.juego.carta.colores.Colores;
 
 /**
@@ -9,9 +8,6 @@ import main.juego.carta.colores.Colores;
  * @author Efrén Garcíaa Valencia UO277189
  *
  */
-
-@Getter
-@Setter
 public class CartaNumerica extends Carta {
 	
 	
@@ -63,5 +59,25 @@ public class CartaNumerica extends Carta {
 		
 		return color + " - " + numero;
 	}
+
+
+	/**
+	 * @return el numero
+	 */
+	public int getNumero() {
+		return numero;
+	}
+
+
+	/**
+	 * @param numero el nunero a establecer
+	 */
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
+	
+	
+	
 
 }

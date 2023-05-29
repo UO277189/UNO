@@ -15,6 +15,5 @@
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-core_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-databind_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/csv/opencsv-5.7.1.jar"/>
-	<classpathentry kind="lib" path="lib/lombok/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

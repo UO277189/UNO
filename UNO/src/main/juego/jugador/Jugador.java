@@ -1,8 +1,7 @@
 package main.juego.jugador;
 import java.util.ArrayList;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import main.juego.carta.Carta;
 
 /**
@@ -11,8 +10,7 @@ import main.juego.carta.Carta;
  *
  */
 
-@Getter
-@Setter
+
 public abstract class Jugador {
 	
 	// ATRIBUTOS
@@ -315,6 +313,107 @@ public abstract class Jugador {
 	 */
 	public abstract String getJSON();
 
+
+	/**
+	 * @return el nombreJugador
+	 */
+	public String getNombreJugador() {
+		return nombreJugador;
+	}
+
+
+	/**
+	 * @return las cartasMano
+	 */
+	public ArrayList<Carta> getCartasMano() {
+		return cartasMano;
+	}
+
+
+	/**
+	 * @return las cartasJugadas
+	 */
+	public int getCartasJugadas() {
+		return cartasJugadas;
+	}
+
+
+	/**
+	 * @return las cartasRobadas
+	 */
+	public int getCartasRobadas() {
+		return cartasRobadas;
+	}
+
+
+	/**
+	 * @return las cartasMasCuatroJugadas
+	 */
+	public int getCartasMasCuatroJugadas() {
+		return cartasMasCuatroJugadas;
+	}
+
+
+	/**
+	 * @return las cartasMasDosJugadas
+	 */
+	public int getCartasMasDosJugadas() {
+		return cartasMasDosJugadas;
+	}
+
+
+	/**
+	 * @return las cartasCambiarSentidoJugadas
+	 */
+	public int getCartasCambiarSentidoJugadas() {
+		return cartasCambiarSentidoJugadas;
+	}
+
+
+	/**
+	 * @return las cartasQuitarTurnoJugadas
+	 */
+	public int getCartasQuitarTurnoJugadas() {
+		return cartasQuitarTurnoJugadas;
+	}
+
+
+	/**
+	 * @return las vecesQueHaCantadoUno
+	 */
+	public int getVecesQueHaCantadoUno() {
+		return vecesQueHaCantadoUno;
+	}
+
+
+	/**
+	 * @return las vecesQueHaIntentadoHacerTrampas
+	 */
+	public int getVecesQueHaIntentadoHacerTrampas() {
+		return vecesQueHaIntentadoHacerTrampas;
+	}
+
+
+	/**
+	 * @return las vecesQueHaGanado
+	 */
+	public int getVecesQueHaGanado() {
+		return vecesQueHaGanado;
+	}
+
+
+	/**
+	 * Establece las cartas de la mano del jugador
+	 * @param cartasMano Las cartas de la mano
+	 */
+	public void setCartasMano(ArrayList<Carta> cartasMano) {
+		this.cartasMano = cartasMano;
+	}
+	
+	
+
+	
+	
 	
 	
 

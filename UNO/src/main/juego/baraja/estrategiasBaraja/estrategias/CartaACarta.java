@@ -2,7 +2,6 @@ package main.juego.baraja.estrategiasBaraja.estrategias;
 
 import java.util.ArrayList;
 
-import lombok.Getter;
 import main.juego.baraja.Baraja;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.carta.Carta;
@@ -13,7 +12,6 @@ import main.juego.carta.Carta;
  *
  */
 
-@Getter
 public class CartaACarta implements FormaBarajar{
 	
 	// ATRIBUTOS
@@ -73,6 +71,17 @@ public class CartaACarta implements FormaBarajar{
 		        "        \"parametroInicial\": " + cardsToExchange + ",\n" +
 		        "        \"parametroAdicional\": \"" + "no_aplica" + "\"";
 	}
+
+
+	/**
+	 * @return Las cartas a intercambiar
+	 */
+	public int getCardsToExchange() {
+		return cardsToExchange;
+	}
+	
+	
+	
 	
 	
 

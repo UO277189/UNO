@@ -1,13 +1,10 @@
 package main.juego.carta.colores;
 
-import lombok.Getter;
-
 /**
  * Ennumerado que representa los colores del UNO
  * @author Efrén García Valencia UO277189
  *
  */
-@Getter
 public enum Colores {
 
 	/**

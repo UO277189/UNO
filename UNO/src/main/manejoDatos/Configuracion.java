@@ -2,7 +2,6 @@ package main.manejoDatos;
 
 import java.util.ArrayList;
 
-import lombok.Getter;
 import main.algoritmoVoraz.ensembles.Ensemble;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.jugador.Jugador;
@@ -12,8 +11,6 @@ import main.juego.jugador.Jugador;
  * @author Efrén García Valencia UO277189
  *
  */
-
-@Getter
 public class Configuracion {
 	
 	// ATRIBUTOS
@@ -46,5 +43,54 @@ public class Configuracion {
 		this.traza = traza;
 	}
 
+
+	/**
+	 * @return the nombreConfiguracion
+	 */
+	public String getNombreConfiguracion() {
+		return nombreConfiguracion;
+	}
+
+
+	/**
+	 * @return the jugadoresPartida
+	 */
+	public ArrayList<Jugador> getJugadoresPartida() {
+		return jugadoresPartida;
+	}
+
+
+	/**
+	 * @return the estrategiaBaraja
+	 */
+	public FormaBarajar getEstrategiaBaraja() {
+		return estrategiaBaraja;
+	}
+
+
+	/**
+	 * @return the ensemble
+	 */
+	public Ensemble getEnsemble() {
+		return ensemble;
+	}
+
+
+	/**
+	 * @return the numeroPartidas
+	 */
+	public int getNumeroPartidas() {
+		return numeroPartidas;
+	}
+
+
+	/**
+	 * @return the traza
+	 */
+	public boolean isTraza() {
+		return traza;
+	}
+
+	
 
 }

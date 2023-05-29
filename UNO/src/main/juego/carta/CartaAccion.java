@@ -1,7 +1,6 @@
 package main.juego.carta;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import main.juego.carta.acciones.Accion;
 import main.juego.carta.acciones.tipos.MasCuatro;
 import main.juego.carta.acciones.tipos.MasDos;
@@ -13,8 +12,7 @@ import main.juego.carta.colores.Colores;
  *
  */
 
-@Getter
-@Setter
+
 public class CartaAccion extends Carta{
 	
 	// ATRIBUTOS
@@ -86,5 +84,26 @@ public class CartaAccion extends Carta{
 	public String toString() {		
 		return color + " - " + this.accion.toString();
 	}
+
+
+
+	/**
+	 * @return la accion
+	 */
+	public Accion getAccion() {
+		return accion;
+	}
+
+
+
+	/**
+	 * @param accion la accion a establecer
+	 */
+	public void setAccion(Accion accion) {
+		this.accion = accion;
+	}
+	
+	
+	
 
 }
