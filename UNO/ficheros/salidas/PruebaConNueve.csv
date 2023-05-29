@@ -1,12 +1,12 @@
-JUGADORES;Jugador1;Jugador2;Jugador3;Jugador4;Jugador5;Jugador6;Jugador7;Jugador8;Jugador9;
-REGLAS;ReglaAzar;ReglaAzar;ReglaAzar;ReglaAzar;ReglaAzar;ReglaAzar;ReglaAzar;ReglaAzar;ReglaAzar;
-Cartas jugadas;795;902;882;831;862;866;862;795;861;
-Cartas robadas;278;211;217;242;244;233;238;280;238;
-Cartas +4 jugadas;75;47;54;38;40;36;32;30;37;
-Cartas +2 jugadas;103;65;54;81;85;67;72;115;63;
-Cartas Cambio de Sentido jugadas;88;71;56;56;75;52;47;93;50;
-Cartas Quitar Turno jugadas;53;75;63;63;79;65;74;55;86;
-Veces que ha cantado UNO;58;39;32;47;33;46;36;51;22;
-Veces que ha ganado;14;11;11;10;8;13;13;14;4;
+"JUGADORES";"Jugador1";"Jugador2";"Jugador3";"Jugador4";"Jugador5";"Jugador6";"Jugador7";"Jugador8";"Jugador9"
+"REGLAS";"ReglaAzar";"ReglaAzar";"ReglaAzar";"ReglaAzar";"ReglaAzar";"ReglaAzar";"ReglaAzar";"ReglaAzar";"ReglaAzar"
+"CARTAS JUGADAS";"732";"828";"790";"754";"779";"808";"797";"710";"807"
+"CARTAS ROBADAS";"221";"160";"200";"229";"216";"184";"166";"221";"175"
+"CARTAS +4";"72";"32";"28";"30";"30";"46";"26";"34";"34"
+"CARTAS +2";"88";"62";"57";"89";"85";"45";"71";"112";"63"
+"CARTAS CAMBIO DE SENTIDO";"78";"56";"38";"70";"76";"50";"45";"82";"59"
+"CARTAS QUITAR TURNO";"56";"71";"70";"58";"50";"51";"73";"52";"84"
+"VECES QUE CANTA UNO";"41";"24";"33";"58";"42";"38";"25";"46";"35"
+"VECES QUE HA GANADO";"14";"7";"7";"12";"11";"15";"12";"13";"7"
 
-Ganadores de todas las partidas;Jugador1;Jugador8;
+"GANADOR DE LAS PARTIDAS";"Jugador6"

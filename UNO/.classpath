@@ -9,15 +9,8 @@
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-annotations_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-core_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-databind_2.12.6.jar"/>
-	<classpathentry kind="lib" path="lib/csv/commons-collections4-4.4.jar"/>
-	<classpathentry kind="lib" path="lib/csv/commons-compress-1.21.jar"/>
-	<classpathentry kind="lib" path="lib/csv/commons-io-2.11.0.jar"/>
-	<classpathentry kind="lib" path="lib/csv/log4j-api-2.18.0.jar"/>
-	<classpathentry kind="lib" path="lib/csv/log4j-core-2.20.0.jar"/>
-	<classpathentry kind="lib" path="lib/csv/poi-5.2.3.jar"/>
-	<classpathentry kind="lib" path="lib/csv/poi-ooxml-5.2.3.jar"/>
-	<classpathentry kind="lib" path="lib/csv/poi-ooxml-full-5.2.3.jar"/>
-	<classpathentry kind="lib" path="lib/csv/xmlbeans-5.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/csv/opencsv-5.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/lombok/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

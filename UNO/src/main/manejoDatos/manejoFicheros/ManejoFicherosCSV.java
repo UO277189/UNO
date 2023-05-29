@@ -1,15 +1,21 @@
 package main.manejoDatos.manejoFicheros;
 
-import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvException;
 
 import main.algoritmoVoraz.reglas.Regla;
 import main.juego.GestionarJuegos;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
-
+import main.manejoDatos.EstadisticosJugador;
 
 /**
  * Clase para manejarse con los ficheros CSV de la aplicación
@@ -26,8 +32,6 @@ public class ManejoFicherosCSV {
 	// RUTAS
 	String rutaMetricas = ".\\ficheros\\\\salidas\\"; // Uso una ruta relativa
 
-	// SEPARADOR
-	String separador = ";"; // El separador a aplicar para diferenciar las columnas
 
 	/**
 	 * Método para extraer los datos de las partidas a un CVS
@@ -37,7 +41,7 @@ public class ManejoFicherosCSV {
 	public void escribirCSV(String nombreFichero, GestionarJuegos partidasJugadas) {
 
 		FileWriter fileWriter = null;
-		BufferedWriter writer = null;
+		CSVWriter writer = null;
 
 		try {
 			// Indicamos la ruta en la que cargar el fichero
@@ -47,10 +51,11 @@ public class ManejoFicherosCSV {
 			if (!csvMetricas.exists()) {
 				csvMetricas.createNewFile();
 			}
+			
 
 			// Se crean los objetos Writer
 			fileWriter = new FileWriter(csvMetricas);
-			writer = new BufferedWriter(fileWriter);
+			writer = new CSVWriter(fileWriter, ';','"', '"', "\n");
 
 			// Indicamos los campos a tener
 			writeDataToCSV(partidasJugadas, writer);
@@ -75,6 +80,9 @@ public class ManejoFicherosCSV {
 			}
 		}
 	}
+	
+	
+	
 
 	/**
 	 * Método con los datos a indicar en el CSV
@@ -84,104 +92,231 @@ public class ManejoFicherosCSV {
 	 * @throws IOException La excepción que podemos ir propagando porque se recoge
 	 *                     más arriba
 	 */
-	private void writeDataToCSV(GestionarJuegos partidasJugadas, BufferedWriter writer) throws IOException {
+	private void writeDataToCSV(GestionarJuegos partidasJugadas, CSVWriter writer) throws IOException {
 
-		// Primero el encabezado central con los jugadores de las partidas
-		writer.write("JUGADORES" + this.separador);
+		// ENCABEZADOS
+		List<String> encabezados = new ArrayList<>();
+		encabezados.add("JUGADORES");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getNombreJugador() + this.separador);
+			encabezados.add(partidasJugadas.getJugadores().get(i).getNombreJugador());
 		}
-		writer.newLine();
+		String [] lineaEncabezados = guardarEnArray(encabezados);
+		writer.writeNext(lineaEncabezados);
 		
-		// Luego se indican las reglas de cada jugador
-		writer.write("REGLAS" + this.separador);
+		
+		// REGLAS
+		List<String> reglas = new ArrayList<>();
+		reglas.add("REGLAS");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
 			if (partidasJugadas.getJugadores().get(i) instanceof JugadorManual) {
-				writer.write("No aplica reglas" + this.separador);
+				reglas.add("NO APLICA");
 			} else {
 				String reglasStr = "";
 				for (Regla regla : ((JugadorAutomatico)partidasJugadas.getJugadores().get(i)).getReglas()) {
 					reglasStr += regla.toString();
 				}
-				writer.write(reglasStr + this.separador);
+				reglas.add(reglasStr);
 			}
 		}
-		writer.newLine();
+		String [] lineaReglas = guardarEnArray(reglas);
+		writer.writeNext(lineaReglas);
 		
 		
-		// Resto de valores a incluir
-
-		writer.write("Cartas jugadas" + this.separador);
+		// CARTAS JUGADAS
+		List<String> cartasJugadas = new ArrayList<>();
+		cartasJugadas.add("CARTAS JUGADAS");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getCartasJugadas() + this.separador);
+			cartasJugadas.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasJugadas()));
 		}
-		writer.newLine();
-
-		writer.write("Cartas robadas" + this.separador);
+		String [] lineaCartasJugadas = guardarEnArray(cartasJugadas);
+		writer.writeNext(lineaCartasJugadas);
+		
+		
+		// CARTAS JUGADAS
+		List<String> cartasRobadas = new ArrayList<>();
+		cartasRobadas.add("CARTAS ROBADAS");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getCartasRobadas() + this.separador);
+			cartasRobadas.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasRobadas()));
 		}
-		writer.newLine();
-
-		writer.write("Cartas +4 jugadas" + this.separador);
+		String [] lineaCartasRobadas = guardarEnArray(cartasRobadas);
+		writer.writeNext(lineaCartasRobadas);
+		
+		
+		
+		// CARTAS +4 JUGADAS
+		List<String> cartasMasCuatro = new ArrayList<>();
+		cartasMasCuatro.add("CARTAS +4");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getCartasMasCuatroJugadas() + this.separador);
+			cartasMasCuatro.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasMasCuatroJugadas()));
 		}
-		writer.newLine();
-
-		writer.write("Cartas +2 jugadas" + this.separador);
+		String [] lineaCartasMasCuatro = guardarEnArray(cartasMasCuatro);
+		writer.writeNext(lineaCartasMasCuatro);
+		
+		
+		// CARTAS +2 JUGADAS
+		List<String> cartasMasDos = new ArrayList<>();
+		cartasMasDos.add("CARTAS +2");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getCartasMasDosJugadas() + this.separador);
+			cartasMasDos.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasMasDosJugadas()));
 		}
-		writer.newLine();
-
-		writer.write("Cartas Cambio de Sentido jugadas" + this.separador);
+		String [] lineaCartasMasDos = guardarEnArray(cartasMasDos);
+		writer.writeNext(lineaCartasMasDos);
+		
+		
+		// CARTAS CAMBIO DE SENTIDO JUGADAS
+		List<String> cartasCambioSentido = new ArrayList<>();
+		cartasCambioSentido.add("CARTAS CAMBIO DE SENTIDO");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getCartasCambiarSentidoJugadas() + this.separador);
+			cartasCambioSentido.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasCambiarSentidoJugadas()));
 		}
-		writer.newLine();
-
-		writer.write("Cartas Quitar Turno jugadas" + this.separador);
+		String [] lineaCartasCambioSentido = guardarEnArray(cartasCambioSentido);
+		writer.writeNext(lineaCartasCambioSentido);
+		
+		
+		// CARTAS QUITAR TURNO JUGADAS
+		List<String> cartasQuitarTurno = new ArrayList<>();
+		cartasQuitarTurno.add("CARTAS QUITAR TURNO");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getCartasQuitarTurnoJugadas() + this.separador);
+			cartasQuitarTurno.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasQuitarTurnoJugadas()));
 		}
-		writer.newLine();
+		String [] lineaCartasQuitarTurno = guardarEnArray(cartasQuitarTurno);
+		writer.writeNext(lineaCartasQuitarTurno);
+		
 
-		writer.write("Veces que ha cantado UNO" + this.separador);
+		//  VECES QUE HA GANADO UNO
+		List<String> cartasCantaUno = new ArrayList<>();
+		cartasCantaUno.add("VECES QUE CANTA UNO");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getVecesQueHaCantadoUno() + this.separador);
+			cartasCantaUno.add(Integer.toString(partidasJugadas.getJugadores().get(i).getVecesQueHaCantadoUno()));
 		}
-		writer.newLine();
-
-		writer.write("Veces que ha ganado" + this.separador);
+		String [] lineaCartasCantaUno = guardarEnArray(cartasCantaUno);
+		writer.writeNext(lineaCartasCantaUno);
+		
+		//  VECES QUE HA GANADO
+		List<String> ganador = new ArrayList<>();
+		ganador.add("VECES QUE HA GANADO");
 		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
-			writer.write(partidasJugadas.getJugadores().get(i).getVecesQueHaGanado() + this.separador);
+			ganador.add(Integer.toString(partidasJugadas.getJugadores().get(i).getVecesQueHaGanado()));
 		}
-		writer.newLine();
+		String [] lineaGanador = guardarEnArray(ganador);
+		writer.writeNext(lineaGanador);
+		
+		String [] saltoLinea = {};
+		writer.writeNext(saltoLinea);
 
-		writer.newLine(); // Otro más para diferenciar de lo anterior
-
+	
+		// GANADORES DE LAS PARTIDAS
+		List<String> ganadorGlobal = new ArrayList<>();
+		
+		
 		// Indicamos el ganador (o ganadores) de la partida
 		if (partidasJugadas.ganadoresDeTodasLasPartidas().size() > 1) {
-			writer.write("Ganadores de todas las partidas" + this.separador);
+			ganadorGlobal.add("GANADORES DE LAS PARTIDAS");
 			for (int i = 0; i < partidasJugadas.ganadoresDeTodasLasPartidas().size(); i++) {
-				writer.write(partidasJugadas.ganadoresDeTodasLasPartidas().get(i).getNombreJugador() + this.separador);
+				ganadorGlobal.add(partidasJugadas.ganadoresDeTodasLasPartidas().get(i).getNombreJugador());
 			}
 		} else {
-			writer.write("Ganador de todas las partidas" + this.separador);
-			writer.write(partidasJugadas.ganadoresDeTodasLasPartidas().get(0).getNombreJugador() + this.separador);
+			ganadorGlobal.add("GANADOR DE LAS PARTIDAS");
+			ganadorGlobal.add(partidasJugadas.ganadoresDeTodasLasPartidas().get(0).getNombreJugador());
 		}
+		String [] lineaGanadorGlobal = guardarEnArray(ganadorGlobal);
+		writer.writeNext(lineaGanadorGlobal);
+		
 	}
+	
+	
+
+	/**
+	 * Método para obtener los datos de un fichero CSV
+	 * @param nombreFichero El nombre del fichero
+	 * @return ArrayList<EstadisticosJugador>
+	 */
+	public ArrayList<EstadisticosJugador> leerCSV(String nombreFichero) {
+
+		FileReader fileReader = null;
+		CSVReader reader = null;
+
+		try {
+			// Indicamos la ruta en la que cargar el fichero
+			File csvMetricas = new File(rutaMetricas + nombreFichero + ".csv"); // Se indica una ruta relativa
+
+			// Para evitar errores
+			if (!csvMetricas.exists()) {
+				csvMetricas.createNewFile();
+			}
+
+			// Se crean los objetos Writer
+			fileReader = new FileReader(csvMetricas);
+			reader = new CSVReader(fileReader);
+
+			// Indicamos los campos a tener
+			return obtenerEstadisticosJugador(reader);
+
+		} catch (Exception e) {
+			System.out.println("Ha ocurrido un error al obtener los datos del csv.");
+		} finally {
+			try {
+				// Se cierran los ficheros en orden
+				if (reader != null) {
+					reader.close();
+				}
+
+				if (fileReader != null) {
+					fileReader.close();
+				}
+
+			} catch (IOException e) {
+				System.out.println("Ha ocurrido un error al obtener los datos del fichero csv.");
+			}
+		}
+		return null;
+	}
+	
 	
 	
 	/**
-	 * Devuelve el separador usado en los archivos CSV
-	 * 
-	 * @return String
+	 * Método que devuelve en un array los estadísticos de los jugadores
+	 * @param reader CSVReader
+	 * @return ArrayList<EstadisticosJugador>
+	 * @throws IOException Excepción del fichero 
+	 * @throws CsvException Excepción con la librería
 	 */
-	public String getSeparador() {
-		return this.separador;
+	private ArrayList<EstadisticosJugador> obtenerEstadisticosJugador(CSVReader reader) throws IOException, CsvException {
+		
+		ArrayList<EstadisticosJugador> jugadores = new ArrayList<EstadisticosJugador>();
+		List<String[]> lineas = reader.readAll();
+		
+		
+		for (int i = 1; i < lineas.size(); i++) {
+			String[] reglas = lineas.get(1)[i].split(",");
+			
+			EstadisticosJugador jugador = new EstadisticosJugador(
+					lineas.get(0)[i], reglas, Integer.valueOf(lineas.get(2)[i]), Integer.valueOf(lineas.get(3)[i]),
+					Integer.valueOf(lineas.get(4)[i]), Integer.valueOf(lineas.get(5)[i]), Integer.valueOf(lineas.get(6)[i]), 
+					Integer.valueOf(lineas.get(7)[i]), Integer.valueOf(lineas.get(8)[i]), Integer.valueOf(lineas.get(9)[i]));
+			
+			jugadores.add(jugador);
+		}
+		return jugadores;
 	}
-	
+
+
+
+
+	/**
+	 * Método que permite pasar los datos a un formato que opencsv 
+	 * puede usar para guardar la información
+	 * @param elementos List <String>
+	 * @return String[]
+	 */
+	private String[] guardarEnArray(List<String> elementos) {
+		String [] intercambio = new String[elementos.size()];
+		for (int i = 0; i < elementos.size(); i++) {
+			intercambio[i] = elementos.get(i);
+		}
+		return intercambio;
+	}
+
+
 
 }
