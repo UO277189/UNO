@@ -30,7 +30,8 @@ public class ManejoFicherosCSV {
 	// Atributos
 
 	// RUTAS
-	String rutaMetricas = ".\\ficheros\\\\salidas\\"; // Uso una ruta relativa
+	private String rutaMetricas = ".\\ficheros\\\\salidas\\"; // Uso una ruta relativa
+	private char SEPARADOR = ';';
 
 
 	/**
@@ -55,7 +56,7 @@ public class ManejoFicherosCSV {
 
 			// Se crean los objetos Writer
 			fileWriter = new FileWriter(csvMetricas);
-			writer = new CSVWriter(fileWriter, ';','"', '"', "\n");
+			writer = new CSVWriter(fileWriter, SEPARADOR,'"', '"', "\n");
 
 			// Indicamos los campos a tener
 			writeDataToCSV(partidasJugadas, writer);
@@ -248,7 +249,7 @@ public class ManejoFicherosCSV {
 			// Se crean los objetos Writer
 			fileReader = new FileReader(csvMetricas);
 			reader = new CSVReader(fileReader);
-
+			
 			// Indicamos los campos a tener
 			return obtenerEstadisticosJugador(reader);
 
