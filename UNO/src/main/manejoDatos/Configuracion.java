@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import lombok.Getter;
 import main.algoritmoVoraz.ensembles.Ensemble;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 
 /**
  * Clase que almacena los parámetros de configuración que se van a cargar en la partida
@@ -19,7 +19,7 @@ public class Configuracion {
 	// ATRIBUTOS
 	
 	private String nombreConfiguracion;
-	private ArrayList<JugadorAbstract> jugadoresPartida;
+	private ArrayList<Jugador> jugadoresPartida;
 	private FormaBarajar estrategiaBaraja;
 	private Ensemble ensemble;
 	private int numeroPartidas;
@@ -35,7 +35,7 @@ public class Configuracion {
 	 * @param numeroPartidas El número de partidas
 	 * @param traza Para mostrar la traza
 	 */
-	public Configuracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadoresPartida,
+	public Configuracion(String nombreConfiguracion, ArrayList<Jugador> jugadoresPartida,
 			FormaBarajar estrategiaBaraja, Ensemble ensemble, int numeroPartidas, boolean traza) {
 		super();
 		this.nombreConfiguracion = nombreConfiguracion;

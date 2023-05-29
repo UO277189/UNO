@@ -18,6 +18,11 @@ import main.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
  */
 public class ReglaFactory {
 	
+	/**
+	 * Método que crea las reglas heurísticas del juegi
+	 * @param reglaString String
+	 * @return Regla
+	 */
 	public static Regla crearRegla(String reglaString) {
 		Regla regla = null;
 

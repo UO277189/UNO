@@ -20,7 +20,7 @@ public class VorazUno {
 	 * @param cartaMedio    la carta del medio
 	 * @param cartasJugadas las cartas jugadas hasta el momento
 	 * @param regla         La regla a aplicar
-	 * @return ArrayList<Carta>  Las cartas que se pueden jugar
+	 * @return ArrayList	Las cartas que se pueden jugar
 	 */
 	public ArrayList<Carta> algoritmoVoraz(ArrayList<Carta> cartas, Carta cartaMedio, ArrayList<Carta> cartasJugadas,
 			Regla regla) {

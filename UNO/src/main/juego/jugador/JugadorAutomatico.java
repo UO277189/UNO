@@ -12,7 +12,7 @@ import main.juego.carta.colores.Colores;
  * @author Efrén García Valencia UO277189
  *
  */
-public class JugadorAutomatico extends JugadorAbstract{
+public class JugadorAutomatico extends Jugador{
 
 	private Ensemble ensemble; 
 	private ArrayList<Regla> reglas;
@@ -20,7 +20,7 @@ public class JugadorAutomatico extends JugadorAbstract{
 	/**
 	 * Constructor para el algoritmo que implementa reglas
 	 * @param nombreJugador El nombre del jugador
-	 * @param ArrayList<Regla> reglas
+	 * @param reglas Las reglas a implementar
 	 */
 	public JugadorAutomatico(String nombreJugador, ArrayList<Regla> reglas) {
 		super(nombreJugador);
@@ -84,7 +84,7 @@ public class JugadorAutomatico extends JugadorAbstract{
 
 	/**
 	 * Devuelve las reglas que implementa el algoritmo
-	 * @return ArrayList<Regla> Las reglas que implementa
+	 * @return ArrayList
 	 */
 	public ArrayList<Regla> getReglas() {
 		return reglas;

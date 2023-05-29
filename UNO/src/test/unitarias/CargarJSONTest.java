@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
 import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
 import main.manejoDatos.Configuracion;
@@ -31,6 +31,9 @@ public class CargarJSONTest {
 	private ByteArrayOutputStream salidaConsola;
 	
 	
+	/**
+	 * Para inicializar los parámetros que necesitaremos
+	 */
 	@Before
 	 public void inicializar() {
 	   manejoJSON = new ManejoFicherosJSON();
@@ -49,7 +52,7 @@ public class CargarJSONTest {
 	public void cargarVacioTest() {
 		manejoJSON.leerJSON("/pruebas/vacio");
 		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
 	
 	
@@ -60,7 +63,7 @@ public class CargarJSONTest {
 	public void cargarMalFormadoTest() {
 		manejoJSON.leerJSON("/pruebas/malFormado");
 		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO.SE CIERRA EL PROGRAMA"));
 	}
 
 	
@@ -74,7 +77,7 @@ public class CargarJSONTest {
 		assertTrue(salida.contains("Nombre no válido"));
 		assertTrue(salida.contains("Ha surgido un problema al cargar los jugadores"));
 		assertTrue(salida.contains("El número mínimo de partidas ha de ser uno"));
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDERÁ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. SE CIERRA EL PROGRAMA"));
 	}
 	
 	/**
@@ -87,7 +90,7 @@ public class CargarJSONTest {
 		assertTrue(salida.contains("Se ha introducido una regla que no existe"));
 		assertTrue(salida.contains("Se ha introducido una estrategia de barajar que no existe"));
 		assertTrue(salida.contains("Se ha introducido un ensemble que no existe"));
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDERÁ A CERRARSE"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. SE CIERRA EL PROGRAMA"));
 	}
 
 	/**
@@ -110,7 +113,7 @@ public class CargarJSONTest {
 		// Primera configuracion con jugadores automaticos
 		Configuracion configuracionUNO = configuraciones.get(0);
 		assertEquals(configuracionUNO.getNombreConfiguracion(), "pruebaCargaFicheroAutomatico");
-		for (JugadorAbstract jugador : configuracionUNO.getJugadoresPartida()) {
+		for (Jugador jugador : configuracionUNO.getJugadoresPartida()) {
 			assertTrue(jugador instanceof JugadorAutomatico);
 			assertEquals(jugador.getNombreJugador(), "Jugador");
 			assertEquals(((JugadorAutomatico)jugador).getReglas().get(0).toString(), "ReglaAzar");
@@ -124,7 +127,7 @@ public class CargarJSONTest {
 		// Segunda configuracion con jugadores manuales
 		Configuracion configuracionDOS = configuraciones.get(1);
 		assertEquals(configuracionDOS.getNombreConfiguracion(), "pruebaCargaFicheroManual");
-		for (JugadorAbstract jugador : configuracionDOS.getJugadoresPartida()) {
+		for (Jugador jugador : configuracionDOS.getJugadoresPartida()) {
 			assertTrue(jugador instanceof JugadorManual);
 			assertEquals(jugador.getNombreJugador(), "Jugador");
 		}

@@ -177,7 +177,7 @@ public class Baraja {
    /**
      * Da un número de cartas a indicar de la baraja que NO van al montón de descarte
      * @param cartas int
-     * @return ArrayList <Carta>
+     * @return ArrayList
      */
     public ArrayList<Carta> darCartas(int cartas) {
    	
@@ -205,7 +205,11 @@ public class Baraja {
 
     /**
      * Método para repartir una carta 
-     * @param carta Carta
+     */
+    
+    /**
+     * Método para repartir una carta 
+     * @return Carta
      */
     public Carta robarCarta() {
     	if (barajaCartas.size() == 0) {
@@ -218,7 +222,7 @@ public class Baraja {
 
     /**
      * Nos dice si se puede robar una carta o no
-     * @return
+     * @return FALSE si no hay carta para robar, TRUE si la hay
      */
 	public boolean hayCartaParaRobar() {
     	if (barajaCartas.size() == 0) {
@@ -275,7 +279,10 @@ public class Baraja {
 	}
     
     
-
+    /**
+     * Devuelve la baraja de cartas
+     * @return ArrayList
+     */
 	public ArrayList<Carta> getBarajaCartas() {
 		return barajaCartas;
 	}

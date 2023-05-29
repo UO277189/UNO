@@ -12,6 +12,11 @@ import main.juego.carta.acciones.tipos.QuitarTurno;
  */
 public class AccionFactory {
 	
+	/**
+	 * Método para crear la acción correspondiente
+	 * @param tipo String
+	 * @return Accion
+	 */
 	public static Accion crearAccion (String tipo) {
 		
 		Accion accion = null;

@@ -27,6 +27,11 @@ public class MontonAMonton implements FormaBarajar {
 
 	// CONSTRUCTOR
 
+	/**
+	 * Constructor para la estrategia de barajar MontonAMonton
+	 * @param cardInLot Las cartas en un montón
+	 * @param lotToExchange La candtidad de montones que se van a formar
+	 */
 	public MontonAMonton(int cardInLot, int lotToExchange) {
 		this.cardInLot = cardInLot;
 		this.lotToExchange = lotToExchange;

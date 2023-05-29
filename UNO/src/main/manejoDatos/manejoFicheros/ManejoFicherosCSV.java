@@ -239,7 +239,7 @@ public class ManejoFicherosCSV {
 	/**
 	 * Método para obtener los datos de un fichero CSV
 	 * @param nombreFichero El nombre del fichero
-	 * @return ArrayList<EstadisticosJugador>
+	 * @return ArrayList
 	 */
 	public ArrayList<EstadisticosJugador> leerCSV(String nombreFichero) {
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import main.algoritmoVoraz.ensembles.Ensemble;
 import main.juego.GestionarJuegos;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 import main.manejoDatos.Configuracion;
 import main.manejoDatos.manejoConsola.ConfigurarPartidaConsola;
 import main.manejoDatos.manejoConsola.LeerConsola;
@@ -170,7 +170,7 @@ public class JugarPartida {
 		// Objeto configuración para guardar los datos
 
 		String nombreFichero = leerDatosManual.elegirNombreConfiguracion();
-		ArrayList<JugadorAbstract> jugadores = leerDatosManual.elegirJugadores();
+		ArrayList<Jugador> jugadores = leerDatosManual.elegirJugadores();
 		FormaBarajar estrategia = leerDatosManual.elegirEstrategiaBaraja();
 		Ensemble ensemble = leerDatosManual.elegirEnsemble();
 		int numeroPartidas = leerDatosManual.elegirNumeroPartidas();
@@ -234,7 +234,7 @@ public class JugarPartida {
 	 * @param numeroPartidas Número de partidas
 	 * @param verTraza       Traza a observar
 	 */
-	private static void ejecutarPartidas(String nombreFichero, ArrayList<JugadorAbstract> jugadores,
+	private static void ejecutarPartidas(String nombreFichero, ArrayList<Jugador> jugadores,
 			FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas, boolean verTraza) {
 
 		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará

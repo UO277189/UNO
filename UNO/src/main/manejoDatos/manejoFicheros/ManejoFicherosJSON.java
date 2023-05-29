@@ -14,7 +14,7 @@ import main.algoritmoVoraz.reglas.Regla;
 import main.algoritmoVoraz.reglas.ReglaFactory;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.baraja.estrategiasBaraja.FormaBarajarFactory;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
 import main.manejoDatos.Configuracion;
@@ -35,8 +35,8 @@ public class ManejoFicherosJSON {
 
 	/**
 	 * Método para leer las configuraciones del fichero JSON
-	 * @param nombreJSON
-	 * @return ArrayList<Configuracion>
+	 * @param nombreJSON El nombre del fichero JSON
+	 * @return ArrayList
 	 */
 	public ArrayList<Configuracion> leerJSON(String nombreJSON) {
 		
@@ -52,13 +52,13 @@ public class ManejoFicherosJSON {
            	// Almacenamos las configuraciones en el array que luego devolvemos
            	configuraciones.add(generarConfiguracion(configuracionNode));
        } catch (IOException e) {
-       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE");
+       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA");
        	configuraciones.clear();
        } catch (IllegalArgumentException e) {
-       	System.out.println("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. EL PROGRAMA PROCEDERÁ A CERRARSE");
+       	System.out.println("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. SE CIERRA EL PROGRAMA");
        	configuraciones.clear();
        }  catch (NullPointerException e) {
-       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. EL PROGRAMA PROCEDERÁ A CERRARSE");
+       	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA");
        	configuraciones.clear();
        }
        
@@ -169,7 +169,7 @@ public class ManejoFicherosJSON {
 	 */
 	private Configuracion generarConfiguracion(JsonNode configuracionNode) {
 		String nombreConfiguracion = configuracionNode.get("nombre_configuracion").asText();
-		ArrayList<JugadorAbstract> jugadores = generarJugadores(configuracionNode.get("jugadores"));
+		ArrayList<Jugador> jugadores = generarJugadores(configuracionNode.get("jugadores"));
 		FormaBarajar estrategia = generarEstrategia(configuracionNode.get("estrategia"));
 		Ensemble ensemble = generarEnsemble(configuracionNode.get("ensemble").asText());
 		int numeroPartidas = configuracionNode.get("numero_partidas").asInt();
@@ -193,7 +193,7 @@ public class ManejoFicherosJSON {
 	 * @param numeroPartidas 		El número de partidas
 	 * @param traza 				Para mostrar la traza
 	 */
-	private void revisarConfiguracion(String nombreConfiguracion, ArrayList<JugadorAbstract> jugadores,
+	private void revisarConfiguracion(String nombreConfiguracion, ArrayList<Jugador> jugadores,
 			FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas, boolean traza) {
 
 		boolean configuracionOK = true;
@@ -245,8 +245,8 @@ public class ManejoFicherosJSON {
 	 * @param jsonNode El node con el que se trabaja
 	 * @return ArrayList<JugadorAbstract>
 	 */
-	private ArrayList<JugadorAbstract> generarJugadores(JsonNode jugadoresNode) {
-		ArrayList<JugadorAbstract> jugadores = new ArrayList<JugadorAbstract>();
+	private ArrayList<Jugador> generarJugadores(JsonNode jugadoresNode) {
+		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 		for (JsonNode jugador : jugadoresNode) {
 			String reglas = jugador.get("regla").asText();
 			if (reglas.equals("no_aplica")) { // Jugador manual
@@ -308,7 +308,7 @@ public class ManejoFicherosJSON {
 			System.out.print(i+1 + "- ");
 			System.out.println("\tNombre de la configuración: " + configuraciones.get(i).getNombreConfiguracion());
 			System.out.println("\tJugadores:");
-			for (JugadorAbstract jugador: configuraciones.get(i).getJugadoresPartida()) {
+			for (Jugador jugador: configuraciones.get(i).getJugadoresPartida()) {
 				if (jugador instanceof JugadorManual) {
 					System.out.println("\t   MANUAL \n\t       Nombre: " + jugador.getNombreJugador());
 				} else {

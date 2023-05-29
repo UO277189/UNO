@@ -10,11 +10,15 @@ import main.manejoDatos.manejoConsola.LeerConsola;
  * @author Efrén García Valencia UO277189
  *
  */
-public class JugadorManual extends JugadorAbstract {
+public class JugadorManual extends Jugador {
 	
     // Clase para leer por consola
     private LeerConsola leerConsola = new LeerConsola();
     
+    /**
+     * Constructor para el jugador manual
+     * @param nombreJugador El nombre del jugador
+     */
 	public JugadorManual(String nombreJugador) {
 		super(nombreJugador);
 	}

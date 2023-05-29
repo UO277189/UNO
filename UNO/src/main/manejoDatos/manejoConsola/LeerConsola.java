@@ -48,7 +48,6 @@ public class LeerConsola {
     
     /**
      * Método para leer un único valor de entrada 
-     * @param i El valor a leer
      * @return int
      */
 	public int leerCualquierValor() {

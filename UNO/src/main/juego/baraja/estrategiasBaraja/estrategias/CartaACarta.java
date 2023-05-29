@@ -24,6 +24,10 @@ public class CartaACarta implements FormaBarajar{
 	
 	// CONSTRUCTOR
 	
+	/**
+	 * Constructor para el tipo de barajar CartaACarta
+	 * @param cardsToExchange int
+	 */
 	public CartaACarta(int cardsToExchange) {
 		this.cardsToExchange = cardsToExchange;
 	}

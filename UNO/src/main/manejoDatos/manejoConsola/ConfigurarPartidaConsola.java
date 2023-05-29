@@ -11,7 +11,7 @@ import main.algoritmoVoraz.reglas.ReglaFactory;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
 import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
 
@@ -45,13 +45,12 @@ public class ConfigurarPartidaConsola {
 
 
 	/**
-	 * Método para elegir los jugadores de la partida y la estrategia que van a
-	 * emplear
+	 * Método para elegir los jugadores de la partida y la estrategia que van a emplear
 	 * 
-	 * @return ArrayList<JugadorAbstract> La lista de jugadores a incluir
+	 * @return ArrayList
 	 */
-	public ArrayList<JugadorAbstract> elegirJugadores() {
-		ArrayList<JugadorAbstract> jugadores = new ArrayList<JugadorAbstract>();
+	public ArrayList<Jugador> elegirJugadores() {
+		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 		System.out.print("Por favor, seleccione el número de jugadores (Mínimo: 2): ");
 		int rangoJugadores = leerConsola.leerValorRango(2, Integer.MAX_VALUE);
 
@@ -138,7 +137,7 @@ public class ConfigurarPartidaConsola {
 	 * 
 	 * @return boolean Si se quiere ver la traza o no
 	 */
-	public boolean elegirVerTraza(ArrayList<JugadorAbstract> jugadores) {
+	public boolean elegirVerTraza(ArrayList<Jugador> jugadores) {
 
 		System.out.print("Por favor, elija si desea ver la traza de la partida al final (0 - Si, 1 - No): ");
 		int value = this.leerConsola.leerValorRango(0, 1);
@@ -235,6 +234,10 @@ public class ConfigurarPartidaConsola {
 
 	
 
+	/**
+	 * Método para elegir el ensemble de la aplicación
+	 * @return Ensemble
+	 */
 	public Ensemble elegirEnsemble() {
 
 		System.out.println("A continuación se muestran los ensembles que hay en la aplicación");

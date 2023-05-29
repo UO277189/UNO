@@ -8,7 +8,7 @@ import main.juego.carta.Carta;
 import main.juego.carta.CartaAccion;
 import main.juego.carta.acciones.Accion;
 import main.juego.carta.colores.Colores;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 
 /**
  * Clase que maneja la lógica de una partida del juego UNO
@@ -27,7 +27,7 @@ public class Juego {
 	private boolean orden;
 
 	// Los jugadores de la partida
-	private ArrayList<JugadorAbstract> jugadores;
+	private ArrayList<Jugador> jugadores;
 
 	// Para saber cual es el turno actual
 	private int turnoActual;
@@ -68,10 +68,10 @@ public class Juego {
 	/**
 	 * Constructor que se usa para iniciar una partida
 	 * 
-	 * @param jugadores ArrayList<Jugador>
+	 * @param jugadores ArrayList
 	 * @param barajar   BarajarStrategy
 	 */
-	public Juego(ArrayList<JugadorAbstract> jugadores, FormaBarajar barajar) {
+	public Juego(ArrayList<Jugador> jugadores, FormaBarajar barajar) {
 
 		// Establecemos los jugadores
 		this.jugadores = jugadores;
@@ -98,11 +98,11 @@ public class Juego {
 	 * Constructor que se usa para iniciar una partida indicando además si se ve la
 	 * traza o no
 	 * 
-	 * @param jugadores ArrayList<Jugador>
+	 * @param jugadores ArrayList
 	 * @param barajar   BarajarStrategy
 	 * @param traza     boolean
 	 */
-	public Juego(ArrayList<JugadorAbstract> jugadores, FormaBarajar barajar, boolean traza) {
+	public Juego(ArrayList<Jugador> jugadores, FormaBarajar barajar, boolean traza) {
 		// Establecemos los jugadores
 		this.jugadores = jugadores;
 
@@ -152,7 +152,7 @@ public class Juego {
 	 * @param cartasRepartidas int
 	 */
 	private void darCartasJugadores(int cartasRepartidas) {
-		for (JugadorAbstract jugador : this.getJugadores()) {
+		for (Jugador jugador : this.getJugadores()) {
 			jugador.setCartasMano(this.barajaUNO.darCartas(cartasRepartidas));
 		}
 	}
@@ -280,7 +280,7 @@ public class Juego {
 	private void robarCartasPorEfecto() {
 
 		// El jugador afectado, que es el siguietne
-		JugadorAbstract actual = this.getJugadorActual();
+		Jugador actual = this.getJugadorActual();
 		// Las cartas que tiene que robar
 		ArrayList<Carta> sumaCartas;
 
@@ -386,9 +386,9 @@ public class Juego {
 	 * 
 	 * @return JugadorUNO
 	 */
-	private JugadorAbstract quienGanaPartida() {
-		JugadorAbstract jugadorGanador = null;
-		for (JugadorAbstract jugador : this.getJugadores()) {
+	private Jugador quienGanaPartida() {
+		Jugador jugadorGanador = null;
+		for (Jugador jugador : this.getJugadores()) {
 			if (jugador.quedanCartas() == false) {
 				jugadorGanador = jugador;
 				// El jugador ha ganado la partida y se tiene que guardar
@@ -403,9 +403,9 @@ public class Juego {
 	 * Método que devuelve el jugador ganador de la partida
 	 * @return JugadorUNO
 	 */
-	private JugadorAbstract jugadorGanador() {
-		JugadorAbstract jugadorGanador = null;
-		for (JugadorAbstract jugador : this.getJugadores()) {
+	private Jugador jugadorGanador() {
+		Jugador jugadorGanador = null;
+		for (Jugador jugador : this.getJugadores()) {
 			if (jugador.quedanCartas() == false) {
 				jugadorGanador = jugador;
 			}
@@ -437,12 +437,11 @@ public class Juego {
 
 	/**
 	 * Método que devuelve los jugadores de la partida
-	 * 
-	 * @param jugadores ArrayList<Jugadores>
+	 * @return ArrayList
 	 */
-	public ArrayList<JugadorAbstract> getJugadores() {
-		ArrayList<JugadorAbstract> copy = new ArrayList<JugadorAbstract>();
-		for (JugadorAbstract jugador : this.jugadores) {
+	public ArrayList<Jugador> getJugadores() {
+		ArrayList<Jugador> copy = new ArrayList<Jugador>();
+		for (Jugador jugador : this.jugadores) {
 			copy.add(jugador);
 		}
 		return copy;
@@ -453,7 +452,7 @@ public class Juego {
 	 * 
 	 * @return Jugador
 	 */
-	public JugadorAbstract getJugadorActual() {
+	public Jugador getJugadorActual() {
 		return this.getJugadores().get(turnoActual);
 	}
 
@@ -469,7 +468,7 @@ public class Juego {
 	/**
 	 * Devuelve el array que tiene toda la información de la partida
 	 * 
-	 * @return ArrayList<String>
+	 * @return ArrayList
 	 */
 	public ArrayList<String> getlogPartidas() {
 		return logPartidas;
@@ -498,9 +497,9 @@ public class Juego {
 		// Si llegamos al límite aceptado de rondas
 		if (rondas >= maxRondas) {
 			// Caso especial, este se muestra por consola siempre
-			System.out.println(" - SE HA LLEGADO AL MÁXIMO DE RONDAS EN LA PARTIDA, SE DESCARTA");
+			System.out.println(" - SE HA LLEGADO AL FINAL DE RONDAS EN LA PARTIDA, SE DESCARTA");
 			this.hasReachedMaxRondas = true;
-			this.guardarDatos(" - SE HA LLEGADO AL MÁXIMO DE RONDAS EN LA PARTIDA, SE DESCARTA");
+			this.guardarDatos(" - SE HA LLEGADO AL FINAL DE RONDAS EN LA PARTIDA, SE DESCARTA");
 
 			// Como la partida se descarta, se almacena el mensaje
 			this.almacenarRondasString();
@@ -527,7 +526,7 @@ public class Juego {
 			// Para evitar excepciones si pulsas una letra al jugar
 			this.guardarDatos("ERROR: introduzca un carácter válido");
 		} else {
-			// Si pides robar una carta (NO DEBERÍA DEJAR SI TIENES ALGO QUE SE PUEDA ECHAR)
+			// Si pides robar una carta (NO DEBE DEJAR SI TIENES ALGO QUE SE PUEDA ECHAR)
 			if (nuevaCarta == -1) {
 				// Roba una carta
 				this.robaCartaRonda();
@@ -644,7 +643,7 @@ public class Juego {
 	 * Limpia los datos de los jugadores
 	 */
 	public void limpiarJugadores() {
-		for (JugadorAbstract jugador : this.jugadores) {
+		for (Jugador jugador : this.jugadores) {
 			jugador.vaciarDatos();
 		}
 	}

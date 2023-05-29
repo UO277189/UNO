@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import main.algoritmoVoraz.ensembles.Ensemble;
 import main.juego.baraja.estrategiasBaraja.FormaBarajar;
-import main.juego.jugador.JugadorAbstract;
+import main.juego.jugador.Jugador;
 import main.juego.jugador.JugadorAutomatico;
 import main.juego.jugador.JugadorManual;
 
@@ -22,7 +22,7 @@ public class GestionarJuegos {
 	private ArrayList<Juego> juegos;
 
 	// Lista de jugadores
-	private ArrayList<JugadorAbstract> jugadores;
+	private ArrayList<Jugador> jugadores;
 
 	// Estrategia para barajar
 	private FormaBarajar estrategia;
@@ -47,7 +47,7 @@ public class GestionarJuegos {
 	 * @param ensemble       El ensemble que se va a aplicar
 	 * @param numeroPartidas El número de partidas a jugar
 	 */
-	public GestionarJuegos(ArrayList<JugadorAbstract> jugadores, FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas) {
+	public GestionarJuegos(ArrayList<Jugador> jugadores, FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas) {
 		this.jugadores = jugadores;
 		this.estrategia = estrategia;
 		this.numeroPartidas = numeroPartidas;
@@ -71,8 +71,8 @@ public class GestionarJuegos {
 	 * @param jugadores La lista de jugadores 
 	 * @return boolean true si hay jugador manual, false si no lo hay
 	 */
-	private boolean hayJugadorManual(ArrayList<JugadorAbstract> jugadores) {
-		for (JugadorAbstract jugador : jugadores) {
+	private boolean hayJugadorManual(ArrayList<Jugador> jugadores) {
+		for (Jugador jugador : jugadores) {
 			if (jugador instanceof JugadorManual) {
 				return true;
 			}
@@ -85,8 +85,8 @@ public class GestionarJuegos {
 	 * Método para asignar el ensemble a los jugadores
 	 * @param jugadores La lista de jugadores
 	 */
-	private void asignarEnsembleJugadores(ArrayList<JugadorAbstract> jugadores) {
-		for (JugadorAbstract jugador : jugadores) {
+	private void asignarEnsembleJugadores(ArrayList<Jugador> jugadores) {
+		for (Jugador jugador : jugadores) {
 			if (jugador instanceof JugadorAutomatico) {
 				((JugadorAutomatico)jugador).asignarEnsemble(this.ensemble);
 			}
@@ -112,7 +112,7 @@ public class GestionarJuegos {
 	 * Método para jugar una partida
 	 */
 	private void jugarUnaPartida() {
-		ArrayList<JugadorAbstract> jugadoresPartida = this.clonarJugadores();
+		ArrayList<Jugador> jugadoresPartida = this.clonarJugadores();
 
 		Juego uno = new Juego(jugadoresPartida, estrategia, traza);
 		while (uno.finPartida() == false) {
@@ -138,10 +138,10 @@ public class GestionarJuegos {
 	 * 
 	 * @return ArrayList<JugadorAbstract> Los jugadores clonados
 	 */
-	private ArrayList<JugadorAbstract> clonarJugadores() {
-		ArrayList<JugadorAbstract> jugadoresClon = new ArrayList<JugadorAbstract>();
-		JugadorAbstract jugadorAIncluir = null;
-		for (JugadorAbstract jugador : this.jugadores) {
+	private ArrayList<Jugador> clonarJugadores() {
+		ArrayList<Jugador> jugadoresClon = new ArrayList<Jugador>();
+		Jugador jugadorAIncluir = null;
+		for (Jugador jugador : this.jugadores) {
 			if (jugador instanceof JugadorAutomatico) {
 				jugadorAIncluir = new JugadorAutomatico(jugador.getNombreJugador(),
 						((JugadorAutomatico) jugador).getReglas());
@@ -181,7 +181,7 @@ public class GestionarJuegos {
 
 		// Posteriormente se muestra
 		System.out.println("");
-		for (JugadorAbstract jugador : this.jugadores) {
+		for (Jugador jugador : this.jugadores) {
 			jugador.informacionJugadorPartida();
 		}
 
@@ -194,13 +194,13 @@ public class GestionarJuegos {
 	 */
 	private void ganadorPartidas() {
 		// PROBLEMA: ¿Y si dos o más personas ganaron más partidas?
-		ArrayList<JugadorAbstract> jugadoresGanadores = new ArrayList<JugadorAbstract>();
+		ArrayList<Jugador> jugadoresGanadores = new ArrayList<Jugador>();
 
 		// Iteramos una vez para hallar el máximo
 		int partidasGanadas = this.getPartidasGanadas();
 
 		// Iteramos otra vez para buscar si hay algún empate
-		for (JugadorAbstract jugador : this.jugadores) {
+		for (Jugador jugador : this.jugadores) {
 			if (jugador.getVecesQueHaGanado() == partidasGanadas) {
 				jugadoresGanadores.add(jugador);
 			}
@@ -214,7 +214,7 @@ public class GestionarJuegos {
 			System.out.println("GANADOR DE TODAS LAS PARTIDAS: " + jugadoresGanadores.get(0).getNombreJugador());
 		} else {
 			System.out.println("GANADORES DE LAS PARTIDAS: ");
-			for (JugadorAbstract jugador : jugadoresGanadores) {
+			for (Jugador jugador : jugadoresGanadores) {
 				System.out.println("	- " + jugador.getNombreJugador());
 			}
 		}
@@ -231,7 +231,7 @@ public class GestionarJuegos {
 	 */
 	private int getPartidasGanadas() {
 		int partidasGanadas = 0;
-		for (JugadorAbstract jugador : this.jugadores) {
+		for (Jugador jugador : this.jugadores) {
 			if (jugador.getVecesQueHaGanado() >= partidasGanadas) {
 				partidasGanadas = jugador.getVecesQueHaGanado();
 			}
@@ -256,17 +256,17 @@ public class GestionarJuegos {
 	/**
 	 * Método que devuelve al ganador de todas las partidas
 	 * 
-	 * @return ArrayList<JugadorAbstract> El array con el ganador/ganadores de todas las partidas
+	 * @return ArrayList
 	 */
-	public ArrayList<JugadorAbstract> ganadoresDeTodasLasPartidas() {	
+	public ArrayList<Jugador> ganadoresDeTodasLasPartidas() {	
 		// PROBLEMA: ¿Y si dos o más personas ganaron más partidas?
-		ArrayList<JugadorAbstract> jugadoresGanadores = new ArrayList<JugadorAbstract>();
+		ArrayList<Jugador> jugadoresGanadores = new ArrayList<Jugador>();
 
 		// Iteramos una vez para hallar el máximo
 		int partidasGanadas = this.getPartidasGanadas();
 
 		// Iteramos otra vez para buscar si hay algún empate
-		for (JugadorAbstract jugador : this.jugadores) {
+		for (Jugador jugador : this.jugadores) {
 			if (jugador.getVecesQueHaGanado() == partidasGanadas) {
 				jugadoresGanadores.add(jugador);
 			}
@@ -278,15 +278,15 @@ public class GestionarJuegos {
 	/**
 	 * Devuelve los jugadores de la partidas
 	 * 
-	 * @return ArrayList<JugadorAbstract>
+	 * @return ArrayList
 	 */
-	public ArrayList<JugadorAbstract> getJugadores() {
+	public ArrayList<Jugador> getJugadores() {
 		return jugadores;
 	}
 
 	/**
 	 * Devuelve los juegos a evaluar
-	 * @return ArrayList<Juego>
+	 * @return ArrayList
 	 */
 	public ArrayList<Juego> getJuegos() {
 		return juegos;
