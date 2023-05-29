@@ -6,10 +6,14 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-annotations_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-core_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-databind_2.12.6.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/csv/opencsv-5.7.1.jar"/>
 	<classpathentry kind="lib" path="lib/lombok/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
