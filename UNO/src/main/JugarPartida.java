@@ -86,13 +86,17 @@ public class JugarPartida {
 	 * Muestra el logo de la aplicacion
 	 */
 	private static void logoAplicacion() {
-		System.out.println(" -------                                     ------- ");
-		System.out.println("|   *   |    U	   U   N     N   O  O  O    |   +   |");
-		System.out.println("|   *   |    U	   U   N  N  N   O     O    |   +   |");
-		System.out.println("|   *   |    U	   U   N     N   O     O    |   +   |");
-		System.out.println("|   *   |    U	   U   N         O     O    |   +   |");
-		System.out.println("|   *   |       U      N         O  O  O    |   +   |");
-		System.out.println(" -------                                     ------- ");
+		
+		System.out.println(" -----------                                 JAVA    -----------  ");
+		System.out.println("|           |                                       |           | ");
+		System.out.println("|   ---     |   1       1   1       1   1 1 1 1 1   |     ---   | ");
+		System.out.println("|  |   |    |  	1       1   1 1     1   1       1   |    |   |  | ");
+		System.out.println("|  |  -|-   |   1       1   1   1   1   1       1   |   -|-  |  | ");
+		System.out.println("|   -|-  |  |   1       1   1     1 1   1       1   |  |  -|-   | ");
+		System.out.println("|    |   |  |   1       1   1       1   1       1   |  |   |    | ");
+		System.out.println("|     ---   |   1       1   1           1       1   |   ---     | ");
+		System.out.println("|           |   1 1 1 1 1   1           1 1 1 1 1   |           | ");
+		System.out.println(" ----------                                          -----------  ");
 	}
 
 	/**
