@@ -18,7 +18,7 @@ public class EnsembleVotacion extends Ensemble {
 	
 	
 	@Override
-	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio,
+	public int execute(ArrayList<Carta> cartas, Carta cartaMedio,
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 		// Variables locales
 		VorazUno voraz = new VorazUno();

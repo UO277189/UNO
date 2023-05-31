@@ -1,0 +1,33 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "pruebaCSV",
+      "jugadores": [
+        {
+          "nombre": "Jugador 1",
+          "regla": "ReglaAzar"
+        },        
+        {
+          "nombre": "Jugador 2",
+          "regla": "ReglaAzar"
+        },        
+        {
+          "nombre": "Jugador 3",
+          "regla": "ReglaAzar"
+        },        
+        {
+          "nombre": "Jugador 4",
+          "regla": "ReglaAzar"
+        }
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleVotacion",
+      "numero_partidas": 100,
+      "traza": false
+    }
+  ]
+}

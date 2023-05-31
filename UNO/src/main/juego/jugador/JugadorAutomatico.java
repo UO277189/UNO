@@ -78,7 +78,7 @@ public class JugadorAutomatico extends Jugador{
 	@Override
 	public int jugarTurno(Carta enMedio, ArrayList<Carta> historial) {
 		// Aplica el algoritmo correspondiente con las cartas de la mano y la carta en medio
-		return ensemble.ejecutarEnsemble(getCartasMano(), enMedio, historial, reglas);
+		return ensemble.execute(getCartasMano(), enMedio, historial, reglas);
 	}
 
 

@@ -1,5 +1,6 @@
 package test.unitarias;
 
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -24,7 +25,7 @@ import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
  * @author Efrén García Valencia UO277189
  *
  */
-public class CargarJSONTest {
+public class JSONTest {
 	
 	// ATRIBUTOS
 	private ManejoFicherosJSON manejoJSON;
@@ -50,7 +51,7 @@ public class CargarJSONTest {
 	 */
 	@Test
 	public void cargarVacioTest() {
-		manejoJSON.leerJSON("/pruebas/vacio");
+		manejoJSON.leerJSON("/pruebas/json/vacio");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
@@ -61,9 +62,9 @@ public class CargarJSONTest {
 	 */
 	@Test
 	public void cargarMalFormadoTest() {
-		manejoJSON.leerJSON("/pruebas/malFormado");
+		manejoJSON.leerJSON("/pruebas/json/malFormado");
 		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO.SE CIERRA EL PROGRAMA"));
+		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
 
 	
@@ -72,7 +73,7 @@ public class CargarJSONTest {
 	 */
 	@Test
 	public void cargarParametrosNoValidosTest() {
-		manejoJSON.leerJSON("/pruebas/parametrosNoValidos");
+		manejoJSON.leerJSON("/pruebas/json/parametrosNoValidos");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Nombre no válido"));
 		assertTrue(salida.contains("Ha surgido un problema al cargar los jugadores"));
@@ -85,7 +86,7 @@ public class CargarJSONTest {
 	 */
 	@Test
 	public void cargarParametrosInventadosTest() {
-		manejoJSON.leerJSON("/pruebas/parametrosInventados");
+		manejoJSON.leerJSON("/pruebas/json/parametrosInventados");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Se ha introducido una regla que no existe"));
 		assertTrue(salida.contains("Se ha introducido una estrategia de barajar que no existe"));
@@ -101,7 +102,7 @@ public class CargarJSONTest {
 		
 		// Cargamos las configuraciones
 		ArrayList<Configuracion> configuraciones = 
-				manejoJSON.leerJSON("/pruebas/cargaFicheroCorrecta"); 
+				manejoJSON.leerJSON("/pruebas/json/cargaFicheroCorrecta"); 
 		
 		// Comprobamos que se cargue el fichero correctamente
 		String salida = salidaConsola.toString();
@@ -120,7 +121,7 @@ public class CargarJSONTest {
 		}
 		assertTrue(configuracionUNO.getEstrategiaBaraja() instanceof CartaACarta);
 		assertEquals(((CartaACarta)configuracionUNO.getEstrategiaBaraja()).getCardsToExchange(), 60);
-		assertEquals(configuracionUNO.getEnsemble().toString(), "NoEnsemble");
+		assertEquals(configuracionUNO.getEnsemble().toString(), "EnsembleVotacion");
 		assertEquals(configuracionUNO.getNumeroPartidas(), 100);
 		assertEquals(configuracionUNO.isTraza(), false);
 		
@@ -134,10 +135,41 @@ public class CargarJSONTest {
 		assertTrue(configuracionDOS.getEstrategiaBaraja() instanceof MontonAMonton);
 		assertEquals(((MontonAMonton)configuracionDOS.getEstrategiaBaraja()).getCardInLot(), 10);
 		assertEquals(((MontonAMonton)configuracionDOS.getEstrategiaBaraja()).getLotToExchange(), 5);
-		assertEquals(configuracionDOS.getEnsemble().toString(), "NoEnsemble");
+		assertEquals(configuracionDOS.getEnsemble().toString(), "EnsembleVotacion");
 		assertEquals(configuracionDOS.getNumeroPartidas(), 100);
 		assertEquals(configuracionDOS.isTraza(), true);
 	}
 
+	/**
+	 * Test que verifica que por defecto el ensemble a introducir sea el de votación
+	 */
+	@Test
+	public void cargarFicheroCorrectamenteEnsemblePorDefecto() {
+		
+		// Cargamos las configuraciones
+		ArrayList<Configuracion> configuraciones = 
+				manejoJSON.leerJSON("/pruebas/json/cargaFicheroCorrectaEnsemblePorDefecto"); 
+		
+		// Comprobamos que se cargue el fichero correctamente
+		String salida = salidaConsola.toString();
+		assertTrue(salida.contains("CARGA DEL FICHERO CORRECTA"));
+		
+		
+		// Revisamos que las configuraciones sean correctas
+		
+		// Primera configuracion con jugadores automaticos
+		Configuracion configuracionUNO = configuraciones.get(0);
+		assertEquals(configuracionUNO.getNombreConfiguracion(), "pruebaCargaFicheroAutomatico");
+		for (Jugador jugador : configuracionUNO.getJugadoresPartida()) {
+			assertTrue(jugador instanceof JugadorAutomatico);
+			assertEquals(jugador.getNombreJugador(), "Jugador");
+			assertEquals(((JugadorAutomatico)jugador).getReglas().get(0).toString(), "ReglaAzar");
+		}
+		assertTrue(configuracionUNO.getEstrategiaBaraja() instanceof CartaACarta);
+		assertEquals(((CartaACarta)configuracionUNO.getEstrategiaBaraja()).getCardsToExchange(), 60);
+		assertEquals(configuracionUNO.getEnsemble().toString(), "EnsembleVotacion");
+		assertEquals(configuracionUNO.getNumeroPartidas(), 100);
+		assertEquals(configuracionUNO.isTraza(), false);
+	}
 
 }

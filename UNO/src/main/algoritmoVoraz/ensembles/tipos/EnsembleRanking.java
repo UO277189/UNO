@@ -21,7 +21,7 @@ public class EnsembleRanking extends Ensemble {
 	
 
 	@Override
-	public int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio,
+	public int execute(ArrayList<Carta> cartas, Carta cartaMedio,
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 
 		// La idea es desde un Map sumar puntuaciones según la posición en la que esté

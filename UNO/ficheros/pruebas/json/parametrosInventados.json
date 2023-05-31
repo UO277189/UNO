@@ -1,7 +1,7 @@
 {
   "configuraciones": [
     {
-      "nombre_configuracion": "",
+      "nombre_configuracion": "parametrosInventados",
       "jugadores": [
         {
           "nombre": "Jugador1",

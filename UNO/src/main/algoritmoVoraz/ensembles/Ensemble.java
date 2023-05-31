@@ -35,7 +35,7 @@ public abstract class Ensemble {
 	 * @param reglas Las reglas que se van a ejecutar
 	 * @return int La posición de la carta a jugar
 	 */
-	public abstract int ejecutarEnsemble(ArrayList<Carta> cartas, Carta cartaMedio, 
+	public abstract int execute(ArrayList<Carta> cartas, Carta cartaMedio, 
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas);
 
 	
