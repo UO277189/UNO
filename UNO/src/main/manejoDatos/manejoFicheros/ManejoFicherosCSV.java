@@ -30,7 +30,7 @@ public class ManejoFicherosCSV {
 	// Atributos
 
 	// RUTAS
-	private String rutaMetricas = ".\\ficheros\\\\salidas\\"; // Uso una ruta relativa
+	private String rutaMetricas = ".\\ficheros\\"; // Uso una ruta relativa
 	private char SEPARADOR = ';';
 
 
@@ -250,11 +250,6 @@ public class ManejoFicherosCSV {
 			// Indicamos la ruta en la que cargar el fichero
 			File csvMetricas = new File(rutaMetricas + nombreFichero + ".csv"); // Se indica una ruta relativa
 
-			// Para evitar errores
-			if (!csvMetricas.exists()) {
-				csvMetricas.createNewFile();
-			}
-
 			// Se crean los objetos Writer
 			fileReader = new FileReader(csvMetricas);
 			reader = new CSVReader(fileReader);
@@ -263,7 +258,7 @@ public class ManejoFicherosCSV {
 			return obtenerEstadisticosJugador(reader);
 
 		} catch (Exception e) {
-			System.out.println("Ha ocurrido un error al obtener los datos del csv.");
+			System.out.println("Ha ocurrido un error al obtener los datos del fichero CSV.");
 		} finally {
 			try {
 				// Se cierran los ficheros en orden
@@ -276,7 +271,7 @@ public class ManejoFicherosCSV {
 				}
 
 			} catch (IOException e) {
-				System.out.println("Ha ocurrido un error al obtener los datos del fichero csv.");
+				System.out.println("Ha ocurrido un error al obtener los datos del fichero CSV.");
 			}
 		}
 		return null;
@@ -296,20 +291,43 @@ public class ManejoFicherosCSV {
 		ArrayList<EstadisticosJugador> jugadores = new ArrayList<EstadisticosJugador>();
 		List<String[]> lineas = reader.readAll();
 		
-		
-		for (int i = 1; i < lineas.size(); i++) {
-			String[] reglas = lineas.get(1)[i].split(",");
+		// Recogemos todas las líneas de datos
+		String [] cabecera = lineas.get(0)[0].split(";");
+		String [] reglas = lineas.get(1)[0].split(";");
+		String [] cJugadas = lineas.get(2)[0].split(";");
+		String [] cRobadas = lineas.get(3)[0].split(";");
+		String [] cMasCuatro = lineas.get(4)[0].split(";");
+		String [] cMasDos = lineas.get(5)[0].split(";");
+		String [] cSentido = lineas.get(6)[0].split(";");
+		String [] cTurno = lineas.get(7)[0].split(";");
+		String [] cTrampa = lineas.get(8)[0].split(";");
+		String [] cCanta = lineas.get(9)[0].split(";");
+		String [] cGana = lineas.get(10)[0].split(";");
+
+		for (int i = 1; i < cabecera.length; i++) {
+
 			
-			EstadisticosJugador jugador = new EstadisticosJugador(
-					lineas.get(0)[i], reglas, Integer.valueOf(lineas.get(2)[i]), Integer.valueOf(lineas.get(3)[i]),
-					Integer.valueOf(lineas.get(4)[i]), Integer.valueOf(lineas.get(5)[i]), Integer.valueOf(lineas.get(6)[i]), 
-					Integer.valueOf(lineas.get(7)[i]), Integer.valueOf(lineas.get(8)[i]), Integer.valueOf(lineas.get(9)[i]), 
-					Integer.valueOf(lineas.get(10)[i]));
+			// OJO con las comillas dobles
+			EstadisticosJugador jugador = new EstadisticosJugador(cabecera[i].replace("\"", ""), 
+					reglas[i].replace("\"", ""), Integer.valueOf(cJugadas[i].replace("\"", "")), 
+					Integer.valueOf(cRobadas[i].replace("\"", "")), Integer.valueOf(cMasCuatro[i].replace("\"", "")), 
+					Integer.valueOf(cMasDos[i].replace("\"", "")), Integer.valueOf(cSentido[i].replace("\"", "")),
+					Integer.valueOf(cTurno[i].replace("\"", "")), Integer.valueOf(cTrampa[i].replace("\"", "")), 
+					Integer.valueOf(cCanta[i].replace("\"", "")), Integer.valueOf(cGana[i].replace("\"", "")));
 			
 			jugadores.add(jugador);
 		}
+		
+	
+		
+		if (!jugadores.isEmpty()) {
+			System.out.println("Se ha cargado el fichero CSV correctamente.");
+		}
+		
 		return jugadores;
 	}
+	
+
 
 
 

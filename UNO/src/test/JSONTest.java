@@ -1,4 +1,4 @@
-package test.unitarias;
+package test;
 
 
 import static org.junit.Assert.assertEquals;
@@ -22,6 +22,7 @@ import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
 /**
  * Esta clase se encargará de estudiar todos los casos posibles que afectan a la carga de datos
  * de ficheros JSON
+ * Sirve para verificar que la carga de ficheros JSON funciona de cara a pruebas más complejas
  * @author Efrén García Valencia UO277189
  *
  */
@@ -113,7 +114,7 @@ public class JSONTest {
 		
 		// Primera configuracion con jugadores automaticos
 		Configuracion configuracionUNO = configuraciones.get(0);
-		assertEquals(configuracionUNO.getNombreConfiguracion(), "pruebaCargaFicheroAutomatico");
+		assertEquals(configuracionUNO.getNombreConfiguracion(), "cargaFicheroCorrecta");
 		for (Jugador jugador : configuracionUNO.getJugadoresPartida()) {
 			assertTrue(jugador instanceof JugadorAutomatico);
 			assertEquals(jugador.getNombreJugador(), "Jugador");
@@ -159,7 +160,7 @@ public class JSONTest {
 		
 		// Primera configuracion con jugadores automaticos
 		Configuracion configuracionUNO = configuraciones.get(0);
-		assertEquals(configuracionUNO.getNombreConfiguracion(), "pruebaCargaFicheroAutomatico");
+		assertEquals(configuracionUNO.getNombreConfiguracion(), "cargaFicheroCorrectaEnsemblePorDefecto");
 		for (Jugador jugador : configuracionUNO.getJugadoresPartida()) {
 			assertTrue(jugador instanceof JugadorAutomatico);
 			assertEquals(jugador.getNombreJugador(), "Jugador");

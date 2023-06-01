@@ -116,7 +116,7 @@ public class Baraja {
      * Método para barajar las cartas de la baraja. El parámetro indica si se mantiene la carta del centro o no
      * @param keepTheMiddle boolean
      */
-    private void barajarCartas(boolean keepTheMiddle) {
+    public void barajarCartas(boolean keepTheMiddle) {
     	
 
         // Primero se devuelven todas las cartas de descarte al montón a barajar
@@ -216,6 +216,10 @@ public class Baraja {
         	// Si no hay cartas tenemos que barajar de nuevo
     		this.barajarCartas(true); // Mantenemos la carta del medio
     	}
+    	
+    	if (barajaCartas.size() == 0) { // Si sigue siendo 0
+    		throw new IndexOutOfBoundsException("No hay cartas");
+    	}
     	return this.barajaCartas.remove(this.barajaCartas.size()-1);
     }
     
@@ -303,5 +307,33 @@ public class Baraja {
     		System.out.println(i + " - " + this.barajaDescarte.get(i));
     	}
     }
+
+
+    /**
+     * Devuelve la baraja de descarte
+     * @return ArrayList
+     */
+	public ArrayList<Carta> getBarajaDescarte() {
+		return barajaDescarte;
+	}
+	
+    
+    /**
+     * Método para generar una baraja particular
+     * @param cartasMonton Las cartas del montón de robar
+     * @param cartasDescarte Las cartas de descarte
+     * @param cartaCentro La carta del centro
+     */
+    public void formarBarajaPersonalizada(ArrayList<Carta> cartasMonton, ArrayList<Carta> cartasDescarte, Carta cartaCentro) {
+    	this.barajaCartas = cartasMonton;
+    	this.barajaDescarte = cartasDescarte;
+    	this.cartaCentro = null; // Se elimina la carta del centro
+    	
+    	if (cartaCentro != null) {
+    		this.cartaCentro = cartaCentro;
+    		barajaDescarte.add(cartaCentro);
+    	}   	
+    }
+    
 
 }

@@ -36,6 +36,9 @@ public class CartaACarta implements FormaBarajar{
 	@Override
 	public void execute(Baraja baraja) {
 		
+		// Antes que nada validamos que los parámetros sean correctos
+		validarParametros();
+		
 		ArrayList<Carta> barajaCartas = baraja.getBarajaCartas();
 		int size = barajaCartas.size() - 1;
 		
@@ -57,6 +60,19 @@ public class CartaACarta implements FormaBarajar{
 	
 	}
 	
+
+	/**
+	 * Método que valida que los parámetros sean correctos y saca una excepción en caso de 
+	 * que no lo sean
+	 */
+	private void validarParametros() {
+		if (this.cardsToExchange == 0) {
+			throw new IllegalArgumentException("Las cartas a intercambiar no pueden ser 0");
+		}
+		if (this.cardsToExchange < 0) {
+			throw new IllegalArgumentException("Las cartas a intercambiar no pueden ser negativas");
+		}
+	}
 
 
 	@Override

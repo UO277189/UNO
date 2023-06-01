@@ -10,7 +10,7 @@ public class EstadisticosJugador {
 	// ATRIBUTOS
 	
 	private String nombre;
-	private String[] reglas;
+	private String reglas;
 	private int cartasJugadas;
 	private int cartasRobadas;
 	private int cartasMasCuatroJugadas;
@@ -37,7 +37,7 @@ public class EstadisticosJugador {
 	 * @param vecesQueCantaUno 				Las veces que canta uno
 	 * @param vecesQueHaGanado 				Las veces que gana
 	 */
-	public EstadisticosJugador(String nombre, String[] reglas, int cartasJugadas, int cartasRobadas,
+	public EstadisticosJugador(String nombre, String reglas, int cartasJugadas, int cartasRobadas,
 			int cartasMasCuatroJugadas, int cartasMasDosJugadas, int cartasCambioSentidoJugadas,
 			int cartasQuitarTurnoJugadas, int vecesQueHizoTrampas, int vecesQueCantaUno, int vecesQueHaGanado) {
 		super();
@@ -68,7 +68,7 @@ public class EstadisticosJugador {
 	/**
 	 * @return las reglas
 	 */
-	public String[] getReglas() {
+	public String getReglas() {
 		return reglas;
 	}
 

@@ -40,6 +40,9 @@ public class MontonAMonton implements FormaBarajar {
 	@Override
 	public void execute(Baraja baraja) {
 
+		// Antes que nada validamos que los parámetros sean correctos
+		validarParametros();
+		
 		ArrayList<Carta> barajaCartas = baraja.getBarajaCartas();
 		int size = barajaCartas.size() - 1;
 
@@ -92,6 +95,27 @@ public class MontonAMonton implements FormaBarajar {
 				
 				i++;
 			}
+		}
+	}
+	
+	
+
+	/**
+	 * Método que valida que los parámetros sean correctos y saca una excepción en caso de 
+	 * que no lo sean
+	 */
+	private void validarParametros() {
+		if (this.cardInLot == 0) {
+			throw new IllegalArgumentException("El número de cartas del montón no puede ser 0");
+		}
+		if (this.cardInLot < 0) {
+			throw new IllegalArgumentException("El número de cartas del montón no puede ser negativo");
+		}
+		if (this.lotToExchange == 0) {
+			throw new IllegalArgumentException("Los montones no pueden ser 0");
+		}
+		if (this.lotToExchange < 0) {
+			throw new IllegalArgumentException("Los montones no pueden ser negativos");
 		}
 	}
 	

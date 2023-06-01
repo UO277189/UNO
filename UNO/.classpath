@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/json/com.fasterxml.jackson.core.jackson-databind_2.12.6.jar"/>
 	<classpathentry kind="lib" path="lib/csv/opencsv-5.7.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="lib/csv/commons-lang3-3.12.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
