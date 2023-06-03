@@ -2,7 +2,6 @@ package main.algoritmoVoraz.ensembles.tipos;
 
 import java.util.ArrayList;
 
-import main.algoritmoVoraz.VorazUno;
 import main.algoritmoVoraz.ensembles.Ensemble;
 import main.algoritmoVoraz.reglas.Regla;
 import main.juego.carta.Carta;
@@ -21,7 +20,7 @@ public class EnsembleVotacion extends Ensemble {
 	public int execute(ArrayList<Carta> cartas, Carta cartaMedio,
 			ArrayList<Carta> cartasJugadas, ArrayList<Regla> reglas) {
 		// Variables locales
-		VorazUno voraz = new VorazUno();
+
 		ArrayList<Integer> posiciones = new ArrayList<Integer>();
 
 		for (Regla regla : reglas) { // Para cada regla buscamos añadir una posición

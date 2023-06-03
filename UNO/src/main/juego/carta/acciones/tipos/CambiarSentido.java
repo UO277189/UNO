@@ -3,9 +3,9 @@ package main.juego.carta.acciones.tipos;
 import main.juego.Juego;
 import main.juego.carta.acciones.Accion;
 
-
 /**
  * Clase que representa la estrategia de cambio de sentido
+ * 
  * @author Efrén García Valencia UO277189
  *
  */

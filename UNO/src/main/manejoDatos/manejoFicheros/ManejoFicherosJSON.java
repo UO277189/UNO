@@ -222,7 +222,7 @@ public class ManejoFicherosJSON {
 		
 		// Ensemble
 		
-		if (estrategia == null) {
+		if (ensemble == null) {
 			System.out.println("Se ha introducido un ensemble que no existe");
 			configuracionOK = false;
 		}

@@ -25,7 +25,7 @@ public class EnsembleFactory {
 		} else if (ensemble.equals("EnsembleVotacion")) {
 			return new EnsembleVotacion();
 		} else {
-			return new EnsembleVotacion(); // Si no hay ningún ensemble devuelve el de votación
+			return null;
 		}
 	}
 

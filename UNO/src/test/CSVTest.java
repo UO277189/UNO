@@ -24,7 +24,6 @@ import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
 public class CSVTest {
 
 	// ATRIBUTOS
-	private ManejoFicherosJSON manejoJSON;
 	private ManejoFicherosCSV manejoCSV;
 	private ByteArrayOutputStream salidaConsola;
 
@@ -33,7 +32,6 @@ public class CSVTest {
 	 */
 	@Before
 	public void inicializar() {
-		manejoJSON = new ManejoFicherosJSON();
 		manejoCSV = new ManejoFicherosCSV();
 
 		// Para las pruebas nos interesa redirigir la salida de la consola

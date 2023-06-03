@@ -17,7 +17,7 @@
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
       },
-      "ensemble": "NoEnsemble",
+      "ensemble": "EnsembleVotacion",
       "numero_partidas": 1,
       "traza": true
     },
@@ -47,7 +47,7 @@
         "parametroInicial": 10,
         "parametroAdicional": 5
       },
-      "ensemble": "NoEnsemble",
+      "ensemble": "EnsembleVotacion",
       "numero_partidas": 100,
       "traza": true
     },

@@ -79,6 +79,7 @@ public class JSONTest {
 		assertTrue(salida.contains("Nombre no válido"));
 		assertTrue(salida.contains("Ha surgido un problema al cargar los jugadores"));
 		assertTrue(salida.contains("El número mínimo de partidas ha de ser uno"));
+		assertTrue(salida.contains("Se ha introducido un ensemble que no existe"));
 		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL VALIDAR LOS DATOS INTRODUCIDOS. SE CIERRA EL PROGRAMA"));
 	}
 	
