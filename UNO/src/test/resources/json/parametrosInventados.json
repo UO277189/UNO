@@ -1,0 +1,31 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "parametrosInventados",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaInventada"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaInventada"
+        },        {
+          "nombre": "Jugador3",
+          "regla": "ReglaInventada"
+        },        {
+          "nombre": "Jugador4",
+          "regla": "ReglaInventada"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "EstrategiaInventada",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleInventado",
+      "numero_partidas": 100,
+      "traza": false
+    }
+  ]
+}

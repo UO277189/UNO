@@ -1,0 +1,190 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "EjemploAutomatico",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador3",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador4",
+          "regla": "ReglaAzar"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleVotacion",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "TrioAleatorio",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzarReglaAzarReglaAzar"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzarReglaAzarReglaAzar"
+        },        {
+          "nombre": "Jugador3",
+          "regla": "ReglaAzarReglaAzarReglaAzar"
+        },        {
+          "nombre": "Jugador4",
+          "regla": "ReglaAzarReglaAzarReglaAzar"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "MostrarTrazaConDos",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 1000,
+      "traza": true
+    },
+    {
+      "nombre_configuracion": "PruebaConNueve",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador3",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador4",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador5",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador6",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador7",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador8",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador9",
+          "regla": "ReglaAzar"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 60,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "EjemploManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "no_aplica"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "no_aplica"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "MontonAMonton",
+        "parametroInicial": 10,
+        "parametroAdicional": 5
+      },
+      "ensemble": "EnsembleVotacion",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "Mixto4Jugadores",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "Jugador3",
+          "regla": "no_aplica"
+        },        {
+          "nombre": "Jugador4",
+          "regla": "no_aplica"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "MontonAMonton",
+        "parametroInicial": 10,
+        "parametroAdicional": 5
+      },
+      "ensemble": "EnsembleVotacion",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "prueba",
+      "jugadores": [
+        {
+          "nombre": "a",
+          "regla": "ReglaAzar"
+        },        {
+          "nombre": "b",
+          "regla": "ReglaAzar"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 15,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleVotacion",
+      "numero_partidas": 100,
+      "traza": true
+    }
+  ]
+}
