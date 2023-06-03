@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 
 import static org.junit.Assert.assertEquals;
@@ -8,8 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
 import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
@@ -36,7 +36,7 @@ public class JSONTest {
 	/**
 	 * Para inicializar los parámetros que necesitaremos
 	 */
-	@Before
+	@BeforeEach
 	 public void inicializar() {
 	   manejoJSON = new ManejoFicherosJSON();
 	   

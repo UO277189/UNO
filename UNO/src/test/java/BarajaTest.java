@@ -1,12 +1,13 @@
-package test;
+package test.java;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import main.juego.baraja.Baraja;
 import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
@@ -36,7 +37,7 @@ public class BarajaTest {
 	/**
 	 * Para inicializar los parámetros que necesitaremos
 	 */
-	@Before
+	@BeforeEach
 	public void inicializar() {
 		baraja = new Baraja(new CartaACarta(60)); // La estrategia a usar no afecta a esta clase de test
 	}

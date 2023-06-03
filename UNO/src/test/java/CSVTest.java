@@ -1,18 +1,20 @@
-package test;
+package test.java;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import main.manejoDatos.EstadisticosJugador;
 import main.manejoDatos.manejoFicheros.ManejoFicherosCSV;
-import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
+
+
 
 /**
  * Esta clase se encargará de verificar que el sistema entiende lo que es un CSV correcto y uno incorrecto
@@ -30,7 +32,7 @@ public class CSVTest {
 	/**
 	 * Para inicializar los parámetros que necesitaremos
 	 */
-	@Before
+	@BeforeEach
 	public void inicializar() {
 		manejoCSV = new ManejoFicherosCSV();
 
