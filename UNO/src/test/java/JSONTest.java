@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
-import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.juego.jugador.Jugador;
-import main.juego.jugador.JugadorAutomatico;
-import main.juego.jugador.JugadorManual;
-import main.manejoDatos.Configuracion;
-import main.manejoDatos.manejoFicheros.ManejoFicherosJSON;
+import main.java.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
+import main.java.juego.jugador.Jugador;
+import main.java.juego.jugador.JugadorAutomatico;
+import main.java.juego.jugador.JugadorManual;
+import main.java.manejoDatos.Configuracion;
+import main.java.manejoDatos.manejoFicheros.ManejoFicherosJSON;
 
 /**
  * Esta clase se encargará de estudiar todos los casos posibles que afectan a la carga de datos
@@ -52,7 +52,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarVacioTest() {
-		manejoJSON.leerJSON("/pruebas/json/vacio");
+		manejoJSON.leerJSON("/test/resources/json/vacio");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
@@ -63,7 +63,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarMalFormadoTest() {
-		manejoJSON.leerJSON("/pruebas/json/malFormado");
+		manejoJSON.leerJSON("/test/resources/json/malFormado");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
@@ -74,7 +74,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarParametrosNoValidosTest() {
-		manejoJSON.leerJSON("/pruebas/json/parametrosNoValidos");
+		manejoJSON.leerJSON("/test/resources/json/parametrosNoValidos");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Nombre no válido"));
 		assertTrue(salida.contains("Ha surgido un problema al cargar los jugadores"));
@@ -88,7 +88,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarParametrosInventadosTest() {
-		manejoJSON.leerJSON("/pruebas/json/parametrosInventados");
+		manejoJSON.leerJSON("/test/resources/json/parametrosInventados");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Se ha introducido una regla que no existe"));
 		assertTrue(salida.contains("Se ha introducido una estrategia de barajar que no existe"));
@@ -104,7 +104,7 @@ public class JSONTest {
 		
 		// Cargamos las configuraciones
 		ArrayList<Configuracion> configuraciones = 
-				manejoJSON.leerJSON("/pruebas/json/cargaFicheroCorrecta"); 
+				manejoJSON.leerJSON("/test/resources/json/cargaFicheroCorrecta"); 
 		
 		// Comprobamos que se cargue el fichero correctamente
 		String salida = salidaConsola.toString();
@@ -150,7 +150,7 @@ public class JSONTest {
 		
 		// Cargamos las configuraciones
 		ArrayList<Configuracion> configuraciones = 
-				manejoJSON.leerJSON("/pruebas/json/cargaFicheroCorrectaEnsemblePorDefecto"); 
+				manejoJSON.leerJSON("/test/resources/json/cargaFicheroCorrectaEnsemblePorDefecto"); 
 		
 		// Comprobamos que se cargue el fichero correctamente
 		String salida = salidaConsola.toString();

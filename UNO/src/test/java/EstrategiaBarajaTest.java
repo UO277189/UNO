@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.juego.baraja.Baraja;
-import main.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
-import main.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.juego.carta.Carta;
-import main.juego.carta.CartaAccion;
-import main.juego.carta.CartaNumerica;
-import main.juego.carta.acciones.tipos.CambiarSentido;
-import main.juego.carta.acciones.tipos.MasCuatro;
-import main.juego.carta.acciones.tipos.MasDos;
-import main.juego.carta.acciones.tipos.QuitarTurno;
+import main.java.juego.baraja.Baraja;
+import main.java.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
+import main.java.juego.carta.Carta;
+import main.java.juego.carta.CartaAccion;
+import main.java.juego.carta.CartaNumerica;
+import main.java.juego.carta.acciones.tipos.CambiarSentido;
+import main.java.juego.carta.acciones.tipos.MasCuatro;
+import main.java.juego.carta.acciones.tipos.MasDos;
+import main.java.juego.carta.acciones.tipos.QuitarTurno;
 
 /**
  * Clase de test que verifica que las estrategias de la baraja funcionen

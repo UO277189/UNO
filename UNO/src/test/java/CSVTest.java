@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.manejoDatos.EstadisticosJugador;
-import main.manejoDatos.manejoFicheros.ManejoFicherosCSV;
+import main.java.manejoDatos.EstadisticosJugador;
+import main.java.manejoDatos.manejoFicheros.ManejoFicherosCSV;
 
 
 
@@ -48,7 +48,7 @@ public class CSVTest {
 	 */
 	@Test
 	public void cargarCSVIncorrectoTest() {
-		ArrayList<EstadisticosJugador> jugadores = manejoCSV.leerCSV("/pruebas/csv/CSVIncorrecto");
+		ArrayList<EstadisticosJugador> jugadores = manejoCSV.leerCSV("/test/resources/csv/CSVIncorrecto");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Ha ocurrido un error al obtener los datos del fichero CSV."));
 		assertEquals(jugadores, null); // Devuelve un objeto NULL
@@ -60,7 +60,7 @@ public class CSVTest {
 	 */
 	@Test
 	public void cargarCSVCorrectaTest() {
-		ArrayList<EstadisticosJugador> jugadores = manejoCSV.leerCSV("/pruebas/csv/CSVCorrecto");
+		ArrayList<EstadisticosJugador> jugadores = manejoCSV.leerCSV("/test/resources/csv/CSVCorrecto");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Se ha cargado el fichero CSV correctamente."));
 		
