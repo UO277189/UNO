@@ -8,6 +8,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaPriorizarConta
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaAzar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasDos;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
 
@@ -53,6 +54,9 @@ public class ReglaFactory {
 		if (reglaString.contains("ReglaNoPriorizarContarNumerosAcciones"))
 			regla = new ReglaNoPriorizarContarNumerosAcciones();
 
+		if (reglaString.contains("ReglaPrimeraCarta"))
+			regla = new ReglaPrimeraCarta();
+		
 		return regla;
 	}
 

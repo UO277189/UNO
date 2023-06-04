@@ -3,7 +3,11 @@ package main.java.juego;
 import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.ensembles.Ensemble;
+import main.java.juego.baraja.Baraja;
 import main.java.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.java.juego.carta.Carta;
+import main.java.juego.carta.CartaNumerica;
+import main.java.juego.carta.colores.Colores;
 import main.java.juego.jugador.Jugador;
 import main.java.juego.jugador.JugadorAutomatico;
 import main.java.juego.jugador.JugadorManual;
@@ -29,12 +33,15 @@ public class GestionarJuegos {
 
 	// El ensemble que se va a aplicar
 	private Ensemble ensemble;
-	
+
 	// Número de partidas
 	private int numeroPartidas;
 
 	// Para saber si mostrar la traza
 	private boolean traza;
+
+	// La baraja de cartas para los test
+	private Baraja baraja;
 
 	// Estadísticos adicionales para mostrar si se descarta alguna partida
 	private int partidasDescartadas;
@@ -47,7 +54,8 @@ public class GestionarJuegos {
 	 * @param ensemble       El ensemble que se va a aplicar
 	 * @param numeroPartidas El número de partidas a jugar
 	 */
-	public GestionarJuegos(ArrayList<Jugador> jugadores, FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas) {
+	public GestionarJuegos(ArrayList<Jugador> jugadores, FormaBarajar estrategia, Ensemble ensemble,
+			int numeroPartidas) {
 		this.jugadores = jugadores;
 		this.estrategia = estrategia;
 		this.numeroPartidas = numeroPartidas;
@@ -61,14 +69,44 @@ public class GestionarJuegos {
 
 		// Asignamos el ensemble a los jugadores
 		asignarEnsembleJugadores(this.jugadores);
-		
+
 		// Hay que inicializar los arrays
 		this.juegos = new ArrayList<Juego>();
 	}
-	
+
+	/**
+	 * Constructor con un parametro especial para indicar la baraja de juego
+	 * 
+	 * @param jugadores      La lista de jugadores
+	 * @param baraja         La baraja de cartas
+	 * @param ensemble       El ensemble que se va a aplicar
+	 * @param numeroPartidas El número de partidas a jugar
+	 */
+	public GestionarJuegos(ArrayList<Jugador> jugadores, Baraja baraja, Ensemble ensemble, int numeroPartidas) {
+		this.jugadores = jugadores;
+		this.baraja = baraja;
+		this.numeroPartidas = numeroPartidas;
+		if (hayJugadorManual(jugadores)) {
+			// Si hay un jugador manual se muestran los datos por consola
+			this.traza = true;
+		}
+		
+		this.estrategia = baraja.getBarajarStrategy();
+		this.ensemble = ensemble;
+
+		this.partidasDescartadas = 0;
+
+		// Asignamos el ensemble a los jugadores
+		asignarEnsembleJugadores(this.jugadores);
+
+		// Hay que inicializar los arrays
+		this.juegos = new ArrayList<Juego>();
+	}
+
 	/**
 	 * Método que devuelve true si en el array de jugadores hay jugadores manuales
-	 * @param jugadores La lista de jugadores 
+	 * 
+	 * @param jugadores La lista de jugadores
 	 * @return boolean true si hay jugador manual, false si no lo hay
 	 */
 	private boolean hayJugadorManual(ArrayList<Jugador> jugadores) {
@@ -80,15 +118,15 @@ public class GestionarJuegos {
 		return false;
 	}
 
-
 	/**
 	 * Método para asignar el ensemble a los jugadores
+	 * 
 	 * @param jugadores La lista de jugadores
 	 */
 	private void asignarEnsembleJugadores(ArrayList<Jugador> jugadores) {
 		for (Jugador jugador : jugadores) {
 			if (jugador instanceof JugadorAutomatico) {
-				((JugadorAutomatico)jugador).asignarEnsemble(this.ensemble);
+				((JugadorAutomatico) jugador).asignarEnsemble(this.ensemble);
 			}
 		}
 	}
@@ -127,9 +165,79 @@ public class GestionarJuegos {
 		}
 		// Se guardan los resultados de las partidas
 		uno.resultadoPartida();
-		
+
 		// Al acabar la partida almacenamos los resultados
 		this.juegos.add(uno);
+	}
+
+	/**
+	 * Método para iterar y jugar múltiples partidas con una baraja especial
+	 * 
+	 * @param turnoInicial int
+	 */
+	public void jugarPartidasBarajaEspecial(int turnoInicial) {
+		for (int i = 0; i < this.numeroPartidas; i++) {
+			if (traza) {
+				System.out.println("");
+				System.out.println("EMPIEZA LA PARTIDA: " + (i + 1));
+				System.out.println("");
+			}
+			jugarUnaPartidaBarajaEspecial(turnoInicial);
+			System.out.println("Termina la partida " + i);
+		}
+	}
+
+	/**
+	 * Método para jugar una partida con la baraja especial
+	 * 
+	 * @param turnoInicial Para indicar el turno inicial de la partida
+	 */
+	private void jugarUnaPartidaBarajaEspecial(int turnoInicial) {
+		ArrayList<Jugador> jugadoresPartida = this.clonarJugadores();
+		Baraja barajaPartida = this.clonarBaraja(); // Hay que clonar la baraja también para que no quede "sucia"
+		
+		Juego uno = new Juego(jugadoresPartida, barajaPartida, turnoInicial, traza); // El turno inicial siempre es 0 para los
+																				// tests
+		while (uno.finPartida() == false) {
+			if (!uno.isReachedMaxRondas()) {
+				uno.jugarRonda();
+			} else {
+				// Si llega al límite salimos
+				uno.limpiarJugadores(); // Borramos los datos de estos jugadores para evitar contaminar el estudio
+				this.partidasDescartadas++; // Se incrementa el número de partidas descartadas
+				break;
+			}
+		}
+		// Se guardan los resultados de las partidas
+		uno.resultadoPartida();
+
+		// Al acabar la partida almacenamos los resultados
+		this.juegos.add(uno);
+	}
+
+	
+	/**
+	 * Método para clonar la baraja
+	 * @return Baraja
+	 */
+	private Baraja clonarBaraja() {
+		
+		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
+		ArrayList<Carta> cartasRobar = new ArrayList<Carta>();
+		
+		for (int i = 0; i < this.baraja.getBarajaCartas().size(); i++) {
+			cartasMonton.add(this.baraja.getBarajaCartas().get(i));
+		}
+		for (int i = 0; i < this.baraja.getBarajaDescarte().size(); i++) {
+			cartasMonton.add(this.baraja.getBarajaDescarte().get(i));
+		}
+		
+		Carta cartaMedio = this.baraja.getCartaCentro();
+		
+		Baraja baraja = new Baraja(estrategia);
+		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, cartaMedio);
+		return baraja;
+		
 	}
 
 	/**
@@ -152,7 +260,7 @@ public class GestionarJuegos {
 
 			jugadoresClon.add(jugadorAIncluir);
 		}
-		
+
 		// Asignamos el ensemble a los jugadores
 		asignarEnsembleJugadores(jugadoresClon);
 		return jugadoresClon;
@@ -245,7 +353,7 @@ public class GestionarJuegos {
 	 * 
 	 * @param juego El juego a considerar
 	 */
-	private void guardarInformacion(Juego juego) {
+	public void guardarInformacion(Juego juego) {
 		// La idea es ir acumulando en el array vacío todos los datos de los jugadores
 		for (int i = 0; i < juego.getJugadores().size(); i++) {
 			// Vamos incrementando parámetro a parámetro
@@ -258,7 +366,7 @@ public class GestionarJuegos {
 	 * 
 	 * @return ArrayList
 	 */
-	public ArrayList<Jugador> ganadoresDeTodasLasPartidas() {	
+	public ArrayList<Jugador> ganadoresDeTodasLasPartidas() {
 		// PROBLEMA: ¿Y si dos o más personas ganaron más partidas?
 		ArrayList<Jugador> jugadoresGanadores = new ArrayList<Jugador>();
 
@@ -271,7 +379,7 @@ public class GestionarJuegos {
 				jugadoresGanadores.add(jugador);
 			}
 		}
-		
+
 		return jugadoresGanadores;
 	}
 
@@ -286,11 +394,11 @@ public class GestionarJuegos {
 
 	/**
 	 * Devuelve los juegos a evaluar
+	 * 
 	 * @return ArrayList
 	 */
 	public ArrayList<Juego> getJuegos() {
 		return juegos;
 	}
-
 
 }

@@ -13,8 +13,9 @@ public class QuitarTurno implements Accion {
 
 	@Override
 	public void execute(Juego game) {
-		game.nuevoTurno();
+		// Esto tiene que ser antes porque si no se incrementa mal
 		game.getJugadorActual().incrementCartasQuitarTurnoJugadas();
+		game.nuevoTurno();
 		game.guardarDatos("SE HA SACADO UNA CARTA DE CAMBIO DE TURNO");
 	}
 

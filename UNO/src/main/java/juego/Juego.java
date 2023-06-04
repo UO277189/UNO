@@ -79,7 +79,7 @@ public class Juego {
 		// Creamos la baraja
 		this.barajaUNO = new Baraja(barajar);
 
-		// El orden por defecto es de izquiera a derecha (lo marcamos con un true)
+		// El orden por defecto es de izquierda a derecha (lo marcamos con un true)
 		this.orden = true;
 
 		// Al principio del juego almacenamos tambien la primera carta colocada
@@ -125,6 +125,62 @@ public class Juego {
 	}
 
 	/**
+	 * Constructor que se usa para iniciar una partida indicando además si se ve la
+	 * traza o no y la baraja de cartas. Está pensado para los tests
+	 * 
+	 * @param jugadores    ArrayList
+	 * @param turnoInicial int
+	 * @param baraja       Baraja
+	 * @param traza        boolean
+	 */
+	public Juego(ArrayList<Jugador> jugadores, Baraja baraja, int turnoInicial, boolean traza) {
+		// Establecemos los jugadores
+		this.jugadores = jugadores;
+
+		// Creamos la baraja
+		this.barajaUNO = baraja;
+
+		// El orden por defecto es de izquiera a derecha (lo marcamos con un true)
+		this.orden = true;
+
+		// Al principio del juego almacenamos tambien la primera carta colocada
+		historial = new ArrayList<Carta>();
+		this.historial.add(this.barajaUNO.getCartaCentro());
+
+		// Indicamos si mostramos la traza o no
+		this.traza = traza;
+
+		// Preparamos el juego
+		this.comenzarRondaTurnoInicial(turnoInicial);
+
+	}
+
+	/**
+	 * Método especial para comenzar la primera ronda del juego en el jugador que
+	 * queramos
+	 * 
+	 * @param turnoInicial int
+	 */
+	private void comenzarRondaTurnoInicial(int turnoInicial) {
+		// Barajamos cartas a cada jugador
+		this.darCartasJugadores(7);
+
+		// Al principio no hay que robar cartas adicionales
+		this.cardsToPick = 0;
+
+		// Para indicar el turno actual se elegirá el que marque el parámetro de entrada
+		this.turnoActual = turnoInicial;
+
+		// Se juega la primera ronda
+		this.rondas++;
+
+		// Mensaje textual para saber quién empieza la partida
+		this.guardarDatos(
+				"El jugador " + this.getJugadores().get(turnoActual).getNombreJugador() + " empieza la partida");
+
+	}
+
+	/**
 	 * Método para empezar cada ronda del juego
 	 */
 	private void comenzarRonda() {
@@ -142,9 +198,9 @@ public class Juego {
 		this.rondas++;
 
 		// Mensaje textual para saber quién empieza la partida
-		this.guardarDatos("El jugador " + this.getJugadores().get(turnoActual).getNombreJugador() 
-				+ " empieza la partida");
-		}
+		this.guardarDatos(
+				"El jugador " + this.getJugadores().get(turnoActual).getNombreJugador() + " empieza la partida");
+	}
 
 	/**
 	 * Para repartir las cartas a cada jugador al principio de cada ronda
@@ -289,6 +345,11 @@ public class Juego {
 
 		this.guardarDatos("El jugador " + this.getJugadorActual().getNombreJugador() + " tiene que robar "
 				+ this.cardsToPick + " cartas");
+		
+		// Se incrementa el contador de cartas a robar
+		for (int i = 0; i < this.cardsToPick; i++) {
+			actual.incrementCartasRobadas();
+		}
 
 		this.cardsToPick = 0; // Se reinicia el contador de catas a robar
 
@@ -397,10 +458,10 @@ public class Juego {
 		}
 		return jugadorGanador;
 	}
-	
-	
+
 	/**
 	 * Método que devuelve el jugador ganador de la partida
+	 * 
 	 * @return JugadorUNO
 	 */
 	private Jugador jugadorGanador() {
@@ -437,6 +498,7 @@ public class Juego {
 
 	/**
 	 * Método que devuelve los jugadores de la partida
+	 * 
 	 * @return ArrayList
 	 */
 	public ArrayList<Jugador> getJugadores() {
@@ -581,8 +643,8 @@ public class Juego {
 				allInfo = false;
 			} else {
 				// Si no acumula cartas juega la ronda de forma normal
+				this.getJugadorActual().incrementCartasJugadas(); // Antes para evitar fallos con estadísticos
 				this.echarCarta(nuevaCarta);
-				this.getJugadorActual().incrementCartasJugadas();
 				this.nuevoTurno();
 				allInfo = true;
 			}
@@ -598,7 +660,7 @@ public class Juego {
 	 * Método que muestra la informacion textual de la partida
 	 */
 	public void informacionTablero() {
-		
+
 		this.guardarDatos("\n");
 		this.guardarDatos("******************************");
 		this.guardarDatos("* TURNO ACTUAL: " + this.getJugadorActual().getNombreJugador());
@@ -648,9 +710,10 @@ public class Juego {
 		}
 	}
 
-
 	/**
-	 * Método para saber si hay que mostrar los datos por consola y guarda el string en el log
+	 * Método para saber si hay que mostrar los datos por consola y guarda el string
+	 * en el log
+	 * 
 	 * @param value El string a imprimir/guardar en el log
 	 */
 	public void guardarDatos(String value) {

@@ -2,6 +2,7 @@ package main.java.juego.baraja.estrategiasBaraja;
 
 import main.java.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
 import main.java.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
+import main.java.juego.baraja.estrategiasBaraja.estrategias.NoBarajar;
 
 /**
  * Clase que representa una factoría para las diferentes formas de barajar
@@ -23,6 +24,8 @@ public class FormaBarajarFactory {
 			return new CartaACarta(parametroInicial);
 		} else if (tipo.equals("MontonAMonton")) {
 			return new MontonAMonton(parametroInicial, parametroAdicional);
+		} else if (tipo.equals("NoBarajar")) {
+			return new NoBarajar();
 		} else {
 			return null;
 		}
