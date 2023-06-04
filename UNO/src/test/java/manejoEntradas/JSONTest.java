@@ -1,4 +1,4 @@
-package test.java;
+package test.java.manejoEntradas;
 
 
 import static org.junit.Assert.assertEquals;

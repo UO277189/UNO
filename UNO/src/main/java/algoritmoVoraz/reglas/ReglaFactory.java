@@ -1,14 +1,15 @@
 package main.java.algoritmoVoraz.reglas;
 
 
-import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
-import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMasFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaAzar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasDos;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
 
@@ -56,6 +57,9 @@ public class ReglaFactory {
 
 		if (reglaString.contains("ReglaPrimeraCarta"))
 			regla = new ReglaPrimeraCarta();
+		
+		if (reglaString.contains("ReglaPriorizarCartasRobar"))
+			regla = new ReglaPriorizarCartasRobar();
 		
 		return regla;
 	}

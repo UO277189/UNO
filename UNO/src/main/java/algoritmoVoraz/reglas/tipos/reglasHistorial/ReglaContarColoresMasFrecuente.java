@@ -56,7 +56,7 @@ public class ReglaContarColoresMasFrecuente implements Regla{
 		
 		// Cuantas mas veces salga MAYOR es la probabilidad
 		
-		int sumaTotal = colorRojo + colorVerde + colorAzul + colorAmarillo + noColor;
+		float sumaTotal = colorRojo + colorVerde + colorAzul + colorAmarillo + noColor;
 		
 		
 		float probRojo;

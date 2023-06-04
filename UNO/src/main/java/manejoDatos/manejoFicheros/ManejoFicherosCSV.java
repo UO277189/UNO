@@ -248,7 +248,7 @@ public class ManejoFicherosCSV {
 
 		try {
 			// Indicamos la ruta en la que cargar el fichero
-			File csvMetricas = new File(rutaMetricas + nombreFichero + ".csv"); // Se indica una ruta relativa
+			File csvMetricas = new File("src/" +  nombreFichero + ".csv"); // Se indica una ruta relativa
 
 			// Se crean los objetos Writer
 			fileReader = new FileReader(csvMetricas);
