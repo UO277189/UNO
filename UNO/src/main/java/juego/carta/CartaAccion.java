@@ -29,8 +29,13 @@ public class CartaAccion extends Carta{
 	 * @param color Colores
 	 */
 	public CartaAccion(Accion accion, Colores color) {
+		
 		super(color);
 		this.accion = accion;	
+		
+		if (accion.toString().equals("+4")){ // Para asegurar
+			this.setColor(Colores.NOCOLOR);
+		}
 	}
 		
 

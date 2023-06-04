@@ -11,18 +11,18 @@ import main.java.juego.carta.colores.Colores;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaNoPriorizarContarColores implements Regla{
+public class ReglaContarColoresMenosFrecuente implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
 		
 		// Primero se calcula las veces que sale X carta de color
 		
-		int colorRojo = 0;
-		int colorVerde = 0;
-		int colorAmarillo = 0;
-		int colorAzul = 0;
-		int noColor = 0;
+		float colorRojo = 0;
+		float colorVerde = 0;
+		float colorAmarillo = 0;
+		float colorAzul = 0;
+		float noColor = 0;
 		
 		for (Carta carta: historial) {
 			if (carta.getColor().equals(Colores.ROJO))
@@ -51,8 +51,8 @@ public class ReglaNoPriorizarContarColores implements Regla{
 	 * @param colorAmarillo numero de veces que sale el color amarillo
 	 * @param noColor numero de veces que sale el color no color
 	 */
-	private void calcularPesosPorColores(ArrayList<Carta> cartas, int colorRojo, int colorVerde, int colorAzul, 
-			int colorAmarillo, int noColor) {
+	private void calcularPesosPorColores(ArrayList<Carta> cartas, float colorRojo, float colorVerde, float colorAzul, 
+			float colorAmarillo, float noColor) {
 		
 		// Cuantas mas veces salga es menor la probabilidad
 		
@@ -105,7 +105,7 @@ public class ReglaNoPriorizarContarColores implements Regla{
 
 	@Override
 	public String toString() {
-		return "ReglaNoPriorizarContarColores";
+		return "ReglaContarColoresMenosFrecuente";
 	}
 	
 	

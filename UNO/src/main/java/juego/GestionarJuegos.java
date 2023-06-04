@@ -6,8 +6,6 @@ import main.java.algoritmoVoraz.ensembles.Ensemble;
 import main.java.juego.baraja.Baraja;
 import main.java.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.java.juego.carta.Carta;
-import main.java.juego.carta.CartaNumerica;
-import main.java.juego.carta.colores.Colores;
 import main.java.juego.jugador.Jugador;
 import main.java.juego.jugador.JugadorAutomatico;
 import main.java.juego.jugador.JugadorManual;

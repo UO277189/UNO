@@ -1,10 +1,10 @@
 package main.java.algoritmoVoraz.reglas;
 
 
-import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaNoPriorizarContarColores;
-import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaNoPriorizarContarNumerosAcciones;
-import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaPriorizarContarColores;
-import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaPriorizarContarNumerosAcciones;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMenosFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaAzar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasDos;
@@ -42,17 +42,17 @@ public class ReglaFactory {
 		if (reglaString.contains("ReglaNoPriorizarMasDos"))
 			regla = new ReglaNoPriorizarMasDos();
 
-		if (reglaString.contains("ReglaPriorizarContarColores"))
-			regla = new ReglaPriorizarContarColores();
+		if (reglaString.contains("ReglaContarColoresMasFrecuente"))
+			regla = new ReglaContarColoresMasFrecuente();
 
-		if (reglaString.contains("ReglaNoPriorizarContarColores"))
-			regla = new ReglaNoPriorizarContarColores();
+		if (reglaString.contains("ReglaContarColoresMenosFrecuente"))
+			regla = new ReglaContarColoresMenosFrecuente();
 
-		if (reglaString.contains("ReglaPriorizarContarNumerosAcciones"))
-			regla = new ReglaPriorizarContarNumerosAcciones();
+		if (reglaString.contains("ReglaCompararTiposCartasMasFrecuente"))
+			regla = new ReglaCompararTiposCartasMasFrecuente();
 
-		if (reglaString.contains("ReglaNoPriorizarContarNumerosAcciones"))
-			regla = new ReglaNoPriorizarContarNumerosAcciones();
+		if (reglaString.contains("ReglaCompararTiposCartasMenosFrecuente"))
+			regla = new ReglaCompararTiposCartasMenosFrecuente();
 
 		if (reglaString.contains("ReglaPrimeraCarta"))
 			regla = new ReglaPrimeraCarta();

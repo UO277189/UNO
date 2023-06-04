@@ -248,13 +248,13 @@ public class JuegoTest {
 		for (int i = 0; i < 50; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO));
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
 
 		for (int i = 0; i < 5; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO));
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO));
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
 
 		Carta cartaMedio = new CartaNumerica(1, Colores.ROJO);
 		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, cartaMedio);
@@ -309,7 +309,7 @@ public class JuegoTest {
 		for (int i = 0; i < 5; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO)); // Se puede echar un +4 SIEMP
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR)); // Se puede echar un +4 SIEMP
 		cartasMonton.add(new CartaAccion(new MasDos(), Colores.ROJO));
 
 		Carta cartaMedio = new CartaNumerica(1, Colores.ROJO);
@@ -365,7 +365,7 @@ public class JuegoTest {
 		for (int i = 0; i < 6; i++) {
 			cartasMonton.add(new CartaNumerica(6, Colores.ROJO));
 		}
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO));
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
 
 		Carta cartaMedio = new CartaNumerica(1, Colores.ROJO);
 		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, cartaMedio);
@@ -604,7 +604,7 @@ public class JuegoTest {
 		for (int i = 0; i < 6; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO)); // +4
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR)); // +4
 		cartasMonton.add(new CartaAccion(new CambiarSentido(), Colores.ROJO)); // Cambiar sentido
 
 		// CARTAS JUGADOR 0
@@ -692,7 +692,7 @@ public class JuegoTest {
 		for (int i = 0; i < 6; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
-		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.ROJO)); // +4
+		cartasMonton.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR)); // +4
 		cartasMonton.add(new CartaAccion(new CambiarSentido(), Colores.ROJO)); // Cambiar sentido
 
 		// CARTAS JUGADOR 0

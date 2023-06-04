@@ -12,15 +12,15 @@ import main.java.juego.carta.CartaNumerica;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaNoPriorizarContarNumerosAcciones implements Regla{
+public class ReglaCompararTiposCartasMenosFrecuente implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
 		
 		// Primero se calcula las veces que sale X carta de cada tipo
 		
-		int cartasNumericas = 0;
-		int cartasAccion = 0;
+		float cartasNumericas = 0;
+		float cartasAccion = 0;
 		
 		for (Carta carta: historial) {
 			if (carta instanceof CartaNumerica)
@@ -40,7 +40,7 @@ public class ReglaNoPriorizarContarNumerosAcciones implements Regla{
 	 * @param cartasNumericas cartas numericas a ponderar
 	 * @param cocartasAccion cartas de accion a ponderar
 	 */
-	private void calcularPesosPorTipos(ArrayList<Carta> cartas, int cartasNumericas, int cartasAccion) {
+	private void calcularPesosPorTipos(ArrayList<Carta> cartas, float cartasNumericas, float cartasAccion) {
 	
 		// Cuantas mas veces salga MENOR es la probabilidad	
 		
@@ -69,7 +69,7 @@ public class ReglaNoPriorizarContarNumerosAcciones implements Regla{
 
 	@Override
 	public String toString() {
-		return "ReglaNoPriorizarContarNumerosAcciones";
+		return "ReglaCompararTiposCartasMenosFrecuente";
 	}
 
 	

@@ -12,7 +12,7 @@ import main.java.juego.carta.CartaNumerica;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaPriorizarContarNumerosAcciones implements Regla{
+public class ReglaCompararTiposCartasMasFrecuente implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
@@ -44,7 +44,7 @@ public class ReglaPriorizarContarNumerosAcciones implements Regla{
 	
 		// Cuantas mas veces salga MAYOR es la probabilidad
 		
-		int sumaTotal = cartasNumericas + cartasAccion;
+		float sumaTotal = cartasNumericas + cartasAccion;
 		
 		float probNum;
 		float probAccion;
@@ -69,7 +69,7 @@ public class ReglaPriorizarContarNumerosAcciones implements Regla{
 
 	@Override
 	public String toString() {
-		return "ReglaPriorizarContarNumerosAcciones";
+		return "ReglaCompararTiposCartasMasFrecuente";
 	}
 	
 	

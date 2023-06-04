@@ -11,7 +11,7 @@ import main.java.juego.carta.colores.Colores;
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaPriorizarContarColores implements Regla{
+public class ReglaContarColoresMasFrecuente implements Regla{
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
@@ -97,7 +97,7 @@ public class ReglaPriorizarContarColores implements Regla{
 
 	@Override
 	public String toString() {
-		return "ReglaPriorizarContarColores";
+		return "ReglaContarColoresMasFrecuente";
 	}
 	
 	
