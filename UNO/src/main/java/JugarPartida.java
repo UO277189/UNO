@@ -41,17 +41,21 @@ public class JugarPartida {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
-		if (opcion == 1) {
-			elegirOpcionRapida();
-		} else if (opcion == 2) {
-			introducirDatosManuales();
-		} else if (opcion == 3) {
-			cargarDatosDeFichero();
-		} else if (opcion == 4) {
-			mostrarAyuda();
-		} else if (opcion == 5) {
-			System.out.println();
-			System.out.println("¡Hasta la próxima!");
+		try {
+			if (opcion == 1) {
+				elegirOpcionRapida();
+			} else if (opcion == 2) {
+				introducirDatosManuales();
+			} else if (opcion == 3) {
+				cargarDatosDeFichero();
+			} else if (opcion == 4) {
+				mostrarAyuda();
+			} else if (opcion == 5) {
+				System.out.println();
+				System.out.println("¡Hasta la próxima!");
+			}
+		} catch (Exception e) { // Si por alguna razón fallara algo que no se recoge se captura aquí
+			System.out.println("El sistema se cerrará por un error interno");
 		}
 	}
 
@@ -86,7 +90,7 @@ public class JugarPartida {
 	 * Muestra el logo de la aplicacion
 	 */
 	private static void logoAplicacion() {
-		
+
 		System.out.println(" -----------                                 JAVA    -----------  ");
 		System.out.println("|           |                                       |           | ");
 		System.out.println("|   ---     |   1       1   1       1   1 1 1 1 1   |     ---   | ");
@@ -117,7 +121,8 @@ public class JugarPartida {
 		System.out.println();
 		System.out.print("Seleccione la opción deseada: ");
 
-		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON("/entradas/" + manejoJSON.getFicheroEjemplos());
+		ArrayList<Configuracion> configuraciones = manejoJSON
+				.leerJSON("/main/resources/entradas/" + manejoJSON.getFicheroEjemplos());
 		int valor = leerConsola.leerValorRango(1, 7);
 
 		if (valor == 6) {
@@ -164,7 +169,7 @@ public class JugarPartida {
 	 * Método para meter los datos de forma manual
 	 */
 	private static void introducirDatosManuales() {
-		
+
 		System.out.println();
 		System.out.println("A continuación se solicitarán los datos necesarios para crear una configuración. ");
 
@@ -207,7 +212,8 @@ public class JugarPartida {
 		ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
 
 		// Se cargan las configuraciones del JSON
-		ArrayList<Configuracion> configuraciones = manejoJSON.leerJSON("/main/resources/entradas/" + manejoJSON.getFicheroEntrada());
+		ArrayList<Configuracion> configuraciones = manejoJSON
+				.leerJSON("/main/resources/entradas/" + manejoJSON.getFicheroEntrada());
 
 		if (configuraciones.isEmpty()) {
 			System.out.println("NO SE HA PODIDO CARGAR LOS DATOS DEL FICHERO");
@@ -238,8 +244,8 @@ public class JugarPartida {
 	 * @param numeroPartidas Número de partidas
 	 * @param verTraza       Traza a observar
 	 */
-	private static void ejecutarPartidas(String nombreFichero, ArrayList<Jugador> jugadores,
-			FormaBarajar estrategia, Ensemble ensemble, int numeroPartidas, boolean verTraza) {
+	private static void ejecutarPartidas(String nombreFichero, ArrayList<Jugador> jugadores, FormaBarajar estrategia,
+			Ensemble ensemble, int numeroPartidas, boolean verTraza) {
 
 		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará
 		// las partidas

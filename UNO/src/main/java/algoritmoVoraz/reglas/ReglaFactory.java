@@ -10,6 +10,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarM
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasDos;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasRobar;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarComodines;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
 
@@ -60,6 +61,9 @@ public class ReglaFactory {
 		
 		if (reglaString.contains("ReglaPriorizarCartasRobar"))
 			regla = new ReglaPriorizarCartasRobar();
+		
+		if (reglaString.contains("ReglaPriorizarComodines"))
+			regla = new ReglaPriorizarComodines();
 		
 		return regla;
 	}

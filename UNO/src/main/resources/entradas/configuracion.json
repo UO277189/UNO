@@ -32,16 +32,16 @@
       "jugadores": [
         {
           "nombre": "Jugador1",
-          "regla": "ReglaAzarReglaAzarReglaAzar"
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
         },        {
           "nombre": "Jugador2",
-          "regla": "ReglaAzarReglaAzarReglaAzar"
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
         },        {
           "nombre": "Jugador3",
-          "regla": "ReglaAzarReglaAzarReglaAzar"
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
         },        {
           "nombre": "Jugador4",
-          "regla": "ReglaAzarReglaAzarReglaAzar"
+          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
         }
 
       ],
@@ -164,27 +164,6 @@
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 100,
       "traza": false
-    },
-    {
-      "nombre_configuracion": "prueba",
-      "jugadores": [
-        {
-          "nombre": "a",
-          "regla": "ReglaAzar"
-        },        {
-          "nombre": "b",
-          "regla": "ReglaAzar"
-        }
-
-      ],
-      "estrategia": {
-        "tipo": "CartaACarta",
-        "parametroInicial": 15,
-        "parametroAdicional": "no_aplica"
-      },
-      "ensemble": "EnsembleVotacion",
-      "numero_partidas": 100,
-      "traza": true
     }
   ]
 }

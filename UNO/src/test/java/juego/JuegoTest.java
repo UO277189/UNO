@@ -18,6 +18,7 @@ import main.java.juego.baraja.estrategiasBaraja.estrategias.NoBarajar;
 import main.java.juego.carta.Carta;
 import main.java.juego.carta.CartaAccion;
 import main.java.juego.carta.CartaNumerica;
+import main.java.juego.carta.acciones.tipos.CambiaColor;
 import main.java.juego.carta.acciones.tipos.CambiarSentido;
 import main.java.juego.carta.acciones.tipos.MasCuatro;
 import main.java.juego.carta.acciones.tipos.MasDos;
@@ -100,6 +101,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 7);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -111,6 +113,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -120,7 +123,7 @@ public class JuegoTest {
 	 * En este test partimos de una baraja con solo cartas de cambio de sentido
 	 */
 	@Test
-	public void cambioSentidoTest() {
+	public void cambiSentidoTest() {
 
 		// Se construye la baraja para el test
 		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
@@ -152,6 +155,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 7);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -163,6 +167,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -174,11 +179,68 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(2).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getCartasCambiarSentidoJugadas(), 6);
 		assertEquals(juegoResultado.getJugadores().get(2).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(2).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(2).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getVecesQueHaGanado(), 0);
 
 	}
+	
+	/**
+	 * En este test partimos de una baraja con solo cartas de cambio de color
+	 */
+	@Test
+	public void cambiaColorTest() {
+
+		// Se construye la baraja para el test
+		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
+		ArrayList<Carta> cartasRobar = new ArrayList<Carta>();
+
+		for (int i = 0; i < 30; i++) {
+			cartasMonton.add(new CartaAccion(new CambiaColor(), Colores.NOCOLOR));
+		}
+
+		Carta cartaMedio = new CartaAccion(new CambiaColor(), Colores.NOCOLOR);
+		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, cartaMedio);
+
+		// Se introduce un jugador adicional
+		JugadorAutomatico jugador2 = new JugadorAutomatico("Jugador2", reglas);
+		jugadores.add(jugador2);
+
+		// Se juega la partida
+		gestionarJuegos = new GestionarJuegos(jugadores, baraja, ensemble, 1);
+		gestionarJuegos.jugarPartidasBarajaEspecial(0); // Se indica el turno inicial
+
+		// Obtenemos los resultados
+
+		Juego juegoResultado = gestionarJuegos.getJuegos().get(0);
+
+		// Jugador 0
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasJugadas(), 7);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasRobadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasCuatroJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 7);
+		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
+		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
+
+		// Jugador 2
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasJugadas(), 6);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasRobadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasCuatroJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 6);
+		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 1);
+		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
+
+	}
+	
 
 	/**
 	 * En este test verificamos que funcione la carta +2
@@ -219,6 +281,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 2);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -230,6 +293,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -274,6 +338,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -285,6 +350,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -330,6 +396,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -341,6 +408,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -385,6 +453,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -396,6 +465,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -442,6 +512,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -453,6 +524,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -499,6 +571,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -510,6 +583,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -556,6 +630,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -568,6 +643,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -608,9 +684,10 @@ public class JuegoTest {
 		cartasMonton.add(new CartaAccion(new CambiarSentido(), Colores.ROJO)); // Cambiar sentido
 
 		// CARTAS JUGADOR 0
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
+		cartasMonton.add(new CartaAccion(new CambiaColor(), Colores.NOCOLOR)); // CambiaColor
 		cartasMonton.add(new CartaAccion(new MasDos(), Colores.ROJO)); // +2
 		cartasMonton.add(new CartaAccion(new QuitarTurno(), Colores.ROJO)); // Quitar turno
 
@@ -633,6 +710,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasMasDosJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 1);
+		assertEquals(juegoResultado.getJugadores().get(0).getCartasCambiaColorJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(0).getVecesQueHaGanado(), 1);
@@ -644,6 +722,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaCantadoUno(), 1);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -655,6 +734,7 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(2).getCartasMasDosJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getCartasCambiarSentidoJugadas(), 1);
 		assertEquals(juegoResultado.getJugadores().get(2).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(juegoResultado.getJugadores().get(2).getCartasCambiaColorJugadas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getVecesQueHaCantadoUno(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(juegoResultado.getJugadores().get(2).getVecesQueHaGanado(), 0);
@@ -696,9 +776,11 @@ public class JuegoTest {
 		cartasMonton.add(new CartaAccion(new CambiarSentido(), Colores.ROJO)); // Cambiar sentido
 
 		// CARTAS JUGADOR 0
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			cartasMonton.add(new CartaNumerica(1, Colores.ROJO));
 		}
+		
+		cartasMonton.add(new CartaAccion(new CambiaColor(), Colores.NOCOLOR)); // CambiaColor
 		cartasMonton.add(new CartaAccion(new MasDos(), Colores.ROJO)); // +2
 		cartasMonton.add(new CartaAccion(new QuitarTurno(), Colores.ROJO)); // Quitar turno
 
@@ -724,6 +806,7 @@ public class JuegoTest {
 		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasMasDosJugadas(), 10);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasCambiaColorJugadas(), 10);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaCantadoUno(), 10);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaGanado(), 10);
@@ -735,6 +818,7 @@ public class JuegoTest {
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasMasDosJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 10);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaCantadoUno(), 10);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaGanado(), 0);
@@ -746,6 +830,7 @@ public class JuegoTest {
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasMasDosJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasCambiarSentidoJugadas(), 10);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasQuitarTurnoJugadas(), 0);
+		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasCambiaColorJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getVecesQueHaCantadoUno(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getVecesQueHaGanado(), 0);

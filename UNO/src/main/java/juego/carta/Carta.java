@@ -40,7 +40,7 @@ public abstract class Carta {
 	public boolean sePuedeEchar(Carta c) {
 
 		if (c.getColor() == Colores.NOCOLOR) {
-			return true; // El +4 se puede echar siempre
+			return true; // El +4 y la carta CambiaColor se puede echar siempre
 		} else if (coincideCarta(c)) { // Hay que ver si la carta coincide
 			return true;
 		} else {

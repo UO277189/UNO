@@ -183,6 +183,17 @@ public class ManejoFicherosCSV {
 		String [] lineaCartasQuitarTurno = guardarEnArray(cartasQuitarTurno);
 		writer.writeNext(lineaCartasQuitarTurno);
 		
+		// CARTAS CAMBIO COLOR JUGADAS
+		List<String> cartasCambioColor = new ArrayList<>();
+		cartasCambioColor.add("CARTAS CAMBIA COLOR");
+		for (int i = 0; i < partidasJugadas.getJugadores().size(); i++) {
+			cartasCambioColor.add(Integer.toString(partidasJugadas.getJugadores().get(i).getCartasCambiaColorJugadas()));
+		}
+		String [] lineaCartasCambioColor = guardarEnArray(cartasCambioColor);
+		writer.writeNext(lineaCartasCambioColor);
+		
+		
+		
 		//  VECES QUE HA INTENTADO HACER TRAMPA
 		List<String> traposo = new ArrayList<>();
 		traposo.add("VECES QUE HA INTENTADO HACER TRAMPA");
@@ -300,9 +311,10 @@ public class ManejoFicherosCSV {
 		String [] cMasDos = lineas.get(5)[0].split(";");
 		String [] cSentido = lineas.get(6)[0].split(";");
 		String [] cTurno = lineas.get(7)[0].split(";");
-		String [] cTrampa = lineas.get(8)[0].split(";");
-		String [] cCanta = lineas.get(9)[0].split(";");
-		String [] cGana = lineas.get(10)[0].split(";");
+		String [] cCambioColor = lineas.get(8)[0].split(";");
+		String [] cTrampa = lineas.get(9)[0].split(";");
+		String [] cCanta = lineas.get(10)[0].split(";");
+		String [] cGana = lineas.get(11)[0].split(";");
 
 		for (int i = 1; i < cabecera.length; i++) {
 
@@ -312,8 +324,9 @@ public class ManejoFicherosCSV {
 					reglas[i].replace("\"", ""), Integer.valueOf(cJugadas[i].replace("\"", "")), 
 					Integer.valueOf(cRobadas[i].replace("\"", "")), Integer.valueOf(cMasCuatro[i].replace("\"", "")), 
 					Integer.valueOf(cMasDos[i].replace("\"", "")), Integer.valueOf(cSentido[i].replace("\"", "")),
-					Integer.valueOf(cTurno[i].replace("\"", "")), Integer.valueOf(cTrampa[i].replace("\"", "")), 
-					Integer.valueOf(cCanta[i].replace("\"", "")), Integer.valueOf(cGana[i].replace("\"", "")));
+					Integer.valueOf(cTurno[i].replace("\"", "")), Integer.valueOf(cCambioColor[i].replace("\"", "")), 
+					Integer.valueOf(cTrampa[i].replace("\"", "")), Integer.valueOf(cCanta[i].replace("\"", "")), 
+					Integer.valueOf(cGana[i].replace("\"", "")));
 			
 			jugadores.add(jugador);
 		}

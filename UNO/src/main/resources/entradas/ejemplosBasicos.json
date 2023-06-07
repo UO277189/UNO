@@ -64,7 +64,7 @@
         },        
         {
           "nombre": "Jugador3",
-          "regla": "ReglaPriorizarContarColores"
+          "regla": "ReglaContarColoresMasFrecuente"
         },        
         {
           "nombre": "Jugador4",
@@ -94,11 +94,11 @@
         },        
         {
           "nombre": "Jugador3",
-          "regla": "ReglaPriorizarContarNumerosAcciones, ReglaAzar"
+          "regla": "ReglaCompararTiposCartasMasFrecuente, ReglaAzar"
         },        
         {
           "nombre": "Jugador4",
-          "regla": "ReglaNoPriorizarContarNumerosAcciones, ReglaAzar"
+          "regla": "ReglaCompararTiposCartasMenosFrecuente, ReglaAzar"
         }
 
       ],

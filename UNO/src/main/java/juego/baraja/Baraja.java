@@ -107,6 +107,7 @@ public class Baraja {
 		for (int i = 0; i < this.cartasAccionSinColor; i++) {
 			// El +4 va con el color NEGRO
 			this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasCuatro"), Colores.NOCOLOR));
+			this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("CambiaColor"), Colores.NOCOLOR));
 		}
 		
 	}

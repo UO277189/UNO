@@ -14,6 +14,7 @@ import main.java.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
 import main.java.juego.carta.Carta;
 import main.java.juego.carta.CartaAccion;
 import main.java.juego.carta.CartaNumerica;
+import main.java.juego.carta.acciones.tipos.CambiaColor;
 import main.java.juego.carta.acciones.tipos.CambiarSentido;
 import main.java.juego.carta.acciones.tipos.MasCuatro;
 import main.java.juego.carta.acciones.tipos.MasDos;
@@ -56,7 +57,7 @@ public class EstrategiaBarajaTest {
 		// Cuando se llama al constructor se crea la baraja de cartas base del UNO y se
 		// ejecuta la estrategia
 
-		assertEquals(baraja.getBarajaCartas().size(), 99); // Todas las cartas -1
+		assertEquals(baraja.getBarajaCartas().size(), 103); // Todas las cartas -1
 		assertEquals(baraja.getBarajaDescarte().size(), 1); // La carta del medio es la primera a descartar
 		assertTrue(baraja.getCartaCentro() != null); // Hay una carta en el medio
 
@@ -65,6 +66,7 @@ public class EstrategiaBarajaTest {
 		int cartasCambiarSentido = 0;
 		int cartasMasDos = 0;
 		int cartasQuitarTurno = 0;
+		int cartasCambiaColor = 0;
 		int cartasMasCuatro = 0;
 
 		ArrayList<Carta> cartas = baraja.getBarajaCartas();
@@ -83,6 +85,9 @@ public class EstrategiaBarajaTest {
 				if (((CartaAccion) carta).getAccion() instanceof MasCuatro) {
 					cartasMasCuatro++;
 				}
+				if (((CartaAccion) carta).getAccion() instanceof CambiaColor) {
+					cartasCambiaColor++;
+				}
 				if (((CartaAccion) carta).getAccion() instanceof MasDos) {
 					cartasMasDos++;
 				}
@@ -96,6 +101,7 @@ public class EstrategiaBarajaTest {
 		assertEquals(cartasMasDos, 8);
 		assertEquals(cartasQuitarTurno, 8);
 		assertEquals(cartasMasCuatro, 4);
+		assertEquals(cartasCambiaColor, 4);
 	}
 
 	/**
@@ -116,7 +122,7 @@ public class EstrategiaBarajaTest {
 		// Cuando se llama al constructor se crea la baraja de cartas base del UNO y se
 		// ejecuta la estrategia
 
-		assertEquals(baraja.getBarajaCartas().size(), 99); // Todas las cartas -1
+		assertEquals(baraja.getBarajaCartas().size(), 103); // Todas las cartas -1
 		assertEquals(baraja.getBarajaDescarte().size(), 1); // La carta del medio es la primera a descartar
 		assertTrue(baraja.getCartaCentro() != null); // Hay una carta en el medio
 
@@ -125,6 +131,7 @@ public class EstrategiaBarajaTest {
 		int cartasCambiarSentido = 0;
 		int cartasMasDos = 0;
 		int cartasQuitarTurno = 0;
+		int cartasCambiaColor = 0;
 		int cartasMasCuatro = 0;
 
 		ArrayList<Carta> cartas = baraja.getBarajaCartas();
@@ -143,6 +150,9 @@ public class EstrategiaBarajaTest {
 				if (((CartaAccion) carta).getAccion() instanceof MasCuatro) {
 					cartasMasCuatro++;
 				}
+				if (((CartaAccion) carta).getAccion() instanceof CambiaColor) {
+					cartasCambiaColor++;
+				}
 				if (((CartaAccion) carta).getAccion() instanceof MasDos) {
 					cartasMasDos++;
 				}
@@ -156,6 +166,7 @@ public class EstrategiaBarajaTest {
 		assertEquals(cartasMasDos, 8);
 		assertEquals(cartasQuitarTurno, 8);
 		assertEquals(cartasMasCuatro, 4);
+		assertEquals(cartasCambiaColor, 4);
 	}
 
 	/**
@@ -225,7 +236,7 @@ public class EstrategiaBarajaTest {
 	public void cartaACartaMasCartasQueBarajaTest() {
 
 		baraja = new Baraja(new CartaACarta(500)); // Carta a carta con 500 cartas a intercambiar
-		assertEquals(baraja.getBarajaCartas().size(), 99); // Todas las cartas -1
+		assertEquals(baraja.getBarajaCartas().size(), 103); // Todas las cartas -1
 		assertEquals(baraja.getBarajaDescarte().size(), 1); // La carta del medio es la primera a descartar
 		assertTrue(baraja.getCartaCentro() != null); // Hay una carta en el medio
 
@@ -234,6 +245,7 @@ public class EstrategiaBarajaTest {
 		int cartasCambiarSentido = 0;
 		int cartasMasDos = 0;
 		int cartasQuitarTurno = 0;
+		int cartasCambiaColor = 0;
 		int cartasMasCuatro = 0;
 
 		ArrayList<Carta> cartas = baraja.getBarajaCartas();
@@ -252,6 +264,9 @@ public class EstrategiaBarajaTest {
 				if (((CartaAccion) carta).getAccion() instanceof MasCuatro) {
 					cartasMasCuatro++;
 				}
+				if (((CartaAccion) carta).getAccion() instanceof CambiaColor) {
+					cartasCambiaColor++;
+				}
 				if (((CartaAccion) carta).getAccion() instanceof MasDos) {
 					cartasMasDos++;
 				}
@@ -265,6 +280,7 @@ public class EstrategiaBarajaTest {
 		assertEquals(cartasMasDos, 8);
 		assertEquals(cartasQuitarTurno, 8);
 		assertEquals(cartasMasCuatro, 4);
+		assertEquals(cartasCambiaColor, 4);
 	}
 	
 
@@ -278,7 +294,7 @@ public class EstrategiaBarajaTest {
 		baraja = new Baraja(new MontonAMonton(1, 500)); // 1 cartas en el montón, 500 montones a intercambiar
 
 		
-		assertEquals(baraja.getBarajaCartas().size(), 99); // Todas las cartas -1
+		assertEquals(baraja.getBarajaCartas().size(), 103); // Todas las cartas -1
 		assertEquals(baraja.getBarajaDescarte().size(), 1); // La carta del medio es la primera a descartar
 		assertTrue(baraja.getCartaCentro() != null); // Hay una carta en el medio
 
@@ -287,6 +303,7 @@ public class EstrategiaBarajaTest {
 		int cartasCambiarSentido = 0;
 		int cartasMasDos = 0;
 		int cartasQuitarTurno = 0;
+		int cartasCambiaColor = 0;
 		int cartasMasCuatro = 0;
 
 		ArrayList<Carta> cartas = baraja.getBarajaCartas();
@@ -305,6 +322,9 @@ public class EstrategiaBarajaTest {
 				if (((CartaAccion) carta).getAccion() instanceof MasCuatro) {
 					cartasMasCuatro++;
 				}
+				if (((CartaAccion) carta).getAccion() instanceof CambiaColor) {
+					cartasCambiaColor++;
+				}
 				if (((CartaAccion) carta).getAccion() instanceof MasDos) {
 					cartasMasDos++;
 				}
@@ -318,6 +338,7 @@ public class EstrategiaBarajaTest {
 		assertEquals(cartasMasDos, 8);
 		assertEquals(cartasQuitarTurno, 8);
 		assertEquals(cartasMasCuatro, 4);
+		assertEquals(cartasCambiaColor, 4);
 	}
 
 }

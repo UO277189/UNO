@@ -1,5 +1,6 @@
 package main.java.juego.carta.acciones;
 
+import main.java.juego.carta.acciones.tipos.CambiaColor;
 import main.java.juego.carta.acciones.tipos.CambiarSentido;
 import main.java.juego.carta.acciones.tipos.MasCuatro;
 import main.java.juego.carta.acciones.tipos.MasDos;
@@ -35,6 +36,10 @@ public class AccionFactory {
 		
 		if (tipo.equals("QuitarTurno")) {
 			accion = new QuitarTurno();
+		}
+		
+		if (tipo.equals("CambiaColor")) {
+			accion = new CambiaColor();
 		}
 		
 		return accion;

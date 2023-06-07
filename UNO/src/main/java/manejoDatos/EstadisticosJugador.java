@@ -17,6 +17,7 @@ public class EstadisticosJugador {
 	private int cartasMasDosJugadas;
 	private int cartasCambioSentidoJugadas;
 	private int cartasQuitarTurnoJugadas;
+	private int cartasCambioColorJugadas;
 	private int vecesQueHizoTrampas;
 	private int vecesQueCantaUno;
 	private int vecesQueHaGanado;
@@ -39,7 +40,8 @@ public class EstadisticosJugador {
 	 */
 	public EstadisticosJugador(String nombre, String reglas, int cartasJugadas, int cartasRobadas,
 			int cartasMasCuatroJugadas, int cartasMasDosJugadas, int cartasCambioSentidoJugadas,
-			int cartasQuitarTurnoJugadas, int vecesQueHizoTrampas, int vecesQueCantaUno, int vecesQueHaGanado) {
+			int cartasQuitarTurnoJugadas, int cartasCambioColorJugadas, 
+			int vecesQueHizoTrampas, int vecesQueCantaUno, int vecesQueHaGanado) {
 		super();
 		this.nombre = nombre;
 		this.reglas = reglas;
@@ -49,6 +51,7 @@ public class EstadisticosJugador {
 		this.cartasMasDosJugadas = cartasMasDosJugadas;
 		this.cartasCambioSentidoJugadas = cartasCambioSentidoJugadas;
 		this.cartasQuitarTurnoJugadas = cartasQuitarTurnoJugadas;
+		this.cartasCambioColorJugadas = cartasCambioColorJugadas;
 		this.vecesQueHizoTrampas = vecesQueHizoTrampas;
 		this.vecesQueCantaUno = vecesQueCantaUno;
 		this.vecesQueHaGanado = vecesQueHaGanado;
@@ -126,6 +129,13 @@ public class EstadisticosJugador {
 		return cartasQuitarTurnoJugadas;
 	}
 
+	
+	/**
+	 * @return las cartasCambioColorJugadas
+	 */
+	public int getCartasCambioColorJugadas() {
+		return cartasCambioColorJugadas;
+	}
 
 
 	/**

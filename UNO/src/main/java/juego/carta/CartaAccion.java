@@ -36,6 +36,9 @@ public class CartaAccion extends Carta{
 		if (accion.toString().equals("+4")){ // Para asegurar
 			this.setColor(Colores.NOCOLOR);
 		}
+		if (accion.toString().equals("CambiaColor")){ 
+			this.setColor(Colores.NOCOLOR);
+		}
 	}
 		
 

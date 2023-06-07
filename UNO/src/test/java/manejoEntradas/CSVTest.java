@@ -75,6 +75,7 @@ public class CSVTest {
 		assertEquals(122, jugadores.get(0).getCartasMasDosJugadas());
 		assertEquals(106, jugadores.get(0).getCartasCambioSentidoJugadas());
 		assertEquals(97, jugadores.get(0).getCartasQuitarTurnoJugadas());
+		assertEquals(12, jugadores.get(0).getCartasCambioColorJugadas());
 		assertEquals(0, jugadores.get(0).getVecesQueHizoTrampas());
 		assertEquals(82, jugadores.get(0).getVecesQueCantaUno());
 		assertEquals(32, jugadores.get(0).getVecesQueHaGanado());
@@ -88,6 +89,7 @@ public class CSVTest {
 		assertEquals(80, jugadores.get(1).getCartasMasDosJugadas());
 		assertEquals(95, jugadores.get(1).getCartasCambioSentidoJugadas());
 		assertEquals(96, jugadores.get(1).getCartasQuitarTurnoJugadas());
+		assertEquals(14, jugadores.get(1).getCartasCambioColorJugadas());
 		assertEquals(0, jugadores.get(1).getVecesQueHizoTrampas());
 		assertEquals(52, jugadores.get(1).getVecesQueCantaUno());
 		assertEquals(15, jugadores.get(1).getVecesQueHaGanado());
@@ -101,6 +103,7 @@ public class CSVTest {
 		assertEquals(77, jugadores.get(2).getCartasMasDosJugadas());
 		assertEquals(67, jugadores.get(2).getCartasCambioSentidoJugadas());
 		assertEquals(89, jugadores.get(2).getCartasQuitarTurnoJugadas());
+		assertEquals(16, jugadores.get(2).getCartasCambioColorJugadas());
 		assertEquals(0, jugadores.get(2).getVecesQueHizoTrampas());
 		assertEquals(84, jugadores.get(2).getVecesQueCantaUno());
 		assertEquals(26, jugadores.get(2).getVecesQueHaGanado());
@@ -114,6 +117,7 @@ public class CSVTest {
 		assertEquals(94, jugadores.get(3).getCartasMasDosJugadas());
 		assertEquals(80, jugadores.get(3).getCartasCambioSentidoJugadas());
 		assertEquals(92, jugadores.get(3).getCartasQuitarTurnoJugadas());
+		assertEquals(18, jugadores.get(3).getCartasCambioColorJugadas());
 		assertEquals(0, jugadores.get(3).getVecesQueHizoTrampas());
 		assertEquals(87, jugadores.get(3).getVecesQueCantaUno());
 		assertEquals(27, jugadores.get(3).getVecesQueHaGanado());

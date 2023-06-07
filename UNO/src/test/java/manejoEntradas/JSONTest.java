@@ -106,11 +106,6 @@ public class JSONTest {
 		ArrayList<Configuracion> configuraciones = 
 				manejoJSON.leerJSON("/test/resources/json/cargaFicheroCorrecta"); 
 		
-		// Comprobamos que se cargue el fichero correctamente
-		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("CARGA DEL FICHERO CORRECTA"));
-		
-		
 		// Revisamos que las configuraciones sean correctas
 		
 		// Primera configuracion con jugadores automaticos
@@ -151,12 +146,7 @@ public class JSONTest {
 		// Cargamos las configuraciones
 		ArrayList<Configuracion> configuraciones = 
 				manejoJSON.leerJSON("/test/resources/json/cargaFicheroCorrectaEnsemblePorDefecto"); 
-		
-		// Comprobamos que se cargue el fichero correctamente
-		String salida = salidaConsola.toString();
-		assertTrue(salida.contains("CARGA DEL FICHERO CORRECTA"));
-		
-		
+
 		// Revisamos que las configuraciones sean correctas
 		
 		// Primera configuracion con jugadores automaticos

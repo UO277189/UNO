@@ -25,6 +25,7 @@ public abstract class Jugador {
 	private int cartasMasDosJugadas;
 	private int cartasCambiarSentidoJugadas;
 	private int cartasQuitarTurnoJugadas;
+	private int cartasCambiaColorJugadas;
 	private int vecesQueHaCantadoUno;
 	private int vecesQueHaIntentadoHacerTrampas;
 	private int vecesQueHaGanado;
@@ -209,6 +210,12 @@ public abstract class Jugador {
 		this.cartasQuitarTurnoJugadas++;
 	}
 
+	/**
+	 * Incrementa el valor del parametro cartasCambioColorJugadas
+	 */
+	public void incrementCartaCambiaColorJugadas() {
+		this.cartasCambiaColorJugadas++;
+	}
 	
 
 	/**
@@ -248,6 +255,7 @@ public abstract class Jugador {
 		this.cartasMasDosJugadas += jugadorAbstract.getCartasMasDosJugadas();
 		this.cartasCambiarSentidoJugadas += jugadorAbstract.getCartasCambiarSentidoJugadas();
 		this.cartasQuitarTurnoJugadas += jugadorAbstract.getCartasQuitarTurnoJugadas();
+		this.cartasCambiaColorJugadas += jugadorAbstract.getCartasCambiaColorJugadas();
 		this.vecesQueHaCantadoUno += jugadorAbstract.getVecesQueHaCantadoUno();
 		this.vecesQueHaIntentadoHacerTrampas += jugadorAbstract.getVecesQueHaIntentadoHacerTrampas();
 		this.vecesQueHaGanado += jugadorAbstract.getVecesQueHaGanado();
@@ -280,6 +288,7 @@ public abstract class Jugador {
 		System.out.println("	Cartas +2 jugadas: " + this.getCartasMasDosJugadas());
 		System.out.println("	Cartas Cambio de Sentido jugadas: " + this.getCartasCambiarSentidoJugadas());
 		System.out.println("	Cartas Quitar Turno jugadas: " + this.getCartasQuitarTurnoJugadas());	
+		System.out.println("	Cartas Cambia Color jugadas: " + this.getCartasCambiaColorJugadas());	
 		System.out.println("	Veces que ha cantado UNO: " + this.getVecesQueHaCantadoUno());	
 		System.out.println("	Veces que ha intentado hacer trampas: " + this.getVecesQueHaIntentadoHacerTrampas());	
 		System.out.println("	Veces que ha ganado: " + this.getVecesQueHaGanado());	
@@ -299,6 +308,7 @@ public abstract class Jugador {
 		value = value.concat("	Cartas +2 jugadas: " + this.getCartasMasDosJugadas() + "\n");
 		value = value.concat("	Cartas Cambio de Sentido jugadas: " + this.getCartasCambiarSentidoJugadas() + "\n");
 		value = value.concat("	Cartas Quitar Turno jugadas: " + this.getCartasQuitarTurnoJugadas() + "\n");	
+		value = value.concat("	Cartas Cambio Color jugadas: " + this.getCartasCambiaColorJugadas() + "\n");
 		value = value.concat("	Veces que ha cantado UNO: " + this.getVecesQueHaCantadoUno() + "\n");	
 		value = value.concat("	Veces que ha intentado hacer trampas: " + this.getVecesQueHaIntentadoHacerTrampas() + "\n");	
 		value = value.concat("	Veces que ha ganado: " + this.getVecesQueHaGanado() + "\n");	
@@ -375,7 +385,15 @@ public abstract class Jugador {
 	public int getCartasQuitarTurnoJugadas() {
 		return cartasQuitarTurnoJugadas;
 	}
-
+	
+	
+	/**
+	 * @return las cartasCambioColorJugadas
+	 */
+	public int getCartasCambiaColorJugadas() {
+		return cartasCambiaColorJugadas;
+	}
+	
 
 	/**
 	 * @return las vecesQueHaCantadoUno

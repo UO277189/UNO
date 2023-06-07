@@ -60,12 +60,10 @@ public class ManejoFicherosJSON {
        }  catch (NullPointerException e) {
        	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA");
        	configuraciones.clear();
-       }
-       
-       if (!configuraciones.isEmpty()) {
-          	System.out.println("CARGA DEL FICHERO CORRECTA");
-       }
-       
+       } catch (Exception e) { // Si quedara alguna excepción pendiente
+          	System.out.println("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA");
+           	configuraciones.clear();
+       } 
        return configuraciones;
 	}
 	
