@@ -40,8 +40,9 @@ public class JugarPartida {
 	private static void jugarPartida() {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
-
+		
 		try {
+
 			if (opcion == 1) {
 				elegirOpcionRapida();
 			} else if (opcion == 2) {
@@ -54,9 +55,10 @@ public class JugarPartida {
 				System.out.println();
 				System.out.println("¡Hasta la próxima!");
 			}
-		} catch (Exception e) { // Si por alguna razón fallara algo que no se recoge se captura aquí
-			System.out.println("El sistema se cerrará por un error interno");
+		} catch (Exception e) {
+			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
 		}
+
 	}
 
 	/**
@@ -80,7 +82,7 @@ public class JugarPartida {
 		System.out.println("");
 		System.out.print("Seleccione la opción deseada: ");
 
-		LeerConsola leerConsola = new LeerConsola();
+		leerConsola = new LeerConsola();
 		int valor = leerConsola.leerValorRango(1, 5);
 
 		return valor;
