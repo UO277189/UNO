@@ -1,4 +1,4 @@
-package test.java.manejoEntradas;
+package test.java.unitarias.manejoEntradas;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,5 +1,7 @@
 package test.java.sistema;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -19,40 +21,45 @@ import main.java.JugarPartida;
  */
 public class ConfiguracionConsolaTest {
 
+	// PARÁMETROS
+	InputStream entradaInicio;
+	ByteArrayOutputStream destino; 
+	PrintStream destinoInicio;
+
 	/**
 	 * Para inicializar los parámetros que necesitaremos
 	 */
 	@BeforeEach
-	public void inicializar() {}
+	public void inicializar() {
+		destino = new ByteArrayOutputStream();
+	}
 	
 
 	/**
-	 * Test que verifica que al cargar un CSV que no tenga el formato adecuado salta un mensaje de error
+	 * Test que verifica que el usuario puede consultar el manual de ayuda
 	 */
 	@Test
-	public void prueba() {
-		 // Redirigir la entrada y salida estándar
-        String entrada = "4\n4\n5"; // Entrada simulada
-        InputStream entradaOriginal = System.in;
-        System.setIn(new ByteArrayInputStream(entrada.getBytes()));
-        ByteArrayOutputStream salidaCapturada = new ByteArrayOutputStream();
-        PrintStream salidaOriginal = System.out;
-        System.setOut(new PrintStream(salidaCapturada));
+	public void leerManualTest() {
+	
+		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
+        String comandos = "4\nA\n1\n6\na\n7\n5"; // Entrada simulada
+        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
+        System.setOut(new PrintStream(destino));
 
-        // Ejecutar la aplicación
+        
+        // Se ejecuta la aplicación controlando los errores
         try {
             JugarPartida.main(new String[]{});
-        } catch (NoSuchElementException e) {
-            Assertions.fail("La aplicación intentó leer más elementos de los proporcionados en la entrada.");
+ 
+            assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
+            assertTrue(destino.toString().contains("A continuación se muestra una explicación de las diferentes opciones del juego: "));  // Leer ayuda al principio       
+            assertTrue(destino.toString().contains("A continuación se muestran algunas configuraciones básicas del juego."));            
+            assertTrue(destino.toString().contains("1- 	Nombre de la configuración: ManualDosJugadores")); // Leer ayuda de las configuraciones
+            assertTrue(destino.toString().contains("¡Hasta la próxima!"));
+            assertTrue(!destino.toString().contains("Ha ocurrido un error en el sistema, la aplicación se cerrará."));
+        } catch (Exception e) { // Para identificar que está mal
+            Assertions.fail("Error al pasar las pruebas del sistema: " + e.getMessage());
         }
-
-        // Restaurar la entrada y salida estándar
-        System.setIn(entradaOriginal);
-        System.setOut(salidaOriginal);
-
-        // Verificar la salida
-        System.out.println(salidaCapturada.toString());
-
 	}
 	
 

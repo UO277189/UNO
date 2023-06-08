@@ -106,11 +106,11 @@ public class ConfigurarPartidaConsola {
 
 		// Caso barajar montón a montón
 		if (value == 1) {
-			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 20): ");
+			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 10): ");
 			int cartasMonton = leerConsola.leerValorRango(2, 20);
 			System.out.println();
-			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 5): ");
-			int montonesCambiar = leerConsola.leerValorRango(2, 5);
+			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 10): ");
+			int montonesCambiar = leerConsola.leerValorRango(2, 10);
 			System.out.println();
 			estrategia = new MontonAMonton(cartasMonton, montonesCambiar);
 		}
@@ -123,8 +123,8 @@ public class ConfigurarPartidaConsola {
 	 * @return int El número de partidas a jugar
 	 */
 	public int elegirNumeroPartidas() {
-		System.out.print("Por favor, elija el número de partidas (Mínimo: 1, Máximo: 100000): ");
-		int value = leerConsola.leerValorRango(1, 100000);
+		System.out.print("Por favor, elija el número de partidas (Mínimo: 1, Máximo: 10000): ");
+		int value = leerConsola.leerValorRango(1, 10000);
 		System.out.println();
 		return value;
 	}
@@ -161,11 +161,11 @@ public class ConfigurarPartidaConsola {
 		int eleccion = 0;
 		ArrayList<Regla> reglas = new ArrayList<Regla>();
 
-		while (eleccion != 9) {
+		while (eleccion != 12) {
 			mostrarReglasUsuario(); // Mostramos las opciones al usuario
-			eleccion = leerConsola.leerValorRango(0, 9); // Elegimos la opción
+			eleccion = leerConsola.leerValorRango(0, 12); // Elegimos la opción
 
-			if (eleccion != 10) {
+			if (eleccion != 12) {
 				reglas.add(elegirRegla(eleccion + 1));
 				System.out.println("Se ha elegido la regla marcada por " + eleccion);
 				System.out.println();
@@ -199,13 +199,19 @@ public class ConfigurarPartidaConsola {
 		case 4:
 			return ReglaFactory.crearRegla("ReglaNoPriorizarMasDos");
 		case 5:
-			return ReglaFactory.crearRegla("ReglaPriorizarContarColores");
+			return ReglaFactory.crearRegla("ReglaPrimeraCarta");
 		case 6:
-			return ReglaFactory.crearRegla("ReglaNoPriorizarMasCuatro");
+			return ReglaFactory.crearRegla("ReglaPriorizarCartasRobar");
 		case 7:
-			return ReglaFactory.crearRegla("ReglaPriorizarContarNumerosAcciones");
+			return ReglaFactory.crearRegla("ReglaPriorizarComodines");	
 		case 8:
-			return ReglaFactory.crearRegla("ReglaNoPriorizarContarNumerosAcciones");
+			return ReglaFactory.crearRegla("ReglaContarColoresMasFrecuente");
+		case 9:
+			return ReglaFactory.crearRegla("ReglaContarColoresMenosFrecuente");
+		case 10:
+			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMasFrecuente");
+		case 11:
+			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMenosFrecuente");
 		}
 		return null;
 	}
@@ -216,20 +222,23 @@ public class ConfigurarPartidaConsola {
 	public void mostrarReglasUsuario() {
 		System.out.println("Por favor, seleccione la regla que desea implementar");
 		System.out.println(" - 0: Al azar");
-		System.out.println(" - 1: Sacar el +4 lo antes posible");
-		System.out.println(" - 2: Sacar el +4 lo más tarde posible");
-		System.out.println(" - 3: Sacar el +2 lo antes posible");
-		System.out.println(" - 4: Sacar el +2 lo más tarde posible");
-		System.out.println(" - 5: Cuantas más veces sale un color, más probable es que "
+		System.out.println(" - 1: Sacar el +4 lo antes posible, resto de cartas al azar");
+		System.out.println(" - 2: Sacar el +4 lo más tarde posible, resto de cartas al azar");
+		System.out.println(" - 3: Sacar el +2 lo antes posible, resto de cartas al azar");
+		System.out.println(" - 4: Sacar el +2 lo más tarde posible, resto de cartas al azar");
+		System.out.println(" - 5: Saca la primera carta que encuentre en la mano");
+		System.out.println(" - 6: Prioriza lasa cartas +4 y +2, resto de cartas al azar");
+		System.out.println(" - 7: Prioriza las cartas comodín, resto de cartas al azar");
+		System.out.println(" - 8: Cuantas más veces sale un color, más probable es que "
 				+ "respondamos con una carta de ese color");
-		System.out.println(" - 6: Cuantas más veces sale un color, menos probable es que "
+		System.out.println(" - 9: Cuantas más veces sale un color, menos probable es que "
 				+ "respondamos con una carta de ese color");
-		System.out.println(" - 7: Cuantas más veces sale una carta numérica o de acción, más probable es que "
+		System.out.println(" - 10: Cuantas más veces sale una carta numérica o de acción, más probable es que "
 				+ "respondamos con una carta numérica o de acción respectivamente");
-		System.out.println(" - 8: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
+		System.out.println(" - 11: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
 				+ " respondamos con una carta numérica o de acción respectivamente");
 		System.out.println("");
-		System.out.println(" Pulse 9 para guardar todas las reglas seleccionadas");
+		System.out.println(" Pulse 12 para guardar todas las reglas seleccionadas");
 	}
 
 	
@@ -248,7 +257,8 @@ public class ConfigurarPartidaConsola {
 		System.out.println();
 		System.out.print("Seleccione el valor a implementar: ");
 		
-		int valor = leerConsola.leerValorRango(0, 3);
+		int valor = leerConsola.leerValorRango(0, 2);
+		
 		
 		if (valor == 0) {
 			return new EnsembleRanking();

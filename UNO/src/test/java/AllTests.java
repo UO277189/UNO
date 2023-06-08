@@ -10,13 +10,13 @@ import org.junit.platform.suite.api.Suite;
  */
 @Suite
 @SelectClasses({
-	test.java.juego.BarajaTest.class,
-	test.java.juego.JuegoTest.class,
-	test.java.manejoEntradas.CSVTest.class,
-	test.java.manejoEntradas.JSONTest.class,
-	test.java.estrategias.EnsemblesTest.class,
-	test.java.estrategias.EstrategiaBarajaTest.class,
-	test.java.estrategias.ReglasHeuristicasTest.class,
+	test.java.unitarias.juego.BarajaTest.class,
+	test.java.unitarias.juego.JuegoTest.class,
+	test.java.unitarias.manejoEntradas.CSVTest.class,
+	test.java.unitarias.manejoEntradas.JSONTest.class,
+	test.java.unitarias.estrategias.EnsemblesTest.class,
+	test.java.unitarias.estrategias.EstrategiaBarajaTest.class,
+	test.java.unitarias.estrategias.ReglasHeuristicasTest.class,
 })
 public class AllTests {
 

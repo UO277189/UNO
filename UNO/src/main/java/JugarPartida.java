@@ -22,8 +22,8 @@ import main.java.manejoDatos.manejoFicheros.ManejoFicherosTXT;
 public class JugarPartida {
 
 	// ATRUBUTOS
-	private static ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
-	private static LeerConsola leerConsola = new LeerConsola();
+	private static ManejoFicherosJSON manejoJSON;
+	private static LeerConsola leerConsola;
 
 	/**
 	 * Método para ejecutar el programa
@@ -31,6 +31,11 @@ public class JugarPartida {
 	 * @param args String[]
 	 */
 	public static void main(String[] args) {
+		
+		// Se inicializa aquí para evitar fallos en los tests
+		leerConsola = new LeerConsola();
+		manejoJSON = new ManejoFicherosJSON();
+		
 		jugarPartida();
 	}
 
@@ -82,7 +87,6 @@ public class JugarPartida {
 		System.out.println("");
 		System.out.print("Seleccione la opción deseada: ");
 
-		leerConsola = new LeerConsola();
 		int valor = leerConsola.leerValorRango(1, 5);
 
 		return valor;

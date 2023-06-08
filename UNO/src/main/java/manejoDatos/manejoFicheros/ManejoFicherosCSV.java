@@ -113,8 +113,14 @@ public class ManejoFicherosCSV {
 				reglas.add("NO APLICA");
 			} else {
 				String reglasStr = "";
+				int ponerComa = 0;
 				for (Regla regla : ((JugadorAutomatico)partidasJugadas.getJugadores().get(i)).getReglas()) {
-					reglasStr += regla.toString();
+					if (ponerComa == 0) {
+						reglasStr = reglasStr + regla.toString();
+						ponerComa++;
+					} else {
+						reglasStr = reglasStr + "," + regla.toString();
+					}
 				}
 				reglas.add(reglasStr);
 			}

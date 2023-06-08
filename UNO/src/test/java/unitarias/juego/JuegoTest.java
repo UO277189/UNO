@@ -1,4 +1,4 @@
-package test.java.juego;
+package test.java.unitarias.juego;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

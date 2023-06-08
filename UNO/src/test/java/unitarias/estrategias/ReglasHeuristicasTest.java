@@ -1,4 +1,4 @@
-package test.java.estrategias;
+package test.java.unitarias.estrategias;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
