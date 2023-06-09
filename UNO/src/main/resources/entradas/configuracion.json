@@ -6,15 +6,15 @@
         {
           "nombre": "Jugador1",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador3",
           "regla": "ReglaAzar"
-        },       
+        },
         {
           "nombre": "Jugador4",
           "regla": "ReglaAzar"
@@ -36,15 +36,15 @@
         {
           "nombre": "Jugador1",
           "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador3",
           "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador4",
           "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
@@ -66,7 +66,7 @@
         {
           "nombre": "Jugador1",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "ReglaAzar"
@@ -88,35 +88,35 @@
         {
           "nombre": "Jugador1",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador3",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador4",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador5",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador6",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador7",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador8",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador9",
           "regla": "ReglaAzar"
@@ -138,7 +138,7 @@
         {
           "nombre": "Jugador1",
           "regla": "no_aplica"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "no_aplica"
@@ -160,15 +160,15 @@
         {
           "nombre": "Jugador1",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador3",
           "regla": "no_aplica"
-        },        
+        },
         {
           "nombre": "Jugador4",
           "regla": "no_aplica"
@@ -190,51 +190,52 @@
         {
           "nombre": "Jugador1",
           "regla": "ReglaAzar"
-        },        
+        },
         {
           "nombre": "Jugador2",
           "regla": "ReglaNoPriorizarMasCuatro"
-        },        
+        },
         {
           "nombre": "Jugador3",
           "regla": "ReglaNoPriorizarMasDos"
-        },        
+        },
         {
           "nombre": "Jugador4",
           "regla": "ReglaPrimeraCarta"
-        },        
+        },
         {
           "nombre": "Jugador5",
           "regla": "ReglaPriorizarCartasRobar"
-        },        
+        },
         {
           "nombre": "Jugador6",
           "regla": "ReglaPriorizarComodines"
-        },        
+        },
         {
           "nombre": "Jugador7",
           "regla": "ReglaPriorizarMasCuatro"
-        },  
+        },
         {
           "nombre": "Jugador8",
           "regla": "ReglaPriorizarMasDos"
-        },      
+        },
         {
           "nombre": "Jugador9",
           "regla": "ReglaCompararTiposCartasMasFrecuente"
-        },        
+        },
         {
           "nombre": "Jugador10",
           "regla": "ReglaCompararTiposCartasMenosFrecuente"
-        },        
+        },
         {
           "nombre": "Jugador11",
           "regla": "ReglaContarColoresMasFrecuente"
-        },        
+        },
         {
           "nombre": "Jugador12",
           "regla": "ReglaContarColoresMenosFrecuente"
         }
+
       ],
       "estrategia": {
         "tipo": "MontonAMonton",
@@ -250,16 +251,17 @@
       "jugadores": [
         {
           "nombre": "Jugador1",
-          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos,ReglaPrimeraCarta,ReglaPriorizarCartasRobar,ReglaPriorizarComodines,ReglaPriorizarMasCuatro,ReglaCompararTiposCartasMasFrecuente,ReglaCompararTiposCartasMenosFrecuente,ReglaContarColoresMasFrecuente,ReglaContarColoresMenosFrecuente"
-        },        
+          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos,ReglaPrimeraCarta,ReglaPriorizarCartasRobar,ReglaPriorizarComodines,ReglaPriorizarMasCuatro,ReglaPriorizarMasDos,ReglaCompararTiposCartasMasFrecuente,ReglaCompararTiposCartasMenosFrecuente,ReglaContarColoresMasFrecuente,ReglaContarColoresMenosFrecuente"
+        },
         {
           "nombre": "Jugador2",
-          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos,ReglaPrimeraCarta,ReglaPriorizarCartasRobar,ReglaPriorizarComodines,ReglaPriorizarMasCuatro,ReglaCompararTiposCartasMasFrecuente,ReglaCompararTiposCartasMenosFrecuente,ReglaContarColoresMasFrecuente,ReglaContarColoresMenosFrecuente"
-        },        
+          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos,ReglaPrimeraCarta,ReglaPriorizarCartasRobar,ReglaPriorizarComodines,ReglaPriorizarMasCuatro,ReglaPriorizarMasDos,ReglaCompararTiposCartasMasFrecuente,ReglaCompararTiposCartasMenosFrecuente,ReglaContarColoresMasFrecuente,ReglaContarColoresMenosFrecuente"
+        },
         {
           "nombre": "Jugador3",
-          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos,ReglaPrimeraCarta,ReglaPriorizarCartasRobar,ReglaPriorizarComodines,ReglaPriorizarMasCuatro,ReglaCompararTiposCartasMasFrecuente,ReglaCompararTiposCartasMenosFrecuente,ReglaContarColoresMasFrecuente,ReglaContarColoresMenosFrecuente"
+          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos,ReglaPrimeraCarta,ReglaPriorizarCartasRobar,ReglaPriorizarComodines,ReglaPriorizarMasCuatro,ReglaPriorizarMasDos,ReglaCompararTiposCartasMasFrecuente,ReglaCompararTiposCartasMenosFrecuente,ReglaContarColoresMasFrecuente,ReglaContarColoresMenosFrecuente"
         }
+
       ],
       "estrategia": {
         "tipo": "MontonAMonton",
@@ -268,6 +270,28 @@
       },
       "ensemble": "EnsembleRanking",
       "numero_partidas": 10000,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "ConfiguracionManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador 0",
+          "regla": "ReglaPriorizarMasCuatro"
+        },
+        {
+          "nombre": "Jugador 1",
+          "regla": "ReglaPriorizarMasCuatro"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 1000,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 100,
       "traza": false
     }
   ]

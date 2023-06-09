@@ -83,6 +83,20 @@ public class ManejoFicherosJSON {
         	// No es un problema porque lo vamos a reescribir otra vez
         }
         
+        // Eliminamos la configuración si tiene el mismo nombre
+        // (para evitar que se solapen constantemente)
+        
+        Configuracion removeConfig = null;
+        for (Configuracion config: configuraciones) {
+        	if (config.getNombreConfiguracion().equals(nuevaConfiguracion.getNombreConfiguracion())) {
+        		removeConfig = config;
+        	}
+        }
+        
+        if (removeConfig != null) {
+        	configuraciones.remove(removeConfig);
+        }
+        
         // Añadimos la nueva configuración
         configuraciones.add(nuevaConfiguracion);
         

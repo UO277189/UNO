@@ -104,9 +104,15 @@ public class JugadorAutomatico extends Jugador{
 	public String getJSON() {
 		
 		// Ponemos todas las reglas en un string juntas
+		int coma = 0;
 		String reglas = "";
 		for (Regla regla : this.getReglas()) {
-			reglas += regla.toString();
+			if (coma == 0) {
+				reglas += regla.toString();
+				coma++;
+			} else {
+				reglas = reglas + "," + regla.toString();
+			}
 		}
 		
 		return  "        {\n" +

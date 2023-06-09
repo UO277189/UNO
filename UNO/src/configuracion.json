@@ -1,0 +1,48 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "ConfiguracionManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador 0",
+          "regla": "ReglaPriorizarMasCuatro"
+        },
+        {
+          "nombre": "Jugador 1",
+          "regla": "ReglaPriorizarMasCuatro"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 1000,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 100,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "ConfiguracionManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador 0",
+          "regla": "ReglaPriorizarMasCuatro"
+        },
+        {
+          "nombre": "Jugador 1",
+          "regla": "ReglaPriorizarMasCuatro"
+        }
+
+      ],
+      "estrategia": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 1000,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 100,
+      "traza": false
+    }
+  ]
+}

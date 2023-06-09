@@ -61,7 +61,7 @@ public class JugarPartida {
 				System.out.println("¡Hasta la próxima!");
 			}
 		} catch (Exception e) {
-			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
+ 			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
 		}
 
 	}
@@ -180,7 +180,7 @@ public class JugarPartida {
 		System.out.println("A continuación se solicitarán los datos necesarios para crear una configuración. ");
 
 		// Parámetros necesarios
-		ConfigurarPartidaConsola leerDatosManual = new ConfigurarPartidaConsola();
+		ConfigurarPartidaConsola leerDatosManual = new ConfigurarPartidaConsola(leerConsola);
 
 		// Objeto configuración para guardar los datos
 
@@ -194,12 +194,12 @@ public class JugarPartida {
 		Configuracion configuracion = new Configuracion(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas,
 				verTraza);
 
-		System.out.println("¿Desea guardar esta configuración? 0 - Si, 1 - No");
+		System.out.println("¿Desea guardar esta configuración? (0 - Si, 1 - No)");
 		int valor = leerConsola.leerValorRango(0, 1);
 
 		if (valor == 0) {
 			ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
-			manejoJSON.reescribirFicheroJSON(manejoJSON.getFicheroEntrada(), configuracion);
+			manejoJSON.reescribirFicheroJSON("/main/resources/entradas/" +  manejoJSON.getFicheroEntrada(), configuracion);
 			System.out.println("La configuración se ha guardado correctamente.");
 		}
 

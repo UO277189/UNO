@@ -16,36 +16,61 @@ import main.java.juego.jugador.JugadorAutomatico;
 import main.java.juego.jugador.JugadorManual;
 
 /**
- * Clase que maneja la lógica de los comandos que el usuario introduce por consola
+ * Clase que maneja la lógica de los comandos que el usuario introduce por
+ * consola
+ * 
  * @author Efrén García Valencia UO277189
  *
  */
 public class ConfigurarPartidaConsola {
 
 	private LeerConsola leerConsola;
+	private boolean rellenarPorDefecto;
 
 	/**
 	 * Constructor por defecto
 	 */
-	public ConfigurarPartidaConsola() {
-		this.leerConsola = new LeerConsola();
+	public ConfigurarPartidaConsola(LeerConsola leerConsola) {
+		this.leerConsola = leerConsola;
+
+		// Antes de empezar preguntamos si el jugador quiere poner datos por defecto
+		this.preguntarDatosPorDefecto();
+
 	}
-	
+
+	/**
+	 * Este método sirve para preguntar si el jugador quiere rellenar datos por
+	 * defecto
+	 */
+	private void preguntarDatosPorDefecto() {
+		System.out.print("¿Desea rellenar el nombre de la configuración y los jugadores por defecto? (0 - Si, 1 - No): ");
+		int valor = leerConsola.leerValorRango(0, 1);
+		if (valor == 0) {
+			this.rellenarPorDefecto = true;
+		} else {
+			this.rellenarPorDefecto = false;
+		}
+	}
 
 	/**
 	 * Método para elegir el nombre del fichero
+	 * 
 	 * @return String El nombre de la configuracion
 	 */
 	public String elegirNombreConfiguracion() {
 
 		System.out.println();
-		System.out.print("Por favor, seleccione el nombre de la configuración: ");
-		return leerConsola.leerLinea();
+		if (!this.rellenarPorDefecto) {
+			System.out.print("Por favor, seleccione el nombre de la configuración: ");
+			return leerConsola.leerLinea();
+		} else {
+			return "ConfiguracionManual";
+		}
 	}
 
-
 	/**
-	 * Método para elegir los jugadores de la partida y la estrategia que van a emplear
+	 * Método para elegir los jugadores de la partida y la estrategia que van a
+	 * emplear
 	 * 
 	 * @return ArrayList
 	 */
@@ -56,10 +81,18 @@ public class ConfigurarPartidaConsola {
 
 		// Para cada jugador
 		for (int i = 0; i < rangoJugadores; i++) {
-			System.out.print("Por favor, elija el nombre del jugador " + (i + 1) + ": ");
-			String nombre = leerConsola.leerLinea();
 
-			System.out.print("¿Va a ser un jugador manual o automático? Pulse la tecla correspondiente (0 - Manual, 1 -Automático): ");
+			String nombre = "";
+
+			if (!this.rellenarPorDefecto) {
+				System.out.print("Por favor, elija el nombre del jugador " + (i + 1) + ": ");
+				nombre = leerConsola.leerLinea();
+			} else {
+				nombre = "Jugador " + i;
+			}
+
+			System.out.print(
+					"¿Va a ser un jugador manual o automático? Pulse la tecla correspondiente (0 - Manual, 1 -Automático): ");
 			int tipoJugador = leerConsola.leerValorRango(0, 1);
 
 			// Jugador manual
@@ -76,7 +109,6 @@ public class ConfigurarPartidaConsola {
 		return jugadores;
 
 	}
-
 
 	/**
 	 * Método para crear la estrategia de barajar a aplicar
@@ -107,7 +139,7 @@ public class ConfigurarPartidaConsola {
 		// Caso barajar montón a montón
 		if (value == 1) {
 			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 10): ");
-			int cartasMonton = leerConsola.leerValorRango(2, 20);
+			int cartasMonton = leerConsola.leerValorRango(2, 10);
 			System.out.println();
 			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 10): ");
 			int montonesCambiar = leerConsola.leerValorRango(2, 10);
@@ -166,7 +198,7 @@ public class ConfigurarPartidaConsola {
 			eleccion = leerConsola.leerValorRango(0, 12); // Elegimos la opción
 
 			if (eleccion != 12) {
-				reglas.add(elegirRegla(eleccion + 1));
+				reglas.add(elegirRegla(eleccion));
 				System.out.println("Se ha elegido la regla marcada por " + eleccion);
 				System.out.println();
 			} else {
@@ -203,7 +235,7 @@ public class ConfigurarPartidaConsola {
 		case 6:
 			return ReglaFactory.crearRegla("ReglaPriorizarCartasRobar");
 		case 7:
-			return ReglaFactory.crearRegla("ReglaPriorizarComodines");	
+			return ReglaFactory.crearRegla("ReglaPriorizarComodines");
 		case 8:
 			return ReglaFactory.crearRegla("ReglaContarColoresMasFrecuente");
 		case 9:
@@ -241,10 +273,9 @@ public class ConfigurarPartidaConsola {
 		System.out.println(" Pulse 12 para guardar todas las reglas seleccionadas");
 	}
 
-	
-
 	/**
 	 * Método para elegir el ensemble de la aplicación
+	 * 
 	 * @return Ensemble
 	 */
 	public Ensemble elegirEnsemble() {
@@ -256,10 +287,9 @@ public class ConfigurarPartidaConsola {
 		System.out.println(" - 2: EnsembleVotacion");
 		System.out.println();
 		System.out.print("Seleccione el valor a implementar: ");
-		
+
 		int valor = leerConsola.leerValorRango(0, 2);
-		
-		
+
 		if (valor == 0) {
 			return new EnsembleRanking();
 		} else if (valor == 1) {
@@ -269,6 +299,5 @@ public class ConfigurarPartidaConsola {
 		}
 		return null;
 	}
-
 
 }
