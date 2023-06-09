@@ -92,12 +92,12 @@ public class ConfigurarPartidaConsola {
 			}
 
 			System.out.print(
-					"¿Va a ser un jugador manual o automático? Pulse la tecla correspondiente (0 - Manual, 1 -Automático): ");
+					"¿Va a ser un jugador manual o automático? Pulse la tecla correspondiente (0 - Manual, 1 - Automático): ");
 			int tipoJugador = leerConsola.leerValorRango(0, 1);
 
 			// Jugador manual
 			if (tipoJugador == 0) {
-				jugadores.add(new JugadorManual(nombre));
+				jugadores.add(new JugadorManual(nombre)); // Para las pruebas le paso el parámetro adicional
 			}
 
 			// Si es un jugador automático
@@ -139,7 +139,7 @@ public class ConfigurarPartidaConsola {
 		// Caso barajar montón a montón
 		if (value == 1) {
 			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 10): ");
-			int cartasMonton = leerConsola.leerValorRango(2, 10);
+			int cartasMonton = leerConsola.leerValorRango(2, 20);
 			System.out.println();
 			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 10): ");
 			int montonesCambiar = leerConsola.leerValorRango(2, 10);

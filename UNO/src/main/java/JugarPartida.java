@@ -199,7 +199,7 @@ public class JugarPartida {
 
 		if (valor == 0) {
 			ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
-			manejoJSON.reescribirFicheroJSON("/main/resources/entradas/" +  manejoJSON.getFicheroEntrada(), configuracion);
+			manejoJSON.reescribirFicheroJSON(manejoJSON.getFicheroEntrada(), configuracion);
 			System.out.println("La configuración se ha guardado correctamente.");
 		}
 

@@ -18,7 +18,7 @@ import org.junit.platform.suite.api.Suite;
 	test.java.unitarias.estrategias.EstrategiaBarajaTest.class,
 	test.java.unitarias.estrategias.ReglasHeuristicasTest.class,
 	test.java.sistema.ManejoManualTest.class,
-	test.java.sistema.ConfiguracionConsolaTest.class
+	test.java.sistema.ConfiguracionConsolaTest.class,
 })
 public class AllTests {
 

@@ -258,6 +258,7 @@ public class ManejoFicherosJSON {
 	 * @return ArrayList<JugadorAbstract>
 	 */
 	private ArrayList<Jugador> generarJugadores(JsonNode jugadoresNode) {
+		
 		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 		for (JsonNode jugador : jugadoresNode) {
 			String reglas = jugador.get("regla").asText();
