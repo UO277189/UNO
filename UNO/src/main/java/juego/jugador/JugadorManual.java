@@ -21,6 +21,17 @@ public class JugadorManual extends Jugador {
      */
 	public JugadorManual(String nombreJugador) {
 		super(nombreJugador);
+		this.leerConsola = new LeerConsola();
+	}
+
+	/**
+	 * Constructor que recibe dos parámetros
+	 * @param nombreJugador El nombre del jugador
+	 * @param leerConsola La clase LeerConsola
+	 */
+	public JugadorManual(String nombreJugador, LeerConsola leerConsola) {
+		super(nombreJugador);
+		this.leerConsola = leerConsola;
 	}
 
 	@Override

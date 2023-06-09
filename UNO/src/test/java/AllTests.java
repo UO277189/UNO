@@ -19,6 +19,7 @@ import org.junit.platform.suite.api.Suite;
 	test.java.unitarias.estrategias.ReglasHeuristicasTest.class,
 	test.java.sistema.ManejoManualTest.class,
 	test.java.sistema.ConfiguracionConsolaTest.class,
+	test.java.sistema.PartidaManualTest.class,
 })
 public class AllTests {
 
