@@ -33,6 +33,7 @@ public class EstadisticosJugador {
 	 * @param cartasMasCuatroJugadas 		Las cartas +4 jugadas
 	 * @param cartasMasDosJugadas 			Las cartas +2 jugadas
 	 * @param cartasCambioSentidoJugadas 	Las cartas cambio de sentido jugadas
+	 * @param cartasCambioColorJugadas		Las cartas cambio de color jugadas
 	 * @param cartasQuitarTurnoJugadas 		Las cartas quitar turno jugadas
 	 * @param vecesQueHizoTrampas			Las veces que el jugador hizo trampas
 	 * @param vecesQueCantaUno 				Las veces que canta uno

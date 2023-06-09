@@ -29,6 +29,7 @@ public class ConfigurarPartidaConsola {
 
 	/**
 	 * Constructor por defecto
+	 * @param leerConsola Para leer por consola
 	 */
 	public ConfigurarPartidaConsola(LeerConsola leerConsola) {
 		this.leerConsola = leerConsola;
