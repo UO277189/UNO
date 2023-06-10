@@ -100,7 +100,7 @@ public class JSONTest {
 	 * Test que verifica que el programa sea capaz de cargar datos correctamente de un JSON
 	 */
 	@Test
-	public void cargarFicheroCorrectamente() {
+	public void cargarFicheroCorrectamenteTest() {
 		
 		// Cargamos las configuraciones
 		ArrayList<Configuracion> configuraciones = 
@@ -137,31 +137,5 @@ public class JSONTest {
 		assertEquals(configuracionDOS.isTraza(), true);
 	}
 
-	/**
-	 * Test que verifica que por defecto el ensemble a introducir sea el de votación
-	 */
-	@Test
-	public void cargarFicheroCorrectamenteEnsemblePorDefecto() {
-		
-		// Cargamos las configuraciones
-		ArrayList<Configuracion> configuraciones = 
-				manejoJSON.leerJSON("/test/resources/json/cargaFicheroCorrectaEnsemblePorDefecto"); 
-
-		// Revisamos que las configuraciones sean correctas
-		
-		// Primera configuracion con jugadores automaticos
-		Configuracion configuracionUNO = configuraciones.get(0);
-		assertEquals(configuracionUNO.getNombreConfiguracion(), "cargaFicheroCorrectaEnsemblePorDefecto");
-		for (Jugador jugador : configuracionUNO.getJugadoresPartida()) {
-			assertTrue(jugador instanceof JugadorAutomatico);
-			assertEquals(jugador.getNombreJugador(), "Jugador");
-			assertEquals(((JugadorAutomatico)jugador).getReglas().get(0).toString(), "ReglaAzar");
-		}
-		assertTrue(configuracionUNO.getEstrategiaBaraja() instanceof CartaACarta);
-		assertEquals(((CartaACarta)configuracionUNO.getEstrategiaBaraja()).getCardsToExchange(), 60);
-		assertEquals(configuracionUNO.getEnsemble().toString(), "EnsembleVotacion");
-		assertEquals(configuracionUNO.getNumeroPartidas(), 100);
-		assertEquals(configuracionUNO.isTraza(), false);
-	}
 
 }

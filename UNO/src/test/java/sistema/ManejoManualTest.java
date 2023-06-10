@@ -67,7 +67,7 @@ public class ManejoManualTest {
 	 * Test que verifica que el usuario puede probar una configuración manual por defecto
 	 */
 	@Test
-	public void pruebaConfiguracionDefectoManual() {
+	public void pruebaConfiguracionDefectoManualTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
         String comandos = "1\n1"; // Entrada simulada
@@ -95,7 +95,7 @@ public class ManejoManualTest {
 	 * Test que verifica que el usuario puede probar una configuración automatica por defecto
 	 */
 	@Test
-	public void pruebaConfiguracionDefectoAutomatica() {
+	public void pruebaConfiguracionDefectoAutomaticaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
         String comandos = "1\n3"; // Entrada simulada
@@ -121,7 +121,7 @@ public class ManejoManualTest {
 	 * Test que verifica que el usuario puede probar una configuración mixta por defecto
 	 */
 	@Test
-	public void pruebaConfiguracionDefectoMixta() {
+	public void pruebaConfiguracionDefectoMixtaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
         String comandos = "1\n5"; // Entrada simulada
@@ -163,6 +163,56 @@ public class ManejoManualTest {
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("Por favor, seleccione un valor válido:"));            
             assertTrue(destino.toString().contains("¡Hasta la próxima!"));
+            assertTrue(!destino.toString().contains("Ha ocurrido un error en el sistema, la aplicación se cerrará."));
+        } catch (Exception e) { // Para identificar que está mal
+            Assertions.fail("Error al pasar las pruebas del sistema: " + e.getMessage());
+        }
+	}
+	
+	/**
+	 * Test que verifica que el usuario puede cargar una configuración del fichero de configuraciones
+	 */
+	@Test
+	public void pruebaCargarFicheroConfiguracionesOkTest() {
+	
+		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
+        String comandos = "3\n1"; // Entrada simulada
+        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
+        System.setOut(new PrintStream(destino));
+
+        
+        // Se ejecuta la aplicación controlando los errores
+        try {
+            JugarPartida.main(new String[]{});
+
+            assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));           
+            assertTrue(destino.toString().contains("NÚMERO DE PARTIDAS GANADAS:"));
+            assertTrue(!destino.toString().contains("Ha ocurrido un error en el sistema, la aplicación se cerrará."));
+        } catch (Exception e) { // Para identificar que está mal
+            Assertions.fail("Error al pasar las pruebas del sistema: " + e.getMessage());
+        }
+	}
+	
+	/**
+	 * Test que verifica que si el usuario introduce caracteres no válidos al cargar el fichero de configuraciones
+	 * el sistema no responda con un error
+	 */
+	@Test
+	public void pruebaCargarFicheroConfiguracionesNoOkTest() {
+	
+		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
+        String comandos = "3\n1000\na"; // Entrada simulada
+        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
+        System.setOut(new PrintStream(destino));
+
+        
+        // Se ejecuta la aplicación controlando los errores
+        try {
+            JugarPartida.main(new String[]{});
+
+            assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
+            assertTrue(destino.toString().contains("Por favor, seleccione un valor válido: "));        
+            assertTrue(destino.toString().contains("ERROR: este valor no es válido"));
             assertTrue(!destino.toString().contains("Ha ocurrido un error en el sistema, la aplicación se cerrará."));
         } catch (Exception e) { // Para identificar que está mal
             Assertions.fail("Error al pasar las pruebas del sistema: " + e.getMessage());

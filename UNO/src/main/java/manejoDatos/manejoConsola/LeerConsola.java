@@ -80,7 +80,8 @@ public class LeerConsola {
 		} catch (InputMismatchException e) {
 			sc.next();
 			System.out.println("ERROR: este valor no es válido");
-			System.out.println("ERROR: se aplica el valor por defecto para las partidas");
+			System.out.println("Se seleccionará el valor mínimo de las opciones elegidas: " + min);
+			
 			value = min;
 		}
 		// Se avanza de línea

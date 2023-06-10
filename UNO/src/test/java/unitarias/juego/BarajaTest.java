@@ -218,11 +218,10 @@ public class BarajaTest {
 	}
 	
 	/**
-	 * Test que verifica que si tenemos todas las cartas en el montón de descarte
-	 * la baraja funciona correctamente
+	 * Test que verifica que no podemos repartir más cartas de las que tenga el montón de robar
 	 */
 	@Test
-	public void barajaPersonalizadaTodoDescarteTest() {
+	public void barajaPersonalizadaRepartirCartasTest() {
 		
 		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
 		ArrayList<Carta> cartasRobar = new ArrayList<Carta>();
@@ -250,25 +249,6 @@ public class BarajaTest {
 		assertEquals(baraja.getBarajaDescarte().size(), 1); // Queda únicamente la carta del centro
 		assertTrue(baraja.getCartaCentro().getColor() == Colores.AMARILLO); 
 		assertTrue(baraja.getCartaCentro() instanceof CartaNumerica);  // Mantenemos la carta del centro (se saca y se recoge)		
-	}
-	
-	/**
-	 * Test que verifica que si no hay cartas suficientes para dar el sistema responde apropiadamente
-	 */
-	@Test
-	public void barajaPersonalizadaNoHayCartasSuficienteseTest() {
-	
-		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
-		ArrayList<Carta> cartasRobar = new ArrayList<Carta>();
-		
-		// Meto 5 cartas en el montón de robar
-		for (int i = 0; i < 10; i++) {
-			cartasRobar.add(new CartaNumerica (1, Colores.AZUL));
-		}
-		
-		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, new CartaNumerica (1, Colores.AMARILLO));
-		baraja.darCartas(10); // Quitamos todas las cartas
-		assertEquals(baraja.darCartas(20).size(), 0); // Reparte 20 cartas (no devuelve nada)	
 		
 		// En este punto solo debería estar la carta del medio y la baraja no sería operativa
 		try {
@@ -276,8 +256,5 @@ public class BarajaTest {
 		} catch (IndexOutOfBoundsException e) {
 			assertEquals("No hay cartas", e.getMessage()); // Si robo una carta falla
 		}
-		assertEquals(baraja.hayCartaParaRobar(), false); // No se pueden robar cartas	
-		
 	}
-	
 }

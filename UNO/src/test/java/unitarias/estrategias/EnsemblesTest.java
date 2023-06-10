@@ -112,12 +112,11 @@ public class EnsemblesTest {
 
 		// PESOS
 		// Pos 0: 0.6923077 + 0.16666667
-		// Pos 4: 0.14285715 + 1 <- GANADOR
+		// Pos 6: 0.07692308  + 1 <- GANADOR
 
 		jugador0.setCartasMano(cartas); // Se establecen las cartas en la mano
 		jugador0.asignarEnsemble(new EnsembleSuma()); // Se asigna el ensemble
 
-		// La carta mas votada es +4, sin importar las cartas de la mano del jugador
 		assertEquals(6, jugador0.jugarTurno(new CartaNumerica(1, Colores.ROJO), cartasHistorial));
 	}
 	
@@ -126,8 +125,6 @@ public class EnsemblesTest {
 	 */
 	@Test
 	public void ensembleRankingTest() {
-
-		// Usamos el historial de cartas
 
 
 		// Se prepara el jugador

@@ -13,9 +13,11 @@
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
       },
-      "ensemble": "NoEnsemble",
+      "ensemble": "NoExiste",
       "numero_partidas": 0,
       "traza": false
     }
   ]
 }
+
+

@@ -76,6 +76,7 @@ public class JuegoTest {
 	public void quitarTurnoTest() {
 
 		// Se construye la baraja para el test
+		
 		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
 		ArrayList<Carta> cartasRobar = new ArrayList<Carta>();
 
@@ -87,10 +88,13 @@ public class JuegoTest {
 		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, cartaMedio);
 
 		// Se juega la partida
+		
 		gestionarJuegos = new GestionarJuegos(jugadores, baraja, ensemble, 1);
 		gestionarJuegos.jugarPartidasBarajaEspecial(0); // Se indica el turno inicial
 
 		// Obtenemos los resultados
+		// El jugador 0 debe haber jugado 7 cartas, todas ellas de tipo "Salta"
+		// El jugador 1 no debe haber podido jugar ninguna ronda
 
 		Juego juegoResultado = gestionarJuegos.getJuegos().get(0);
 
@@ -119,11 +123,13 @@ public class JuegoTest {
 		assertEquals(juegoResultado.getJugadores().get(1).getVecesQueHaGanado(), 0);
 	}
 
+	
+	
 	/**
 	 * En este test partimos de una baraja con solo cartas de cambio de sentido
 	 */
 	@Test
-	public void cambiSentidoTest() {
+	public void cambiaSentidoTest() {
 
 		// Se construye la baraja para el test
 		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
@@ -190,7 +196,7 @@ public class JuegoTest {
 	 * En este test partimos de una baraja con solo cartas de cambio de color
 	 */
 	@Test
-	public void cambiaColorTest() {
+	public void cambioColorTest() {
 
 		// Se construye la baraja para el test
 		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();

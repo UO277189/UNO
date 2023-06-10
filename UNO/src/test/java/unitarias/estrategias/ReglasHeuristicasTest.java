@@ -18,6 +18,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresM
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasDos;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarComodines;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
@@ -158,47 +159,46 @@ public class ReglasHeuristicasTest {
 	 * Test para verificar que la regla PriorizarCartasRobar funciona correctamente
 	 */
 	@Test
-	public void reglaNoPriorizarCartasRobarTest() {
+	public void reglaPriorizarCartasRobarTest() {
 
 		// Es una mezcla de los dos anteriores
 
 		// +2
 
 		ArrayList<Regla> reglas0 = new ArrayList<Regla>();
-		reglas0.add(new ReglaNoPriorizarMasDos());
+		reglas0.add(new ReglaPriorizarCartasRobar());
 		JugadorAutomatico jugador0 = new JugadorAutomatico("Jugador0", reglas0);
 
 		ArrayList<Carta> cartas = new ArrayList<Carta>();
-		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
 		cartas.add(new CartaNumerica(1, Colores.ROJO));
-		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
-		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
-		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
-		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
+		cartas.add(new CartaNumerica(1, Colores.ROJO));
+		cartas.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR)); // Pos 2
+		cartas.add(new CartaNumerica(1, Colores.ROJO));
+		cartas.add(new CartaNumerica(1, Colores.ROJO));
+		cartas.add(new CartaNumerica(1, Colores.ROJO));
 
 		jugador0.setCartasMano(cartas);
 		jugador0.asignarEnsemble(ensemble);
 
-		assertEquals(1, jugador0.jugarTurno(new CartaNumerica(1, Colores.ROJO), null));
+		assertEquals(2, jugador0.jugarTurno(new CartaNumerica(1, Colores.ROJO), null));
 
 		// +4
 
 		ArrayList<Regla> reglas1 = new ArrayList<Regla>();
-		reglas1.add(new ReglaNoPriorizarMasCuatro());
+		reglas1.add(new ReglaPriorizarCartasRobar());
 		JugadorAutomatico jugador1 = new JugadorAutomatico("Jugador1", reglas1);
 
 		ArrayList<Carta> cartas1 = new ArrayList<Carta>();
-		cartas1.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
-		cartas1.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
-		cartas1.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
-		cartas1.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
 		cartas1.add(new CartaNumerica(1, Colores.ROJO));
-		cartas1.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
-
+		cartas1.add(new CartaNumerica(1, Colores.ROJO));
+		cartas1.add(new CartaAccion(new MasDos(), Colores.NOCOLOR)); // Pos 2
+		cartas1.add(new CartaNumerica(1, Colores.ROJO));
+		cartas1.add(new CartaNumerica(1, Colores.ROJO));
+		cartas1.add(new CartaNumerica(1, Colores.ROJO));
 		jugador1.setCartasMano(cartas1);
 		jugador1.asignarEnsemble(ensemble);
 
-		assertEquals(4, jugador1.jugarTurno(new CartaNumerica(1, Colores.ROJO), null));
+		assertEquals(2, jugador1.jugarTurno(new CartaNumerica(1, Colores.ROJO), null));
 
 	}
 	
