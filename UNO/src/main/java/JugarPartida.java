@@ -194,12 +194,12 @@ public class JugarPartida {
 		Configuracion configuracion = new Configuracion(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas,
 				verTraza);
 
-		System.out.println("¿Desea guardar esta configuración? (0 - Si, 1 - No)");
+		System.out.print("¿Desea guardar esta configuración? (0 - Si, 1 - No): ");
 		int valor = leerConsola.leerValorRango(0, 1);
 
 		if (valor == 0) {
 			ManejoFicherosJSON manejoJSON = new ManejoFicherosJSON();
-			manejoJSON.reescribirFicheroJSON(manejoJSON.getFicheroEntrada(), configuracion);
+			manejoJSON.reescribirFicheroJSON("/main/resources/entradas/" + manejoJSON.getFicheroEntrada(), configuracion);
 			System.out.println("La configuración se ha guardado correctamente.");
 		}
 

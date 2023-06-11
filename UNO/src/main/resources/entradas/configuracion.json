@@ -1,7 +1,5 @@
 {
   "configuraciones": [
-	  
-	  
     {
       "nombre_configuracion": "EjemploAutomatico",
       "jugadores": [
@@ -31,9 +29,7 @@
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 100,
       "traza": false
-    }
-    
-    ,
+    },
     {
       "nombre_configuracion": "TrioAleatorio",
       "jugadores": [
