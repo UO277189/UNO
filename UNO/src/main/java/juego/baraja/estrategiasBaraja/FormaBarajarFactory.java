@@ -6,15 +6,17 @@ import main.java.juego.baraja.estrategiasBaraja.estrategias.NoBarajar;
 
 /**
  * Clase que representa una factoría para las diferentes formas de barajar
+ * 
  * @author Efrén García Valencia UO277189
  *
  */
 public class FormaBarajarFactory {
-	
+
 	/**
 	 * Método que devuelve la forma de barajar
-	 * @param tipo El tipo de forma de barajar
-	 * @param parametroInicial El parámetro inicial 
+	 * 
+	 * @param tipo               El tipo de forma de barajar
+	 * @param parametroInicial   El parámetro inicial
 	 * @param parametroAdicional El parámetro adicional
 	 * @return FormaBarajar
 	 */
@@ -29,7 +31,7 @@ public class FormaBarajarFactory {
 		} else {
 			return null;
 		}
-		
+
 	}
 
 }

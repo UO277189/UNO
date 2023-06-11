@@ -22,7 +22,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMas
 public class ReglaFactory {
 	
 	/**
-	 * Método que crea las reglas heurísticas del juegi
+	 * Método que crea las reglas heurísticas del juego
 	 * @param reglaString String
 	 * @return Regla
 	 */

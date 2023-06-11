@@ -98,7 +98,7 @@ public class Baraja {
 			}
 		}
 
-		// Adicionalmente, otro bucle for para colocar las cartas +4
+		// Adicionalmente, otro bucle for para colocar las cartas comodín
 
 		for (int i = 0; i < this.cartasAccionSinColor; i++) {
 			// El +4 va con el color NEGRO

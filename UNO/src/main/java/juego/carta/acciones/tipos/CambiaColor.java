@@ -10,19 +10,17 @@ import main.java.juego.carta.acciones.Accion;
  *
  */
 public class CambiaColor implements Accion {
-	
+
 	@Override
 	public void execute(Juego game) {
 		game.nuevoColorCentro();
 		game.getJugadorActual().incrementCartaCambiaColorJugadas();
 		game.guardarDatos("SE HA SACADO UNA CARTA CAMBIO DE COLOR");
-
 	}
 
 	@Override
 	public String toString() {
 		return "CambiaColor";
 	}
-
 
 }
