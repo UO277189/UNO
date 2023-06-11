@@ -1,5 +1,7 @@
 {
   "configuraciones": [
+	  
+	  
     {
       "nombre_configuracion": "EjemploAutomatico",
       "jugadores": [
@@ -29,13 +31,15 @@
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 100,
       "traza": false
-    },
+    }
+    
+    ,
     {
       "nombre_configuracion": "TrioAleatorio",
       "jugadores": [
         {
           "nombre": "Jugador1",
-          "regla": "ReglaAzar,ReglaAzar,ReglaAzar"
+          "regla": "ReglaAzar,ReglaNoPriorizarMasCuatro,ReglaNoPriorizarMasDos"
         },
         {
           "nombre": "Jugador2",
@@ -57,8 +61,8 @@
         "parametroAdicional": "no_aplica"
       },
       "ensemble": "EnsembleRanking",
-      "numero_partidas": 100,
-      "traza": false
+      "numero_partidas": 500,
+      "traza": true
     },
     {
       "nombre_configuracion": "MostrarTrazaConDos",
