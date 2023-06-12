@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.java.UNOJava;
+import main.java.JugarPartida;
 
 /**
  * Clase que verifica que el comportamiento de cargar las configuraciones por consola sea el correcto
@@ -61,7 +61,7 @@ public class ConfiguracionConsolaTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("- PARTIDAS JUGADAS: 100"));  
             assertTrue(destino.toString().contains("Jugador: Jugador 0")); 
@@ -104,7 +104,7 @@ public class ConfiguracionConsolaTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("- PARTIDAS JUGADAS: 100"));  
             assertTrue(destino.toString().contains("Jugador: Jugador 0")); 
@@ -143,7 +143,7 @@ public class ConfiguracionConsolaTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("EMPIEZA LA PARTIDA: 1"));   
             // Es normal que falle aquí porque espera más entradas que no hay
@@ -179,7 +179,7 @@ public class ConfiguracionConsolaTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("EMPIEZA LA PARTIDA: 1"));   
             // Es normal que falle aquí porque espera más entradas que no hay
@@ -214,7 +214,7 @@ public class ConfiguracionConsolaTest {
 	        
 	        // Se ejecuta la aplicación controlando los errores
 	        try {
-	            UNOJava.main(new String[]{});
+	            JugarPartida.main(new String[]{});
 	       
 	            assertTrue(destino.toString().contains("ERROR: se tiene que elegir al menos una regla")); 
 	            assertTrue(destino.toString().contains("- PARTIDAS JUGADAS: 100"));  
@@ -263,7 +263,7 @@ public class ConfiguracionConsolaTest {
 	        
 	        // Se ejecuta la aplicación controlando los errores
 	        try {
-	            UNOJava.main(new String[]{});
+	            JugarPartida.main(new String[]{});
 	       
 	            // Tiene que salir este mensaje pero también debe permitir terminar la partida
 	            assertTrue(destino.toString().contains("Por favor, seleccione un valor válido:")); 
@@ -298,7 +298,7 @@ public class ConfiguracionConsolaTest {
 	        
 	        // Se ejecuta la aplicación controlando los errores
 	        try {
-	            UNOJava.main(new String[]{});
+	            JugarPartida.main(new String[]{});
 	                   
 	            // Además de los mensajes anteriores, la configuración se ha de guardar correctamente
 	            assertTrue(destino.toString().contains("La configuración se ha guardado correctamente."));  

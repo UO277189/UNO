@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.java.UNOJava;
+import main.java.JugarPartida;
 
 /**
  * Clase que verifica que el funcionamiento de la interfaz por consola se ajusta a lo esperado
@@ -48,7 +48,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("A continuación se muestra una explicación de las diferentes opciones del juego: "));  // Leer ayuda al principio       
@@ -77,7 +77,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
 
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("A continuación se muestran algunas configuraciones básicas del juego."));            
@@ -105,7 +105,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("A continuación se muestran algunas configuraciones básicas del juego."));            
@@ -131,7 +131,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("A continuación se muestran algunas configuraciones básicas del juego."));            
@@ -158,7 +158,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
  
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("Por favor, seleccione un valor válido:"));            
@@ -183,7 +183,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
 
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));           
             assertTrue(destino.toString().contains("NÚMERO DE PARTIDAS GANADAS:"));
@@ -208,7 +208,7 @@ public class ManejoManualTest {
         
         // Se ejecuta la aplicación controlando los errores
         try {
-            UNOJava.main(new String[]{});
+            JugarPartida.main(new String[]{});
 
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
             assertTrue(destino.toString().contains("Por favor, seleccione un valor válido: "));        
