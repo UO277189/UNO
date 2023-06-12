@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.java.juego.baraja.Baraja;
-import main.java.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
-import main.java.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.java.juego.carta.Carta;
-import main.java.juego.carta.CartaAccion;
-import main.java.juego.carta.CartaNumerica;
-import main.java.juego.carta.acciones.tipos.CambiaColor;
-import main.java.juego.carta.acciones.tipos.CambiarSentido;
-import main.java.juego.carta.acciones.tipos.MasCuatro;
-import main.java.juego.carta.acciones.tipos.MasDos;
-import main.java.juego.carta.acciones.tipos.QuitarTurno;
+import main.java.logica.juego.baraja.Baraja;
+import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
+import main.java.logica.juego.carta.Carta;
+import main.java.logica.juego.carta.CartaAccion;
+import main.java.logica.juego.carta.CartaNumerica;
+import main.java.logica.juego.carta.acciones.tipos.CambiaColor;
+import main.java.logica.juego.carta.acciones.tipos.CambiarSentido;
+import main.java.logica.juego.carta.acciones.tipos.MasCuatro;
+import main.java.logica.juego.carta.acciones.tipos.MasDos;
+import main.java.logica.juego.carta.acciones.tipos.QuitarTurno;
 
 /**
  * Clase de test que verifica que las estrategias de la baraja funcionen

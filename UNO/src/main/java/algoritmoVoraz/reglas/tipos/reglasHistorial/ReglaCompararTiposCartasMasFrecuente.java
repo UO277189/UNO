@@ -3,9 +3,9 @@ package main.java.algoritmoVoraz.reglas.tipos.reglasHistorial;
 import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.reglas.Regla;
-import main.java.juego.carta.Carta;
-import main.java.juego.carta.CartaAccion;
-import main.java.juego.carta.CartaNumerica;
+import main.java.logica.juego.carta.Carta;
+import main.java.logica.juego.carta.CartaAccion;
+import main.java.logica.juego.carta.CartaNumerica;
 /**
  * Regla que pondera las cartas por tipos en funcion de las veces que hayan salido
  * Cuantas mas veces salga MAYOR ES LA PROBABILIDAD

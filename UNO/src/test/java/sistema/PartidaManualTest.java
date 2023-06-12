@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.java.algoritmoVoraz.ensembles.tipos.EnsembleVotacion;
-import main.java.juego.GestionarJuegos;
-import main.java.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
-import main.java.juego.jugador.Jugador;
-import main.java.juego.jugador.JugadorManual;
-import main.java.manejoDatos.manejoConsola.LeerConsola;
+import main.java.consola.LeerConsola;
+import main.java.logica.GestionarJuegos;
+import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.logica.juego.jugador.Jugador;
+import main.java.logica.juego.jugador.JugadorManual;
 
 /**
  * Clase para controlar situaciones anómalas durante una partida manual

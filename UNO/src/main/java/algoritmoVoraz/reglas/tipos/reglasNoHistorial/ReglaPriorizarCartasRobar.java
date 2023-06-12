@@ -3,7 +3,7 @@ package main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial;
 import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.reglas.Regla;
-import main.java.juego.carta.Carta;
+import main.java.logica.juego.carta.Carta;
 
 /**
  * Clase que implementa la regla que prioriza las cartas de robar

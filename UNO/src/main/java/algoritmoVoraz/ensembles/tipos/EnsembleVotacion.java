@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.ensembles.Ensemble;
 import main.java.algoritmoVoraz.reglas.Regla;
-import main.java.juego.carta.Carta;
+import main.java.logica.juego.carta.Carta;
 
 /**
  * Clase que implementa el ensemble de votación para las reglas heurísticas

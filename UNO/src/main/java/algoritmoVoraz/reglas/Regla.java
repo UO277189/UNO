@@ -2,7 +2,7 @@ package main.java.algoritmoVoraz.reglas;
 
 import java.util.ArrayList;
 
-import main.java.juego.carta.Carta;
+import main.java.logica.juego.carta.Carta;
 
 /**
  * Clase que representa una regla a aplicar para dar pesos a las cartas

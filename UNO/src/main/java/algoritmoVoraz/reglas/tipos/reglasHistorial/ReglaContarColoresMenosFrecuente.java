@@ -3,8 +3,8 @@ package main.java.algoritmoVoraz.reglas.tipos.reglasHistorial;
 import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.reglas.Regla;
-import main.java.juego.carta.Carta;
-import main.java.juego.carta.colores.Colores;
+import main.java.logica.juego.carta.Carta;
+import main.java.logica.juego.carta.colores.Colores;
 /**
  * Regla que pondera las cartas de colores en funcion de las cartas que ya hayan salido
  * Cuantas mas veces salga MENOS ES LA PROBABILIDAD

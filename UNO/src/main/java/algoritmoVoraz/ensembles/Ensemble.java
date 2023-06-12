@@ -3,9 +3,9 @@ package main.java.algoritmoVoraz.ensembles;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import main.java.algoritmoVoraz.VorazUno;
+import main.java.algoritmoVoraz.VorazUNO;
 import main.java.algoritmoVoraz.reglas.Regla;
-import main.java.juego.carta.Carta;
+import main.java.logica.juego.carta.Carta;
 
 /**
  * Clase base que representa los diferentes tipos de ensembles que hay en la aplicación
@@ -15,14 +15,14 @@ import main.java.juego.carta.Carta;
 public abstract class Ensemble {
 	
 	// ATRIBUTOS
-	protected VorazUno voraz;
+	protected VorazUNO voraz;
 	
 	
 	/**
 	 * Constructor con un parámetro para almacenar las reglas compuestas
 	 */
 	public Ensemble() {
-		this.voraz = new VorazUno();
+		this.voraz = new VorazUNO();
 	}
 	
 	

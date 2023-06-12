@@ -22,14 +22,14 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCar
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarComodines;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
-import main.java.juego.carta.Carta;
-import main.java.juego.carta.CartaAccion;
-import main.java.juego.carta.CartaNumerica;
-import main.java.juego.carta.acciones.tipos.CambiaColor;
-import main.java.juego.carta.acciones.tipos.MasCuatro;
-import main.java.juego.carta.acciones.tipos.MasDos;
-import main.java.juego.carta.colores.Colores;
-import main.java.juego.jugador.JugadorAutomatico;
+import main.java.logica.juego.carta.Carta;
+import main.java.logica.juego.carta.CartaAccion;
+import main.java.logica.juego.carta.CartaNumerica;
+import main.java.logica.juego.carta.acciones.tipos.CambiaColor;
+import main.java.logica.juego.carta.acciones.tipos.MasCuatro;
+import main.java.logica.juego.carta.acciones.tipos.MasDos;
+import main.java.logica.juego.carta.colores.Colores;
+import main.java.logica.juego.jugador.JugadorAutomatico;
 
 /**
  * Clase para probar diferentes reglas heurísticas y ver que salen los

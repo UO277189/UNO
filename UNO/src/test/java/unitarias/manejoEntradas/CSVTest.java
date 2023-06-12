@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.java.manejoDatos.EstadisticosJugador;
-import main.java.manejoDatos.manejoFicheros.ManejoFicherosCSV;
+import main.java.logica.EstadisticosJugador;
+import main.java.logica.ficheros.CSVParser;
 
 
 
@@ -26,7 +26,7 @@ import main.java.manejoDatos.manejoFicheros.ManejoFicherosCSV;
 public class CSVTest {
 
 	// ATRIBUTOS
-	private ManejoFicherosCSV manejoCSV;
+	private CSVParser manejoCSV;
 	private ByteArrayOutputStream salidaConsola;
 
 	/**
@@ -34,7 +34,7 @@ public class CSVTest {
 	 */
 	@BeforeEach
 	public void inicializar() {
-		manejoCSV = new ManejoFicherosCSV();
+		manejoCSV = new CSVParser();
 
 		// Para las pruebas nos interesa redirigir la salida de la consola
 		// para así verificar que salgan los mensajes adecuados

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.java.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
-import main.java.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.java.juego.jugador.Jugador;
-import main.java.juego.jugador.JugadorAutomatico;
-import main.java.juego.jugador.JugadorManual;
-import main.java.manejoDatos.Configuracion;
-import main.java.manejoDatos.manejoFicheros.ManejoFicherosJSON;
+import main.java.logica.Configuracion;
+import main.java.logica.ficheros.JSONParser;
+import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
+import main.java.logica.juego.jugador.Jugador;
+import main.java.logica.juego.jugador.JugadorAutomatico;
+import main.java.logica.juego.jugador.JugadorManual;
 
 /**
  * Esta clase se encargará de estudiar todos los casos posibles que afectan a la carga de datos
@@ -29,7 +29,7 @@ import main.java.manejoDatos.manejoFicheros.ManejoFicherosJSON;
 public class JSONTest {
 	
 	// ATRIBUTOS
-	private ManejoFicherosJSON manejoJSON;
+	private JSONParser manejoJSON;
 	private ByteArrayOutputStream salidaConsola;
 	
 	
@@ -38,7 +38,7 @@ public class JSONTest {
 	 */
 	@BeforeEach
 	 public void inicializar() {
-	   manejoJSON = new ManejoFicherosJSON();
+	   manejoJSON = new JSONParser();
 	   
 	   // Para las pruebas nos interesa redirigir la salida de la consola
 	   // para así verificar que salgan los mensajes adecuados
