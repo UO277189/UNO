@@ -1,18 +1,19 @@
 package main.java.algoritmoVoraz.reglas;
 
 
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCambiarColorMedio;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaAzar;
-import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasCuatro;
-import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarMasDos;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartaAccion;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartaNumerica;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasAccionNoComodin;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarComodines;
-import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
-import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
 
 /**
  * Clase que representa una factoría para crear las reglas
@@ -31,33 +32,15 @@ public class ReglaFactory {
 
 		if (reglaString.contains("ReglaAzar"))
 			regla = new ReglaAzar();
-
-		if (reglaString.contains("ReglaPriorizarMasCuatro"))
-			regla = new ReglaPriorizarMasCuatro();
-
-		if (reglaString.contains("ReglaNoPriorizarMasCuatro"))
-			regla = new ReglaNoPriorizarMasCuatro();
-
-		if (reglaString.contains("ReglaPriorizarMasDos"))
-			regla = new ReglaPriorizarMasDos();
-
-		if (reglaString.contains("ReglaNoPriorizarMasDos"))
-			regla = new ReglaNoPriorizarMasDos();
-
-		if (reglaString.contains("ReglaContarColoresMasFrecuente"))
-			regla = new ReglaContarColoresMasFrecuente();
-
-		if (reglaString.contains("ReglaContarColoresMenosFrecuente"))
-			regla = new ReglaContarColoresMenosFrecuente();
-
-		if (reglaString.contains("ReglaCompararTiposCartasMasFrecuente"))
-			regla = new ReglaCompararTiposCartasMasFrecuente();
-
-		if (reglaString.contains("ReglaCompararTiposCartasMenosFrecuente"))
-			regla = new ReglaCompararTiposCartasMenosFrecuente();
-
+		
 		if (reglaString.contains("ReglaPrimeraCarta"))
 			regla = new ReglaPrimeraCarta();
+		
+		if (reglaString.contains("ReglaPriorizarCartaNumerica"))
+			regla = new ReglaPriorizarCartaNumerica();
+		
+		if (reglaString.contains("ReglaPriorizarCartaAccion"))
+			regla = new ReglaPriorizarCartaAccion();
 		
 		if (reglaString.contains("ReglaPriorizarCartasRobar"))
 			regla = new ReglaPriorizarCartasRobar();
@@ -65,6 +48,27 @@ public class ReglaFactory {
 		if (reglaString.contains("ReglaPriorizarComodines"))
 			regla = new ReglaPriorizarComodines();
 		
+		if (reglaString.contains("ReglaNoPriorizarCartasRobar"))
+			regla = new ReglaNoPriorizarCartasRobar();
+		
+		if (reglaString.contains("ReglaPriorizarCartasAccionNoComodin"))
+			regla = new ReglaPriorizarCartasAccionNoComodin();
+		
+		if (reglaString.contains("ReglaCambiarColorMedio"))
+			regla = new ReglaCambiarColorMedio();
+
+		if (reglaString.contains("ReglaCompararTiposCartasMasFrecuente"))
+			regla = new ReglaCompararTiposCartasMasFrecuente();
+
+		if (reglaString.contains("ReglaCompararTiposCartasMenosFrecuente"))
+			regla = new ReglaCompararTiposCartasMenosFrecuente();
+		
+		if (reglaString.contains("ReglaContarColoresMasFrecuente"))
+			regla = new ReglaContarColoresMasFrecuente();
+
+		if (reglaString.contains("ReglaContarColoresMenosFrecuente"))
+			regla = new ReglaContarColoresMenosFrecuente();
+
 		return regla;
 	}
 

@@ -56,11 +56,11 @@
       "jugadores": [
          {
           "nombre": "Jugador1",
-          "regla": "ReglaPriorizarMasCuatro"
+          "regla": "ReglaPriorizarCartasRobar"
         },        
         {
           "nombre": "Jugador2",
-          "regla": "ReglaPriorizarMasDos"
+          "regla": "ReglaNoPriorizarCartasRobar"
         },        
         {
           "nombre": "Jugador3",
@@ -86,11 +86,11 @@
       "jugadores": [
          {
           "nombre": "Jugador1",
-          "regla": "ReglaPriorizarMasCuatro, ReglaNoPriorizarMasDos, ReglaAzar"
+          "regla": "ReglaPriorizarCartasRobar, ReglaNoPriorizarCartasRobar, ReglaAzar"
         },        
         {
           "nombre": "Jugador2",
-          "regla": "ReglaNoPriorizarMasCuatro, ReglaPriorizarMasDos, ReglaAzar"
+          "regla": "ReglaPriorizarCartasRobar, ReglaNoPriorizarCartasRobar, ReglaAzar"
         },        
         {
           "nombre": "Jugador3",

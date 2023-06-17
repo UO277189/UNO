@@ -4,29 +4,27 @@ import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.reglas.Regla;
 import main.java.logica.juego.carta.Carta;
+import main.java.logica.juego.carta.CartaNumerica;
 
 /**
- * Clase que implementa la regla que no prioriza las cartas +4
+ * Clase que implementa una regla que prioriza las cartas numericas
+ * 
  * @author Efrén García Valencia UO277189
  *
  */
-public class ReglaNoPriorizarMasCuatro implements Regla{
+public class ReglaPriorizarCartaNumerica implements Regla {
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
 		for (int i = 0; i < cartas.size(); i++) {
-			if (cartas.get(i).toString().contains("+4")) {
-				cartas.get(i).setPeso(-100);
-			}
+			if (cartas.get(i) instanceof CartaNumerica)
+				cartas.get(i).setPeso(10);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "ReglaNoPriorizarMasCuatro";
+		return "ReglaPriorizarCartaNumerica";
 	}
-	
-	
-	
-	
+
 }

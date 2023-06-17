@@ -19,7 +19,7 @@ public class ReglaPriorizarComodines implements Regla{
 				cartas.get(i).setPeso(10);
 			}
 			if (cartas.get(i).toString().contains("CambiaColor")) {
-				cartas.get(i).setPeso(9);
+				cartas.get(i).setPeso(5);
 			}
 		}
 	}

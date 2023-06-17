@@ -30,6 +30,4 @@ public class ReglaPriorizarCartasRobar implements Regla{
 		return "ReglaPriorizarCartasRobar";
 	}
 	
-	
-
 }

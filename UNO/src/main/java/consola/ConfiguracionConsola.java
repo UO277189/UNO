@@ -224,27 +224,29 @@ public class ConfiguracionConsola {
 		case 0:
 			return ReglaFactory.crearRegla("ReglaAzar");
 		case 1:
-			return ReglaFactory.crearRegla("ReglaPriorizarMasCuatro");
-		case 2:
-			return ReglaFactory.crearRegla("ReglaNoPriorizarMasCuatro");
-		case 3:
-			return ReglaFactory.crearRegla("ReglaPriorizarMasDos");
-		case 4:
-			return ReglaFactory.crearRegla("ReglaNoPriorizarMasDos");
-		case 5:
 			return ReglaFactory.crearRegla("ReglaPrimeraCarta");
-		case 6:
+		case 2:
+			return ReglaFactory.crearRegla("ReglaPriorizarCartaNumerica");
+		case 3:
+			return ReglaFactory.crearRegla("ReglaPriorizarCartaAccion");
+		case 4:
 			return ReglaFactory.crearRegla("ReglaPriorizarCartasRobar");
-		case 7:
+		case 5:
 			return ReglaFactory.crearRegla("ReglaPriorizarComodines");
+		case 6:
+			return ReglaFactory.crearRegla("ReglaNoPriorizarCartasRobar");
+		case 7:
+			return ReglaFactory.crearRegla("ReglaPriorizarCartasAccionNoComodin");
 		case 8:
-			return ReglaFactory.crearRegla("ReglaContarColoresMasFrecuente");
+			return ReglaFactory.crearRegla("ReglaCambiarColorMedio");
 		case 9:
-			return ReglaFactory.crearRegla("ReglaContarColoresMenosFrecuente");
-		case 10:
 			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMasFrecuente");
-		case 11:
+		case 10:
 			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMenosFrecuente");
+		case 11:
+			return ReglaFactory.crearRegla("ReglaContarColoresMasFrecuente");
+		case 12:
+			return ReglaFactory.crearRegla("ReglaContarColoresMenosFrecuente");
 		}
 		return null;
 	}
@@ -254,22 +256,26 @@ public class ConfiguracionConsola {
 	 */
 	public void mostrarReglasUsuario() {
 		System.out.println("Por favor, seleccione la regla que desea implementar");
+		
+		
 		System.out.println(" - 0: Al azar");
-		System.out.println(" - 1: Sacar el +4 lo antes posible, resto de cartas al azar");
-		System.out.println(" - 2: Sacar el +4 lo más tarde posible, resto de cartas al azar");
-		System.out.println(" - 3: Sacar el +2 lo antes posible, resto de cartas al azar");
-		System.out.println(" - 4: Sacar el +2 lo más tarde posible, resto de cartas al azar");
-		System.out.println(" - 5: Saca la primera carta que encuentre en la mano");
-		System.out.println(" - 6: Prioriza lasa cartas +4 y +2, resto de cartas al azar");
-		System.out.println(" - 7: Prioriza las cartas comodín, resto de cartas al azar");
-		System.out.println(" - 8: Cuantas más veces sale un color, más probable es que "
-				+ "respondamos con una carta de ese color");
-		System.out.println(" - 9: Cuantas más veces sale un color, menos probable es que "
-				+ "respondamos con una carta de ese color");
-		System.out.println(" - 10: Cuantas más veces sale una carta numérica o de acción, más probable es que "
+		System.out.println(" - 1: Sacar la primera carta que encuentr en la mano");
+		System.out.println(" - 2: Priorizar las cartas numéricas");
+		System.out.println(" - 3: Priorizar las cartas de acción");
+		System.out.println(" - 4: Prioriza las cartas +4 y +2, el resto de cartas al azar");
+		System.out.println(" - 5: Prioriza las cartas comodín, resto de cartas al azar");
+		System.out.println(" - 6: Sacar las cartas +4 y +2 lo más tarde posible, el resto de cartas al azar");
+		System.out.println(" - 7: Priorizar las cartas de acción que no sean comodines");
+		System.out.println(" - 8: Priorizar las cartas que permitan cambiar el color del medio");
+		System.out.println(" - 9: Cuantas más veces sale una carta numérica o de acción, más probable es que "
 				+ "respondamos con una carta numérica o de acción respectivamente");
-		System.out.println(" - 11: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
+		System.out.println(" - 10: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
 				+ " respondamos con una carta numérica o de acción respectivamente");
+		System.out.println(" - 11: Cuantas más veces sale un color, más probable es que "
+				+ "respondamos con una carta de ese color");
+		System.out.println(" - 12: Cuantas más veces sale un color, menos probable es que "
+				+ "respondamos con una carta de ese color");
+	
 		System.out.println("");
 		System.out.println(" Pulse 12 para guardar todas las reglas seleccionadas");
 	}

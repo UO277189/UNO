@@ -13,9 +13,10 @@ import main.java.algoritmoVoraz.ensembles.tipos.EnsembleVotacion;
 import main.java.algoritmoVoraz.reglas.Regla;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartaAccion;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartaNumerica;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasAccionNoComodin;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartasRobar;
-import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasCuatro;
-import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarMasDos;
 import main.java.logica.juego.carta.Carta;
 import main.java.logica.juego.carta.CartaAccion;
 import main.java.logica.juego.carta.CartaNumerica;
@@ -47,15 +48,14 @@ public class EnsemblesTest {
 
 		// Se prepara el jugador
 		ArrayList<Regla> reglas0 = new ArrayList<Regla>();
-		reglas0.add(new ReglaPriorizarMasCuatro());
-		reglas0.add(new ReglaPriorizarMasCuatro());
-		reglas0.add(new ReglaPriorizarMasDos());
+		reglas0.add(new ReglaPriorizarCartaNumerica());
+		reglas0.add(new ReglaPriorizarCartaNumerica());
+		reglas0.add(new ReglaPriorizarCartaAccion());
 
 		JugadorAutomatico jugador0 = new JugadorAutomatico("Jugador0", reglas0);
 
 		// Se preparan las cartas
-		ArrayList<Carta> cartas = new ArrayList<Carta>();
-		cartas.add(new CartaNumerica(1, Colores.ROJO));
+		ArrayList<Carta> cartas = new ArrayList<Carta>();;
 		cartas.add(new CartaAccion(new MasCuatro(), Colores.NOCOLOR));
 		cartas.add(new CartaAccion(new MasDos(), Colores.NOCOLOR));
 		cartas.add(new CartaAccion(new MasDos(), Colores.NOCOLOR));
@@ -66,8 +66,8 @@ public class EnsemblesTest {
 		jugador0.setCartasMano(cartas); // Se establecen las cartas en la mano
 		jugador0.asignarEnsemble(new EnsembleVotacion()); // Se asigna el ensemble
 
-		// La carta mas votada es +4, sin importar las cartas de la mano del jugador
-		assertEquals(1, jugador0.jugarTurno(new CartaNumerica(1, Colores.ROJO), null));
+		// La carta mas votada es la numérica situada al final
+		assertEquals(5, jugador0.jugarTurno(new CartaNumerica(1, Colores.ROJO), null));
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class EnsemblesTest {
 		// Se prepara el jugador
 		ArrayList<Regla> reglas0 = new ArrayList<Regla>();
 		reglas0.add(new ReglaPriorizarCartasRobar());
-		reglas0.add(new ReglaPriorizarMasDos());
+		reglas0.add(new ReglaPriorizarCartasAccionNoComodin());
 
 
 		JugadorAutomatico jugador0 = new JugadorAutomatico("Jugador0", reglas0);

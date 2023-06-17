@@ -16,7 +16,7 @@ import org.junit.platform.suite.api.Suite;
 	test.java.unitarias.manejoEntradas.JSONTest.class,
 	test.java.unitarias.estrategias.EnsemblesTest.class,
 	test.java.unitarias.estrategias.EstrategiaBarajaTest.class,
-	test.java.unitarias.estrategias.ReglasHeuristicasTest.class,
+	test.java.unitarias.estrategias.ReglasTest.class,
 	test.java.sistema.ManejoManualTest.class,
 	test.java.sistema.ConfiguracionConsolaTest.class,
 	test.java.sistema.PartidaManualTest.class,
