@@ -77,9 +77,11 @@ public class TXTParser extends Parser{
 
 			// writer.close();
 			// fileWriter.close();
+			
+			System.out.println("Se han guardado correctamente los datos en el fichero txt.");
 
-		} catch (IOException e) {
-			System.out.println("Ha ocurrido un error al pasar los datos a un txt");
+		} catch (Exception e) {
+			System.out.println("Ha ocurrido un error al pasar los datos a un txt.");
 		}
 	}
 

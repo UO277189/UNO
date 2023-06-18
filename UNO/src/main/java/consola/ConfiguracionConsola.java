@@ -240,12 +240,14 @@ public class ConfiguracionConsola {
 		case 8:
 			return ReglaFactory.crearRegla("ReglaCambiarColorMedio");
 		case 9:
-			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMasFrecuente");
+			return ReglaFactory.crearRegla("ReglaNoCambiarColorMedio");
 		case 10:
-			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMenosFrecuente");
+			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMasFrecuente");
 		case 11:
-			return ReglaFactory.crearRegla("ReglaContarColoresMasFrecuente");
+			return ReglaFactory.crearRegla("ReglaCompararTiposCartasMenosFrecuente");
 		case 12:
+			return ReglaFactory.crearRegla("ReglaContarColoresMasFrecuente");
+		case 13:
 			return ReglaFactory.crearRegla("ReglaContarColoresMenosFrecuente");
 		}
 		return null;
@@ -267,13 +269,14 @@ public class ConfiguracionConsola {
 		System.out.println(" - 6: Sacar las cartas +4 y +2 lo más tarde posible, el resto de cartas al azar");
 		System.out.println(" - 7: Priorizar las cartas de acción que no sean comodines");
 		System.out.println(" - 8: Priorizar las cartas que permitan cambiar el color del medio");
-		System.out.println(" - 9: Cuantas más veces sale una carta numérica o de acción, más probable es que "
+		System.out.println(" - 9: Priorizar las cartas que mantengan el color del medio");
+		System.out.println(" - 10: Cuantas más veces sale una carta numérica o de acción, más probable es que "
 				+ "respondamos con una carta numérica o de acción respectivamente");
-		System.out.println(" - 10: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
+		System.out.println(" - 11: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
 				+ " respondamos con una carta numérica o de acción respectivamente");
-		System.out.println(" - 11: Cuantas más veces sale un color, más probable es que "
+		System.out.println(" - 12: Cuantas más veces sale un color, más probable es que "
 				+ "respondamos con una carta de ese color");
-		System.out.println(" - 12: Cuantas más veces sale un color, menos probable es que "
+		System.out.println(" - 13: Cuantas más veces sale un color, menos probable es que "
 				+ "respondamos con una carta de ese color");
 	
 		System.out.println("");

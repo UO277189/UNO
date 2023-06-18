@@ -6,6 +6,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposC
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaNoCambiarColorMedio;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaAzar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
@@ -56,6 +57,9 @@ public class ReglaFactory {
 		
 		if (reglaString.contains("ReglaCambiarColorMedio"))
 			regla = new ReglaCambiarColorMedio();
+		
+		if (reglaString.contains("ReglaNoCambiarColorMedio"))
+			regla = new ReglaNoCambiarColorMedio();
 
 		if (reglaString.contains("ReglaCompararTiposCartasMasFrecuente"))
 			regla = new ReglaCompararTiposCartasMasFrecuente();

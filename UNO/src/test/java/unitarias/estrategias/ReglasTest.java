@@ -16,6 +16,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposC
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposCartasMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
+import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaNoCambiarColorMedio;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartaAccion;
@@ -555,6 +556,39 @@ public class ReglasTest {
 		jugador0.asignarEnsemble(ensemble); // Se asigna el ensemble
 
 		assertEquals(4, jugador0.jugarTurno(new CartaAccion(new MasDos(), Colores.ROJO), cartasHistorial));
+	}
+	
+	/**
+	 * Test para verificar que la regla NoCambiarColorMedio funciona correctamente
+	 */
+	@Test
+	public void reglaNoCambiarColorMedioTest() {
+
+		// En las reglas con historial necesitamos indicar un parametro adicional
+
+		ArrayList<Carta> cartasHistorial = new ArrayList<Carta>();
+		cartasHistorial.add(new CartaAccion(new MasDos(), Colores.ROJO));
+		cartasHistorial.add(new CartaAccion(new MasDos(), Colores.AZUL));  // La última carta del historial
+
+		// Se prepara el jugador
+		ArrayList<Regla> reglas0 = new ArrayList<Regla>();
+		reglas0.add(new ReglaNoCambiarColorMedio());
+		JugadorAutomatico jugador0 = new JugadorAutomatico("Jugador0", reglas0);
+
+		// Se preparan las cartas
+		ArrayList<Carta> cartas = new ArrayList<Carta>();
+
+		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
+		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
+		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
+		cartas.add(new CartaAccion(new MasDos(), Colores.AZUL)); // Mantiene el color
+		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
+		cartas.add(new CartaAccion(new MasDos(), Colores.ROJO));
+
+		jugador0.setCartasMano(cartas); // Se establecen las cartas en la mano
+		jugador0.asignarEnsemble(ensemble); // Se asigna el ensemble
+
+		assertEquals(3, jugador0.jugarTurno(new CartaAccion(new MasDos(), Colores.AZUL), cartasHistorial));
 	}
 
 }

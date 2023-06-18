@@ -107,7 +107,13 @@ public class Juego {
 		this.jugadores = jugadores;
 
 		// Creamos la baraja
-		this.barajaUNO = new Baraja(barajar);
+		// Cada 10 jugadores aumenta el tamaño de la baraja
+		if (jugadores.size() > 10) {
+			int incremento = jugadores.size()/10 + 1;
+			this.barajaUNO = new Baraja(barajar, incremento);
+		} else {
+			this.barajaUNO = new Baraja(barajar);	
+		}
 
 		// El orden por defecto es de izquiera a derecha (lo marcamos con un true)
 		this.orden = true;
