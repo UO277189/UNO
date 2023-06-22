@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.java.logica.juego.baraja.Baraja;
-import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.logica.juego.baraja.tipos.CartaACarta;
 import main.java.logica.juego.carta.Carta;
 import main.java.logica.juego.carta.CartaAccion;
 import main.java.logica.juego.carta.CartaNumerica;

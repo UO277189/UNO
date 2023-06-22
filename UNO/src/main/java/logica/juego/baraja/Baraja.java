@@ -2,7 +2,6 @@ package main.java.logica.juego.baraja;
 
 import java.util.ArrayList;
 
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
 import main.java.logica.juego.carta.Carta;
 import main.java.logica.juego.carta.CartaAccion;
 import main.java.logica.juego.carta.CartaNumerica;
@@ -54,12 +53,12 @@ public class Baraja {
 		// Formamos la baraja
 		this.formarBaraja(1); // No hay incremento
 	}
-	
-	
+
 	/**
-	 * Constructor con dos parámetros para indicar si se incrementan las cartas de la baraja
+	 * Constructor con dos parámetros para indicar si se incrementan las cartas de
+	 * la baraja
 	 * 
-	 * @param barajar BarajarStrategy
+	 * @param barajar    BarajarStrategy
 	 * @param incremento int
 	 */
 	public Baraja(FormaBarajar barajar, int incremento) {
@@ -76,6 +75,7 @@ public class Baraja {
 
 	/**
 	 * Para formar la baraja hay que generar las cartas y barajarlas
+	 * 
 	 * @param incremento El incremento de la baraja
 	 */
 	private void formarBaraja(int incremento) {
@@ -89,7 +89,8 @@ public class Baraja {
 
 	/**
 	 * Método para generar la baraja del UNO
-	 * @param incremento 
+	 * 
+	 * @param incremento
 	 */
 	private void generarBaraja(int incremento) {
 
@@ -98,45 +99,37 @@ public class Baraja {
 		// Hay que reiniciar la baraja para que no se dupliquen las cartas
 		this.barajaCartas = new ArrayList<>();
 		this.barajaDescarte = new ArrayList<>();
-		
-		int cartasNumericasIncremento;
-		int cartasAccionColorIncremento;
-		int cartasAccionNoColorIncremento;
-		
-		if (incremento > 1) {
-			cartasNumericasIncremento = this.cartasNumericas * incremento;
-			cartasAccionColorIncremento = this.cartasAccionColor * incremento;
-			cartasAccionNoColorIncremento = this.cartasAccionSinColor * incremento;
-		} else {
-			cartasNumericasIncremento = this.cartasNumericas;
-			cartasAccionColorIncremento = this.cartasAccionColor;
-			cartasAccionNoColorIncremento = this.cartasAccionSinColor;
-		}
-
-		for (Colores color : colores) {
-
-			// Dos bucles for para colocar las cartas numéricas
-			for (int i = 1; i <= cartasNumericasIncremento; i++) {
-				this.barajaCartas.add(new CartaNumerica(i, color));
-			}
-			for (int i = 1; i <= cartasNumericasIncremento; i++) {
-				this.barajaCartas.add(new CartaNumerica(i, color));
-			}
-
-			// Un bucle for para las cartas de acción que tengan color
-			for (int i = 0; i < cartasAccionColorIncremento; i++) {
-				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("CambiarSentido"), color));
-				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasDos"), color));
-				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("QuitarTurno"), color));
-			}
-		}
 
 		// Adicionalmente, otro bucle for para colocar las cartas comodín
 
-		for (int i = 0; i < cartasAccionNoColorIncremento; i++) {
-			// El +4 va con el color NEGRO
-			this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasCuatro"), Colores.NOCOLOR));
-			this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("CambiaColor"), Colores.NOCOLOR));
+		for (int j = 0; j < incremento; j++) {
+
+			for (int i = 0; i < cartasAccionSinColor; i++) {
+				// El +4 va con el color NEGRO
+				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasCuatro"), Colores.NOCOLOR));
+				this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("CambiaColor"), Colores.NOCOLOR));
+			}
+		}
+
+		for (int j = 0; j < incremento; j++) {
+			
+			for (Colores color : colores) {
+				// Un bucle for para las cartas de acción que tengan color
+				for (int i = 0; i < cartasAccionColor; i++) {
+					this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("CambiarSentido"), color));
+					this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("MasDos"), color));
+					this.barajaCartas.add(new CartaAccion(AccionFactory.crearAccion("QuitarTurno"), color));
+				}
+
+				// Dos bucles for para colocar las cartas numéricas
+				for (int i = 1; i <= cartasNumericas; i++) {
+					this.barajaCartas.add(new CartaNumerica(i, color));
+				}
+				for (int i = 1; i <= cartasNumericas; i++) {
+					this.barajaCartas.add(new CartaNumerica(i, color));
+				}
+
+			}
 		}
 
 	}
@@ -351,8 +344,8 @@ public class Baraja {
 	}
 
 	/**
-	 * Método para generar una baraja particular. Nos permite manipular el juego
-	 * y generar situaciones específicas dentro de la partida.
+	 * Método para generar una baraja particular. Nos permite manipular el juego y
+	 * generar situaciones específicas dentro de la partida.
 	 * 
 	 * @param cartasMonton   Las cartas del montón de robar
 	 * @param cartasDescarte Las cartas de descarte
@@ -370,5 +363,4 @@ public class Baraja {
 		}
 	}
 
-	
 }

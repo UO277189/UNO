@@ -1,8 +1,8 @@
-package main.java.logica.juego.baraja.estrategiasBaraja;
+package main.java.logica.juego.baraja;
 
-import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
-import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.MontonAMonton;
-import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.NoBarajar;
+import main.java.logica.juego.baraja.tipos.CartaACarta;
+import main.java.logica.juego.baraja.tipos.MontonAMonton;
+import main.java.logica.juego.baraja.tipos.NoBarajar;
 
 /**
  * Clase que representa una factoría para las diferentes formas de barajar

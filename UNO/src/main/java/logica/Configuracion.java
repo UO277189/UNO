@@ -3,7 +3,7 @@ package main.java.logica;
 import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.ensembles.Ensemble;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.java.logica.juego.baraja.FormaBarajar;
 import main.java.logica.juego.jugador.Jugador;
 
 /**

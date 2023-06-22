@@ -51,6 +51,12 @@ public class CartaAccion extends Carta{
 		if (c instanceof CartaAccion) {
 			Accion accionAEchar = ((CartaAccion) c).getAccion();
 			
+			// Extra: si es una carta comodin pero viene cambiada de color también se puede echar
+			if (c.toString().contains("+4") || c.toString().contains("CambiaColor")) {
+				c.setColor(Colores.NOCOLOR); // Se restablece el color
+				return true;
+			}
+			
 			// Si fuera un +4 ya se habría echado antes
 			
 			// Aqui sirve si coincide el color o la acción

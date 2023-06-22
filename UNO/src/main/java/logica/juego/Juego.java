@@ -3,7 +3,7 @@ package main.java.logica.juego;
 import java.util.ArrayList;
 
 import main.java.logica.juego.baraja.Baraja;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.java.logica.juego.baraja.FormaBarajar;
 import main.java.logica.juego.carta.Carta;
 import main.java.logica.juego.carta.CartaAccion;
 import main.java.logica.juego.carta.acciones.Accion;
@@ -107,12 +107,12 @@ public class Juego {
 		this.jugadores = jugadores;
 
 		// Creamos la baraja
-		// Cada 10 jugadores aumenta el tamaño de la baraja
+		// Cada 10 jugadores aumenta la dimensión de la baraja
 		if (jugadores.size() > 10) {
-			int incremento = jugadores.size()/10 + 1;
+			int incremento = jugadores.size() / 10 + 1;
 			this.barajaUNO = new Baraja(barajar, incremento);
 		} else {
-			this.barajaUNO = new Baraja(barajar);	
+			this.barajaUNO = new Baraja(barajar);
 		}
 
 		// El orden por defecto es de izquiera a derecha (lo marcamos con un true)
@@ -132,7 +132,8 @@ public class Juego {
 
 	/**
 	 * Constructor que se usa para iniciar una partida indicando además si se ve la
-	 * traza o no y la baraja de cartas. Está pensado para los tests
+	 * traza o no y la baraja de cartas. Está pensado para los tests al incluir el
+	 * turno inicial de juego
 	 * 
 	 * @param jugadores    ArrayList
 	 * @param turnoInicial int
@@ -159,6 +160,36 @@ public class Juego {
 		// Preparamos el juego
 		this.comenzarRondaTurnoInicial(turnoInicial);
 
+	}
+
+	/**
+	 * Constructor que se usa para iniciar una partida indicando además si se ve la
+	 * traza o no y la baraja de cartas.
+	 * 
+	 * @param jugadores    ArrayList
+	 * @param turnoInicial int
+	 * @param baraja       Baraja
+	 * @param traza        boolean
+	 */
+	public Juego(ArrayList<Jugador> jugadores, Baraja baraja, boolean traza) {
+		// Establecemos los jugadores
+		this.jugadores = jugadores;
+
+		// Creamos la baraja
+		this.barajaUNO = baraja;
+
+		// El orden por defecto es de izquiera a derecha (lo marcamos con un true)
+		this.orden = true;
+
+		// Al principio del juego almacenamos tambien la primera carta colocada
+		historial = new ArrayList<Carta>();
+		this.historial.add(this.barajaUNO.getCartaCentro());
+
+		// Indicamos si mostramos la traza o no
+		this.traza = traza;
+
+		// Preparamos el juego
+		this.comenzarRonda();
 	}
 
 	/**
@@ -351,7 +382,7 @@ public class Juego {
 
 		this.guardarDatos("El jugador " + this.getJugadorActual().getNombreJugador() + " tiene que robar "
 				+ this.cardsToPick + " cartas");
-		
+
 		// Se incrementa el contador de cartas a robar
 		for (int i = 0; i < this.cardsToPick; i++) {
 			actual.incrementCartasRobadas();
@@ -573,6 +604,8 @@ public class Juego {
 			this.almacenarRondasString();
 
 		}
+		
+
 
 		// Primero se revisa la mano del jugador para ver si tiene que robar cartas
 		// adicionales

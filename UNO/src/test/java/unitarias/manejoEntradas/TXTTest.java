@@ -14,7 +14,7 @@ import main.java.algoritmoVoraz.reglas.Regla;
 import main.java.algoritmoVoraz.reglas.ReglaFactory;
 import main.java.logica.GestionarJuegos;
 import main.java.logica.ficheros.TXTParser;
-import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.CartaACarta;
+import main.java.logica.juego.baraja.tipos.CartaACarta;
 import main.java.logica.juego.jugador.Jugador;
 import main.java.logica.juego.jugador.JugadorAutomatico;
 

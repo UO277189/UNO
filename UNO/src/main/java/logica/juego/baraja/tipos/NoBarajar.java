@@ -1,7 +1,7 @@
-package main.java.logica.juego.baraja.estrategiasBaraja.estrategias;
+package main.java.logica.juego.baraja.tipos;
 
 import main.java.logica.juego.baraja.Baraja;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.java.logica.juego.baraja.FormaBarajar;
 
 
 /**

@@ -37,7 +37,7 @@ public class EnsembleSuma extends Ensemble {
 		}
 		
 		// Ahora buscamos el que MAYOR peso tenga
-		float valueMax = 0;
+		float valueMax = Integer.MIN_VALUE;
 		Carta cartaMax = null;
 		for (Map.Entry<Carta, Float> entry : mapSuma.entrySet()) {
 			if (entry.getValue() > valueMax) {

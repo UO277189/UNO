@@ -12,7 +12,7 @@
           "regla": "no_aplica"
         }
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
@@ -42,7 +42,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
         "parametroAdicional": 5
@@ -72,7 +72,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
@@ -102,7 +102,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
         "parametroAdicional": 6
@@ -132,7 +132,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 40,
         "parametroAdicional": 6

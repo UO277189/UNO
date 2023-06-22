@@ -16,6 +16,8 @@ import main.java.logica.ficheros.CSVParser;
 
 
 
+
+
 /**
  * Esta clase se encargará de verificar que el sistema entiende lo que es un CSV correcto y uno incorrecto
  * Sirve para verificar que el programa carga bien los CSV para realizar pruebas más complejas

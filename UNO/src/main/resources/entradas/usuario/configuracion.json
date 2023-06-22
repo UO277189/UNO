@@ -21,14 +21,14 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
-        "parametroInicial": 60,
+        "parametroInicial": 300,
         "parametroAdicional": "no_aplica"
       },
       "ensemble": "EnsembleVotacion",
-      "numero_partidas": 100,
-      "traza": false
+      "numero_partidas": 1000,
+      "traza": true
     },
     {
       "nombre_configuracion": "TrioAleatorio",
@@ -51,7 +51,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
@@ -73,7 +73,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
@@ -123,7 +123,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
@@ -145,7 +145,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
         "parametroAdicional": 5
@@ -175,7 +175,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
         "parametroAdicional": 5
@@ -185,7 +185,7 @@
       "traza": false
     },
     {
-      "nombre_configuracion": "TodasLasReglasUnaVez",
+      "nombre_configuracion": "Experimentacion",
       "jugadores": [
         {
           "nombre": "Jugador1",
@@ -225,87 +225,118 @@
         },
         {
           "nombre": "Jugador10",
-          "regla": "ReglaCompararTiposCartasMasFrecuente"
+          "regla": "ReglaNoCambiarColorMedio"
         },
         {
           "nombre": "Jugador11",
-          "regla": "ReglaCompararTiposCartasMenosFrecuente"
+          "regla": "ReglaCompararTiposCartasMasFrecuente"
         },
         {
           "nombre": "Jugador12",
+          "regla": "ReglaCompararTiposCartasMenosFrecuente"
+        },
+        {
+          "nombre": "Jugador13",
           "regla": "ReglaContarColoresMasFrecuente"
         },
         {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
-          "regla": "ReglaContarColoresMenosFrecuente"
-        },
-        {
-          "nombre": "Jugador13",
+          "nombre": "Jugador14",
           "regla": "ReglaContarColoresMenosFrecuente"
         }
 
       ],
-      "estrategia": {
-        "tipo": "MontonAMonton",
-        "parametroInicial": 15,
-        "parametroAdicional": 20
-      },
-      "ensemble": "EnsembleRanking",
-      "numero_partidas": 1000,
-      "traza": false
-    },
-    {
-      "nombre_configuracion": "ConfiguracionManual",
-      "jugadores": [
-        {
-          "nombre": "Jugador 0",
-          "regla": "ReglaPrimeraCarta"
-        },
-        {
-          "nombre": "Jugador 1",
-          "regla": "ReglaPrimeraCarta"
-        }
-
-      ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
-        "parametroInicial": 1000,
+        "parametroInicial": 1,
         "parametroAdicional": "no_aplica"
       },
       "ensemble": "EnsembleRanking",
-      "numero_partidas": 100,
+      "numero_partidas": 10000,
+      "traza": false
+    },   
+    {
+      "nombre_configuracion": "ExperimentacionConjunta",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar, ReglaPrimeraCarta, ReglaPriorizarCartaNumerica"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaPriorizarCartaAccion, ReglaPriorizarCartasRobar, ReglaPriorizarComodines"
+        },
+        {
+          "nombre": "Jugador3",
+          "regla": "ReglaNoPriorizarCartasRobar, ReglaPriorizarCartasAccionNoComodin, ReglaCambiarColorMedio"
+        },
+        {
+          "nombre": "Jugador4",
+          "regla": "ReglaNoCambiarColorMedio, ReglaCompararTiposCartasMasFrecuente, ReglaContarColoresMasFrecuente"
+        },
+        {
+          "nombre": "Jugador5",
+          "regla": "ReglaCompararTiposCartasMenosFrecuente, ReglaContarColoresMenosFrecuente"
+        }
+
+      ],
+      "formaBarajar": {
+        "tipo": "MontonAMonton",
+        "parametroInicial": 10,
+        "parametroAdicional": 100
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 10000,
+      "traza": false
+    },   
+    {
+      "nombre_configuracion": "ExperimentacionIndividual",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaAzar"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaPrimeraCarta"
+        },
+        {
+          "nombre": "Jugador3",
+          "regla": "ReglaPriorizarCartasRobar"
+        },
+        {
+          "nombre": "Jugador4",
+          "regla": "ReglaNoPriorizarCartasRobar"
+        }
+
+      ],
+      "formaBarajar": {
+        "tipo": "MontonAMonton",
+        "parametroInicial": 10,
+        "parametroAdicional": 100
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 10000,
+      "traza": false
+    },   
+    {
+      "nombre_configuracion": "ExperimentacionIndConjunta",
+      "jugadores": [
+        {
+          "nombre": "Jugador1",
+          "regla": "ReglaCambiarColorMedio, ReglaAzar"
+        },
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaNoCambiarColorMedio, ReglaAzar"
+        }
+      ],
+      "formaBarajar": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 500,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 10000,
       "traza": false
     }
   ]

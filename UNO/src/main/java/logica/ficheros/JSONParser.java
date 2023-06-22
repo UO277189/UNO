@@ -14,8 +14,8 @@ import main.java.algoritmoVoraz.reglas.Regla;
 import main.java.algoritmoVoraz.reglas.ReglaFactory;
 import main.java.logica.Configuracion;
 import main.java.logica.GestionarJuegos;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajarFactory;
+import main.java.logica.juego.baraja.FormaBarajar;
+import main.java.logica.juego.baraja.FormaBarajarFactory;
 import main.java.logica.juego.jugador.Jugador;
 import main.java.logica.juego.jugador.JugadorAutomatico;
 import main.java.logica.juego.jugador.JugadorManual;
@@ -154,7 +154,7 @@ public class JSONParser extends Parser {
 		String configuracionString = "    {" +
 				"\n      \"nombre_configuracion\": \"" + configuracion.getNombreConfiguracion() + "\"," +
 			    "\n      \"jugadores\": [\n" + stringJugadores + "\n      ]," +
-			    "\n      \"estrategia\": {\n" + configuracion.getEstrategiaBaraja().getJSON() +  "\n      }," +
+			    "\n      \"formaBarajar\": {\n" + configuracion.getEstrategiaBaraja().getJSON() +  "\n      }," +
 			    "\n      \"ensemble\": \"" + configuracion.getEnsemble().getJSON() + "\"," +
 			    "\n      \"numero_partidas\": " + configuracion.getNumeroPartidas() + "," + 
 			    "\n      \"traza\": " + configuracion.isTraza()+
@@ -173,7 +173,7 @@ public class JSONParser extends Parser {
 	private Configuracion generarConfiguracion(JsonNode configuracionNode) {
 		String nombreConfiguracion = configuracionNode.get("nombre_configuracion").asText();
 		ArrayList<Jugador> jugadores = generarJugadores(configuracionNode.get("jugadores"));
-		FormaBarajar estrategia = generarEstrategia(configuracionNode.get("estrategia"));
+		FormaBarajar estrategia = generarEstrategia(configuracionNode.get("formaBarajar"));
 		Ensemble ensemble = generarEnsemble(configuracionNode.get("ensemble").asText());
 		int numeroPartidas = configuracionNode.get("numero_partidas").asInt();
 		boolean traza = configuracionNode.get("traza").asBoolean();
@@ -324,7 +324,7 @@ public class JSONParser extends Parser {
 					System.out.println();
 				}
 			}
-			System.out.println("\tEstrategia de la baraja: " + configuraciones.get(i).getEstrategiaBaraja().toString());
+			System.out.println("\tForma de barajar las cartas: " + configuraciones.get(i).getEstrategiaBaraja().toString());
 			System.out.println("\tEnsemble a aplicar: " + configuraciones.get(i).getEnsemble().toString());
 			System.out.println("\tNúmero de partidas: " + configuraciones.get(i).getNumeroPartidas());
 			System.out.println("\tSe muestra la traza de las partidas: " + configuraciones.get(i).isTraza());
@@ -332,7 +332,6 @@ public class JSONParser extends Parser {
 			// Salto de línea
 			System.out.println();
 		}
-		
 	}
 	
 	/**

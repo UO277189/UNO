@@ -8,9 +8,8 @@ import main.java.logica.GestionarJuegos;
 import main.java.logica.ficheros.CSVParser;
 import main.java.logica.ficheros.JSONParser;
 import main.java.logica.ficheros.TXTParser;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.java.logica.juego.baraja.FormaBarajar;
 import main.java.logica.juego.jugador.Jugador;
-
 /**
  * Clase que gestiona la interfaz por consola del juego del UNO
  * 
@@ -46,9 +45,9 @@ public class InterfaceConsola {
 		try {
 
 			if (opcion == 1) {
-				elegirOpcionRapida();
-			} else if (opcion == 2) {
 				introducirDatosManuales();
+			} else if (opcion == 2) {
+				elegirConfiguracionesEjemplo();
 			} else if (opcion == 3) {
 				cargarDatosDeFichero();
 			} else if (opcion == 4) {
@@ -63,6 +62,7 @@ public class InterfaceConsola {
 
 	}
 
+
 	/**
 	 * Método para dar un mensaje de bienvenida
 	 * 
@@ -73,18 +73,17 @@ public class InterfaceConsola {
 		logoAplicacion();
 
 		System.out.println("");
-		System.out
-				.println("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:");
+		System.out.println("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:");
 		System.out.println("");
-		System.out.println("1.	Partida rápida");
-		System.out.println("2.	Partida personalizada");
-		System.out.println("3.	Cargar los datos del fichero de entrada");
+		System.out.println("1.	Crear una configuración personalizada");
+		System.out.println("2.	Cargar configuraciones del fichero de ejemplos");
+		System.out.println("3.	Cargar configuraciones del fichero de entrada del usuario");
 		System.out.println("4.	Mostrar ayuda");
 		System.out.println("5.	Salir");
 		System.out.println("");
 		System.out.print("Seleccione la opción deseada: ");
 
-		int valor = leerConsola.leerValorRango(1, 5);
+		int valor = getLeerConsola().leerValorRango(1, 5);
 
 		return valor;
 	}
@@ -105,11 +104,12 @@ public class InterfaceConsola {
 		System.out.println("|           |   1 1 1 1 1   1       1   1 1 1 1 1   |           | ");
 		System.out.println(" ----------                                          -----------  ");
 	}
+	
 
 	/**
 	 * Método para seleccionar configuraciones básicas del juego
 	 */
-	private void elegirOpcionRapida() {
+	private void elegirConfiguracionesEjemplo() {
 
 		System.out.println();
 		System.out.println("A continuación se muestran algunas configuraciones básicas del juego.");
@@ -125,8 +125,8 @@ public class InterfaceConsola {
 		System.out.print("Seleccione la opción deseada: ");
 
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/main/resources/entradas/" + manejoJSON.getFicheroEjemplos());
-		int valor = leerConsola.leerValorRango(1, 7);
+				.leerJSON("/main/resources/entradas/sistema/" + manejoJSON.getFicheroEjemplos());
+		int valor = getLeerConsola().leerValorRango(1, 7);
 
 		if (valor == 6) {
 			mostrarDetallesPartidasBasicas(configuraciones);
@@ -153,17 +153,17 @@ public class InterfaceConsola {
 		JSONParser manejoJSON = new JSONParser();
 		manejoJSON.mostrarDatosFichero(configuraciones);
 		volverAtras();
-		elegirOpcionRapida();
+		elegirConfiguracionesEjemplo();
 
 	}
 
 	/**
 	 * Método para volver atrás a la hora de escoger una opción
 	 */
-	private void volverAtras() {
+	public void volverAtras() {
 		System.out.println();
 		System.out.print("Pulse cualquier tecla para volver atrás: ");
-		leerConsola.leerCualquierValor();
+		getLeerConsola().leerCualquierValor();
 		System.out.println();
 		System.out.println();
 	}
@@ -177,7 +177,7 @@ public class InterfaceConsola {
 		System.out.println("A continuación se solicitarán los datos necesarios para crear una configuración. ");
 
 		// Parámetros necesarios
-		ConfiguracionConsola leerDatosManual = new ConfiguracionConsola(leerConsola);
+		ConfiguracionConsola leerDatosManual = new ConfiguracionConsola(getLeerConsola());
 
 		// Objeto configuración para guardar los datos
 
@@ -192,7 +192,7 @@ public class InterfaceConsola {
 				verTraza);
 
 		System.out.print("¿Desea guardar esta configuración? (0 - Si, 1 - No): ");
-		int valor = leerConsola.leerValorRango(0, 1);
+		int valor = getLeerConsola().leerValorRango(0, 1);
 
 		if (valor == 0) {
 			JSONParser manejoJSON = new JSONParser();
@@ -216,7 +216,7 @@ public class InterfaceConsola {
 
 		// Se cargan las configuraciones del JSON
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/main/resources/entradas/" + manejoJSON.getFicheroEntrada());
+				.leerJSON("/main/resources/entradas/usuario/" + manejoJSON.getFicheroEntrada());
 
 		if (configuraciones.isEmpty()) {
 			System.out.println("NO SE HA PODIDO CARGAR LOS DATOS DEL FICHERO");
@@ -224,9 +224,16 @@ public class InterfaceConsola {
 
 			// Se muestran los datos de las configuraciones
 			manejoJSON.mostrarDatosFichero(configuraciones);
-
+			
+			
+			System.out.println();
+			System.out.println("Si desea volver atrás pulse 0.");
+			System.out.println();
+			
 			// Se selecciona la opción que se considere
 			int valor = elegirOpcion(configuraciones);
+			
+			if (valor != 0) {
 
 			// Ejecutas las partidas
 			valor--;
@@ -234,6 +241,12 @@ public class InterfaceConsola {
 					configuraciones.get(valor).getJugadoresPartida(), configuraciones.get(valor).getEstrategiaBaraja(),
 					configuraciones.get(valor).getEnsemble(), configuraciones.get(valor).getNumeroPartidas(),
 					configuraciones.get(valor).isTraza());
+			} else {
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				jugarPartida();
+			}
 		}
 	}
 
@@ -265,9 +278,32 @@ public class InterfaceConsola {
 		manejoFicherosCSV.escribirDatos(nombreFichero, juegos, null);
 		// Se guarda el log en el txt
 		if (verTraza) {
-			manejoFicherosTXT.escribirDatos(null, juegos, null);
+			if (numeroPartidas > 1500) {
+				System.out.println("Está a punto de generar un gran número de archivos TXT. ¿Seguro que desea seguir con la operación? (0 - Sí, 1 - No)");
+				int valor = leerConsola.leerValorRango(0, 1);
+				if (valor == 0) {
+					manejoFicherosTXT.escribirDatos(null, juegos, null);
+				} else {
+					System.out.println("No se han guardado los ficheros TXT en el sistema.");
+				}
+			} else {
+				manejoFicherosTXT.escribirDatos(null, juegos, null);
+			}
 		}
-
+		
+		System.out.println();
+		System.out.println();
+		System.out.println("¿Desea volver al inicio de la aplicación? (0 - Si, 1 - No)");
+		int valor = leerConsola.leerValorRango(0, 1);
+		if (valor == 0) {
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			this.jugarPartida(); // Se vuelve a empezar	
+		} else if (valor == 1) {
+			System.out.println();
+			System.out.println("¡Hasta la próxima!");
+		}
 	}
 
 	/**
@@ -277,36 +313,27 @@ public class InterfaceConsola {
 	 * @return int La configuración a cargar
 	 */
 	public int elegirOpcion(ArrayList<Configuracion> configuraciones) {
-		System.out.println("Por favor, seleccione una opción: ");
-		return leerConsola.leerValorRango(1, configuraciones.size());
-
+		System.out.print("Por favor, seleccione una opción: ");
+		return getLeerConsola().leerValorRango(0, configuraciones.size());
 	}
 
 	/**
 	 * Método que muestra una ayuda de forma textual
 	 */
-	private void mostrarAyuda() {
+	private void mostrarAyuda() {	
 		System.out.println();
-		System.out.println("A continuación se muestra una explicación de las diferentes opciones del juego: ");
 		System.out.println();
-		System.out.println("****** " + "Partida rápida" + " ******");
-		System.out.println(
-				"Muestra algunas configuraciones sencillas que el jugador puede seleccionar. \nSirve como una introducción "
-						+ "para los jugadores que no estén familiarizados con la aplicación.");
-		System.out.println();
-		System.out.println("****** " + "Partida personalizada" + " ******");
-		System.out.println(
-				"Permite al jugador crear su propia configuración de partida desde 0, \nalmacenarla si desea usarla"
-						+ " en un futuro y ejecutar dicha configuración. \nEstá pensado para aquellos jugadores que no estén familiarizados con el formato del "
-						+ "archivo de entrada.");
-		System.out.println();
-		System.out.println("****** " + "Cargar los datos del fichero de entrada" + " ******");
-		System.out.println("Muestra las configuraciones almacenadas "
-				+ "en el fichero de entrada configuracion.json para que el jugador seleccione la que desea utilizar. \nAdicionalmente, el jugador puede modificar el fichero "
-				+ "para incluir nuevas configuraciones. \nNo obstante, si el fichero queda mal escrito no se podrá leer, \npor lo que se recomienda almacenar "
-				+ "los datos en un fichero aparte antes de modificarlo.");
-		volverAtras();
-		System.out.println();
-		jugarPartida();
+		ManualAyuda manualAyuda = new ManualAyuda(this);
+		manualAyuda.invocarMenuAyuda();
+	}
+
+
+
+	/**
+	 * Devuelve el objeto consola creado
+	 * @return LeerConsola
+	 */
+	public LeerConsola getLeerConsola() {
+		return leerConsola;
 	}
 }

@@ -8,7 +8,7 @@ import main.java.consola.InterfaceConsola;
  * @author Efrén García Valencia UO277189
  *
  */
-public class JugarPartida {
+public class UNOJava {
 
 	/**
 	 * Método para ejecutar el programa

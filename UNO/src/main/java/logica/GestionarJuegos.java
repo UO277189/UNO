@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import main.java.algoritmoVoraz.ensembles.Ensemble;
 import main.java.logica.juego.Juego;
 import main.java.logica.juego.baraja.Baraja;
-import main.java.logica.juego.baraja.estrategiasBaraja.FormaBarajar;
+import main.java.logica.juego.baraja.FormaBarajar;
 import main.java.logica.juego.carta.Carta;
+import main.java.logica.juego.carta.colores.Colores;
 import main.java.logica.juego.jugador.Jugador;
 import main.java.logica.juego.jugador.JugadorAutomatico;
 import main.java.logica.juego.jugador.JugadorManual;
+
+
 
 /**
  * Clase que recolecta múltiples partidas y permite realizar experimentos más
@@ -39,7 +42,7 @@ public class GestionarJuegos {
 	// Para saber si mostrar la traza
 	private boolean traza;
 
-	// La baraja de cartas para los test
+	// La baraja de cartas
 	private Baraja baraja;
 
 	// Estadísticos adicionales para mostrar si se descarta alguna partida
@@ -63,6 +66,15 @@ public class GestionarJuegos {
 			this.traza = true;
 		}
 		this.ensemble = ensemble;
+		
+		// La baraja de cartas
+		if (jugadores.size() > 10) {
+			int incremento = jugadores.size()/10 + 1;
+			this.baraja = new Baraja(estrategia, incremento);
+		} else {
+			this.baraja = new Baraja(estrategia);	
+		}
+
 
 		this.partidasDescartadas = 0;
 
@@ -141,7 +153,8 @@ public class GestionarJuegos {
 				System.out.println("");
 			}
 			jugarUnaPartida();
-			System.out.println("Termina la partida " + i);
+			// Confunde al usuario
+			//System.out.println("Termina la partida " + i);
 		}
 	}
 
@@ -150,7 +163,7 @@ public class GestionarJuegos {
 	 */
 	private void jugarUnaPartida() {
 		ArrayList<Jugador> jugadoresPartida = this.clonarJugadores();
-
+		
 		Juego uno = new Juego(jugadoresPartida, estrategia, traza);
 		while (uno.finPartida() == false) {
 			if (!uno.isReachedMaxRondas()) {
@@ -224,10 +237,26 @@ public class GestionarJuegos {
 		ArrayList<Carta> cartasMonton = new ArrayList<Carta>();
 		ArrayList<Carta> cartasRobar = new ArrayList<Carta>();
 		
+		
 		for (int i = 0; i < this.baraja.getBarajaCartas().size(); i++) {
+			
+			// PASO PREVIO: hay que restablecer los colores de las cartas comodín	
+			if (this.baraja.getBarajaCartas().get(i).toString().contains("+4")
+					|| this.baraja.getBarajaCartas().get(i).toString().contains("CambiaColor")) {
+				this.baraja.getBarajaCartas().get(i).setColor(Colores.NOCOLOR);
+			}
+			
 			cartasMonton.add(this.baraja.getBarajaCartas().get(i));
 		}
+		
 		for (int i = 0; i < this.baraja.getBarajaDescarte().size(); i++) {
+			
+			// PASO PREVIO: hay que restablecer los colores de las cartas comodín	
+			if (this.baraja.getBarajaCartas().get(i).toString().contains("+4")
+					|| this.baraja.getBarajaCartas().get(i).toString().contains("CambiaColor")) {
+				this.baraja.getBarajaCartas().get(i).setColor(Colores.NOCOLOR);
+			}
+			
 			cartasMonton.add(this.baraja.getBarajaDescarte().get(i));
 		}
 		

@@ -1,6 +1,4 @@
-package main.java.logica.juego.baraja.estrategiasBaraja;
-
-import main.java.logica.juego.baraja.Baraja;
+package main.java.logica.juego.baraja;
 
 /**
  * Clase que referencia diferentes estrategias de la baraja

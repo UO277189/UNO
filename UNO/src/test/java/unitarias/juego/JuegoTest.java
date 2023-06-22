@@ -14,7 +14,7 @@ import main.java.algoritmoVoraz.reglas.ReglaFactory;
 import main.java.logica.GestionarJuegos;
 import main.java.logica.juego.Juego;
 import main.java.logica.juego.baraja.Baraja;
-import main.java.logica.juego.baraja.estrategiasBaraja.estrategias.NoBarajar;
+import main.java.logica.juego.baraja.tipos.NoBarajar;
 import main.java.logica.juego.carta.Carta;
 import main.java.logica.juego.carta.CartaAccion;
 import main.java.logica.juego.carta.CartaNumerica;
@@ -26,6 +26,7 @@ import main.java.logica.juego.carta.acciones.tipos.QuitarTurno;
 import main.java.logica.juego.carta.colores.Colores;
 import main.java.logica.juego.jugador.Jugador;
 import main.java.logica.juego.jugador.JugadorAutomatico;
+
 
 /**
  * Clase de test encargada de controlar que el juego funciona correctamente
