@@ -172,7 +172,7 @@ public class ConfiguracionConsola {
 	 */
 	public boolean elegirVerTraza(ArrayList<Jugador> jugadores) {
 
-		System.out.print("Por favor, elija si desea ver la traza de la partida al final (0 - Si, 1 - No): ");
+		System.out.print("Por favor, elija si desea guardar las partidas en archivos TXT. Cada archivo generado guardará los resultados de 100 partidas (0 - Si, 1 - No): ");
 		int value = this.leerConsola.leerValorRango(0, 1);
 		System.out.println();
 		if (value == 0) {
