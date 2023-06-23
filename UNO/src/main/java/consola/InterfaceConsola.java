@@ -123,7 +123,7 @@ public class InterfaceConsola {
 		System.out.print("Seleccione la opción deseada: ");
 
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/src/main/resources/json/" + manejoJSON.getFicheroEjemplos());
+				.leerJSON("/ficheros/entradas/" + manejoJSON.getFicheroEjemplos());
 		int valor = getLeerConsola().leerValorRango(1, 7);
 
 		if (valor == 6) {
