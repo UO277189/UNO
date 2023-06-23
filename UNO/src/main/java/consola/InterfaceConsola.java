@@ -123,7 +123,7 @@ public class InterfaceConsola {
 		System.out.print("Seleccione la opción deseada: ");
 
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/main/resources/entradas/sistema/" + manejoJSON.getFicheroEjemplos());
+				.leerJSON("/src/main/resources/json/" + manejoJSON.getFicheroEjemplos());
 		int valor = getLeerConsola().leerValorRango(1, 7);
 
 		if (valor == 6) {
@@ -263,7 +263,7 @@ public class InterfaceConsola {
 
 		// Se cargan las configuraciones del JSON
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/main/resources/entradas/usuario/" + manejoJSON.getFicheroEntrada());
+				.leerJSON("/ficheros/entradas/" + manejoJSON.getFicheroEntrada());
 
 		if (configuraciones.isEmpty()) {
 			System.out.println("NO SE HA PODIDO CARGAR LOS DATOS DEL FICHERO");
