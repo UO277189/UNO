@@ -36,6 +36,7 @@ public class JSONParser extends Parser {
 	public ArrayList<Configuracion> leerJSON(String nombreJSON) {
 		
 	ObjectMapper mapper = new ObjectMapper();
+	System.out.println(rutaConfiguracion + nombreJSON + ".json");
        File readFile = new File(rutaConfiguracion + nombreJSON + ".json"); // Se carga la ruta
        
        ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>(); 
