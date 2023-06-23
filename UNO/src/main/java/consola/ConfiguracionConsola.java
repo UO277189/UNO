@@ -139,11 +139,11 @@ public class ConfiguracionConsola {
 
 		// Caso barajar montón a montón
 		if (value == 1) {
-			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 10): ");
-			int cartasMonton = leerConsola.leerValorRango(2, 20);
+			System.out.print("Por favor, seleccione cuántas cartas tendrá el montón (Mínimo: 2, Máximo: 50): ");
+			int cartasMonton = leerConsola.leerValorRango(2, 50);
 			System.out.println();
-			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 10): ");
-			int montonesCambiar = leerConsola.leerValorRango(2, 10);
+			System.out.print("Por favor, seleccione cuántos montones desea intercambiar (Mínimo: 2, Máximo: 100): ");
+			int montonesCambiar = leerConsola.leerValorRango(2, 100);
 			System.out.println();
 			estrategia = new MontonAMonton(cartasMonton, montonesCambiar);
 		}
@@ -194,11 +194,11 @@ public class ConfiguracionConsola {
 		int eleccion = 0;
 		ArrayList<Regla> reglas = new ArrayList<Regla>();
 
-		while (eleccion != 12) {
+		while (eleccion != 14) {
 			mostrarReglasUsuario(); // Mostramos las opciones al usuario
-			eleccion = leerConsola.leerValorRango(0, 12); // Elegimos la opción
+			eleccion = leerConsola.leerValorRango(0, 14); // Elegimos la opción
 
-			if (eleccion != 12) {
+			if (eleccion != 14) {
 				reglas.add(elegirRegla(eleccion));
 				System.out.println("Se ha elegido la regla marcada por " + eleccion);
 				System.out.println();
@@ -260,27 +260,27 @@ public class ConfiguracionConsola {
 		System.out.println("Por favor, seleccione la regla que desea implementar");
 		
 		
-		System.out.println(" - 0: Al azar");
-		System.out.println(" - 1: Sacar la primera carta que encuentr en la mano");
-		System.out.println(" - 2: Priorizar las cartas numéricas");
-		System.out.println(" - 3: Priorizar las cartas de acción");
-		System.out.println(" - 4: Prioriza las cartas +4 y +2, el resto de cartas al azar");
-		System.out.println(" - 5: Prioriza las cartas comodín, resto de cartas al azar");
-		System.out.println(" - 6: Sacar las cartas +4 y +2 lo más tarde posible, el resto de cartas al azar");
-		System.out.println(" - 7: Priorizar las cartas de acción que no sean comodines");
-		System.out.println(" - 8: Priorizar las cartas que permitan cambiar el color del medio");
-		System.out.println(" - 9: Priorizar las cartas que mantengan el color del medio");
-		System.out.println(" - 10: Cuantas más veces sale una carta numérica o de acción, más probable es que "
+		System.out.println(" - 0: Azar - Al azar");
+		System.out.println(" - 1: PrimeraCarta - Sacar la primera carta que encuentr en la mano");
+		System.out.println(" - 2: PriorizarCartaNumerica - Priorizar las cartas numéricas");
+		System.out.println(" - 3: PriorizarCartaAccion - Priorizar las cartas de acción");
+		System.out.println(" - 4: PriorizarCartasRobar - Prioriza las cartas +4 y +2, el resto de cartas al azar");
+		System.out.println(" - 5: PriorizarComodines - Prioriza las cartas comodín, resto de cartas al azar");
+		System.out.println(" - 6: NoPriorizarCartasRobar - Sacar las cartas +4 y +2 lo más tarde posible, el resto de cartas al azar");
+		System.out.println(" - 7: PriorizarCartasAccionNoComodin - Priorizar las cartas de acción que no sean comodines");
+		System.out.println(" - 8: CambiarColorMedio - Priorizar las cartas que permitan cambiar el color del medio");
+		System.out.println(" - 9: NoCambiarColorMedio - Priorizar las cartas que mantengan el color del medio");
+		System.out.println(" - 10: CompararTiposCartasMasFrecuente - Cuantas más veces sale una carta numérica o de acción, más probable es que "
 				+ "respondamos con una carta numérica o de acción respectivamente");
-		System.out.println(" - 11: Cuantas más veces sale una carta numérica o de acción, menos probable es que"
+		System.out.println(" - 11: CompararTiposCartasMenosFrecuente - Cuantas más veces sale una carta numérica o de acción, menos probable es que"
 				+ " respondamos con una carta numérica o de acción respectivamente");
-		System.out.println(" - 12: Cuantas más veces sale un color, más probable es que "
+		System.out.println(" - 12: ContarColoresMasFrecuente - Cuantas más veces sale un color, más probable es que "
 				+ "respondamos con una carta de ese color");
-		System.out.println(" - 13: Cuantas más veces sale un color, menos probable es que "
+		System.out.println(" - 13: ContarColoresMenosFrecuente - Cuantas más veces sale un color, menos probable es que "
 				+ "respondamos con una carta de ese color");
 	
 		System.out.println("");
-		System.out.println(" Pulse 12 para guardar todas las reglas seleccionadas");
+		System.out.println(" Pulse 14 para guardar todas las reglas seleccionadas");
 	}
 
 	/**
@@ -292,9 +292,9 @@ public class ConfiguracionConsola {
 
 		System.out.println("A continuación se muestran los ensembles que hay en la aplicación");
 		System.out.println();
-		System.out.println(" - 0: EnsembleRanking");
-		System.out.println(" - 1: EnsembleSuma");
-		System.out.println(" - 2: EnsembleVotacion");
+		System.out.println(" - 0: EnsembleRanking: escoger la carta que tenga mejor posición global entre todas las reglas");
+		System.out.println(" - 1: EnsembleSuma: escoger la carta con mayor peso sumando el peso de todas las reglas");
+		System.out.println(" - 2: EnsembleVotacion: escoger la carta más votada entre todas las reglas");
 		System.out.println();
 		System.out.print("Seleccione el valor a implementar: ");
 

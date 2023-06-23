@@ -41,7 +41,7 @@ public class ManejoManualTest {
 	public void leerManualTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "4\nA\n1\n6\na\n7\n5"; // Entrada simulada
+        String comandos = "4\nA\n5\n2\na\n7\n5"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -51,9 +51,8 @@ public class ManejoManualTest {
             UNOJava.main(new String[]{});
  
             assertTrue(destino.toString().contains("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:"));  
-            assertTrue(destino.toString().contains("A continuación se muestra una explicación de las diferentes opciones del juego: "));  // Leer ayuda al principio       
+            assertTrue(destino.toString().contains("**************** MANUAL DE AYUDA ****************"));  // Leer ayuda al principio       
             assertTrue(destino.toString().contains("A continuación se muestran algunas configuraciones básicas del juego."));            
-            assertTrue(destino.toString().contains("1- 	Nombre de la configuración: ManualDosJugadores")); // Leer ayuda de las configuraciones
             assertTrue(destino.toString().contains("¡Hasta la próxima!"));
             assertTrue(!destino.toString().contains("Ha ocurrido un error en el sistema, la aplicación se cerrará."));
         } catch (Exception e) { // Para identificar que está mal
@@ -70,7 +69,7 @@ public class ManejoManualTest {
 	public void pruebaConfiguracionDefectoManualTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "1\n1"; // Entrada simulada
+        String comandos = "2\n1"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -98,7 +97,7 @@ public class ManejoManualTest {
 	public void pruebaConfiguracionDefectoAutomaticaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "1\n3"; // Entrada simulada
+        String comandos = "2\n3\n1"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -124,7 +123,7 @@ public class ManejoManualTest {
 	public void pruebaConfiguracionDefectoMixtaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "1\n5"; // Entrada simulada
+        String comandos = "2\n5"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -176,7 +175,7 @@ public class ManejoManualTest {
 	public void pruebaCargarFicheroConfiguracionesOkTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "3\n1"; // Entrada simulada
+        String comandos = "3\n1\n1"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -201,7 +200,7 @@ public class ManejoManualTest {
 	public void pruebaCargarFicheroConfiguracionesNoOkTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "3\n1000\na"; // Entrada simulada
+        String comandos = "3\n1000\na\n1\n1"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 

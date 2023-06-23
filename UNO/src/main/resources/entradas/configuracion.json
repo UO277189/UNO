@@ -1,0 +1,26 @@
+{
+  "configuraciones": [
+    {
+      "nombre_configuracion": "ConfiguracionManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador 0",
+          "regla": "no_aplica"
+        },
+        {
+          "nombre": "Jugador 1",
+          "regla": "no_aplica"
+        }
+
+      ],
+      "formaBarajar": {
+        "tipo": "MontonAMonton",
+        "parametroInicial": 10,
+        "parametroAdicional": 10
+      },
+      "ensemble": "EnsembleVotacion",
+      "numero_partidas": 10000,
+      "traza": false
+    }
+  ]
+}

@@ -40,19 +40,21 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void configuracion4Jugadores1ReglaTest() {
 	
-        String comandos = "2\n"
+        String comandos = "1\n"
         		+ "0\n"
         		+ "4\n"
-        		+ "1\n1\n12\n"
-        		+ "1\n2\n12\n"
-        		+ "1\n3\n12\n"
-        		+ "1\n4\n12\n"
+        		+ "1\n1\n14\n"
+        		+ "1\n2\n14\n"
+        		+ "1\n3\n14\n"
+        		+ "1\n4\n14\n"
         		+ "0\n"
         		+ "1000\n"
         		+ "0\n"
         		+ "100\n"
         		+ "1\n"
-        		+ "1";  // 100 partidas, no guarda ni muestra traza
+        		+ "0\n"
+        		+ "1\n"
+        		+ "1";
         
         
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
@@ -81,21 +83,23 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void configuracion5JugadoresVariasReglasTest() {
 	
-        String comandos = "2\n"
+        String comandos = "1\n"
         		+ "0\n"
         		+ "5\n"
-        		+ "1\n2\n3\n4\n12\n"
-        		+ "1\n2\n3\n4\n12\n"
-        		+ "1\n2\n3\n4\n12\n"
-        		+ "1\n2\n3\n4\n12\n"
-        		+ "1\n2\n3\n4\n12\n"
+        		+ "1\n2\n3\n4\n14\n"
+        		+ "1\n2\n3\n4\n14\n"
+        		+ "1\n2\n3\n4\n14\n"
+        		+ "1\n2\n3\n4\n14\n"
+        		+ "1\n2\n3\n4\n14\n"
         		+ "1\n"
         		+ "10\n"
         		+ "10\n"
         		+ "2\n"
         		+ "100\n"
         		+ "0\n"
-        		+ "1"; // Muestra traza  
+         		+ "0\n"
+        		+ "1\n"
+        		+ "1";
         
         
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
@@ -124,7 +128,7 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void configuracionManual2JugadoresTest() {
 	
-        String comandos = "2\n"
+        String comandos = "1\n"
         		+ "0\n"
         		+ "2\n"
         		+ "0\n"
@@ -134,6 +138,7 @@ public class ConfiguracionConsolaTest {
         		+ "1\n"
         		+ "1\n"
         		+ "1\n"
+         		+ "0\n"
         		+ "1";  // 1 partida, no guarda ni muestra traza
         
         
@@ -159,17 +164,18 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void configuracionMixta3JugadoresTest() {
 	
-        String comandos = "2\n"
+        String comandos = "1\n"
         		+ "0\n"
         		+ "3\n"
         		+ "0\n"
         		+ "0\n"
-        		+ "1\n2\n3\n4\n12\n"
+        		+ "1\n2\n3\n4\n14\n"
           		+ "0\n"
         		+ "1000\n"
         		+ "0\n"
         		+ "1\n"
         		+ "1\n"
+         		+ "0\n"
         		+ "1";  // 1 partida, no guarda ni muestra traza
         
         
@@ -196,17 +202,19 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void falloJugadorAutomaticoNoReglaTest() {
 	
-	      String comandos = "2\n"
+	      String comandos = "1\n"
 	        		+ "0\n"
 	        		+ "2\n"
-	        		+ "1\n12\n1\n12\n"
-	        		+ "1\n2\n12\n"    
+	        		+ "1\n14\n1\n14\n"
+	        		+ "1\n2\n14\n"    
 	        		+ "0\n"
 	        		+ "1000\n"
 	        		+ "0\n"
 	        		+ "100\n"
 	        		+ "1\n"
-	        		+ "1";  // 100 partidas, no guarda ni muestra traza
+	         		+ "0\n"
+	        		+ "1\n"
+	        		+ "1";
 	            
 	        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
 	        System.setOut(new PrintStream(destino));
@@ -233,14 +241,14 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void superarLimiteValoresTest() {
 	
-	      String comandos = "2\n"
+	      String comandos = "1\n"
 	        		+ "3\n"
 	    		    + "0\n"
 	    		    + "1\n"
 	        		+ "2\n"
 	        		+ "2\n"
-	        		+ "1\n15\n1\n12\n"
-	        		+ "1\n-2\n3\n12\n"
+	        		+ "1\n15\n1\n14\n"
+	        		+ "1\n-2\n3\n14\n"
 	        		+ "4\n"
 	        		+ "1\n"
 	        		+ "11\n"
@@ -255,7 +263,9 @@ public class ConfiguracionConsolaTest {
 	        		+ "3\n"
 	        		+ "1\n"
 	        		+ "3\n"
-	        		+ "1";  // 100 partidas, no guarda ni muestra traza
+	         		+ "0\n"
+	        		+ "1\n"
+	        		+ "1";
 	            
 	        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
 	        System.setOut(new PrintStream(destino));
@@ -280,17 +290,19 @@ public class ConfiguracionConsolaTest {
 	@Test
 	public void guardarConfiguracionManualTest() {
 	
-	      String comandos = "2\n"
+	      String comandos = "1\n"
 	        		+ "0\n"
 	        		+ "2\n"
-	        		+ "1\n1\n12\n"
-	        		+ "1\n1\n12\n"    
+	        		+ "1\n1\n14\n"
+	        		+ "1\n1\n14\n"    
 	        		+ "0\n"
 	        		+ "1000\n"
 	        		+ "0\n"
 	        		+ "100\n"
 	        		+ "1\n"
-	        		+ "0";  // 100 partidas, SI guarda la configuración
+	         		+ "0\n"
+	        		+ "0\n"
+	        		+ "1";
 	            
 	        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
 	        System.setOut(new PrintStream(destino));

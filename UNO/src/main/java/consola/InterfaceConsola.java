@@ -10,6 +10,9 @@ import main.java.logica.ficheros.JSONParser;
 import main.java.logica.ficheros.TXTParser;
 import main.java.logica.juego.baraja.FormaBarajar;
 import main.java.logica.juego.jugador.Jugador;
+import main.java.logica.juego.jugador.JugadorAutomatico;
+import main.java.logica.juego.jugador.JugadorManual;
+
 /**
  * Clase que gestiona la interfaz por consola del juego del UNO
  * 
@@ -22,18 +25,14 @@ public class InterfaceConsola {
 	private static JSONParser manejoJSON;
 	private static LeerConsola leerConsola;
 
-	
 	/**
 	 * Constructor para la interfaz por consola
 	 */
-	public InterfaceConsola ()  {		
+	public InterfaceConsola() {
 		// Se inicializa aquí para evitar fallos en los tests
 		leerConsola = new LeerConsola();
 		manejoJSON = new JSONParser();
 	}
-	
-	
-	
 
 	/**
 	 * Método para jugar una partida
@@ -41,7 +40,7 @@ public class InterfaceConsola {
 	public void jugarPartida() {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
-		
+
 		try {
 
 			if (opcion == 1) {
@@ -57,11 +56,10 @@ public class InterfaceConsola {
 				System.out.println("¡Hasta la próxima!");
 			}
 		} catch (Exception e) {
- 			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
+			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
 		}
 
 	}
-
 
 	/**
 	 * Método para dar un mensaje de bienvenida
@@ -73,10 +71,11 @@ public class InterfaceConsola {
 		logoAplicacion();
 
 		System.out.println("");
-		System.out.println("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:");
+		System.out
+				.println("¡Bienvenido al juego del UNO! A continuación se muestran las diferentes opciones del juego:");
 		System.out.println("");
 		System.out.println("1.	Crear una configuración personalizada");
-		System.out.println("2.	Cargar configuraciones del fichero de ejemplos");
+		System.out.println("2.	Cargar configuraciones de ejemplo");
 		System.out.println("3.	Cargar configuraciones del fichero de entrada del usuario");
 		System.out.println("4.	Mostrar ayuda");
 		System.out.println("5.	Salir");
@@ -104,7 +103,6 @@ public class InterfaceConsola {
 		System.out.println("|           |   1 1 1 1 1   1       1   1 1 1 1 1   |           | ");
 		System.out.println(" ----------                                          -----------  ");
 	}
-	
 
 	/**
 	 * Método para seleccionar configuraciones básicas del juego
@@ -114,8 +112,8 @@ public class InterfaceConsola {
 		System.out.println();
 		System.out.println("A continuación se muestran algunas configuraciones básicas del juego.");
 		System.out.println();
-		System.out.println("1.	Partida manual a dos jugadores");
-		System.out.println("2.	Partida manual a cuatro jugadores");
+		System.out.println("1.	Partida de dos jugadores manuales");
+		System.out.println("2.	Partida de cuatro jugadores manuales");
 		System.out.println("3.	Partida automática, cada jugador implementa una única regla");
 		System.out.println("4.	Partida automática, cada jugador implementa múltiples reglas");
 		System.out.println("5.	Partida mixta con un jugador manual y tres jugadores automáticos");
@@ -158,6 +156,41 @@ public class InterfaceConsola {
 	}
 
 	/**
+	 * Muestra los detalles de una configuración por consola
+	 * 
+	 * @param configuracion La configuración a crear
+	 */
+	private void mostrarDetallesPartidaBasicaConfiguracion(Configuracion configuracion) {
+
+		System.out.println("\tNombre de la configuración: " + configuracion.getNombreConfiguracion());
+		System.out.println("\tJugadores:");
+		for (Jugador jugador : configuracion.getJugadoresPartida()) {
+			if (jugador instanceof JugadorManual) {
+				System.out.println("\t   MANUAL \n\t       Nombre: " + jugador.getNombreJugador());
+			} else {
+				System.out.print("\t   AUTOMATICO \n\t       Nombre: " + jugador.getNombreJugador()
+						+ "\n\t       Reglas que aplica: ");
+
+				for (int j = 0; j < ((JugadorAutomatico)jugador).getReglas().size(); j++) {
+					if (j == ((JugadorAutomatico)jugador).getReglas().size() - 1) {
+						System.out.print(((JugadorAutomatico)jugador).getReglas().get(j).toString() + " ");
+					} else {
+						System.out.print(((JugadorAutomatico)jugador).getReglas().get(j).toString() + ",");
+					}
+				}
+				System.out.println();
+			}
+		}
+		System.out.println("\tForma de barajar las cartas: " + configuracion.getEstrategiaBaraja().toString());
+		System.out.println("\tEnsemble a aplicar: " + configuracion.getEnsemble().toString());
+		System.out.println("\tNúmero de partidas: " + configuracion.getNumeroPartidas());
+		System.out.println("\tSe muestra la traza de las partidas: " + configuracion.isTraza());
+
+		// Salto de línea
+		System.out.println();
+	}
+
+	/**
 	 * Método para volver atrás a la hora de escoger una opción
 	 */
 	public void volverAtras() {
@@ -191,16 +224,30 @@ public class InterfaceConsola {
 		Configuracion configuracion = new Configuracion(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas,
 				verTraza);
 
-		System.out.print("¿Desea guardar esta configuración? (0 - Si, 1 - No): ");
-		int valor = getLeerConsola().leerValorRango(0, 1);
+		System.out.println();
+		this.mostrarDetallesPartidaBasicaConfiguracion(configuracion);
+		System.out.println();
+		System.out.print("¿Desea crear esta configuración? (0 - Si, 1 - No): ");
+		int param = getLeerConsola().leerValorRango(0, 1);
 
-		if (valor == 0) {
-			JSONParser manejoJSON = new JSONParser();
-			manejoJSON.escribirDatos("/main/resources/entradas/" + manejoJSON.getFicheroEntrada(), null, configuracion);
-			System.out.println("La configuración se ha guardado correctamente.");
+		if (param == 1) {
+			System.out.println();
+			System.out.println();
+			jugarPartida();
+		} else if (param == 0) {
+
+			System.out.print("¿Desea guardar esta configuración? (0 - Si, 1 - No): ");
+			int valor = getLeerConsola().leerValorRango(0, 1);
+
+			if (valor == 0) {
+				JSONParser manejoJSON = new JSONParser();
+				manejoJSON.escribirDatos("/main/resources/entradas/usuario/" + manejoJSON.getFicheroEntrada(), null,
+						configuracion);
+				System.out.println("La configuración se ha guardado correctamente.");
+			}
+
+			ejecutarPartidas(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas, verTraza);
 		}
-
-		ejecutarPartidas(nombreFichero, jugadores, estrategia, ensemble, numeroPartidas, verTraza);
 	}
 
 	/**
@@ -224,23 +271,22 @@ public class InterfaceConsola {
 
 			// Se muestran los datos de las configuraciones
 			manejoJSON.mostrarDatosFichero(configuraciones);
-			
-			
+
 			System.out.println();
 			System.out.println("Si desea volver atrás pulse 0.");
 			System.out.println();
-			
+
 			// Se selecciona la opción que se considere
 			int valor = elegirOpcion(configuraciones);
-			
+
 			if (valor != 0) {
 
-			// Ejecutas las partidas
-			valor--;
-			ejecutarPartidas(configuraciones.get(valor).getNombreConfiguracion(),
-					configuraciones.get(valor).getJugadoresPartida(), configuraciones.get(valor).getEstrategiaBaraja(),
-					configuraciones.get(valor).getEnsemble(), configuraciones.get(valor).getNumeroPartidas(),
-					configuraciones.get(valor).isTraza());
+				// Ejecutas las partidas
+				valor--;
+				ejecutarPartidas(configuraciones.get(valor).getNombreConfiguracion(),
+						configuraciones.get(valor).getJugadoresPartida(),
+						configuraciones.get(valor).getEstrategiaBaraja(), configuraciones.get(valor).getEnsemble(),
+						configuraciones.get(valor).getNumeroPartidas(), configuraciones.get(valor).isTraza());
 			} else {
 				System.out.println();
 				System.out.println();
@@ -262,6 +308,12 @@ public class InterfaceConsola {
 	 */
 	private void ejecutarPartidas(String nombreFichero, ArrayList<Jugador> jugadores, FormaBarajar estrategia,
 			Ensemble ensemble, int numeroPartidas, boolean verTraza) {
+		
+		
+		System.out.println();
+		System.out.println("Se están ejecutando las partidas... ");
+		System.out.println();
+
 
 		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará
 		// las partidas
@@ -279,7 +331,8 @@ public class InterfaceConsola {
 		// Se guarda el log en el txt
 		if (verTraza) {
 			if (numeroPartidas > 1500) {
-				System.out.println("Está a punto de generar un gran número de archivos TXT. ¿Seguro que desea seguir con la operación? (0 - Sí, 1 - No)");
+				System.out.print(
+						"Está a punto de generar un gran número de archivos TXT. ¿Seguro que desea seguir con la operación? (0 - Sí, 1 - No): ");
 				int valor = leerConsola.leerValorRango(0, 1);
 				if (valor == 0) {
 					manejoFicherosTXT.escribirDatos(null, juegos, null);
@@ -290,16 +343,16 @@ public class InterfaceConsola {
 				manejoFicherosTXT.escribirDatos(null, juegos, null);
 			}
 		}
-		
+
 		System.out.println();
 		System.out.println();
-		System.out.println("¿Desea volver al inicio de la aplicación? (0 - Si, 1 - No)");
+		System.out.print("¿Desea volver al inicio de la aplicación? (0 - Si, 1 - No): ");
 		int valor = leerConsola.leerValorRango(0, 1);
-		if (valor == 0) {
+		if (valor == 0) {		
 			System.out.println();
 			System.out.println();
 			System.out.println();
-			this.jugarPartida(); // Se vuelve a empezar	
+			this.jugarPartida(); // Se vuelve a empezar
 		} else if (valor == 1) {
 			System.out.println();
 			System.out.println("¡Hasta la próxima!");
@@ -320,17 +373,16 @@ public class InterfaceConsola {
 	/**
 	 * Método que muestra una ayuda de forma textual
 	 */
-	private void mostrarAyuda() {	
+	private void mostrarAyuda() {
 		System.out.println();
 		System.out.println();
 		ManualAyuda manualAyuda = new ManualAyuda(this);
 		manualAyuda.invocarMenuAyuda();
 	}
 
-
-
 	/**
 	 * Devuelve el objeto consola creado
+	 * 
 	 * @return LeerConsola
 	 */
 	public LeerConsola getLeerConsola() {

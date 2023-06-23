@@ -796,7 +796,7 @@ public class JuegoTest {
 		baraja.formarBarajaPersonalizada(cartasMonton, cartasRobar, cartaMedio);
 
 		// Se juega la partida
-		gestionarJuegos = new GestionarJuegos(jugadores, baraja, ensemble, 10);
+		gestionarJuegos = new GestionarJuegos(jugadores, baraja, ensemble, 100);
 		gestionarJuegos.jugarPartidasBarajaEspecial(0); // Se indica el turno inicial
 		
 		// Hay que guardar los resultados de las partidas
@@ -807,35 +807,35 @@ public class JuegoTest {
 		// Obtenemos los resultados para todas las partidas (x10)
 		
 		// Jugador 0
-		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasJugadas(), 70);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasJugadas(), 700);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasRobadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasMasCuatroJugadas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasMasDosJugadas(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasMasDosJugadas(), 100);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasCambiarSentidoJugadas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 10);
-		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasCambiaColorJugadas(), 10);
-		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaCantadoUno(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasQuitarTurnoJugadas(), 100);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getCartasCambiaColorJugadas(), 100);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaCantadoUno(), 100);
 		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaIntentadoHacerTrampas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaGanado(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(0).getVecesQueHaGanado(), 100);
 
 		// Jugador 1
-		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasJugadas(), 60);
+		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasJugadas(), 600);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasRobadas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasMasCuatroJugadas(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasMasCuatroJugadas(), 100);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasMasDosJugadas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasCambiarSentidoJugadas(), 100);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasQuitarTurnoJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getCartasCambiaColorJugadas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaCantadoUno(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaCantadoUno(), 100);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaIntentadoHacerTrampas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(1).getVecesQueHaGanado(), 0);
 
 		// Jugador 2
-		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasJugadas(), 70);
-		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasRobadas(), 60);
+		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasJugadas(), 700);
+		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasRobadas(), 600);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasMasCuatroJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasMasDosJugadas(), 0);
-		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasCambiarSentidoJugadas(), 10);
+		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasCambiarSentidoJugadas(), 100);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasQuitarTurnoJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getCartasCambiaColorJugadas(), 0);
 		assertEquals(gestionarJuegos.getJugadores().get(2).getVecesQueHaCantadoUno(), 0);

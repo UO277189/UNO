@@ -29,6 +29,8 @@ public class ManualAyuda {
 		System.out.println("y jugadores automáticos, que utilizan diferentes reglas de prioridad para decidir qué carta jugar en su ronda.");
 		System.out.println("Los usuarios pueden crear y jugar partidas combinando ambos tipos de jugadores. Al final de la ejecución del programa,");
 		System.out.println("se mostrarán diferentes estadísticos obtenidos de las partidas.");
+		System.out.println("La aplicación funciona cargando configuraciones. En cada configuración se incluyen los parámetros necesarios para la ejecución del sistema.");
+		System.out.println();
 
 		System.out.println("A continuación, se muestran diferentes secciones del manual de ayuda:");
 		System.out.println("1 - Explicar las opciones de juego.");

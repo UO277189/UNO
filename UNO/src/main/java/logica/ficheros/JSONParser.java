@@ -318,8 +318,12 @@ public class JSONParser extends Parser {
 				} else {
 					System.out.print("\t   AUTOMATICO \n\t       Nombre: " + jugador.getNombreJugador() + "\n\t       Reglas que aplica: ");
 					
-					for (Regla regla : ((JugadorAutomatico)jugador).getReglas()){
-						System.out.print(regla.toString() + " ");
+					for (int j = 0; j < ((JugadorAutomatico)jugador).getReglas().size(); j++) {
+						if (j == ((JugadorAutomatico)jugador).getReglas().size() - 1) {
+							System.out.print(((JugadorAutomatico)jugador).getReglas().get(j).toString() + " ");
+						} else {
+							System.out.print(((JugadorAutomatico)jugador).getReglas().get(j).toString() + ",");
+						}
 					}
 					System.out.println();
 				}

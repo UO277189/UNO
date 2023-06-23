@@ -18,7 +18,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "EstrategiaInventada",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"

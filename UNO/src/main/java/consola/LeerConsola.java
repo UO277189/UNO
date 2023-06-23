@@ -80,9 +80,8 @@ public class LeerConsola {
 		} catch (InputMismatchException e) {
 			sc.next();
 			System.out.println("ERROR: este valor no es válido");
-			System.out.println("Se seleccionará el valor mínimo de las opciones elegidas: " + min);
-			
-			value = min;
+			System.out.print("Por favor, seleccione un valor válido: ");
+			return this.leerValorRango(min, max);
 		}
 		// Se avanza de línea
 		return value;

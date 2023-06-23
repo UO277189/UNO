@@ -12,7 +12,7 @@
           "regla": "ReglaAzar"
         }
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 60,
         "parametroAdicional": "no_aplica"
@@ -42,7 +42,7 @@
         }
 
       ],
-      "estrategia": {
+      "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
         "parametroAdicional": 5
