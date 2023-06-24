@@ -20,7 +20,7 @@ public class TXTParser extends Parser{
 
 	
 
-	public void escribirDatos(String nombreFichero, GestionarJuegos partidasJugadas, Configuracion configuracion) {
+	public void escribirDatos(String rutaFichero, GestionarJuegos partidasJugadas, Configuracion configuracion) {
 
 		FileWriter fileWriter = null;
 		BufferedWriter writer = null;
@@ -33,7 +33,7 @@ public class TXTParser extends Parser{
 		try {
 
 			// Primero se borra el directorio si existiera y se crea de nuevo
-			File directorio = new File(rutaPartidas);
+			File directorio = new File(rutaFichero);
 			if (directorio.exists()) {
 				deleteDirectorio(directorio);
 			}
@@ -51,7 +51,7 @@ public class TXTParser extends Parser{
 					iFichero++;
 
 					// Indicamos la ruta en la que cargar el fichero
-					File logPartidas = new File(rutaPartidas + "\\" + iFichero + "-logPartidas.txt");
+					File logPartidas = new File(rutaFichero + "\\" + iFichero + "-logPartidas.txt");
 
 					// Se crea el fichero
 					logPartidas.createNewFile();

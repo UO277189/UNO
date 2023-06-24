@@ -41,7 +41,7 @@ public class InterfaceConsola {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
-//		try {
+		try {
 
 			if (opcion == 1) {
 				introducirDatosManuales();
@@ -55,9 +55,9 @@ public class InterfaceConsola {
 				System.out.println();
 				System.out.println("¡Hasta la próxima!");
 			}
-//		} catch (Exception e) {
-//			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
-//		}
+		} catch (Exception e) {
+			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
+		}
 
 	}
 
@@ -123,7 +123,7 @@ public class InterfaceConsola {
 		System.out.print("Seleccione la opción deseada: ");
 
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/ficheros/entradas/" + manejoJSON.getFicheroEjemplos());
+				.leerJSON("./ficheros/entradas/" + manejoJSON.getFicheroEjemplos());
 		int valor = getLeerConsola().leerValorRango(1, 7);
 
 		if (valor == 6) {
@@ -241,7 +241,7 @@ public class InterfaceConsola {
 
 			if (valor == 0) {
 				JSONParser manejoJSON = new JSONParser();
-				manejoJSON.escribirDatos("/main/resources/entradas/usuario/" + manejoJSON.getFicheroEntrada(), null,
+				manejoJSON.escribirDatos("./ficheros/entradas/" + manejoJSON.getFicheroEntrada(), null,
 						configuracion);
 				System.out.println("La configuración se ha guardado correctamente.");
 			}
@@ -263,7 +263,7 @@ public class InterfaceConsola {
 
 		// Se cargan las configuraciones del JSON
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("/ficheros/entradas/" + manejoJSON.getFicheroEntrada());
+				.leerJSON("./ficheros/entradas/" + manejoJSON.getFicheroEntrada());
 
 		if (configuraciones.isEmpty()) {
 			System.out.println("NO SE HA PODIDO CARGAR LOS DATOS DEL FICHERO");
@@ -327,7 +327,7 @@ public class InterfaceConsola {
 		TXTParser manejoFicherosTXT = new TXTParser();
 
 		// Se guardan en el CSV
-		manejoFicherosCSV.escribirDatos(nombreFichero, juegos, null);
+		manejoFicherosCSV.escribirDatos("./ficheros/salidas/" + nombreFichero, juegos, null);
 		// Se guarda el log en el txt
 		if (verTraza) {
 			if (numeroPartidas > 1500) {
@@ -335,12 +335,12 @@ public class InterfaceConsola {
 						"Está a punto de generar un gran número de archivos TXT. ¿Seguro que desea seguir con la operación? (0 - Sí, 1 - No): ");
 				int valor = leerConsola.leerValorRango(0, 1);
 				if (valor == 0) {
-					manejoFicherosTXT.escribirDatos(null, juegos, null);
+					manejoFicherosTXT.escribirDatos("./ficheros/salidas/log/", juegos, null);
 				} else {
 					System.out.println("No se han guardado los ficheros TXT en el sistema.");
 				}
 			} else {
-				manejoFicherosTXT.escribirDatos(null, juegos, null);
+				manejoFicherosTXT.escribirDatos("./ficheros/salidas/log/", juegos, null);
 			}
 		}
 

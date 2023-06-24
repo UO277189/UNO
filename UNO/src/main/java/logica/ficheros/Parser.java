@@ -15,10 +15,6 @@ public abstract class Parser {
 
 	// ATRIBUTOS
 
-	// Rutas
-	protected String rutaMetricas = ".\\ficheros\\salidas\\";
-	protected String rutaPartidas = ".\\ficheros\\salidas\\log\\";
-	protected String rutaConfiguracion = ".\\";
 	// Nombes de ficheros
 	protected String nombreFicheroEntrada = "configuracion";
 	protected String nombreFicheroEjemplos = "ejemplosBasicos";

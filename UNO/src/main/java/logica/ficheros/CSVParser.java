@@ -36,7 +36,7 @@ public class CSVParser extends Parser{
 
 		try {
 			// Indicamos la ruta en la que cargar el fichero
-			File csvMetricas = new File(rutaMetricas + nombreFichero + ".csv"); // Se indica una ruta relativa
+			File csvMetricas = new File(nombreFichero + ".csv"); // Se indica una ruta relativa
 
 			// Para evitar errores
 			if (!csvMetricas.exists()) {

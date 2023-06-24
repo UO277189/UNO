@@ -53,7 +53,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarVacioTest() {
-		manejoJSON.leerJSON("/test/resources/json/vacio");
+		manejoJSON.leerJSON("src/test/resources/json/vacio");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
@@ -64,7 +64,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarMalFormadoTest() {
-		manejoJSON.leerJSON("/test/resources/json/malFormado");
+		manejoJSON.leerJSON("src/test/resources/json/malFormado");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("HA SURGIDO UN PROBLEMA AL LEER LOS NODOS DEL FICHERO. SE CIERRA EL PROGRAMA"));
 	}
@@ -75,7 +75,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarParametrosNoValidosTest() {
-		manejoJSON.leerJSON("/test/resources/json/parametrosNoValidos");
+		manejoJSON.leerJSON("src/test/resources/json/parametrosNoValidos");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Nombre no válido"));
 		assertTrue(salida.contains("Ha surgido un problema al cargar los jugadores"));
@@ -89,7 +89,7 @@ public class JSONTest {
 	 */
 	@Test
 	public void cargarParametrosInventadosTest() {
-		manejoJSON.leerJSON("/test/resources/json/parametrosInventados");
+		manejoJSON.leerJSON("src/test/resources/json/parametrosInventados");
 		String salida = salidaConsola.toString();
 		assertTrue(salida.contains("Se ha introducido una regla que no existe"));
 		assertTrue(salida.contains("Se ha introducido una estrategia de barajar que no existe"));
@@ -105,7 +105,7 @@ public class JSONTest {
 		
 		// Cargamos las configuraciones
 		ArrayList<Configuracion> configuraciones = 
-				manejoJSON.leerJSON("/test/resources/json/cargaFicheroCorrecta"); 
+				manejoJSON.leerJSON("src/test/resources/json/cargaFicheroCorrecta"); 
 		
 		// Revisamos que las configuraciones sean correctas
 		

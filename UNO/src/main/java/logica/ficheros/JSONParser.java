@@ -37,7 +37,7 @@ public class JSONParser extends Parser {
 	public ArrayList<Configuracion> leerJSON(String nombreJSON) {
 
 		ObjectMapper mapper = new ObjectMapper();
-		File readFile = new File(rutaConfiguracion + nombreJSON + ".json"); // Se carga la ruta
+		File readFile = new File(nombreJSON + ".json"); // Se carga la ruta
 
 		ArrayList<Configuracion> configuraciones = new ArrayList<Configuracion>();
 
@@ -95,13 +95,13 @@ public class JSONParser extends Parser {
 
 		try {
 			// A continuación se borran los datos del fichero
-			FileWriter fileEmpty = new FileWriter(rutaConfiguracion + nombreFicheroJSON + ".json");
+			FileWriter fileEmpty = new FileWriter(nombreFicheroJSON + ".json");
 			fileEmpty.close();
 
 			String jsonFinalString = generarStringJSON(configuraciones);
 
 			// Volvemos a volcar los datos otra vez
-			FileWriter fileFull = new FileWriter(rutaConfiguracion + nombreFicheroJSON + ".json");
+			FileWriter fileFull = new FileWriter(nombreFicheroJSON + ".json");
 			fileFull.write(jsonFinalString);
 			fileFull.close();
 
