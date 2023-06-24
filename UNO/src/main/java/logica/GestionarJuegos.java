@@ -269,7 +269,7 @@ public class GestionarJuegos {
 	}
 
 	/**
-	 * Método para clonar los jugadores en las partidas y evitar así que se pien las
+	 * Método para clonar los jugadores en las partidas y evitar así que se pierdan las
 	 * referencias
 	 * 
 	 * @return ArrayList<JugadorAbstract> Los jugadores clonados
@@ -428,5 +428,22 @@ public class GestionarJuegos {
 	public ArrayList<Juego> getJuegos() {
 		return juegos;
 	}
+
+	public void limpiarJugadores() {
+		// Limpia a los jugadores de las partidas
+		for (Jugador jugador : this.jugadores) {
+			jugador.vaciarDatos();
+		}
+	}
+
+	/**
+	 * Devuelve las partidas descartadas
+	 * @return partidasDescartadas
+	 */
+	public int getPartidasDescartadas() {
+		return partidasDescartadas;
+	}
+
+	
 
 }

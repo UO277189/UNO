@@ -1,7 +1,7 @@
 {
   "configuraciones": [
     {
-      "nombre_configuracion": "EjemploAutomatico",
+      "nombre_configuracion": "DosJugadores",
       "jugadores": [
         {
           "nombre": "Jugador1",
@@ -9,47 +9,65 @@
         },
         {
           "nombre": "Jugador2",
-          "regla": "ReglaAzar"
+          "regla": "ReglaPrimeraCarta"
         },
         {
           "nombre": "Jugador3",
-          "regla": "ReglaAzar"
+          "regla": "ReglaPriorizarCartaNumerica"
         },
         {
           "nombre": "Jugador4",
-          "regla": "ReglaAzar"
+          "regla": "ReglaPriorizarCartaAccion"
+        },
+        {
+          "nombre": "Jugador5",
+          "regla": "ReglaPriorizarCartasRobar"
+        },
+        {
+          "nombre": "Jugador6",
+          "regla": "ReglaPriorizarComodines"
         }
-
+        ,
+        {
+          "nombre": "Jugador7",
+          "regla": "ReglaNoPriorizarCartasRobar"
+        },
+        {
+          "nombre": "Jugador8",
+          "regla": "ReglaPriorizarCartasAccionNoComodin"
+        },
+        {
+          "nombre": "Jugador9",
+          "regla": "ReglaCambiarColorMedio"
+        },
+        {
+          "nombre": "Jugador10",
+          "regla": "ReglaNoCambiarColorMedio"
+        },
+        {
+          "nombre": "Jugador11",
+          "regla": "ReglaCompararTiposCartasMasFrecuente"
+        },
+        {
+          "nombre": "Jugador12",
+          "regla": "ReglaCompararTiposCartasMenosFrecuente"
+        },
+        {
+          "nombre": "Jugador13",
+          "regla": "ReglaContarColoresMasFrecuente"
+        },
+        {
+          "nombre": "Jugador14",
+          "regla": "ReglaContarColoresMenosFrecuente"
+        }
       ],
       "formaBarajar": {
         "tipo": "CartaACarta",
-        "parametroInicial": 300,
+        "parametroInicial": 150,
         "parametroAdicional": "no_aplica"
       },
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 1000,
-      "traza": true
-    },
-    {
-      "nombre_configuracion": "ConfiguracionManual",
-      "jugadores": [
-        {
-          "nombre": "Jugador 0",
-          "regla": "ReglaPrimeraCarta"
-        },
-        {
-          "nombre": "Jugador 1",
-          "regla": "ReglaPrimeraCarta"
-        }
-
-      ],
-      "formaBarajar": {
-        "tipo": "CartaACarta",
-        "parametroInicial": 1000,
-        "parametroAdicional": "no_aplica"
-      },
-      "ensemble": "EnsembleRanking",
-      "numero_partidas": 100,
       "traza": false
     }
   ]
