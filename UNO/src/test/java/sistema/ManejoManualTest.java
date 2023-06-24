@@ -41,7 +41,7 @@ public class ManejoManualTest {
 	public void leerManualTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "4\nA\n5\n2\na\n7\n5"; // Entrada simulada
+        String comandos = "4\nA\n5\n2\na\n7\n5\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -97,7 +97,7 @@ public class ManejoManualTest {
 	public void pruebaConfiguracionDefectoAutomaticaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "2\n3\n1"; // Entrada simulada
+        String comandos = "2\n3\n1\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -150,7 +150,7 @@ public class ManejoManualTest {
 	public void pruebaValorNoValidoTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "8\n5"; // Entrada simulada
+        String comandos = "8\n5\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -175,7 +175,7 @@ public class ManejoManualTest {
 	public void pruebaCargarFicheroConfiguracionesOkTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "3\n1\n1"; // Entrada simulada
+        String comandos = "3\n1\n1\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -200,7 +200,7 @@ public class ManejoManualTest {
 	public void pruebaCargarFicheroConfiguracionesNoOkTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "3\n1000\na\n1\n1"; // Entrada simulada
+        String comandos = "3\n1000\na\n1\n1\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 

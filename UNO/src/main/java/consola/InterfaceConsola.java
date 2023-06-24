@@ -42,7 +42,7 @@ public class InterfaceConsola {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
-//		try {
+		try {
 
 			if (opcion == 1) {
 				introducirDatosManuales();
@@ -55,9 +55,9 @@ public class InterfaceConsola {
 			} else if (opcion == 5) {
 				borrarContenidoArchivosSalida();
 			}
-//		} catch (Exception e) {
-//			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
-//		}
+		} catch (Exception e) {
+			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
+		}
 
 	}
 

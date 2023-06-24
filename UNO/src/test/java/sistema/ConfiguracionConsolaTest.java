@@ -54,7 +54,8 @@ public class ConfiguracionConsolaTest {
         		+ "1\n"
         		+ "0\n"
         		+ "1\n"
-        		+ "1";
+        		+ "1\n"
+        		+ "0";
         
         
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
@@ -99,7 +100,8 @@ public class ConfiguracionConsolaTest {
         		+ "0\n"
          		+ "0\n"
         		+ "1\n"
-        		+ "1";
+        		+ "1\n"
+        		+ "0";
         
         
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
@@ -214,7 +216,8 @@ public class ConfiguracionConsolaTest {
 	        		+ "1\n"
 	         		+ "0\n"
 	        		+ "1\n"
-	        		+ "1";
+	        		+ "1\n"
+	        		+ "0";
 	            
 	        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
 	        System.setOut(new PrintStream(destino));
@@ -265,7 +268,8 @@ public class ConfiguracionConsolaTest {
 	        		+ "3\n"
 	         		+ "0\n"
 	        		+ "1\n"
-	        		+ "1";
+	        		+ "1\n"
+	        		+ "0";
 	            
 	        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
 	        System.setOut(new PrintStream(destino));
@@ -302,7 +306,8 @@ public class ConfiguracionConsolaTest {
 	        		+ "1\n"
 	         		+ "0\n"
 	        		+ "0\n"
-	        		+ "1";
+	        		+ "1\n"
+	        		+ "0";
 	            
 	        System.setIn(new ByteArrayInputStream(comandos.getBytes()));
 	        System.setOut(new PrintStream(destino));

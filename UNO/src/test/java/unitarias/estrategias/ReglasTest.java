@@ -17,6 +17,7 @@ import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaCompararTiposC
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMasFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaContarColoresMenosFrecuente;
 import main.java.algoritmoVoraz.reglas.tipos.reglasHistorial.ReglaNoCambiarColorMedio;
+import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaAzar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaNoPriorizarCartasRobar;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPrimeraCarta;
 import main.java.algoritmoVoraz.reglas.tipos.reglasNoHistorial.ReglaPriorizarCartaAccion;
@@ -359,7 +360,7 @@ public class ReglasTest {
 
 		// Se prepara el jugador
 		ArrayList<Regla> reglas0 = new ArrayList<Regla>();
-		reglas0.add(new ReglaPrimeraCarta());
+		reglas0.add(new ReglaAzar());
 		JugadorAutomatico jugador0 = new JugadorAutomatico("Jugador0", reglas0);
 
 		// Se preparan las cartas
