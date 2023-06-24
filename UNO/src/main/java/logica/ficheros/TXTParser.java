@@ -18,74 +18,77 @@ import main.java.logica.juego.Juego;
  */
 public class TXTParser extends Parser{
 
+	// ATRIBUTOS
 	
+	private BufferedWriter writer = null;
 
 	public void escribirDatos(String rutaFichero, GestionarJuegos partidasJugadas, Configuracion configuracion) {
-
-		FileWriter fileWriter = null;
-		BufferedWriter writer = null;
-
-		// Parametros para ir iterando por el numero de ficheros
+	    // Parametros para ir iterando por el numero de ficheros
+	    int limite = 100;
 		int iFichero = 0;
-		int limite = 100;
-		int partidasSize = partidasJugadas.getJuegos().size();
+	    int partidasSize = partidasJugadas.getJuegos().size();
 
-		try {
 
-			// Primero se borra el directorio si existiera y se crea de nuevo
-			File directorio = new File(rutaFichero);
-			if (directorio.exists()) {
-				deleteDirectorio(directorio);
-			}
-			directorio.mkdirs(); // Lo crea otra vez
+	    try {
+	        // Primero se borran los archivos dentro del directorio
+	        File directorio = new File(rutaFichero);
+	        if (directorio.exists()) {
+	            deleteDirectorio(directorio);
+	        } else {
+		        directorio.mkdir();	
+	        }
+	        
+	        // Luego hay que ir iterando
+	        
+	        for (int i = 0; i < partidasSize; i++) {
+	            // Cada X partidas cambiamos el archivo txt
+	            if (i % limite == 0) {
+	                if (i > 0) {
+	                	// Se cierran los datos del writer actual
+	                    writer.flush(); 
+	                    writer.close(); 
+	                }
+	                
+	                iFichero++;
 
-			// Luego hay que ir iterando
+	                // Indicamos la ruta en la que cargar el fichero
+	                File logPartidas = new File(rutaFichero + iFichero + "-logPartidas.txt");
 
-			for (int i = 0; i < partidasSize; i++) {
-				// Cada X partidas cambiamos el archivo txt
-				if (i % limite == 0) {
+	                // Se crea el fichero
+	                logPartidas.createNewFile();
 
-					if (i > 0) {
-						writer.flush(); // Se guardan los datos de los txt
-					}
-					iFichero++;
+	                // Creamos los objetos writer y fileWriter para el nuevo archivo
+	                FileWriter fileWriter = new FileWriter(logPartidas);
+	                writer = new BufferedWriter(fileWriter);
 
-					// Indicamos la ruta en la que cargar el fichero
-					File logPartidas = new File(rutaFichero + "\\" + iFichero + "-logPartidas.txt");
+	                writer.write("********** LOG DE PARTIDAS DEL UNO **********");
+	                writer.newLine();
+	                writer.newLine();
+	            }
 
-					// Se crea el fichero
-					logPartidas.createNewFile();
-
-					fileWriter = new FileWriter(logPartidas);
-					writer = new BufferedWriter(fileWriter);
-
-					writer.write("********** LOG DE PARTIDAS DEL UNO **********");
-					writer.newLine();
-					writer.newLine();
+	            // Guardamos en un txt los resultados de las partidas
+	            writeDataToTxT(partidasJugadas.getJuegos().get(i), writer, i);
+	        }
+	    } catch (IOException e) {
+	        System.out.println("Ha ocurrido un error al pasar los datos a un txt.");
+	    } finally {
+	    	
+	        try {
+				if (writer != null) {
+					writer.flush(); // Se cierra el último writer
+					writer.close();
 				}
-
-				// Guardamos en un txt los resultados de las partidas
-				writeDataToTxT(partidasJugadas.getJuegos().get(i), writer, i);
-			}
-			writer.flush(); // Se guarda la información del último txt
-
-			// Por alguna razón si intento hacer un close java pierde el último txt que hay
-			// He probado muchos enfoques distintos pero no consigo saber qué le pasa
-			// Como captura la excepción en caso que haya algo mal lo dejo así pero esto
-			// creo que se podría mejorar
-			// Además esto es lo último que hace el programa entones no afecta a otras
-			// partes
-
-			// writer.close();
-			// fileWriter.close();
-			
-			System.out.println("Se han guardado correctamente los datos en el fichero txt.");
-
-		} catch (Exception e) {
-			System.out.println("Ha ocurrido un error al pasar los datos a un txt.");
-		}
+				
+				// Mensaje de salida confirmando que ha salido bien
+		        System.out.println("Se han guardado correctamente los datos en el fichero txt.");
+	        } catch (IOException e) {
+	            System.out.println("Ha ocurrido un error al guardar los datos en un TXT.");
+	        }
+	    }
 	}
-
+	
+	
+	
 	/**
 	 * Método que escribe en un txt los resultados de las partidas
 	 * 

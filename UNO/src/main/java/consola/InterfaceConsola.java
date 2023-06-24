@@ -1,5 +1,6 @@
 package main.java.consola;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import main.java.algoritmoVoraz.ensembles.Ensemble;
@@ -41,7 +42,7 @@ public class InterfaceConsola {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
-		try {
+//		try {
 
 			if (opcion == 1) {
 				introducirDatosManuales();
@@ -52,12 +53,11 @@ public class InterfaceConsola {
 			} else if (opcion == 4) {
 				mostrarAyuda();
 			} else if (opcion == 5) {
-				System.out.println();
-				System.out.println("¡Hasta la próxima!");
+				borrarContenidoArchivosSalida();
 			}
-		} catch (Exception e) {
-			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
-		}
+//		} catch (Exception e) {
+//			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
+//		}
 
 	}
 
@@ -123,7 +123,7 @@ public class InterfaceConsola {
 		System.out.print("Seleccione la opción deseada: ");
 
 		ArrayList<Configuracion> configuraciones = manejoJSON
-				.leerJSON("./ficheros/entradas/" + manejoJSON.getFicheroEjemplos());
+				.leerJSON("./ficheros/ejemplos/" + manejoJSON.getFicheroEjemplos());
 		int valor = getLeerConsola().leerValorRango(1, 7);
 
 		if (valor == 6) {
@@ -335,12 +335,12 @@ public class InterfaceConsola {
 						"Está a punto de generar un gran número de archivos TXT. ¿Seguro que desea seguir con la operación? (0 - Sí, 1 - No): ");
 				int valor = leerConsola.leerValorRango(0, 1);
 				if (valor == 0) {
-					manejoFicherosTXT.escribirDatos("./ficheros/salidas/log/", juegos, null);
+					manejoFicherosTXT.escribirDatos("./ficheros/salidas/log/" + nombreFichero + "/", juegos, null);
 				} else {
 					System.out.println("No se han guardado los ficheros TXT en el sistema.");
 				}
 			} else {
-				manejoFicherosTXT.escribirDatos("./ficheros/salidas/log/", juegos, null);
+				manejoFicherosTXT.escribirDatos("./ficheros/salidas/log/" + nombreFichero + "/", juegos, null);
 			}
 		}
 
@@ -354,8 +354,28 @@ public class InterfaceConsola {
 			System.out.println();
 			this.jugarPartida(); // Se vuelve a empezar
 		} else if (valor == 1) {
-			System.out.println();
+			borrarContenidoArchivosSalida();
+		}
+	}
+
+	/**
+	 * Borra el contenido de los archivos de salida
+	 */
+	private void borrarContenidoArchivosSalida() {
+		
+		System.out.println("Al salir de la aplicación se borrarán los archivos de salida generados.");
+		System.out.println("Si desea guardar algún archivo, haga una copia fuera de la carpeta de salida antes de continuar.");
+		System.out.print("¿Seguro que desea salir de la aplicación? (0 - Si, 1 - No): ");
+		int value = leerConsola.leerValorRango(0, 1);
+		if (value == 0) {
+			File salidas = new File("./ficheros/salidas"); 
+			manejoJSON.deleteDirectorio(salidas);	
 			System.out.println("¡Hasta la próxima!");
+		}
+		
+		if (value == 1) {
+			System.out.println();
+			this.jugarPartida();
 		}
 	}
 

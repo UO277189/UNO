@@ -41,6 +41,8 @@ public class CSVParser extends Parser{
 			// Para evitar errores
 			if (!csvMetricas.exists()) {
 				csvMetricas.createNewFile();
+			} else {
+				csvMetricas.delete(); // Se borra para crear uno nuevo
 			}
 			
 
@@ -52,7 +54,6 @@ public class CSVParser extends Parser{
 			writeDataToCSV(partidasJugadas, writer);
 
 		} catch (IOException e) {
-			System.out.println(e.getCause().toString());
 			System.out.println("Ha ocurrido un error al pasar los datos a csv. Compruebe que no tenga el archivo abierto");
 		} finally {
 			try {

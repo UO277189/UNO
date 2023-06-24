@@ -26,7 +26,7 @@ public abstract class Parser {
 	 * 
 	 * @param nombreFichero   El nombre del fichero
 	 * @param gestionarJuegos Framework con todos los datos utilizados
-	 * @param configuracion	  La configuración a considerar
+	 * @param configuracion   La configuración a considerar
 	 */
 	public abstract void escribirDatos(String nombreFichero, GestionarJuegos gestionarJuegos,
 			Configuracion configuracion);
@@ -37,28 +37,23 @@ public abstract class Parser {
 	 * @param borrar El directorio a borrar
 	 */
 	public void deleteDirectorio(File directorio) {
-		// No deja borrar un directorio directamente, tienes que ir fichero a fichero
 		try {
-
 			if (directorio.isDirectory()) {
 				for (File file : directorio.listFiles()) {
 					if (file.isDirectory()) {
-						deleteDirectorio(file);
-						file.delete();
-						file.deleteOnExit();
-					} else {
-						if (file.isFile()) {
+						deleteDirectorio(file); // Si es un directorio se borra también
+						if (file.getParent().equals(".\\ficheros\\salidas\\log")) {
 							file.delete();
-							file.deleteOnExit();
 						}
+					}
+					if (file.isFile()) {
+						file.delete();
 					}
 				}
 			}
+
 		} catch (Exception e) {
 			System.out.println("Ha ocurrido un error borrando los ficheros");
-		} finally {
-			directorio.delete();
-			directorio.deleteOnExit();
 		}
 	}
 
