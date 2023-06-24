@@ -62,7 +62,7 @@ public class TXTTest {
 		
 		GestionarJuegos juegos = new GestionarJuegos(jugadores, new CartaACarta(60), new EnsembleVotacion(), 100);
 		juegos.jugarPartidas();
-		txtParser.escribirDatos(null, juegos, null);
+		txtParser.escribirDatos("./ficheros/salidas/log/", juegos, null);
 		
 		// Se verifica que no salta una excepción
 		String salida = salidaConsola.toString();
