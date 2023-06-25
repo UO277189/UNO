@@ -1,20 +1,71 @@
 {
   "configuraciones": [
-    {
-      "nombre_configuracion": "ManualDosJugadores",
+     {
+      "nombre_configuracion": "MixtoUnJugador",
       "jugadores": [
-        {
-          "nombre": "Jugador1",
+         {
+          "nombre": "Usuario",
           "regla": "no_aplica"
         },        
         {
           "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        },        
+        {
+          "nombre": "Jugador3",
+          "regla": "ReglaAzar"
+        },        
+        {
+          "nombre": "Jugador4",
+          "regla": "ReglaAzar"
+        }
+
+      ],
+      "formaBarajar": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 150,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 1,
+      "traza": true
+    },
+     {
+      "nombre_configuracion": "MixtoUnJugadorFrenteAUnBot",
+      "jugadores": [
+         {
+          "nombre": "Usuario",
+          "regla": "no_aplica"
+        },        
+        {
+          "nombre": "Jugador2",
+          "regla": "ReglaAzar"
+        }
+      ],
+      "formaBarajar": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 150,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleSuma",
+      "numero_partidas": 1,
+      "traza": true
+    },
+    {
+      "nombre_configuracion": "ManualDosJugadores",
+      "jugadores": [
+        {
+          "nombre": "Usuario1",
+          "regla": "no_aplica"
+        },        
+        {
+          "nombre": "Usuario2",
           "regla": "no_aplica"
         }
       ],
       "formaBarajar": {
         "tipo": "CartaACarta",
-        "parametroInicial": 60,
+        "parametroInicial": 150,
         "parametroAdicional": "no_aplica"
       },
       "ensemble": "EnsembleVotacion",
@@ -25,19 +76,19 @@
       "nombre_configuracion": "ManualCuatroJugadores",
       "jugadores": [
          {
-          "nombre": "Jugador1",
+          "nombre": "Usuario1",
           "regla": "no_aplica"
         },        
         {
-          "nombre": "Jugador2",
+          "nombre": "Usuario2",
           "regla": "no_aplica"
         },        
         {
-          "nombre": "Jugador3",
+          "nombre": "Usuario3",
           "regla": "no_aplica"
         },        
         {
-          "nombre": "Jugador4",
+          "nombre": "Usuario4",
           "regla": "no_aplica"
         }
 
@@ -45,7 +96,7 @@
       "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
-        "parametroAdicional": 5
+        "parametroAdicional": 20
       },
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 100,
@@ -74,7 +125,7 @@
       ],
       "formaBarajar": {
         "tipo": "CartaACarta",
-        "parametroInicial": 60,
+        "parametroInicial": 150,
         "parametroAdicional": "no_aplica"
       },
       "ensemble": "EnsembleRanking",
@@ -105,40 +156,10 @@
       "formaBarajar": {
         "tipo": "MontonAMonton",
         "parametroInicial": 10,
-        "parametroAdicional": 6
+        "parametroAdicional": 20
       },
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 1000,
-      "traza": true
-    },
-     {
-      "nombre_configuracion": "MixtoUnJugador",
-      "jugadores": [
-         {
-          "nombre": "Jugador1",
-          "regla": "no_aplica"
-        },        
-        {
-          "nombre": "Jugador2",
-          "regla": "ReglaAzar"
-        },        
-        {
-          "nombre": "Jugador3",
-          "regla": "ReglaAzar"
-        },        
-        {
-          "nombre": "Jugador4",
-          "regla": "ReglaAzar"
-        }
-
-      ],
-      "formaBarajar": {
-        "tipo": "CartaACarta",
-        "parametroInicial": 40,
-        "parametroAdicional": 6
-      },
-      "ensemble": "EnsembleSuma",
-      "numero_partidas": 1,
       "traza": true
     }
    

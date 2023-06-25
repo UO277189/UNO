@@ -26,8 +26,7 @@
         {
           "nombre": "Jugador6",
           "regla": "ReglaPriorizarComodines"
-        }
-        ,
+        },
         {
           "nombre": "Jugador7",
           "regla": "ReglaNoPriorizarCartasRobar"
@@ -60,6 +59,7 @@
           "nombre": "Jugador14",
           "regla": "ReglaContarColoresMenosFrecuente"
         }
+
       ],
       "formaBarajar": {
         "tipo": "CartaACarta",
@@ -68,6 +68,28 @@
       },
       "ensemble": "EnsembleVotacion",
       "numero_partidas": 1000,
+      "traza": false
+    },
+    {
+      "nombre_configuracion": "ConfiguracionManual",
+      "jugadores": [
+        {
+          "nombre": "Jugador 0",
+          "regla": "ReglaPrimeraCarta"
+        },
+        {
+          "nombre": "Jugador 1",
+          "regla": "ReglaPrimeraCarta"
+        }
+
+      ],
+      "formaBarajar": {
+        "tipo": "CartaACarta",
+        "parametroInicial": 1000,
+        "parametroAdicional": "no_aplica"
+      },
+      "ensemble": "EnsembleRanking",
+      "numero_partidas": 100,
       "traza": false
     }
   ]

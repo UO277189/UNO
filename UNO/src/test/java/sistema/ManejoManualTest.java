@@ -41,7 +41,7 @@ public class ManejoManualTest {
 	public void leerManualTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "4\nA\n5\n2\na\n7\n5\n0"; // Entrada simulada
+        String comandos = "4\nA\n5\n2\na\n8\n5\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -97,7 +97,7 @@ public class ManejoManualTest {
 	public void pruebaConfiguracionDefectoAutomaticaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "2\n3\n1\n0"; // Entrada simulada
+        String comandos = "2\n5\n1\n0"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 
@@ -123,7 +123,7 @@ public class ManejoManualTest {
 	public void pruebaConfiguracionDefectoMixtaTest() {
 	
 		// Hay que redirigir las entradas y salidas para ver los resultados e introducir los comandos
-        String comandos = "2\n5"; // Entrada simulada
+        String comandos = "2\n1"; // Entrada simulada
         System.setIn(new ByteArrayInputStream(comandos.getBytes()));
         System.setOut(new PrintStream(destino));
 

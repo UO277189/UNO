@@ -42,7 +42,7 @@ public class InterfaceConsola {
 		// Mensaje de bienvenida
 		int opcion = mensajeBienvenida();
 
-//		try {
+		try {
 
 			if (opcion == 1) {
 				introducirDatosManuales();
@@ -55,9 +55,9 @@ public class InterfaceConsola {
 			} else if (opcion == 5) {
 				borrarContenidoArchivosSalida();
 			}
-//		} catch (Exception e) {
-//			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
-//		}
+		} catch (Exception e) {
+			System.out.println("Ha ocurrido un error en el sistema, la aplicación se cerrará.");
+		}
 
 	}
 
@@ -112,23 +112,24 @@ public class InterfaceConsola {
 		System.out.println();
 		System.out.println("A continuación se muestran algunas configuraciones básicas del juego.");
 		System.out.println();
-		System.out.println("1.	Partida de dos jugadores manuales");
-		System.out.println("2.	Partida de cuatro jugadores manuales");
-		System.out.println("3.	Partida automática, cada jugador implementa una única regla");
-		System.out.println("4.	Partida automática, cada jugador implementa múltiples reglas");
-		System.out.println("5.	Partida mixta con un jugador manual y tres jugadores automáticos");
-		System.out.println("6.	Mostrar detalles de las partidas");
-		System.out.println("7.	Volver atrás");
+		System.out.println("1. Jugar una partida frente a 3 jugadores automáticos");
+		System.out.println("2. Jugar una partida frente a 1 jugador automático");
+		System.out.println("3. Partida de dos jugadores manuales");
+		System.out.println("4. Partida de cuatro jugadores manuales");
+		System.out.println("5. Partida de jugadores automáticos, cada jugador implementa una única regla");
+		System.out.println("6. Partida de jugadors automáticos, cada jugador implementa múltiples reglas");
+		System.out.println("7. Mostrar detalles de las partidas");
+		System.out.println("8. Volver atrás");
 		System.out.println();
 		System.out.print("Seleccione la opción deseada: ");
 
 		ArrayList<Configuracion> configuraciones = manejoJSON
 				.leerJSON("./ficheros/ejemplos/" + manejoJSON.getFicheroEjemplos());
-		int valor = getLeerConsola().leerValorRango(1, 7);
+		int valor = getLeerConsola().leerValorRango(1, 8);
 
-		if (valor == 6) {
+		if (valor == 7) {
 			mostrarDetallesPartidasBasicas(configuraciones);
-		} else if (valor == 7) {
+		} else if (valor == 8) {
 			System.out.println();
 			System.out.println();
 			System.out.println();
