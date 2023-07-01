@@ -272,6 +272,7 @@ public abstract class Jugador {
 		this.cartasMasDosJugadas = 0;
 		this.cartasCambiarSentidoJugadas = 0;
 		this.cartasQuitarTurnoJugadas = 0;
+		this.cartasCambiaColorJugadas = 0;
 		this.vecesQueHaCantadoUno = 0;
 		this.vecesQueHaIntentadoHacerTrampas = 0;
 		this.vecesQueHaGanado = 0;

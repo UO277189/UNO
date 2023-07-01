@@ -9,7 +9,7 @@ public class ReglaNoCambiarColorMedio implements Regla {
 
 	@Override
 	public void execute(ArrayList<Carta> cartas, ArrayList<Carta> historial) {
-		Carta cartaMedio = historial.get(historial.size()-1); // Obtenemos la carta del medio
+		Carta cartaMedio = historial.get(historial.size() - 1); // Obtenemos la carta del medio
 		
 		for (int i = 0; i < cartas.size(); i++) {
 			if (cartas.get(i).getColor().equals(cartaMedio.getColor())) { // Si tienen el mismo color

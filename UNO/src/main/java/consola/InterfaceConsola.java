@@ -330,10 +330,8 @@ public class InterfaceConsola {
 //		float valorPromedio9 = 0;
 //		float valorPromedio10 = 0;
 //		float valorPromedio11 = 0;
-//		float valorPromedio12 = 0;
-//		float valorPromedio13 = 0;
-//		float valorPromedio14 = 0;
-//		
+
+		
 //		int partidasDescartadas = 0;
 		
 		GestionarJuegos juegos = null;
@@ -357,15 +355,12 @@ public class InterfaceConsola {
 //			valorPromedio9 = valorPromedio9 + juegos.getJugadores().get(8).getVecesQueHaGanado();
 //			valorPromedio10 = valorPromedio10 + juegos.getJugadores().get(9).getVecesQueHaGanado();
 //			valorPromedio11 = valorPromedio11 + juegos.getJugadores().get(10).getVecesQueHaGanado();
-//			valorPromedio12 = valorPromedio12 + juegos.getJugadores().get(11).getVecesQueHaGanado();
-//			valorPromedio13 = valorPromedio13 + juegos.getJugadores().get(12).getVecesQueHaGanado();
-//			valorPromedio14 = valorPromedio14 + juegos.getJugadores().get(13).getVecesQueHaGanado();
-//			
+
 //			
 //			
 //			partidasDescartadas = partidasDescartadas + juegos.getPartidasDescartadas();
 //			
-//			juegos.limpiarJugadores(); // Para el estudio experimental,
+			juegos.limpiarJugadores(); // Para el estudio experimental,
 //			
 //		}
 //		
@@ -382,11 +377,8 @@ public class InterfaceConsola {
 //		System.out.println("El valor promedio 9 es: " + valorPromedio9 / 10);
 //		System.out.println("El valor promedio 10 es: " + valorPromedio10 / 10);
 //		System.out.println("El valor promedio 11 es: " + valorPromedio11 / 10);
-//		System.out.println("El valor promedio 12 es: " + valorPromedio12 / 10);
-//		System.out.println("El valor promedio 13 es: " + valorPromedio13 / 10);
-//		System.out.println("El valor promedio 14 es: " + valorPromedio14 / 10);
+//
 //		
-		
 		
 		
 		
