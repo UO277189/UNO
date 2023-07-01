@@ -117,7 +117,7 @@ public class InterfaceConsola {
 		System.out.println("3. Partida de dos jugadores manuales");
 		System.out.println("4. Partida de cuatro jugadores manuales");
 		System.out.println("5. Partida de jugadores automáticos, cada jugador implementa una única regla");
-		System.out.println("6. Partida de jugadors automáticos, cada jugador implementa múltiples reglas");
+		System.out.println("6. Partida de jugadores automáticos, cada jugador implementa múltiples reglas");
 		System.out.println("7. Mostrar detalles de las partidas");
 		System.out.println("8. Volver atrás");
 		System.out.println();
@@ -360,7 +360,7 @@ public class InterfaceConsola {
 //			
 //			partidasDescartadas = partidasDescartadas + juegos.getPartidasDescartadas();
 //			
-			juegos.limpiarJugadores(); // Para el estudio experimental,
+//			juegos.limpiarJugadores(); // Para el estudio experimental,
 //			
 //		}
 //		
