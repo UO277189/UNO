@@ -79,15 +79,13 @@ public class ManualAyuda {
 		System.out.println();
 		System.out.println("Las opciones que se ofrecen al usuario son las siguientes:");
 		System.out.println();
-		System.out.println("\t" + "Jugar una partida normal al UNO: el usuario puede jugar una partida frente a otros tres jugadores automáticos");
-		System.out.println("\t\t" + "que juegan echando una carta al azar en su turno.");
-		System.out.println("\t" + "Crear configuración: el usuario puede crear en detalle su configuración a través de la consola de comandos.");
+		System.out.println("\t" + "Crear una configuración personalizada: el usuario puede crear en detalle su configuración a través de la consola de comandos.");
 		System.out.println("\t\t" + "Permite, además, guardar la configuración creada en el fichero de entrada del usuario para que no tenga que escribirla de nuevo.");
 
-		System.out.println("\t" + "Cargar ejemplos básicos: permite que el usuario pueda seleccionar entre algunos ejemplos de uso del sistema");
+		System.out.println("\t" + "Cargar configuraciones de ejemplo: permite que el usuario pueda seleccionar entre algunos ejemplos de uso del sistema");
 		System.out.println("\t\t" + "para familiarizarse con su uso.");
 
-		System.out.println("\t" + "Cargar datos del fichero de entrada: Muestra las configuraciones almacenadas en el fichero de entrada");
+		System.out.println("\t" + "Cargar configuraciones del fichero de entrada del usuario: Muestra las configuraciones almacenadas en el fichero de entrada");
 		System.out.println("\t\t" + "configuracion.json para que el jugador seleccione la que desea utilizar.");
 		System.out.println("\t\t" + "Adicionalmente, el jugador puede modificar el fichero para incluir nuevas configuraciones.");
 		System.out.println("\t\t" + "No obstante, si el fichero queda mal escrito no se podrá leer,");
@@ -191,7 +189,8 @@ public class ManualAyuda {
 		System.out.println("\t" + "Veces que ha intentado hacer trampa: indica las veces que el jugador ha intentado echar una carta que no debe o robar cuando no le toca.");
 		System.out.println("\t" + "Partidas descartadas: este parámetro aparece por consola y muestra el número de partidas que se descartan al ser durar demasiado.");
 		System.out.println("\t\t" + "La razón por la que esto ocurre se puede estudiar en la memoria del proyecto en mayor profundidad.");
-		
+		System.out.println();
+
 		volverAtras();
 	}
 	

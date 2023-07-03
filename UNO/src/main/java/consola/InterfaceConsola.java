@@ -317,8 +317,8 @@ public class InterfaceConsola {
 
 
 		// Aplicamos todos estos parámetros de entrada en nuestro framework que manejará
-		// las partidas
-		
+		// las partidas (TODOS LOS COMENTARIOS SON DE LA EXPERIMENTACIÓN, ESTO ES AL MARGEN DEL PROGRAMA)
+//		
 //		float valorPromedio1 = 0;
 //		float valorPromedio2 = 0;
 //		float valorPromedio3 = 0;
@@ -329,10 +329,10 @@ public class InterfaceConsola {
 //		float valorPromedio8 = 0;
 //		float valorPromedio9 = 0;
 //		float valorPromedio10 = 0;
-//		float valorPromedio11 = 0;
-
-		
-//		int partidasDescartadas = 0;
+////		float valorPromedio11 = 0;
+////
+////		
+		int partidasDescartadas = 0;
 		
 		GestionarJuegos juegos = null;
 		
@@ -354,18 +354,19 @@ public class InterfaceConsola {
 //			valorPromedio8 = valorPromedio8 + juegos.getJugadores().get(7).getVecesQueHaGanado();
 //			valorPromedio9 = valorPromedio9 + juegos.getJugadores().get(8).getVecesQueHaGanado();
 //			valorPromedio10 = valorPromedio10 + juegos.getJugadores().get(9).getVecesQueHaGanado();
-//			valorPromedio11 = valorPromedio11 + juegos.getJugadores().get(10).getVecesQueHaGanado();
-
-//			
-//			
+////			valorPromedio11 = valorPromedio11 + juegos.getJugadores().get(10).getVecesQueHaGanado();
+////
+////			
+			
 //			partidasDescartadas = partidasDescartadas + juegos.getPartidasDescartadas();
 //			
-//			juegos.limpiarJugadores(); // Para el estudio experimental,
-//			
+//			juegos.limpiarJugadores(); // Para el estudio experimental
+			
 //		}
-//		
 		
-
+//		
+//		System.out.println(juegos.getJugadores().get(0).getNombreJugador());
+//
 //		System.out.println("El valor promedio 1 es: " + valorPromedio1 / 10);
 //		System.out.println("El valor promedio 2 es: " + valorPromedio2 / 10);
 //		System.out.println("El valor promedio 3 es: " + valorPromedio3 / 10);
@@ -377,12 +378,12 @@ public class InterfaceConsola {
 //		System.out.println("El valor promedio 9 es: " + valorPromedio9 / 10);
 //		System.out.println("El valor promedio 10 es: " + valorPromedio10 / 10);
 //		System.out.println("El valor promedio 11 es: " + valorPromedio11 / 10);
-//
-//		
+
 		
 		
 		
-//		System.out.println("Las partidas descartadas fueron: " + partidasDescartadas);
+		
+		System.out.println("Las partidas descartadas fueron: " + partidasDescartadas);
 		
 		
 

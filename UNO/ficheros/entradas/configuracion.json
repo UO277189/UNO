@@ -1,11 +1,11 @@
 {
   "configuraciones": [
     {
-      "nombre_configuracion": "DosJugadores",
+      "nombre_configuracion": "ConfiguracionPruebaAutomatica",
       "jugadores": [
         {
           "nombre": "Jugador1",
-          "regla": "ReglaNoCambiarColorMedio,ReglaContarColoresMasFrecuente,ReglaPriorizarCartaNumerica,ReglaNoPriorizarCartasRobar"
+          "regla": "ReglaNoCambiarColorMedio,ReglaContarColoresMasFrecuente"
         },
         {
           "nombre": "Jugador2",
@@ -22,48 +22,27 @@
         {
           "nombre": "Jugador5",
           "regla": "ReglaAzar"
-        },
-        {
-          "nombre": "Jugador6",
-          "regla": "ReglaAzar"
-        },
-        {
-          "nombre": "Jugador7",
-          "regla": "ReglaAzar"
-        },
-        {
-          "nombre": "Jugador8",
-          "regla": "ReglaAzar"
-        },
-        {
-          "nombre": "Jugador9",
-          "regla": "ReglaAzar"
-        },
-        {
-          "nombre": "Jugador10",
-          "regla": "ReglaAzar"
         }
-
       ],
       "formaBarajar": {
         "tipo": "CartaACarta",
         "parametroInicial": 150,
         "parametroAdicional": "no_aplica"
       },
-      "ensemble": "EnsembleVotacion",
+      "ensemble": "EnsembleSuma",
       "numero_partidas": 1000,
-      "traza": false
+      "traza": true
     },
     {
-      "nombre_configuracion": "ConfiguracionManual",
+      "nombre_configuracion": "ConfiguracionPruebaManual",
       "jugadores": [
         {
           "nombre": "Jugador 0",
-          "regla": "ReglaPrimeraCarta"
+          "regla": "no_aplica"
         },
         {
           "nombre": "Jugador 1",
-          "regla": "ReglaPrimeraCarta"
+          "regla": "no_aplica"
         }
 
       ],
@@ -72,7 +51,7 @@
         "parametroInicial": 1000,
         "parametroAdicional": "no_aplica"
       },
-      "ensemble": "EnsembleRanking",
+      "ensemble": "EnsembleSuma",
       "numero_partidas": 100,
       "traza": false
     }
