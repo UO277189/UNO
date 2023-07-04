@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import main.java.algoritmoVoraz.reglas.Regla;
 import main.java.logica.juego.carta.Carta;
 
+/**
+ * Clase que implementa la regla que permite no cambiar el color del medio
+ * @author Efrén García Valencia UO277189
+ *
+ */
 public class ReglaNoCambiarColorMedio implements Regla {
 
 	@Override

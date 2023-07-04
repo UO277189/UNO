@@ -167,7 +167,6 @@ public class Juego {
 	 * traza o no y la baraja de cartas.
 	 * 
 	 * @param jugadores    ArrayList
-	 * @param turnoInicial int
 	 * @param baraja       Baraja
 	 * @param traza        boolean
 	 */

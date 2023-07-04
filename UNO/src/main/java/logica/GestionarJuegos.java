@@ -429,6 +429,10 @@ public class GestionarJuegos {
 		return juegos;
 	}
 
+	
+	/**
+	 * Método que permite limpiar a los jugadores de las partidas
+	 */
 	public void limpiarJugadores() {
 		// Limpia a los jugadores de las partidas
 		for (Jugador jugador : this.jugadores) {

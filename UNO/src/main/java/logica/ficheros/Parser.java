@@ -34,7 +34,7 @@ public abstract class Parser {
 	/**
 	 * Para borrar un directorio
 	 * 
-	 * @param borrar El directorio a borrar
+	 * @param directorio El directorio a borrar
 	 */
 	public void deleteDirectorio(File directorio) {
 		try {

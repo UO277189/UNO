@@ -19,6 +19,9 @@ public class ManualAyuda {
 		this.interfaceConsola = interfaceConsola;
 	}
 	
+	/**
+	 * Método para invocar el menú de ayuda
+	 */
 	public void invocarMenuAyuda() {
 		
 		System.out.println("**************** MANUAL DE AYUDA ****************");
